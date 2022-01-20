@@ -66,10 +66,10 @@
 					    <div class="modal-body">
 					        <h3>Login by Profile</h3>
 					        <ul class="clearfix">
-					        	<li class="float-left"><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i> UMKM</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-lock" aria-hidden="true"></i> Pengelola</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-paint-brush" aria-hidden="true"></i> Designer</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-commenting" aria-hidden="true"></i> CS</a></li>
+					        	<li class="float-left"><a href="<?= base_url()?>/login/umkm"><i class="fa fa-shopping-basket" aria-hidden="true"></i> UMKM</a></li>
+					        	<li class="float-left"><a href="<?= base_url()?>/login/pengelola"><i class="fa fa-lock" aria-hidden="true"></i> Pengelola</a></li>
+					        	<li class="float-left"><a href="<?= base_url()?>/login/designer"><i class="fa fa-paint-brush" aria-hidden="true"></i> Designer</a></li>
+					        	<li class="float-left"><a href="<?= base_url()?>/login/cs"><i class="fa fa-commenting" aria-hidden="true"></i> CS</a></li>
 					        </ul>
 					    </div> <!-- /.modal-body -->
 				    </div> <!-- /.modal-content -->
