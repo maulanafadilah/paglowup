@@ -23,7 +23,7 @@
 									<li class="menu-list <?php if($title == 'Portofolio'){echo "active";}?>"><a href="/portofolio" class="tran3s">Portofolio</a></li>
 									<li class="menu-list <?php if($title == 'About'){echo "active";}?>"><a href="/about" class="tran3s">About Us</a></li>
 									<li class="menu-list <?php if($title == 'Contact'){echo "active";}?>"><a href="/contact" class="tran3s">Contact Us</a></li>
-									<li class="login-button"><a href="" class="tran3s" data-toggle="modal" data-target=".signUpModal">login</a></li>
+									<li class="login-button"><a href="#" class="tran3s" data-toggle="modal" data-target=".signUpModal">login</a></li>
 								</ul>
 						   </div><!-- /.navbar-collapse -->
 						</nav> <!-- /.theme-main-menu -->

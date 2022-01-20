@@ -23,8 +23,7 @@
 						   <!-- Collect the nav links, forms, and other content for toggling -->
 						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
 								<ul class="nav">
-								<li class="menu-list"><a href="/" class="tran3s">Home</a></li>
-								<li class="menu-list <?php if($title == 'Home'){echo "active";}?>"><a href="/" class="tran3s">Home</a></li>
+									<li class="menu-list <?php if($title == 'Home'){echo "active";}?>"><a href="/" class="tran3s">Home</a></li>
 									<li class="menu-list <?php if($title == 'Service'){echo "active";}?>"><a href="/service" class="tran3s">Service</a></li>
 									<li class="menu-list <?php if($title == 'Portofolio'){echo "active";}?>"><a href="/portofolio" class="tran3s">Portofolio</a></li>
 									<li class="menu-list <?php if($title == 'About'){echo "active";}?>"><a href="/about" class="tran3s">About Us</a></li>
