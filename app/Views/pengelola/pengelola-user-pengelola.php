@@ -58,6 +58,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
@@ -79,6 +80,7 @@
 
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Remove</a>
                                     </div>
                                 </div>
@@ -110,6 +112,7 @@
 
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Remove</a>
                                     </div>
                                 </div>
@@ -141,6 +144,7 @@
 
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Remove</a>
                                     </div>
                                 </div>
@@ -171,6 +175,7 @@
 
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Remove</a>
                                     </div>
                                 </div>
@@ -205,6 +210,7 @@
 
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Remove</a>
                                     </div>
                                 </div>
@@ -238,6 +244,7 @@
 
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Remove</a>
                                     </div>
                                 </div>
@@ -269,6 +276,7 @@
 
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Remove</a>
                                     </div>
                                 </div>
@@ -299,6 +307,7 @@
 
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Remove</a>
                                     </div>
                                 </div>

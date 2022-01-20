@@ -147,6 +147,5 @@ return [
     "Pemesanan" => "Pemesanan",
     "ListPemesanan" => "List Pesanan",
     "DiskusiTrx" => "Diskusi Transaksi",
-    "DesignerList" => "Designer List",
-    "Pesanan" => "Pesanan Design"
+    "DesignerList" => "Designer List"
 ];

@@ -100,9 +100,6 @@ $routes->get('cs-designer-list', 'Cs::designer_list');
 $routes->get('cs-profile', 'Cs::profile');
 
 
-// -------------------- Customer Service -------------------- //
-$routes->get('umkm', 'Umkm::index');
-
 
 /**
  * --------------------------------------------------------------------
