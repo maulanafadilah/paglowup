@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\pengelola;
 
-class Pengelola extends BaseController
+class Pengelola extends \App\Controllers\BaseController
 {
 	
 	public function index()

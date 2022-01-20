@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\umkm;
 
-class Umkm extends BaseController
+class Umkm extends \App\Controllers\BaseController
 {
     public function index()
 	{

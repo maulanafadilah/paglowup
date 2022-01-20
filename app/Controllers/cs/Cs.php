@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\cs;
 
-class Cs extends BaseController
+class Cs extends \App\Controller\BaseController
 {
 	
 	public function index()
