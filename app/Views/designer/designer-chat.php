@@ -34,7 +34,7 @@
                         <div class="p-3 px-4 border-bottom">
                             <div class="d-flex align-items-start ">
                                 <div class="flex-shrink-0 me-3 align-self-center">
-                                    <img src="assets/images/users/avatar-1.jpg" class="avatar-sm rounded-circle" alt="">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-1.jpg" class="avatar-sm rounded-circle" alt="">
                                 </div>
 
                                 <div class="flex-grow-1">
@@ -99,7 +99,7 @@
                                                         <div class="d-flex align-items-start">
 
                                                             <div class="flex-shrink-0 user-img online align-self-center me-3">
-                                                                <img src="assets/images/users/avatar-2.jpg" class="rounded-circle avatar-sm" alt="">
+                                                                <img src="<?= base_url()?>/assets/images/users/avatar-2.jpg" class="rounded-circle avatar-sm" alt="">
                                                                 <span class="user-status"></span>
                                                             </div>
 
@@ -142,7 +142,7 @@
                                                     <a href="#">
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-shrink-0 user-img away align-self-center me-3">
-                                                                <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm" alt="">
+                                                                <img src="<?= base_url()?>/assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm" alt="">
                                                                 <span class="user-status"></span>
                                                             </div>
 
@@ -161,7 +161,7 @@
                                                         <div class="d-flex align-items-start">
 
                                                             <div class="flex-shrink-0 user-img align-self-center me-3">
-                                                                <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar-sm" alt="">
+                                                                <img src="<?= base_url()?>/assets/images/users/avatar-4.jpg" class="rounded-circle avatar-sm" alt="">
                                                                 <span class="user-status"></span>
                                                             </div>
 
@@ -204,7 +204,7 @@
                                                         <div class="d-flex align-items-start">
 
                                                             <div class="flex-shrink-0 user-img align-self-center me-3">
-                                                                <img src="assets/images/users/avatar-5.jpg" class="rounded-circle avatar-sm" alt="">
+                                                                <img src="<?= base_url()?>/assets/images/users/avatar-5.jpg" class="rounded-circle avatar-sm" alt="">
                                                                 <span class="user-status"></span>
                                                             </div>
 
@@ -223,7 +223,7 @@
                                                         <div class="d-flex align-items-start">
 
                                                             <div class="flex-shrink-0 user-img align-self-center me-3">
-                                                                <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar-sm" alt="">
+                                                                <img src="<?= base_url()?>/assets/images/users/avatar-6.jpg" class="rounded-circle avatar-sm" alt="">
                                                                 <span class="user-status"></span>
                                                             </div>
 
@@ -241,7 +241,7 @@
                                                     <a href="#">
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-shrink-0 user-img away align-self-center me-3">
-                                                                <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm" alt="">
+                                                                <img src="<?= base_url()?>/assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm" alt="">
                                                                 <span class="user-status"></span>
                                                             </div>
 
@@ -260,7 +260,7 @@
                                                         <div class="d-flex align-items-start">
 
                                                             <div class="flex-shrink-0 user-img align-self-center me-3">
-                                                                <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar-sm" alt="">
+                                                                <img src="<?= base_url()?>/assets/images/users/avatar-4.jpg" class="rounded-circle avatar-sm" alt="">
                                                                 <span class="user-status"></span>
                                                             </div>
 
@@ -454,7 +454,7 @@
                                     <div class="col-xl-4 col-7">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0 avatar-sm me-3 d-sm-block d-none">
-                                                <img src="assets/images/users/avatar-2.jpg" alt="" class="img-fluid d-block rounded-circle">
+                                                <img src="<?= base_url()?>/assets/images/users/avatar-2.jpg" alt="" class="img-fluid d-block rounded-circle">
                                             </div>
                                             <div class="flex-grow-1">
                                                 <h5 class="font-size-14 mb-1 text-truncate"><a href="#" class="text-dark">Jennie Sherlock</a></h5>
@@ -655,13 +655,13 @@
                                                     <ul class="list-inline message-img mt-3  mb-0">
                                                         <li class="list-inline-item message-img-list">
                                                             <a class="d-inline-block m-1" href="">
-                                                                <img src="assets/images/small/img-1.jpg" alt="" class="rounded img-thumbnail">
+                                                                <img src="<?= base_url()?>/assets/images/small/img-1.jpg" alt="" class="rounded img-thumbnail">
                                                             </a>
                                                         </li>
 
                                                         <li class="list-inline-item message-img-list">
                                                             <a class="d-inline-block m-1" href="">
-                                                                <img src="assets/images/small/img-2.jpg" alt="" class="rounded img-thumbnail">
+                                                                <img src="<?= base_url()?>/assets/images/small/img-2.jpg" alt="" class="rounded img-thumbnail">
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -718,7 +718,7 @@
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>
 
-<script src="assets/js/app.js"></script>
+<script src="<?= base_url()?>/assets/js/app.js"></script>
 
 </body>
 

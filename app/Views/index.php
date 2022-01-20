@@ -41,7 +41,7 @@
 			============================================== 
 			-->
 			<div id="theme-main-banner" class="banner-one">
-				<div data-src="assets/images/home/slide-1.jpg">
+				<div data-src="<?= base_url()?>/assets/images/home/slide-1.jpg">
 					<div class="camera_caption">
 						<div class="container">
 							<h5 class="wow fadeInUp animated">We’r Awesome</h5>
@@ -53,7 +53,7 @@
 										<use xlink:href="#shape-one" />
 									</clipPath>
 									<g clip-path="url(#shape-one)">
-										<image width="778" height="576" href="assets/images/home/1.jpg" class="banner-img-one">
+										<image width="778" height="576" href="<?= base_url()?>/assets/images/home/1.jpg" class="banner-img-one">
 										</image>
 									</g>
 								</svg>
@@ -62,7 +62,7 @@
 						</div> <!-- /.container -->
 					</div> <!-- /.camera_caption -->
 				</div>
-				<div data-src="assets/images/home/slide-1.jpg">
+				<div data-src="<?= base_url()?>/assets/images/home/slide-1.jpg">
 					<div class="camera_caption">
 						<div class="container">
 							<h5 class="wow fadeInUp animated">We’r Awesome</h5>
@@ -74,7 +74,7 @@
 										<use xlink:href="#shape-one" />
 									</clipPath>
 									<g clip-path="url(#shape-one)">
-										<image width="778" height="576" href="assets/images/home/1.jpg" class="banner-img-one">
+										<image width="778" height="576" href="<?= base_url()?>/assets/images/home/1.jpg" class="banner-img-one">
 										</image>
 									</g>
 								</svg>
@@ -83,7 +83,7 @@
 						</div> <!-- /.container -->
 					</div> <!-- /.camera_caption -->
 				</div>
-				<div data-src="assets/images/home/slide-1.jpg">
+				<div data-src="<?= base_url()?>/assets/images/home/slide-1.jpg">
 					<div class="camera_caption">
 						<div class="container">
 							<h5 class="wow fadeInUp animated">We’r Awesome</h5>
@@ -95,7 +95,7 @@
 										<use xlink:href="#shape-one" />
 									</clipPath>
 									<g clip-path="url(#shape-one)">
-										<image width="778" height="576" href="assets/images/home/1.jpg" class="banner-img-one">
+										<image width="778" height="576" href="<?= base_url()?>/assets/images/home/1.jpg" class="banner-img-one">
 										</image>
 									</g>
 								</svg>
@@ -158,7 +158,7 @@
 							<use xlink:href="#shape-one" />
 						</clipPath>
 						<g clip-path="url(#shape-one)">
-							<image width="854" height="632" href="assets/images/home/2.jpg" class="image-shape">
+							<image width="854" height="632" href="<?= base_url()?>/assets/images/home/2.jpg" class="image-shape">
 							</image>
 						</g>
 					</svg>
@@ -172,7 +172,7 @@
 								<div class="main-wrapper">
 									<h4>Best Digital Agency in Asia</h4>
 									<p>We provide marketing services to startups and small businesses to looking for a partner of their digital media, design &amp; dev, lead generation, and communications requirents. We work with you, not for you. Although we have great resources.</p>
-									<img src="assets/images/home/sign.png" alt="sign">
+									<img src="<?= base_url()?>/assets/images/home/sign.png" alt="sign">
 									<div class="button-wrapper p-bg-color">
 										<span>Learn More</span>
 										<a href="about-us.html" class="hvr-icon-wobble-horizontal">More About us <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
@@ -243,26 +243,26 @@
 						<div class="portfolio-slider">
 							<div class="item">
 								<div class="image">
-									<img src="assets/images/portfolio/1.jpg" alt="">
-									<div class="opacity tran4s"><a data-fancybox="project" href="assets/images/portfolio/1.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
+									<img src="<?= base_url()?>/assets/images/portfolio/1.jpg" alt="">
+									<div class="opacity tran4s"><a data-fancybox="project" href="<?= base_url()?>/assets/images/portfolio/1.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
 								</div>
 							</div>
 							<div class="item">
 								<div class="image">
-									<img src="assets/images/portfolio/2.jpg" alt="">
-									<div class="opacity tran4s"><a data-fancybox="project" href="assets/images/portfolio/2.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
+									<img src="<?= base_url()?>/assets/images/portfolio/2.jpg" alt="">
+									<div class="opacity tran4s"><a data-fancybox="project" href="<?= base_url()?>/assets/images/portfolio/2.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
 								</div>
 							</div>
 							<div class="item">
 								<div class="image">
-									<img src="assets/images/portfolio/3.jpg" alt="">
-									<div class="opacity tran4s"><a data-fancybox="project" href="assets/images/portfolio/3.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
+									<img src="<?= base_url()?>/assets/images/portfolio/3.jpg" alt="">
+									<div class="opacity tran4s"><a data-fancybox="project" href="<?= base_url()?>/assets/images/portfolio/3.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
 								</div>
 							</div>
 							<div class="item">
 								<div class="image">
-									<img src="assets/images/portfolio/4.jpg" alt="">
-									<div class="opacity tran4s"><a data-fancybox="project" href="assets/images/portfolio/4.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
+									<img src="<?= base_url()?>/assets/images/portfolio/4.jpg" alt="">
+									<div class="opacity tran4s"><a data-fancybox="project" href="<?= base_url()?>/assets/images/portfolio/4.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
 								</div>
 							</div>
 						</div> <!-- /.portfolio-slider -->
@@ -316,7 +316,7 @@
 							</li>
 						</ul>
 					</div> <!-- /.main-container -->
-					<img src="assets/images/home/shape-2.png" alt="Image" class="wow fadeInLeft">
+					<img src="<?= base_url()?>/assets/images/home/shape-2.png" alt="Image" class="wow fadeInLeft">
 				</div> <!-- /.container -->
 			</div> <!-- /.home-service-section -->
 
@@ -403,7 +403,7 @@
 								<use xlink:href="#shape-one" />
 							</clipPath>
 							<g clip-path="url(#shape-one)">
-								<image width="854" height="630" href="assets/images/home/5.jpg" class="image-shape">
+								<image width="854" height="630" href="<?= base_url()?>/assets/images/home/5.jpg" class="image-shape">
 								</image>
 							</g>
 						</svg>
@@ -420,7 +420,7 @@
 									<div class="wrapper">
 										<p>Their testimonial videos aren't production quality, but they get the message across, cover useful &amp; relevant information which goes to show you don't need to invest thousands in production get some testimonial videos up with quality. </p>
 										<div class="name clearfix">
-											<img src="assets/images/home/3.jpg" alt="">
+											<img src="<?= base_url()?>/assets/images/home/3.jpg" alt="">
 											<h5>Rashed Kabir</h5>
 											<span>Gazipur</span>
 										</div>
@@ -430,7 +430,7 @@
 									<div class="wrapper">
 										<p>Their testimonial videos aren't production quality, but they get the message across, cover useful &amp; relevant information which goes to show you don't need to invest thousands in production get some testimonial videos up with quality. </p>
 										<div class="name clearfix">
-											<img src="assets/images/home/4.jpg" alt="">
+											<img src="<?= base_url()?>/assets/images/home/4.jpg" alt="">
 											<h5>Zubayer Hasan</h5>
 											<span>Uttara</span>
 										</div>
@@ -454,12 +454,12 @@
             <!-- Js File_________________________________ -->
 
 		<!-- j Query -->
-		<script type="text/javascript" src="assets/vendor/jquery.2.2.3.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.2.2.3.min.js"></script>
 		<!-- Bootstrap Select JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
 		<!-- Bootstrap JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap/bootstrap.min.js"></script>
 
 		<!-- assets/Vendor js _________ -->
 		<!-- Camera Slider -->
@@ -467,20 +467,20 @@
 	    <script type='text/javascript' src='assets/vendor/Camera-master/scripts/jquery.easing.1.3.js'></script> 
 	    <script type='text/javascript' src='assets/vendor/Camera-master/scripts/camera.min.js'></script>
 	    <!-- Mega menu  -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
 		
 		<!-- WOW js -->
-		<script type="text/javascript" src="assets/vendor/WOW-master/dist/wow.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/WOW-master/dist/wow.min.js"></script>
 		<!-- owl.carousel -->
-		<script type="text/javascript" src="assets/vendor/owl-carousel/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
 		<!-- js count to -->
-		<script type="text/javascript" src="assets/vendor/jquery.appear.js"></script>
-		<script type="text/javascript" src="assets/vendor/jquery.countTo.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.appear.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.countTo.js"></script>
 		<!-- Fancybox -->
-		<script type="text/javascript" src="assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
 
 		<!-- Theme js -->
-		<script type="text/javascript" src="assets/js/theme.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/js/theme.js"></script>
 
     </div>
 </body>

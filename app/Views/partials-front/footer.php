@@ -8,7 +8,7 @@
 					<div class="row">
 						<div class="col-md-3 col-sm-6 col-xs-12">
 							<div class="footer-logo">
-								<a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo"></a>
+								<a href="index.html"><img src="<?= base_url()?>/assets/images/logo/logo.png" alt="Logo"></a>
 								<h5><a href="#" class="tran3s">gulluinc@gmail.com</a></h5>
 								<h6 class="p-color">202. 277. 3894</h6>
 							</div>

@@ -74,7 +74,7 @@
 
                             <div class="col-sm-6 col-lg-4">
                                 <div class="card">
-                                    <img src="assets/images/small/img-5.jpg" class="card-img-top" alt="...">
+                                    <img src="<?= base_url()?>/assets/images/small/img-5.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Card title</h5>
                                         <a href="javascript: void(0);" class="card-link">Remove</a>
@@ -84,7 +84,7 @@
 
                             <div class="col-sm-6 col-lg-4">
                                 <div class="card">
-                                    <img src="assets/images/small/img-5.jpg" class="card-img-top" alt="...">
+                                    <img src="<?= base_url()?>/assets/images/small/img-5.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Card title</h5>
                                         <a href="javascript: void(0);" class="card-link">Remove</a>
@@ -94,7 +94,7 @@
 
                             <div class="col-sm-6 col-lg-4">
                                 <div class="card">
-                                    <img src="assets/images/small/img-5.jpg" class="card-img-top" alt="...">
+                                    <img src="<?= base_url()?>/assets/images/small/img-5.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Card title</h5>
                                         <a href="javascript: void(0);" class="card-link">Remove</a>
@@ -104,7 +104,7 @@
 
                             <div class="col-sm-6 col-lg-4">
                                 <div class="card">
-                                    <img src="assets/images/small/img-5.jpg" class="card-img-top" alt="...">
+                                    <img src="<?= base_url()?>/assets/images/small/img-5.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Card title</h5>
                                         <a href="javascript: void(0);" class="card-link">Remove</a>
@@ -114,7 +114,7 @@
 
                             <div class="col-sm-6 col-lg-4">
                                 <div class="card">
-                                    <img src="assets/images/small/img-5.jpg" class="card-img-top" alt="...">
+                                    <img src="<?= base_url()?>/assets/images/small/img-5.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Card title</h5>
                                         <a href="javascript: void(0);" class="card-link">Remove</a>
@@ -124,7 +124,7 @@
 
                             <div class="col-sm-6 col-lg-4">
                                 <div class="card">
-                                    <img src="assets/images/small/img-5.jpg" class="card-img-top" alt="...">
+                                    <img src="<?= base_url()?>/assets/images/small/img-5.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">Card title</h5>
                                         <a href="javascript: void(0);" class="card-link">Remove</a>
@@ -156,7 +156,7 @@
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>
 
-<script src="assets/js/app.js"></script>
+<script src="<?= base_url()?>/assets/js/app.js"></script>
 
 </body>
 

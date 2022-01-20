@@ -126,37 +126,37 @@
 		<!-- Js File_________________________________ -->
 
 		<!-- j Query -->
-		<script type="text/javascript" src="assets/vendor/jquery.2.2.3.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.2.2.3.min.js"></script>
 		<!-- Bootstrap Select JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
 		<!-- Bootstrap JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap/bootstrap.min.js"></script>
 
 		<!-- assets/Vendor js _________ -->
 	    <!-- Mega menu  -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
 		
 		<!-- WOW js -->
-		<script type="text/javascript" src="assets/vendor/WOW-master/dist/wow.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/WOW-master/dist/wow.min.js"></script>
 		<!-- owl.carousel -->
-		<script type="text/javascript" src="assets/vendor/owl-carousel/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
 		<!-- js count to -->
-		<script type="text/javascript" src="assets/vendor/jquery.appear.js"></script>
-		<script type="text/javascript" src="assets/vendor/jquery.countTo.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.appear.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.countTo.js"></script>
 		<!-- js ripels -->
-		<script type="text/javascript" src="assets/vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
 		<!-- Validation -->
-		<script type="text/javascript" src="assets/vendor/contact-form/validate.js"></script>
-		<script type="text/javascript" src="assets/vendor/contact-form/jquery.form.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/contact-form/validate.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/contact-form/jquery.form.js"></script>
 		<!-- Google map js -->
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ8VrXgGZ3QSC-0XubNhuB2uKKCwqVaD0&callback=googleMap" type="text/javascript"></script> <!-- Gmap Helper -->
-		<script src="assets/vendor/gmaps.min.js"></script>
+		<script src="<?= base_url()?>/assets/vendor/gmaps.min.js"></script>
 
 
 		<!-- Theme js -->
-		<script type="text/javascript" src="assets/js/theme.js"></script>
-		<script type="text/javascript" src="assets/js/map-script.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/js/theme.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/js/map-script.js"></script>
 
     </div>
 </body>

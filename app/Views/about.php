@@ -64,7 +64,7 @@
 						<h6>WELCOME TO GULL.LY</h6>
 						<h2>We’r a dynamic team of creatives people <br>innovation &amp; Marketing Expert.</h2>
 					</div>
-					<img src="assets/images/inner-page/1.jpg" alt="">
+					<img src="<?= base_url()?>/assets/images/inner-page/1.jpg" alt="">
 					<div class="about-tab-wrapper clearfix">
 						<ul class="nav nav-tabs float-left">
 							<li class="active"><a data-toggle="tab" href="#history">Our History</a></li>
@@ -75,7 +75,7 @@
 						<div class="tab-content float-left">
 							<div id="history" class="tab-pane fade in active">
 						    	<p>We provide marketing services to startups and small businesses to looking for a partner of their digital media, design &amp; dev, lead generation, and communications requirents. We work with you, not for you. Although we have great resources.</p>
-						    	<img src="assets/images/home/sign.png" alt="">
+						    	<img src="<?= base_url()?>/assets/images/home/sign.png" alt="">
 							</div> <!-- /#history -->
 						  	<div id="vision" class="tab-pane fade">
 						    	<p>We provide marketing services to startups and small businesses to looking for a partner of their digital media, design &amp; dev, lead generation, and communications requirents. We work with you, not for you. Although we have great resources.</p>
@@ -146,7 +146,7 @@
 								<div class="wrapper">
 									<p>Their testimonial videos aren't production quality, but they get the message across, cover useful &amp; relevant information which goes to show you don't need to invest thousands in production get some testimonial videos up with quality. </p>
 									<div class="name clearfix">
-										<img src="assets/images/home/3.jpg" alt="">
+										<img src="<?= base_url()?>/assets/images/home/3.jpg" alt="">
 										<h5>Rashed Kabir</h5>
 										<span>Gazipur</span>
 									</div>
@@ -156,7 +156,7 @@
 								<div class="wrapper">
 									<p>Their testimonial videos aren't production quality, but they get the message across, cover useful &amp; relevant information which goes to show you don't need to invest thousands in production get some testimonial videos up with quality. </p>
 									<div class="name clearfix">
-										<img src="assets/images/home/4.jpg" alt="">
+										<img src="<?= base_url()?>/assets/images/home/4.jpg" alt="">
 										<h5>Zubayer Hasan</h5>
 										<span>Uttara</span>
 									</div>
@@ -184,7 +184,7 @@
 						<div class="col-md-4 col-xs-6">
 							<div class="single-team-member">
 								<div class="image">
-									<img src="assets/images/team/1.jpg" alt="">
+									<img src="<?= base_url()?>/assets/images/team/1.jpg" alt="">
 									<div class="opacity tran3s">
 										<ul class="tran3s">
 											<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -201,7 +201,7 @@
 						<div class="col-md-4 col-xs-6">
 							<div class="single-team-member">
 								<div class="image">
-									<img src="assets/images/team/2.jpg" alt="">
+									<img src="<?= base_url()?>/assets/images/team/2.jpg" alt="">
 									<div class="opacity tran3s">
 										<ul class="tran3s">
 											<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -218,7 +218,7 @@
 						<div class="col-md-4 col-xs-6 hidden-sm">
 							<div class="single-team-member">
 								<div class="image">
-									<img src="assets/images/team/3.jpg" alt="">
+									<img src="<?= base_url()?>/assets/images/team/3.jpg" alt="">
 									<div class="opacity tran3s">
 										<ul class="tran3s">
 											<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -250,22 +250,22 @@
 					</div>
 					<div class="row">
 						<div class="col-md-4 col-xs-6">
-							<div class="client-img"><img src="assets/images/logo/p-5.png" alt=""></div>
+							<div class="client-img"><img src="<?= base_url()?>/assets/images/logo/p-5.png" alt=""></div>
 						</div>
 						<div class="col-md-4 col-xs-6">
-							<div class="client-img"><img src="assets/images/logo/p-6.png" alt=""></div>
+							<div class="client-img"><img src="<?= base_url()?>/assets/images/logo/p-6.png" alt=""></div>
 						</div>
 						<div class="col-md-4 col-xs-6">
-							<div class="client-img"><img src="assets/images/logo/p-7.png" alt=""></div>
+							<div class="client-img"><img src="<?= base_url()?>/assets/images/logo/p-7.png" alt=""></div>
 						</div>
 						<div class="col-md-4 col-xs-6">
-							<div class="client-img"><img src="assets/images/logo/p-8.png" alt=""></div>
+							<div class="client-img"><img src="<?= base_url()?>/assets/images/logo/p-8.png" alt=""></div>
 						</div>
 						<div class="col-md-4 col-xs-6">
-							<div class="client-img"><img src="assets/images/logo/p-9.png" alt=""></div>
+							<div class="client-img"><img src="<?= base_url()?>/assets/images/logo/p-9.png" alt=""></div>
 						</div>
 						<div class="col-md-4 col-xs-6">
-							<div class="client-img"><img src="assets/images/logo/p-10.png" alt=""></div>
+							<div class="client-img"><img src="<?= base_url()?>/assets/images/logo/p-10.png" alt=""></div>
 						</div>
 					</div>
 				</div> <!-- /.container -->
@@ -281,32 +281,32 @@
 
         
 		<!-- j Query -->
-		<script type="text/javascript" src="assets/vendor/jquery.2.2.3.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.2.2.3.min.js"></script>
 		<!-- Bootstrap Select JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
 		<!-- Bootstrap JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap/bootstrap.min.js"></script>
 
 		<!-- assets/Vendor js _________ -->
 	    <!-- Mega menu  -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
 		
 		<!-- WOW js -->
-		<script type="text/javascript" src="assets/vendor/WOW-master/dist/wow.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/WOW-master/dist/wow.min.js"></script>
 		<!-- owl.carousel -->
-		<script type="text/javascript" src="assets/vendor/owl-carousel/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
 		<!-- js count to -->
-		<script type="text/javascript" src="assets/vendor/jquery.appear.js"></script>
-		<script type="text/javascript" src="assets/vendor/jquery.countTo.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.appear.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.countTo.js"></script>
 		<!-- Fancybox -->
-		<script type="text/javascript" src="assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
-		<script type="text/javascript" src="assets/vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
 		<!-- mixitup -->
-		<script type="text/javascript" src="assets/vendor/jquery.mixitup.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.mixitup.min.js"></script>
 
 		<!-- Theme js -->
-		<script type="text/javascript" src="assets/js/theme.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/js/theme.js"></script>
 
     </div>
 </body>
