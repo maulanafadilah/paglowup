@@ -64,28 +64,13 @@
 				    <!-- Modal content-->
 				    <div class="modal-content">
 					    <div class="modal-body">
-					        <h3>Login with Social Networks</h3>
+					        <h3>Login by Profile</h3>
 					        <ul class="clearfix">
-					        	<li class="float-left"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+					        	<li class="float-left"><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i> UMKM</a></li>
+					        	<li class="float-left"><a href="#"><i class="fa fa-lock" aria-hidden="true"></i> Pengelola</a></li>
+					        	<li class="float-left"><a href="#"><i class="fa fa-paint-brush" aria-hidden="true"></i> Designer</a></li>
+					        	<li class="float-left"><a href="#"><i class="fa fa-commenting" aria-hidden="true"></i> CS</a></li>
 					        </ul>
-					        <form action="#">
-					        	<h6><span>or</span></h6>
-					        	<div class="wrapper">
-					        		<input type="text" placeholder="Username or Email">
-					        		<input type="password" placeholder="Password">
-					        		<ul class="clearfix">
-										<li class="float-left">
-											<input type="checkbox" id="remember">
-											<label for="remember">Remember Me</label>
-										</li>
-										<li class="float-right"><a href="/p" class="p-color">Lost Your Password?</a></li>
-									</ul>
-									<button class="p-bg-color hvr-trim-two">Login</button>
-					        	</div>
-					        </form>
 					    </div> <!-- /.modal-body -->
 				    </div> <!-- /.modal-content -->
 				</div> <!-- /.modal-dialog -->
