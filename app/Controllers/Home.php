@@ -57,7 +57,7 @@ class Home extends BaseController
 	public function contact()
 	{
 		$data = [
-			'title_meta' => view('partials-front/title-meta', ['title' => 'Contact Us']),
+			'title_meta' => view('partials-front/title-meta', ['title' => 'Contact']),
 			// 'page_title' => view('partials-front/page-title', ['title' => 'Nazox', 'pagetitle' => 'Dashboard'])
 		];
 		return view('contact', $data);
@@ -67,7 +67,7 @@ class Home extends BaseController
 	public function about()
 	{
 		$data = [
-			'title_meta' => view('partials-front/title-meta', ['title' => 'About Us']),
+			'title_meta' => view('partials-front/title-meta', ['title' => 'About']),
 			// 'page_title' => view('partials-front/page-title', ['title' => 'Nazox', 'pagetitle' => 'Dashboard'])
 		];
 		return view('about', $data);
