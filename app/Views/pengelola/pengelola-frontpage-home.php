@@ -434,12 +434,12 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!--ckeditor js-->
-<script src="assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+<script src="<?= base_url()?>/assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 
 <!-- email editor init -->
-<script src="assets/js/pages/email-editor.init.js"></script>
+<script src="<?= base_url()?>/assets/js/pages/email-editor.init.js"></script>
 
-<script src="assets/js/app.js"></script>
+<script src="<?= base_url()?>/assets/js/app.js"></script>
 
 </body>
 

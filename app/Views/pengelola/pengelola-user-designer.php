@@ -83,7 +83,7 @@
                                 </div>
 
                                 <div class="mx-auto mb-4">
-                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-2.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
                                 </div>
                                 <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">Phyllis Gatlin</a></h5>
                                 <p class="text-muted mb-2">Full Stack Developer</p>
@@ -115,7 +115,7 @@
                                 </div>
 
                                 <div class="mx-auto mb-4">
-                                    <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-1.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
                                 </div>
                                 <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">James Nix</a></h5>
                                 <p class="text-muted mb-2">Full Stack Developer</p>
@@ -147,7 +147,7 @@
                                 </div>
 
                                 <div class="mx-auto mb-4">
-                                    <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-3.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
                                 </div>
                                 <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">Darlene Smith</a></h5>
                                 <p class="text-muted mb-2">UI/UX Designer</p>
@@ -247,7 +247,7 @@
                                 </div>
 
                                 <div class="mx-auto mb-4">
-                                    <img src="assets/images/users/avatar-6.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-6.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
                                 </div>
                                 <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">Tommy Hayes</a></h5>
                                 <p class="text-muted mb-2">Backend Developer</p>
@@ -279,7 +279,7 @@
                                 </div>
 
                                 <div class="mx-auto mb-4">
-                                    <img src="assets/images/users/avatar-8.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-8.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
                                 </div>
                                 <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">Diana Owens</a></h5>
                                 <p class="text-muted mb-2">UI/UX Designer</p>
@@ -310,7 +310,7 @@
                                 </div>
 
                                 <div class="mx-auto mb-4">
-                                    <img src="assets/images/users/avatar-9.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-9.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
                                 </div>
                                 <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">Paul Sanchez</a></h5>
                                 <p class="text-muted mb-2">Full Stack Developer</p>
@@ -384,7 +384,7 @@
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>
 
-<script src="assets/js/app.js"></script>
+<script src="<?= base_url()?>/assets/js/app.js"></script>
 
 </body>
 

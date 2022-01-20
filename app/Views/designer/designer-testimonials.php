@@ -5,10 +5,10 @@
     <?= $title_meta ?>
 
     <!-- DataTables -->
-    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url()?>/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Responsive datatable examples -->
-    <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url()?>/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
     <?= $this->include('partials/head-css') ?>
 
@@ -61,7 +61,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-2.jpg" alt="" class="avatar-sm rounded-circle me-2">
                                     <a href="designer-testimonial-details" class="text-body">Phyllis Gatlin</a>
                                 </td>
                                 <td>UI/UX Designer</td>
@@ -93,7 +93,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-1.jpg" alt="" class="avatar-sm rounded-circle me-2">
                                     <a href="designer-testimonial-details" class="text-body">James Nix</a>
                                 </td>
                                 <td>Frontend Developer</td>
@@ -126,7 +126,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-3.jpg" alt="" class="avatar-sm rounded-circle me-2">
                                     <a href="designer-testimonial-details" class="text-body">Darlene Smith</a>
                                 </td>
                                 <td>Backend Developer</td>
@@ -233,7 +233,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <img src="assets/images/users/avatar-6.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-6.jpg" alt="" class="avatar-sm rounded-circle me-2">
                                     <a href="designer-testimonial-details" class="text-body">Tommy Hayes</a>
                                 </td>
                                 <td>UI/UX Designer</td>
@@ -265,7 +265,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <img src="assets/images/users/avatar-8.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-8.jpg" alt="" class="avatar-sm rounded-circle me-2">
                                     <a href="designer-testimonial-details" class="text-body">Diana Owens</a>
                                 </td>
                                 <td>Graphic Designer</td>
@@ -297,7 +297,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <img src="assets/images/users/avatar-9.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-9.jpg" alt="" class="avatar-sm rounded-circle me-2">
                                     <a href="designer-testimonial-details" class="text-body">Paul Sanchez</a>
                                 </td>
                                 <td>Angular Developer</td>
@@ -329,7 +329,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <img src="assets/images/users/avatar-9.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-9.jpg" alt="" class="avatar-sm rounded-circle me-2">
                                     <a href="designer-testimonial-details" class="text-body">Peter Dryer</a>
                                 </td>
                                 <td>Web Designer</td>
@@ -362,7 +362,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <img src="assets/images/users/avatar-4.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-4.jpg" alt="" class="avatar-sm rounded-circle me-2">
                                     <a href="designer-testimonial-details" class="text-body">Gerald Moyer</a>
                                 </td>
                                 <td>Backend Developer</td>
@@ -394,7 +394,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-sm rounded-circle me-2">
+                                    <img src="<?= base_url()?>/assets/images/users/avatar-2.jpg" alt="" class="avatar-sm rounded-circle me-2">
                                     <a href="designer-testimonial-details" class="text-body">Gail McGuire</a>
                                 </td>
                                 <td>Backend Developer</td>
@@ -444,17 +444,17 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- Required datatable js -->
-<script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url()?>/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?= base_url()?>/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
 <!-- Responsive examples -->
-<script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+<script src="<?= base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
 <!-- init js -->
-<script src="assets/js/pages/datatable-pages.init.js"></script>
+<script src="<?= base_url()?>/assets/js/pages/datatable-pages.init.js"></script>
 
-<script src="assets/js/app.js"></script>
+<script src="<?= base_url()?>/assets/js/app.js"></script>
 
 </body>
 

@@ -37,7 +37,7 @@
                                     <div class="d-flex align-items-start">
                                         <div class="flex-grow-1">
                                             <div class="mb-4">
-                                                <img src="assets/images/logo-sm.svg" alt="" height="24"><span class="logo-txt">Minia</span>
+                                                <img src="<?= base_url()?>/assets/images/logo-sm.svg" alt="" height="24"><span class="logo-txt">Minia</span>
                                             </div>
                                         </div>
                                         <div class="flex-shrink-0">
@@ -160,7 +160,7 @@
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>
 
-<script src="assets/js/app.js"></script>
+<script src="<?= base_url()?>/assets/js/app.js"></script>
 
 </body>
 

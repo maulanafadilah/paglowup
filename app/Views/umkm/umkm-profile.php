@@ -38,7 +38,7 @@
                                         <div class="d-flex align-items-start mt-3 mt-sm-0">
                                             <div class="flex-shrink-0">
                                                 <div class="avatar-xl me-3">
-                                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="img-fluid rounded-circle d-block">
+                                                    <img src="<?= base_url()?>/assets/images/users/avatar-2.jpg" alt="" class="img-fluid rounded-circle d-block">
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
@@ -180,7 +180,7 @@
                                                         </div>
 
                                                         <div class="position-relative">
-                                                            <img src="assets/images/small/img-3.jpg" alt="" class="img-thumbnail">
+                                                            <img src="<?= base_url()?>/assets/images/small/img-3.jpg" alt="" class="img-thumbnail">
                                                         </div>
 
                                                         <div class="p-3">
@@ -228,7 +228,7 @@
                                                         </div>
 
                                                         <div class="position-relative">
-                                                            <img src="assets/images/small/img-1.jpg" alt="" class="img-thumbnail">
+                                                            <img src="<?= base_url()?>/assets/images/small/img-1.jpg" alt="" class="img-thumbnail">
                                                         </div>
 
                                                         <div class="p-3">
@@ -277,7 +277,7 @@
                                                         </div>
 
                                                         <div class="position-relative">
-                                                            <img src="assets/images/small/img-5.jpg" alt="" class="img-thumbnail">
+                                                            <img src="<?= base_url()?>/assets/images/small/img-5.jpg" alt="" class="img-thumbnail">
                                                         </div>
 
                                                         <div class="p-3">
@@ -429,7 +429,7 @@
                                                         </div>
 
                                                         <div class="position-relative mt-3">
-                                                            <img src="assets/images/small/img-3.jpg" alt="" class="img-thumbnail">
+                                                            <img src="<?= base_url()?>/assets/images/small/img-3.jpg" alt="" class="img-thumbnail">
                                                         </div>
 
                                                         <div class="pt-3">
@@ -591,7 +591,7 @@
                                     <a href="#" class="list-group-item list-group-item-action">
                                         <div class="d-flex align-items-center">
                                             <div class="avatar-sm flex-shrink-0 me-3">
-                                                <img src="assets/images/users/avatar-1.jpg" alt="" class="img-thumbnail rounded-circle">
+                                                <img src="<?= base_url()?>/assets/images/users/avatar-1.jpg" alt="" class="img-thumbnail rounded-circle">
                                             </div>
                                             <div class="flex-grow-1">
                                                 <div>
@@ -604,7 +604,7 @@
                                     <a href="#" class="list-group-item list-group-item-action">
                                         <div class="d-flex align-items-center">
                                             <div class="avatar-sm flex-shrink-0 me-3">
-                                                <img src="assets/images/users/avatar-3.jpg" alt="" class="img-thumbnail rounded-circle">
+                                                <img src="<?= base_url()?>/assets/images/users/avatar-3.jpg" alt="" class="img-thumbnail rounded-circle">
                                             </div>
                                             <div class="flex-grow-1">
                                                 <div>
@@ -657,7 +657,7 @@
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>
 
-<script src="assets/js/app.js"></script>
+<script src="<?= base_url()?>/assets/js/app.js"></script>
 
 </body>
 

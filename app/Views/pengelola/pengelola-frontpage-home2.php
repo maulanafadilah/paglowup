@@ -4,7 +4,7 @@
 
     <?= $title_meta ?>
     <!-- dropzone css -->
-    <link href="assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url()?>/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 
     <?= $this->include('partials/head-css') ?>
 
@@ -292,15 +292,15 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- dropzone js -->
-<script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+<script src="<?= base_url()?>/assets/libs/dropzone/min/dropzone.min.js"></script>
 
 <!-- ckeditor -->
-<script src="assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+<script src="<?= base_url()?>/assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 
 <!-- init js -->
-<script src="assets/js/pages/form-editor.init.js"></script>
+<script src="<?= base_url()?>/assets/js/pages/form-editor.init.js"></script>
 
-<script src="assets/js/app.js"></script>
+<script src="<?= base_url()?>/assets/js/app.js"></script>
 
 </body>
 

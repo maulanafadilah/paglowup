@@ -61,7 +61,7 @@
 			<div class="service-details">
 				<div class="container">
 					<div class="box-wrapper">
-						<img src="assets/images/home/13.jpg" alt="" class="feature-image">
+						<img src="<?= base_url()?>/assets/images/home/13.jpg" alt="" class="feature-image">
 						<div class="title clearfix">
 							<h3 class="float-left">Complete Business solution</h3>
 							<a href="#" class="loan float-right">Apply Now</a>
@@ -147,31 +147,31 @@
 		<!-- Js File_________________________________ -->
 
 		<!-- j Query -->
-		<script type="text/javascript" src="assets/vendor/jquery.2.2.3.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.2.2.3.min.js"></script>
 		<!-- Bootstrap Select JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
 		<!-- Bootstrap JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap/bootstrap.min.js"></script>
 
 		<!-- assets/Vendor js _________ -->
 	    <!-- Mega menu  -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
 		
 		<!-- WOW js -->
-		<script type="text/javascript" src="assets/vendor/WOW-master/dist/wow.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/WOW-master/dist/wow.min.js"></script>
 		<!-- owl.carousel -->
-		<script type="text/javascript" src="assets/vendor/owl-carousel/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
 		<!-- js count to -->
-		<script type="text/javascript" src="assets/vendor/jquery.appear.js"></script>
-		<script type="text/javascript" src="assets/vendor/jquery.countTo.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.appear.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.countTo.js"></script>
 		<!-- Fancybox -->
-		<script type="text/javascript" src="assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
-		<script type="text/javascript" src="assets/vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
 
 
 		<!-- Theme js -->
-		<script type="text/javascript" src="assets/js/theme.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/js/theme.js"></script>
 
     </div>
 </body>

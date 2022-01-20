@@ -7,7 +7,7 @@
 				<div class="header-wrapper">
 					<div class="clearfix">
 						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="/"><img src="assets/images/logo/logo4.png" alt="Logo"></a></div>
+						<div class="logo float-left tran4s"><a href="/"><img src="<?= base_url()?>/assets/images/logo/logo4.png" alt="Logo"></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">

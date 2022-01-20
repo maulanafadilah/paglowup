@@ -75,7 +75,7 @@
 	        		<div class="row" id="mixitUp-item">
 						<div class="col-xs-6 mix finance marketing">
 							<div class="single-item">
-								<img src="assets/images/portfolio/11.jpg" alt="">
+								<img src="<?= base_url()?>/assets/images/portfolio/11.jpg" alt="">
 								<div class="opacity tran3s">
 									<a href="portfolio-details.html" class="view-more tran3s"><i class="flaticon-plus"></i></a>
 								</div>
@@ -83,7 +83,7 @@
 						</div> <!-- /.col-md-6 -->
 						<div class="col-xs-6 mix technical investment">
 							<div class="single-item">
-								<img src="assets/images/portfolio/12.jpg" alt="">
+								<img src="<?= base_url()?>/assets/images/portfolio/12.jpg" alt="">
 								<div class="opacity tran3s">
 									<a href="portfolio-details.html" class="view-more tran3s"><i class="flaticon-plus"></i></a>
 								</div>
@@ -91,7 +91,7 @@
 						</div> <!-- /.col-md-6 -->
 						<div class="col-xs-6 mix business technical marketing">
 							<div class="single-item">
-								<img src="assets/images/portfolio/13.jpg" alt="">
+								<img src="<?= base_url()?>/assets/images/portfolio/13.jpg" alt="">
 								<div class="opacity tran3s">
 									<a href="portfolio-details.html" class="view-more tran3s"><i class="flaticon-plus"></i></a>
 								</div>
@@ -99,7 +99,7 @@
 						</div> <!-- /.col-md-6 -->
 						<div class="col-xs-6 mix business finance investment">
 							<div class="single-item">
-								<img src="assets/images/portfolio/14.jpg" alt="">
+								<img src="<?= base_url()?>/assets/images/portfolio/14.jpg" alt="">
 								<div class="opacity tran3s">
 									<a href="portfolio-details.html" class="view-more tran3s"><i class="flaticon-plus"></i></a>
 								</div>
@@ -107,7 +107,7 @@
 						</div> <!-- /.col-md-6 -->
 						<div class="col-xs-6 mix business technical">
 							<div class="single-item">
-								<img src="assets/images/portfolio/15.jpg" alt="">
+								<img src="<?= base_url()?>/assets/images/portfolio/15.jpg" alt="">
 								<div class="opacity tran3s">
 									<a href="portfolio-details.html" class="view-more tran3s"><i class="flaticon-plus"></i></a>
 								</div>
@@ -115,7 +115,7 @@
 						</div> <!-- /.col-md-6 -->
 						<div class="col-xs-6 mix finance marketing investment">
 							<div class="single-item">
-								<img src="assets/images/portfolio/16.jpg" alt="">
+								<img src="<?= base_url()?>/assets/images/portfolio/16.jpg" alt="">
 								<div class="opacity tran3s">
 									<a href="portfolio-details.html" class="view-more tran3s"><i class="flaticon-plus"></i></a>
 								</div>
@@ -135,32 +135,32 @@
 
         
 		<!-- j Query -->
-		<script type="text/javascript" src="assets/vendor/jquery.2.2.3.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.2.2.3.min.js"></script>
 		<!-- Bootstrap Select JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
 		<!-- Bootstrap JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap/bootstrap.min.js"></script>
 
 		<!-- assets/Vendor js _________ -->
 	    <!-- Mega menu  -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
 		
 		<!-- WOW js -->
-		<script type="text/javascript" src="assets/vendor/WOW-master/dist/wow.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/WOW-master/dist/wow.min.js"></script>
 		<!-- owl.carousel -->
-		<script type="text/javascript" src="assets/vendor/owl-carousel/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
 		<!-- js count to -->
-		<script type="text/javascript" src="assets/vendor/jquery.appear.js"></script>
-		<script type="text/javascript" src="assets/vendor/jquery.countTo.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.appear.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.countTo.js"></script>
 		<!-- Fancybox -->
-		<script type="text/javascript" src="assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
-		<script type="text/javascript" src="assets/vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
 		<!-- mixitup -->
-		<script type="text/javascript" src="assets/vendor/jquery.mixitup.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.mixitup.min.js"></script>
 
 		<!-- Theme js -->
-		<script type="text/javascript" src="assets/js/theme.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/js/theme.js"></script>
 
     </div>
 </body>

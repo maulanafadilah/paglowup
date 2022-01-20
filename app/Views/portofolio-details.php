@@ -70,7 +70,7 @@
 							<li><a href="" class="tran3s"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
 						</ul>
 					</div> <!-- /.title -->
-					<img src="assets/images/portfolio/23.jpg" alt="">
+					<img src="<?= base_url()?>/assets/images/portfolio/23.jpg" alt="">
 					<div class="project-details-wrapper">
 						<div class="row">
 							<div class="col-sm-4">
@@ -118,32 +118,32 @@
 
         
 		<!-- j Query -->
-		<script type="text/javascript" src="assets/vendor/jquery.2.2.3.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.2.2.3.min.js"></script>
 		<!-- Bootstrap Select JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
 		<!-- Bootstrap JS -->
-		<script type="text/javascript" src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap/bootstrap.min.js"></script>
 
 		<!-- assets/Vendor js _________ -->
 	    <!-- Mega menu  -->
-		<script type="text/javascript" src="assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/bootstrap-mega-menu/js/menu.js"></script>
 		
 		<!-- WOW js -->
-		<script type="text/javascript" src="assets/vendor/WOW-master/dist/wow.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/WOW-master/dist/wow.min.js"></script>
 		<!-- owl.carousel -->
-		<script type="text/javascript" src="assets/vendor/owl-carousel/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
 		<!-- js count to -->
-		<script type="text/javascript" src="assets/vendor/jquery.appear.js"></script>
-		<script type="text/javascript" src="assets/vendor/jquery.countTo.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.appear.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.countTo.js"></script>
 		<!-- Fancybox -->
-		<script type="text/javascript" src="assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
-		<script type="text/javascript" src="assets/vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.ripples-master/dist/jquery.ripples-min.js"></script>
 		<!-- mixitup -->
-		<script type="text/javascript" src="assets/vendor/jquery.mixitup.min.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/jquery.mixitup.min.js"></script>
 
 		<!-- Theme js -->
-		<script type="text/javascript" src="assets/js/theme.js"></script>
+		<script type="text/javascript" src="<?= base_url()?>/assets/js/theme.js"></script>
 
     </div>
 </body>
