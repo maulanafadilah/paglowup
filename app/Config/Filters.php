@@ -19,6 +19,10 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
+		'pengelola_auth' => \App\Filters\PengelolaFilter::class,
+		'cs_auth' => \App\Filters\CsFilter::class,
+		'designer_auth' => \App\Filters\DesignerFilter::class,
+		'umkm_auth' => \App\Filters\UmkmFilter::class,
 	];
 
 	/**
@@ -58,5 +62,18 @@ class Filters extends BaseConfig
 	 *
 	 * @var array
 	 */
-	public $filters = [];
+	public $filters = [
+		'pengelola_auth' => [
+			'before' => ['pengelola/*']
+		],
+		'cs_auth' => [
+			'before' => ['cs/*']
+		],
+		'designer_auth' => [
+			'before' => ['designer/*']
+		],
+		'umkm_auth' => [
+			'before' => ['umkm/*']
+		],
+	];
 }

@@ -57,39 +57,3 @@
 					</div>
 				</div> <!-- /.container -->
 			</footer>
-
-<!-- Sign-Up Modal -->
-<div class="modal fade signUpModal theme-modal-box" role="dialog">
-				<div class="modal-dialog">
-				    <!-- Modal content-->
-				    <div class="modal-content">
-					    <div class="modal-body">
-					        <h3>Login by Profile</h3>
-					        <ul class="clearfix">
-					        	<li class="float-left"><a href="<?= base_url()?>/login/umkm"><i class="fa fa-shopping-basket" aria-hidden="true"></i> UMKM</a></li>
-					        	<li class="float-left"><a href="<?= base_url()?>/login/pengelola"><i class="fa fa-lock" aria-hidden="true"></i> Pengelola</a></li>
-					        	<li class="float-left"><a href="<?= base_url()?>/login/designer"><i class="fa fa-paint-brush" aria-hidden="true"></i> Designer</a></li>
-					        	<li class="float-left"><a href="<?= base_url()?>/login/cs"><i class="fa fa-commenting" aria-hidden="true"></i> CS</a></li>
-					        </ul>
-					    </div> <!-- /.modal-body -->
-				    </div> <!-- /.modal-content -->
-				</div> <!-- /.modal-dialog -->
-			</div> <!-- /.signUpModal -->
-
-	        
-
-	        <!-- Scroll Top Button -->
-			<button class="scroll-top tran3s">
-				<i class="fa fa-angle-up" aria-hidden="true"></i>
-			</button>
-
-			<div id="svag-shape">
-				<svg height="0" width="0">
-					<defs>
-					    <clipPath id="shape-one">
-					     	<path fill-rule="evenodd"  fill="rgb(168, 168, 168)"
-					 d="M343.000,25.000 C343.000,25.000 100.467,106.465 25.948,237.034 C-30.603,336.119 15.124,465.228 74.674,495.331 C134.224,525.434 212.210,447.071 227.280,432.549 C242.349,418.028 338.889,359.517 460.676,506.542 C582.737,653.896 725.650,527.546 751.000,478.000 C789.282,403.178 862.636,-118.314 343.000,25.000 Z"/>
-					    </clipPath>
-					</defs>
-				</svg>
-			</div>

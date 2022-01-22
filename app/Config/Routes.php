@@ -33,7 +33,7 @@ $routes->setAutoRoute(true);
 
 // Authentication Routing ---- Removed
 
-
+$routes->add('logout', 'Login::logout');
 // -------------------- Frontpage -------------------- //
 $routes->get('/', 'Home::index');
 $routes->get('/home', 'Home::index');
@@ -44,60 +44,60 @@ $routes->get('service-details', 'Home::service_details');
 $routes->get('contact', 'Home::contact');
 $routes->get('about', 'Home::about');
 
-// // -------------------- Pengelola -------------------- //
-// $routes->get('pengelola', 'Pengelola::index');
+// -------------------- Pengelola -------------------- //
+// $routes->get('pengelola/dashboard', 'pengelola/Dashboard::index', ['filter' => 'pengelola_auth']);
 
-// $routes->get('pengelola-profile', 'Pengelola::profile');
+// $routes->get('pengelola/pengelola-profile', 'pengelola/Pengelola::profile');
 
 // // User
-// $routes->get('pengelola-user-pengelola', 'Pengelola::user_pengelola');
-// $routes->get('pengelola-user-customerservice', 'Pengelola::user_customerservice');
-// $routes->get('pengelola-user-designer', 'Pengelola::user_designer');
-// $routes->get('pengelola-user-umkm', 'Pengelola::user_umkm');
+// $routes->get('pengelola/pengelola-user-pengelola', 'pengelola/Pengelola::user_pengelola');
+// $routes->get('pengelola/pengelola-user-customerservice', 'pengelola/Pengelola::user_customerservice');
+// $routes->get('pengelola/pengelola-user-designer', 'pengelola/Pengelola::user_designer');
+// $routes->get('pengelola/pengelola-user-umkm', 'pengelola/Pengelola::user_umkm');
 
 // // Transaction
-// $routes->get('pengelola-transaction', 'Pengelola::transaction');
-// $routes->get('pengelola-transaction-details', 'Pengelola::transaction_details');
+// $routes->get('pengelola/pengelola-transaction', 'pengelola/Pengelola::transaction');
+// $routes->get('pengelola/pengelola-transaction-details', 'pengelola/Pengelola::transaction_details');
 
 // // Portofolio Designer
-// $routes->get('pengelola-portofolio-designer', 'Pengelola::portofolio_designer');
-// $routes->get('pengelola-portofolio-designer-details', 'Pengelola::portofolio_designer_details');
+// $routes->get('pengelola/pengelola-portofolio-designer', 'pengelola/Pengelola::portofolio_designer');
+// $routes->get('pengelola/pengelola-portofolio-designer-details', 'pengelola/Pengelola::portofolio_designer_details');
 
 // // Withdrawal
-// $routes->get('pengelola-withdrawal', 'Pengelola::withdrawal');
-// $routes->get('pengelola-withdrawal-details', 'Pengelola::withdrawal_details');
+// $routes->get('pengelola/pengelola-withdrawal', 'pengelola/Pengelola::withdrawal');
+// $routes->get('pengelola/pengelola-withdrawal-details', 'pengelola/Pengelola::withdrawal_details');
 
 // // Kelola Frontpage
-// $routes->get('pengelola-frontpage-home', 'Pengelola::frontpage_home');
-// $routes->get('pengelola-frontpage-about', 'Pengelola::frontpage_about');
-// $routes->get('pengelola-frontpage-contact', 'Pengelola::frontpage_contact');
+// $routes->get('pengelola/pengelola-frontpage-home', 'pengelola/Pengelola::frontpage_home');
+// $routes->get('pengelola/pengelola-frontpage-about', 'pengelola/Pengelola::frontpage_about');
+// $routes->get('pengelola/pengelola-frontpage-contact', 'pengelola/Pengelola::frontpage_contact');
 
 
 
-// // -------------------- Designer -------------------- //
-// $routes->get('designer', 'Designer::index');
+// -------------------- Designer -------------------- //
+$routes->get('designer', 'Designer::index');
 
-// // Withdrawal
-// $routes->get('designer-withdrawal', 'Designer::withdrawal');
-// $routes->get('designer-withdrawal-details', 'Designer::withdrawal_details');
-
-
-// // Testimonials
-// $routes->get('designer-testimonials', 'Designer::testimonials');
-
-// // Profile
-// $routes->get('designer-profile', 'Designer::profile');
-
-// // Job
-// $routes->get('designer-job-list', 'Designer::job_list');
-// $routes->get('designer-chat', 'Designer::chat_cs');
+// Withdrawal
+$routes->get('designer-withdrawal', 'Designer::withdrawal');
+$routes->get('designer-withdrawal-details', 'Designer::withdrawal_details');
 
 
-// // -------------------- Customer Service -------------------- //
-// $routes->get('cs', 'Cs::index');
-// $routes->get('cs-chat', 'Cs::chat');
-// $routes->get('cs-designer-list', 'Cs::designer_list');
-// $routes->get('cs-profile', 'Cs::profile');
+// Testimonials
+$routes->get('designer-testimonials', 'Designer::testimonials');
+
+// Profile
+$routes->get('designer-profile', 'Designer::profile');
+
+// Job
+$routes->get('designer-job-list', 'Designer::job_list');
+$routes->get('designer-chat', 'Designer::chat_cs');
+
+
+// -------------------- Customer Service -------------------- //
+$routes->get('cs', 'Cs::index');
+$routes->get('cs-chat', 'Cs::chat');
+$routes->get('cs-designer-list', 'Cs::designer_list');
+$routes->get('cs-profile', 'Cs::profile');
 
 
 

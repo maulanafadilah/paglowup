@@ -2,7 +2,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Login | Minia - Minimal Admin & Dashboard Template</title>
+        <title><?=$title?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -31,12 +31,13 @@
                                     <div class="auth-content my-auto">
                                         <div class="text-center">
                                             <h5 class="mb-0">Welcome Back !</h5>
-                                            <p class="text-muted mt-2">Sign in to continue to Minia.</p>
+                                            <p class="text-muted mt-2">Sign in to continue to PAGlowUP.</p>
                                         </div>
-                                        <form class="custom-form mt-4 pt-2" action="/">
+                                        <?= session()->getFlashdata('notif_login')?>
+                                        <form class="custom-form mt-4 pt-2" action="<?=base_url()?>/login/login_proc" method="post">
                                             <div class="mb-3">
                                                 <label class="form-label">Username</label>
-                                                <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                                <input type="text" class="form-control" name="username" value="<?=session()->getFlashdata('s_username')?>" id="username" placeholder="Enter username">
                                             </div>
                                             <div class="mb-3">
                                                 <div class="d-flex align-items-start">
@@ -51,7 +52,7 @@
                                                 </div>
                                                 
                                                 <div class="input-group auth-pass-inputgroup">
-                                                    <input type="password" class="form-control" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
+                                                    <input type="password" class="form-control" name="password" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
                                                     <button class="btn btn-light ms-0" type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                                 </div>
                                             </div>

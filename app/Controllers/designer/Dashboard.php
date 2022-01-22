@@ -2,7 +2,7 @@
 
 namespace App\Controllers\designer;
 
-class Designer extends \App\Controllers\BaseController
+class Dashboard extends \App\Controllers\BaseController
 {
 	
 	public function index()

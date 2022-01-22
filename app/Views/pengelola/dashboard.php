@@ -4,7 +4,7 @@
 
     <?= $title_meta ?>
 
-    <link href="<?= base_url()?>/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
 
     <?= $this->include('partials/head-css') ?>
 
@@ -1556,16 +1556,16 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <!-- apexcharts -->
-<script src="<?= base_url()?>/assets/libs/apexcharts/apexcharts.min.js"></script>
+<script src="<?=base_url()?>/assets/libs/apexcharts/apexcharts.min.js"></script>
 
 <!-- Plugins js-->
-<script src="<?= base_url()?>/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="<?= base_url()?>/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+<script src="<?=base_url()?>/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<?=base_url()?>/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
 <!-- dashboard init -->
-<script src="<?= base_url()?>/assets/js/pages/dashboard.init.js"></script>
+<script src="<?=base_url()?>/assets/js/pages/dashboard.init.js"></script>
 
 <!-- App js -->
-<script src="<?= base_url()?>/assets/js/app.js"></script>
+<script src="<?=base_url()?>/assets/js/app.js"></script>
 </body>
 
 </html>

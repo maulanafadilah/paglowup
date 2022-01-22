@@ -2,7 +2,7 @@
 
 namespace App\Controllers\cs;
 
-class Cs extends \App\Controller\BaseController
+class Dashboard extends \App\Controller\BaseController
 {
 	
 	public function index()
