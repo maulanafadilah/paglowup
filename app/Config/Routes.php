@@ -34,6 +34,9 @@ $routes->setAutoRoute(true);
 // Authentication Routing ---- Removed
 
 $routes->add('logout', 'Login::logout');
+// $routes->add('login', 'Login::index', ['filter' => 'login_auth']);
+// $routes->add('login', 'Register::index', ['filter' => 'login_auth']);
+
 // -------------------- Frontpage -------------------- //
 $routes->get('/', 'Home::index');
 $routes->get('/home', 'Home::index');
@@ -45,9 +48,8 @@ $routes->get('contact', 'Home::contact');
 $routes->get('about', 'Home::about');
 
 // -------------------- Pengelola -------------------- //
-// $routes->get('pengelola/dashboard', 'pengelola/Dashboard::index', ['filter' => 'pengelola_auth']);
 
-// $routes->get('pengelola/pengelola-profile', 'pengelola/Pengelola::profile');
+$routes->add('pengelola', 'pengelola/Dashboard::index');
 
 // // User
 // $routes->get('pengelola/pengelola-user-pengelola', 'pengelola/Pengelola::user_pengelola');

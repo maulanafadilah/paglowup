@@ -1,5 +1,4 @@
-<?php 
-	namespace App\Models;
+<?php namespace App\Models;
 
 	use CodeIgniter\Model;
 
@@ -20,19 +19,54 @@
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
+
+    function __construct(){
+      $this->db = db_connect();
+    }
  	
    	public function countUsername($username){
-   		$db = db_connect();
    		$sql = "SELECT count(iduser) as hitung FROM tb_user WHERE username = '$username'";
-   		$query = $this->db->query($sql);
-   		return $query->getResult();
+   		return $this->db->query($sql)->getResult();
    	}
 
    	public function getUser($username){
-   		$db = db_connect();
-   		$query = $this->db->query("SELECT * FROM tb_user WHERE username = '$username'");
-   		return $query->getResult();
+      $sql = "SELECT * FROM tb_user WHERE username = '$username'";
+   		return $this->db->query($sql)->getResult();
    	}
+
+    public function getUserById($iduser){  
+      $sql = "SELECT * FROM tb_user WHERE iduser = $iduser";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function cekEmailTerdaftar($email, $iduser){
+      $sql = "SELECT count(iduser) as hitung FROM tb_user WHERE email = '$email' AND iduser != $iduser";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countUserByEmail($email){
+      $sql = "SELECT count(iduser) as hitung FROM tb_user WHERE email = '$email'";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function insertUser($data){
+      $builder = $this->db->table('tb_user');
+      $builder->insert($data);
+    }
+
+    public function updateEmail($email, $iduser){
+      $builder = $this->db->table('tb_user');
+      $builder->set('email', $email);
+      $builder->where('iduser', $iduser);
+      $builder->update();
+    }
+
+    public function updatePassword($pass, $iduser){
+      $builder = $this->db->table('tb_user');
+      $builder->set('pass', $pass);
+      $builder->where('iduser', $iduser);
+      $builder->update();
+    }
 
 	}
 

@@ -125,3 +125,7 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
+
+# WEB DATA STUFF
+
+public/webdata/*

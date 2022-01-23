@@ -6,10 +6,6 @@
 
 	class login extends BaseController{
 
-		// function __construct(){
-		// 	session() = \Config\Services::session();
-		// }
-
 		public function index(){
 			$data = [
 				'title_meta' => view('partials/title-meta', ['title' => 'Login | PAGlowUP'])
@@ -38,6 +34,7 @@
 						return redirect()->to(base_url('login'));
 					}else{
 						$userdata = [
+							'iduser' => $user->iduser,
 							'username' => $user->username,
 							'flag' => $user->flag,
 							'idgroup' => $user->idgroup,

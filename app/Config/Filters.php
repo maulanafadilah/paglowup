@@ -23,6 +23,7 @@ class Filters extends BaseConfig
 		'cs_auth' => \App\Filters\CsFilter::class,
 		'designer_auth' => \App\Filters\DesignerFilter::class,
 		'umkm_auth' => \App\Filters\UmkmFilter::class,
+		'login_auth' => \App\Filters\LoginFilter::class,
 	];
 
 	/**
@@ -74,6 +75,9 @@ class Filters extends BaseConfig
 		],
 		'umkm_auth' => [
 			'before' => ['umkm/*']
+		],
+		'login_auth' => [
+			'before' => ['Register', 'Login']
 		],
 	];
 }

@@ -1,4 +1,5 @@
 <?= $this->include('partials/head-main') ?>
+
     <head>
 
         <meta charset="utf-8" />
@@ -7,7 +8,7 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="<?=base_url()?>/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
             <?= $this->include('partials/head-css') ?>
 
@@ -25,56 +26,58 @@
                                 <div class="d-flex flex-column h-100">
                                     <div class="mb-4 mb-md-5 text-center">
                                         <a href="/" class="d-block auth-logo">
-                                            <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="28"> <span class="logo-txt">PAGlowUP</span>
+                                            <img src="assets/images/logo-sm.svg" alt="" height="28"> <span class="logo-txt">PAGlowUP</span>
                                         </a>
                                     </div>
                                     <div class="auth-content my-auto">
                                         <div class="text-center">
-                                            <h5 class="mb-0">Welcome Back !</h5>
-                                            <p class="text-muted mt-2">Sign in to continue to PAGlowUP.</p>
+                                            <h5 class="mb-0">Register Account</h5>
+                                            <p class="text-muted mt-2">Get your free PAGlowUP account now.</p>
                                         </div>
                                         <?= session()->getFlashdata('notif_login')?>
-                                        <form class="custom-form mt-4 pt-2" action="<?=base_url()?>/login/login_proc" method="post">
+                                        <form class="needs-validation custom-form mt-4 pt-2" novalidate action="<?=base_url()?>/register/reg_proc" method="post">
                                             <div class="mb-3">
-                                                <label class="form-label">Username</label>
-                                                <input type="text" class="form-control" name="username" value="<?=session()->getFlashdata('s_username')?>" id="username" placeholder="Enter username">
+                                                <label for="useremail" class="form-label">Email</label>
+                                                <input type="email" class="form-control" name="email" value="<?=session()->getFlashdata('s_email')?>" id="useremail" placeholder="Enter email" required>  
+                                                <div class="invalid-feedback">
+                                                    Please Enter Email
+                                                </div>      
+                                            </div>
+                    
+                                            <div class="mb-3">
+                                                <label for="username" class="form-label">Username</label>
+                                                <input type="text" class="form-control" name="username" value="<?=session()->getFlashdata('s_username')?>" id="username" placeholder="Enter username" required>
+                                                <div class="invalid-feedback">
+                                                    Please Enter Username
+                                                </div>  
+                                            </div>
+                    
+                                            <div class="mb-3">
+                                                <label for="userpassword" class="form-label">Password</label>
+                                                <input type="password" class="form-control" name="password" pattern=".{8,}" title="min. 8 characters" id="userpassword" placeholder="Enter password" required>
+                                                <div class="invalid-feedback">
+                                                    Please Enter Password
+                                                </div>       
                                             </div>
                                             <div class="mb-3">
-                                                <div class="d-flex align-items-start">
-                                                    <div class="flex-grow-1">
-                                                        <label class="form-label">Password</label>
-                                                    </div>
-                                                    <div class="flex-shrink-0">
-                                                        <div class="">
-                                                            <a href="auth-recoverpw" class="text-muted">Forgot password?</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="input-group auth-pass-inputgroup">
-                                                    <input type="password" class="form-control" name="password" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
-                                                    <button class="btn btn-light ms-0" type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
-                                                </div>
+                                                <label class="form-label">User Type</label>
+                                                <select name="idgroup" class="form-select">
+                                                    <option value="0">--Pilih tipe user--</option>
+                                                    <option value="3">Designer</option>
+                                                    <option value="4">UMKM</option>
+                                                </select>
                                             </div>
-                                            <div class="row mb-4">
-                                                <div class="col">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="remember-check">
-                                                        <label class="form-check-label" for="remember-check">
-                                                            Remember me
-                                                        </label>
-                                                    </div>  
-                                                </div>
-                                                
-                                            </div>
+                                            <!--
+                                            <div class="mb-4">
+                                                <p class="mb-0">By registering you agree to the PAGlowUP <a href="#" class="text-primary">Terms of Use</a></p>
+                                            </div> -->
                                             <div class="mb-3">
-                                                <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
+                                                <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
                                             </div>
                                         </form>
-
                                         <div class="mt-5 text-center">
-                                            <p class="text-muted mb-0">Don't have an account ? <a href="register"
-                                                    class="text-primary fw-semibold"> Signup now </a> </p>
+                                            <p class="text-muted mb-0">Already have an account ? <a href="<?=base_url()?>/login"
+                                                    class="text-primary fw-semibold"> Login </a> </p>
                                         </div>
                                     </div>
                                     <div class="mt-4 mt-md-5 text-center">
@@ -127,7 +130,7 @@
                                                         <div class="mt-4 pt-3 pb-5">
                                                             <div class="d-flex align-items-start">
                                                                 <div class="flex-shrink-0">
-                                                                    <img src="<?=base_url()?>/assets/images/users/avatar-1.jpg" class="avatar-md img-fluid rounded-circle" alt="...">
+                                                                    <img src="assets/images/users/avatar-1.jpg" class="avatar-md img-fluid rounded-circle" alt="...">
                                                                 </div>
                                                                 <div class="flex-grow-1 ms-3 mb-4">
                                                                     <h5 class="font-size-18 text-white">Richard Drews
@@ -152,7 +155,7 @@
                                                         <div class="mt-4 pt-3 pb-5">
                                                             <div class="d-flex align-items-start">
                                                                 <div class="flex-shrink-0">
-                                                                    <img src="<?=base_url()?>/assets/images/users/avatar-2.jpg" class="avatar-md img-fluid rounded-circle" alt="...">
+                                                                    <img src="assets/images/users/avatar-2.jpg" class="avatar-md img-fluid rounded-circle" alt="...">
                                                                 </div>
                                                                 <div class="flex-grow-1 ms-3 mb-4">
                                                                     <h5 class="font-size-18 text-white">Rosanna French
@@ -176,7 +179,7 @@
                                                             feel.”</h4>
                                                         <div class="mt-4 pt-3 pb-5">
                                                             <div class="d-flex align-items-start">
-                                                                <img src="<?=base_url()?>/assets/images/users/avatar-3.jpg"
+                                                                <img src="assets/images/users/avatar-3.jpg"
                                                                     class="avatar-md img-fluid rounded-circle" alt="...">
                                                                 <div class="flex-1 ms-3 mb-4">
                                                                     <h5 class="font-size-18 text-white">Ilse R. Eaton</h5>
@@ -206,8 +209,9 @@
 
         <!-- JAVASCRIPT -->
        <?= $this->include('partials/vendor-scripts') ?>
-        <!-- password addon init -->
-        <script src="<?=base_url()?>/assets/js/pages/pass-addon.init.js"></script>
+
+        <!-- validation init -->
+        <script src="assets/js/pages/validation.init.js"></script>
 
     </body>
 
