@@ -15,7 +15,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('umkm/menu2') ?>
+    <?= $this->include('designer/prof/menu2') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -33,7 +33,7 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/designer/dashboard">PAGlowUP</a></li>
                                     <li class="breadcrumb-item active">Profil</li>
                                 </ol>
                             </div>
@@ -58,7 +58,7 @@
                                             <div class="flex-grow-1">
                                                 <div>
                                                     <h5 class="font-size-16 mb-1"><?=$detail_user->username?></h5>
-                                                    <p class="text-muted font-size-13">Pengelola</p>
+                                                    <p class="text-muted font-size-13">Designer</p>
 
                                                     <div class="d-flex flex-wrap align-items-start gap-2 gap-lg-3 text-muted font-size-13">
                                                         <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i>-</div>
@@ -86,11 +86,11 @@
                                     <div class="card-body">
                                         <div class="mt-4 mt-lg-0">
                                             <h5 class="font-size-14 mb-4">Ubah Profil</h5>
-                                            <form action="<?=base_url()?>/umkm/profile/create_proc/<?=$detail_user->iduser?>" method="post" enctype="multipart/form-data">
+                                            <form action="<?=base_url()?>/designer/profile/create_proc/<?=$detail_user->iduser?>" method="post" enctype="multipart/form-data">
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Nama UMKM / Usaha</label>
+                                                    <label class="col-sm-3 col-form-label">Nama Lengkap <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="nama" class="form-control">
+                                                        <input type="text" name="nama" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -100,27 +100,21 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Alamat</label>
+                                                    <label class="col-sm-3 col-form-label">Nomor Telpon <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="alamat" class="form-control">
+                                                        <input type="number" name="notelp" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Nomor Telpon</label>
+                                                    <label class="col-sm-3 col-form-label">Nomor WhatsApp <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="notelp" class="form-control">
+                                                        <input type="number" name="whatsapp" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Nomor WhatsApp</label>
+                                                    <label class="col-sm-3 col-form-label">Dribbble (Link)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="whatsapp" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Instagram (Link)</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="instagram" class="form-control">
+                                                        <input type="text" name="dribbble" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -130,17 +124,38 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Deskripsi UMKM</label>
+                                                    <label class="col-sm-3 col-form-label">Nama Bank (Mandiri, BCA, dll.) <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="bankname" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <label class="col-sm-3 col-form-label">Nomor Rekening <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="bankaccount" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <label class="col-sm-3 col-form-label">Nama di Rekening <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="bankaccname" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <label class="col-sm-3 col-form-label">Deskripsi / Bio</label>
                                                     <div class="col-sm-9">
                                                         <textarea name="description" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Foto Profil UMKM</label>
+                                                    <label class="col-sm-3 col-form-label">Foto Profil</label>
                                                     <div class="col-sm-9">
-                                                      <input type="file" name="umkm_pic" id="fileupload1" class="form-control">
+                                                      <input type="file" name="designer_pic" id="fileupload1" class="form-control">
                                                     </div>
                                                 </div>
+                                                <span class="text-xs text-danger">
+                                                  *Wajib Diisi
+                                                </span>
                                                 <div class="row justify-content-end">
                                                     <div class="col-sm-9">
                                                         <div><button type="submit" class="btn btn-primary w-md">Submit</button></div>

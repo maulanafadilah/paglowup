@@ -1,87 +1,37 @@
-<?php
+<?php namespace App\Controllers\designer;
 
-namespace App\Controllers\designer;
+	use CodeIgniter\Controller;
+	use App\Controllers\BaseController;
+	use App\Models\M_designer;
 
-class Dashboard extends \App\Controllers\BaseController
-{
-	
-	public function index()
-	{
+	class Dashboard extends \App\Controllers\BaseController{
+
+		public function __construct(){
+			$this->m_designer = new M_designer();
+		}
 		
-		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Portofolio']),
-			'page_title' => view('partials/page-title', ['title' => 'Portofolio', 'li_1' => 'PAGlowUP', 'li_2' => 'Portofolio'])
-		];
-		
-		return view('/designer/designer-portofolio', $data);
+		public function newUser(){
+	    $iduser = session()->get('iduser');
+	    $is_new = $this->m_designer->countdesignerByIdUser($iduser)[0]->hitung;
+
+    	if ($is_new == 0){
+    		echo "<script>alert('Isi data diri terlebih dahulu'); window.location.href = '".base_url()."/designer/profile/add';</script>";
+    		exit;
+    	}
+		}
+
+		public function index(){
+			$this->newUser();
+	    $iduser = session()->get('iduser');
+			$detilUser = $this->m_designer->getJoinUserdesigner($iduser)[0];
+
+			$data = [
+				'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
+				'detail_user' => $detilUser
+			];
+			
+			return view('designer/dashboard', $data);
+		}
 	}
 
-
-	public function testimonials()
-	{
-		
-		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Testimoni']),
-			'page_title' => view('partials/page-title', ['title' => 'Testimoni', 'li_1' => 'PAGlowUP', 'li_2' => 'Testimonial'])
-		];
-		
-		return view('/designer/designer-testimonials', $data);
-	}
-
-	public function profile()
-	{
-		
-		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Profile']),
-			'page_title' => view('partials/page-title', ['title' => 'Profile', 'li_1' => 'PAGlowUP', 'li_2' => 'Profile'])
-		];
-		
-		return view('/designer/designer-profile', $data);
-	}
-
-
-	public function withdrawal()
-	{
-		
-		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Withdrawal']),
-			'page_title' => view('partials/page-title', ['title' => 'Withdrawal', 'li_1' => 'PAGlowUP', 'li_2' => 'Withdrawal'])
-		];
-		
-		return view('/designer/designer-withdrawal', $data);
-	}
-	
-	public function withdrawal_details()
-	{
-		
-		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Withdrawal']),
-			'page_title' => view('partials/page-title', ['title' => 'Withdrawal', 'li_1' => 'PAGlowUP', 'li_2' => 'Withdrawal'])
-		];
-		
-		return view('/designer/designer-withdrawal-details', $data);
-	}
-
-	public function job_list()
-	{
-		
-		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Jobs']),
-			'page_title' => view('partials/page-title', ['title' => 'Jobs', 'li_1' => 'PAGlowUP', 'li_2' => 'Jobs'])
-		];
-		
-		return view('/designer/designer-job-list', $data);
-	}
-
-	public function chat_cs()
-	{
-		
-		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'DiskusiCS']),
-			'page_title' => view('partials/page-title', ['title' => 'DiskusiCS', 'li_1' => 'PAGlowUP', 'li_2' => 'DiskusiCS'])
-		];
-		
-		return view('/designer/designer-chat', $data);
-	}
-
-}
+?>
