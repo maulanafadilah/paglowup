@@ -52,7 +52,7 @@
                                         <div class="d-flex align-items-start mt-3 mt-sm-0">
                                             <div class="flex-shrink-0">
                                                 <div class="avatar-xl me-3">
-                                                    <img src="<?=base_url()?>/assets/images/users/avatar-2.jpg" alt="" class="img-fluid rounded-circle d-block">
+                                                    <img src="<?=base_url()?>/webdata/uploads/images/pengelola/image.jpg" alt="" class="img-fluid rounded-circle d-block">
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
@@ -183,36 +183,39 @@
                                             <h5 class="font-size-14 mb-4">Edit Profil</h5>
                                             <form action="<?=base_url()?>/pengelola/profile/update_proc/<?=$detail_user->iduser?>" method="post">
                                                 <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                                    <label class="col-sm-3 col-form-label">Nama Lengkap <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="nama" value="<?=$detail_user->name?>" class="form-control" id="horizontal-firstname-input" required>
+                                                        <input type="text" name="nama" value="<?=$detail_user->name?>" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label for="horizontal-email-input" class="col-sm-3 col-form-label">Email</label>
+                                                    <label class="col-sm-3 col-form-label">Email <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="email" name="email" value="<?=$detail_user->email?>" class="form-control" id="horizontal-email-input" required>
-                                                        <input type="email" name="old_email" value="<?=$detail_user->email?>" class="form-control" id="horizontal-email-input" hidden>
+                                                        <input type="email" name="email" value="<?=$detail_user->email?>" class="form-control" required>
+                                                        <input type="email" name="old_email" value="<?=$detail_user->email?>" class="form-control" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Alamat</label>
+                                                    <label class="col-sm-3 col-form-label">Alamat <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="alamat" value="<?=$detail_user->address?>" class="form-control" id="horizontal-firstname-input" required>
+                                                        <input type="text" name="alamat" value="<?=$detail_user->address?>" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Nomor Telpon</label>
+                                                    <label class="col-sm-3 col-form-label">Nomor Telpon <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="notelp" value="<?=$detail_user->phone?>" class="form-control" id="horizontal-firstname-input" required>
+                                                        <input type="number" name="notelp" value="<?=$detail_user->phone?>" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Nomor WhatsApp</label>
+                                                    <label class="col-sm-3 col-form-label">Nomor WhatsApp <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="whatsapp" value="<?=$detail_user->whatsapp?>" class="form-control" id="horizontal-firstname-input" required>
+                                                        <input type="number" name="whatsapp" value="<?=$detail_user->whatsapp?>" class="form-control" required>
                                                     </div>
                                                 </div>
+                                                <span class="text-xs text-danger">
+                                                  *Tidak boleh dikosongkan
+                                                </span>
                                                 <div class="row justify-content-end">
                                                     <div class="col-sm-9">
                                                         <div><button type="submit" class="btn btn-primary w-md">Submit</button></div>

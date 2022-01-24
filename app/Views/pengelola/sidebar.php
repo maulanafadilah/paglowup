@@ -23,7 +23,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="pengelola-user-pengelola" data-key="t-user-grid">
+                            <a href="<?=base_url()?>/pengelola/pengelola/list" data-key="t-user-grid">
                                 <span data-key="t-authentication"><?= lang('Files.Pengelola') ?></span>
                             </a>
                         </li>

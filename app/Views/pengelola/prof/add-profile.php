@@ -15,7 +15,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('pengelola/menu2') ?>
+    <?= $this->include('pengelola/prof/menu2') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -88,35 +88,38 @@
                                             <h5 class="font-size-14 mb-4">Ubah Profil</h5>
                                             <form action="<?=base_url()?>/pengelola/profile/create_proc/<?=$detail_user->iduser?>" method="post">
                                                 <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                                    <label class="col-sm-3 col-form-label">Nama Lengkap <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="nama" class="form-control" id="horizontal-firstname-input" required>
+                                                        <input type="text" name="nama" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label for="horizontal-email-input" class="col-sm-3 col-form-label">Email</label>
+                                                    <label class="col-sm-3 col-form-label">Email <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="email" name="email" value="<?=$detail_user->email?>" class="form-control" id="horizontal-email-input" disabled>
+                                                        <input type="email" name="email" value="<?=$detail_user->email?>" class="form-control"  disabled>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Alamat</label>
+                                                    <label class="col-sm-3 col-form-label">Alamat <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="alamat" class="form-control" id="horizontal-firstname-input" required>
+                                                        <input type="text" name="alamat" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Nomor Telpon</label>
+                                                    <label class="col-sm-3 col-form-label">Nomor Telpon <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="notelp" class="form-control" id="horizontal-firstname-input" required>
+                                                        <input type="number" name="notelp" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Nomor WhatsApp</label>
+                                                    <label class="col-sm-3 col-form-label">Nomor WhatsApp <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="whatsapp" class="form-control" id="horizontal-firstname-input" required>
+                                                        <input type="number" name="whatsapp" class="form-control" required>
                                                     </div>
                                                 </div>
+                                                <span class="text-xs text-danger">
+                                                  *Wajib Diisi
+                                                </span>
                                                 <div class="row justify-content-end">
                                                     <div class="col-sm-9">
                                                         <div><button type="submit" class="btn btn-primary w-md">Submit</button></div>

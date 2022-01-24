@@ -31,7 +31,7 @@
 				'page_title' => view('partials/page-title', ['title' => 'Profile', 'li_1' => 'PAGlowUP' , 'li_2' => 'Profile']),
 				'detail_user' => $detilUser
 			];
-			return view('pengelola/detail-profile', $data);
+			return view('pengelola/prof/detail-profile', $data);
 		}
 
 		public function add(){
@@ -45,7 +45,7 @@
 				'page_title' => view('partials/page-title', ['title' => 'Profile', 'li_1' => 'PAGlowUP' , 'li_2' => 'Profile']),
 				'detail_user' => $detilUser
 			];
-			return view('pengelola/add-profile', $data);
+			return view('pengelola/prof/add-profile', $data);
 		}
 
 		public function update_proc($iduser){
