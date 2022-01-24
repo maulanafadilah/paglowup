@@ -4,7 +4,6 @@
 	use App\Controllers\BaseController;
 	use App\Models\M_umkm;
 	use App\Models\M_user;
-	use App\Controllers\umkm\Upload;
 	use CodeIgniter\Files\File;
 
 	class Profile extends \App\Controllers\BaseController{
