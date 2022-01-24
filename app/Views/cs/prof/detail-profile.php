@@ -15,7 +15,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('designer/menu') ?>
+    <?= $this->include('umkm/menu') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -33,7 +33,7 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/designer/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/dashboard">PAGlowUP</a></li>
                                     <li class="breadcrumb-item active">Profil</li>
                                 </ol>
                             </div>
@@ -52,13 +52,13 @@
                                         <div class="d-flex align-items-start mt-3 mt-sm-0">
                                             <div class="flex-shrink-0">
                                                 <div class="avatar-xl me-3">
-                                                    <img src="<?=base_url()?>/webdata/uploads/images/designer/<?=$detail_user->designer_pic?>"  alt="" class="img-fluid rounded-circle d-block">
+                                                    <img src="<?=base_url()?>/webdata/uploads/images/umkm/<?=$detail_user->umkm_pic?>" alt="" class="img-fluid rounded-circle d-block">
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
                                                 <div>
-                                                    <h5 class="font-size-16 mb-1"><?=$detail_user->name?></h5>
-                                                    <p class="text-muted font-size-13">Designer</p>
+                                                    <h5 class="font-size-16 mb-1"><?=$detail_user->umkm_name?></h5>
+                                                    <p class="text-muted font-size-13">UMKM</p>
 
                                                     <div class="d-flex flex-wrap align-items-start gap-2 gap-lg-3 text-muted font-size-13">
                                                         <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i><?=$detail_user->phone?></div>
@@ -98,16 +98,17 @@
                                                 <div class="row">
                                                     <div class="col-xl-2">
                                                         <div>
-                                                            <h5 class="font-size-15">Nama Lengkap:</h5>
+                                                            <h5 class="font-size-15">Nama UMKM / Usaha:</h5>
                                                         </div>
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <?=$detail_user->name?>
+                                                            <?=$detail_user->umkm_name?>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="py-3">
                                                 <div class="row">
                                                     <div class="col-xl-2">
@@ -122,6 +123,22 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="py-3">
+                                                <div class="row">
+                                                    <div class="col-xl-2">
+                                                        <div>
+                                                            <h5 class="font-size-15">Alamat :</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl">
+                                                        <div class="text-muted">
+                                                            <?=$detail_user->address?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                             <div class="py-3">
                                                 <div class="row">
                                                     <div class="col-xl-2">
@@ -155,12 +172,12 @@
                                                 <div class="row">
                                                     <div class="col-xl-2">
                                                         <div>
-                                                            <h5 class="font-size-15">Dribbble :</h5>
+                                                            <h5 class="font-size-15">Instagram :</h5>
                                                         </div>
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <a href="<?=$detail_user->dribbble?>"><?=$detail_user->dribbble?></a>
+                                                            <?=$detail_user->instagram?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -174,7 +191,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <a href="<?=$detail_user->web?>"><?=$detail_user->web?></a>
+                                                            <?=$detail_user->web?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -183,49 +200,7 @@
                                                 <div class="row">
                                                     <div class="col-xl-2">
                                                         <div>
-                                                            <h5 class="font-size-15">Nama Bank:</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl">
-                                                        <div class="text-muted">
-                                                            <?=$detail_user->bankname?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="py-3">
-                                                <div class="row">
-                                                    <div class="col-xl-2">
-                                                        <div>
-                                                            <h5 class="font-size-15">Nomor Rekening:</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl">
-                                                        <div class="text-muted">
-                                                            <?=$detail_user->bankaccount?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="py-3">
-                                                <div class="row">
-                                                    <div class="col-xl-2">
-                                                        <div>
-                                                            <h5 class="font-size-15">Nama Pemilik Rekening:</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl">
-                                                        <div class="text-muted">
-                                                            <?=$detail_user->bankaccname?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="py-3">
-                                                <div class="row">
-                                                    <div class="col-xl-2">
-                                                        <div>
-                                                            <h5 class="font-size-15">Deskripsi / Bio:</h5>
+                                                            <h5 class="font-size-15">Deskripsi :</h5>
                                                         </div>
                                                     </div>
                                                     <div class="col-xl">
@@ -243,17 +218,16 @@
                                 <!-- end card -->
                             </div>
                             <!-- end tab pane -->
-
                             <div class="tab-pane" id="about" role="tabpanel">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="mt-4 mt-lg-0">
-                                            <h5 class="font-size-14 mb-4">Edit Profil Designer</h5>
-                                            <form action="<?=base_url()?>/designer/profile/update_proc/<?=$detail_user->iduser?>" method="post" enctype="multipart/form-data">
+                                            <h5 class="font-size-14 mb-4">Edit Profil UMKM</h5>
+                                            <form action="<?=base_url()?>/umkm/profile/update_proc/<?=$detail_user->iduser?>" method="post" enctype="multipart/form-data">
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                                    <label class="col-sm-3 col-form-label">Nama UMKM / Usaha <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="nama" value="<?=$detail_user->name?>" class="form-control" required>
+                                                        <input type="text" name="nama" value="<?=$detail_user->umkm_name?>" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -261,6 +235,12 @@
                                                     <div class="col-sm-9">
                                                         <input type="email" name="email" value="<?=$detail_user->email?>" class="form-control" required>
                                                         <input type="email" name="old_email" value="<?=$detail_user->email?>" class="form-control" hidden>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <label class="col-sm-3 col-form-label">Alamat</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="alamat" value="<?=$detail_user->address?>" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -276,9 +256,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Dribbble (Link)</label>
+                                                    <label class="col-sm-3 col-form-label">Instagram (Link)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="dribbble" value="<?=$detail_user->dribbble?>" class="form-control">
+                                                        <input type="text" name="instagram" value="<?=$detail_user->instagram?>" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -288,33 +268,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Nama Bank (Mandiri, BCA, dll.) <span class="text-danger">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="bankname" value="<?=$detail_user->bankname?>" class="form-control" required>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Nomor Rekening <span class="text-danger">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="bankaccount" value="<?=$detail_user->bankaccount?>" class="form-control" >
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Nama di Rekening <span class="text-danger">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="bankaccname" value="<?=$detail_user->bankaccname?>" class="form-control" required>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Deskripsi / Bio</label>
+                                                    <label class="col-sm-3 col-form-label">Deskripsi UMKM</label>
                                                     <div class="col-sm-9">
                                                         <textarea name="description" class="form-control"><?=$detail_user->description?></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Foto Profil</label>
+                                                    <label class="col-sm-3 col-form-label">Foto Profil UMKM</label>
                                                     <div class="col-sm-9">
-                                                      <input type="file" name="designer_pic" id="fileupload1" class="form-control">
+                                                      <input type="file" name="umkm_pic" id="fileupload1" class="form-control">
                                                     </div>
                                                 </div>
                                                 <span class="text-xs text-danger">
@@ -333,13 +295,12 @@
                                 <!-- end card -->
                             </div>
                             <!-- end tab pane -->
-                            
                             <div class="tab-pane" id="cpass" role="tabpanel">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="mt-4 mt-lg-0">
                                             <h5 class="font-size-14 mb-4">Ubah Password</h5>
-                                            <form action="<?=base_url()?>/designer/profile/update_pass/<?=$detail_user->iduser?>" method="post">
+                                            <form action="<?=base_url()?>/umkm/profile/update_pass/<?=$detail_user->iduser?>" method="post">
 
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Password Lama</label>

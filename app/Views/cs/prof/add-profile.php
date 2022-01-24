@@ -15,7 +15,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('pengelola/prof/menu2') ?>
+    <?= $this->include('umkm/prof/menu2') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -29,11 +29,11 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="page-title mb-0 font-size-18"><?= $title ?></h4>
+                            <h4 class="page-title mb-0 font-size-18"><?= $title ? lang('Files.'.$title.'') : '' ?></h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/dashboard">PAGlowUP</a></li>
                                     <li class="breadcrumb-item active">Profil</li>
                                 </ol>
                             </div>
@@ -86,17 +86,17 @@
                                     <div class="card-body">
                                         <div class="mt-4 mt-lg-0">
                                             <h5 class="font-size-14 mb-4">Ubah Profil</h5>
-                                            <form action="<?=base_url()?>/pengelola/profile/create_proc/<?=$detail_user->iduser?>" method="post">
+                                            <form action="<?=base_url()?>/umkm/profile/create_proc/<?=$detail_user->iduser?>" method="post" enctype="multipart/form-data">
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                                    <label class="col-sm-3 col-form-label">Nama UMKM / Usaha <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="nama" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Email <span class="text-danger">*</span></label>
+                                                    <label class="col-sm-3 col-form-label">Email</label>
                                                     <div class="col-sm-9">
-                                                        <input type="email" name="email" value="<?=$detail_user->email?>" class="form-control"  disabled>
+                                                        <input type="email" name="email" value="<?=$detail_user->email?>" class="form-control" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -115,6 +115,30 @@
                                                     <label class="col-sm-3 col-form-label">Nomor WhatsApp <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
                                                         <input type="number" name="whatsapp" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <label class="col-sm-3 col-form-label">Instagram (Link)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="instagram" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <label class="col-sm-3 col-form-label">Website (Link)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" name="web" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <label class="col-sm-3 col-form-label">Deskripsi UMKM</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea name="description" class="form-control"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <label class="col-sm-3 col-form-label">Foto Profil UMKM</label>
+                                                    <div class="col-sm-9">
+                                                      <input type="file" name="umkm_pic" id="fileupload1" class="form-control">
                                                     </div>
                                                 </div>
                                                 <span class="text-xs text-danger">

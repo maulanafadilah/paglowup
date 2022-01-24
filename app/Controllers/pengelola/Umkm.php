@@ -3,11 +3,13 @@
 	use CodeIgniter\Controller;
 	use App\Controllers\BaseController;
 	use App\Models\M_pengelola;
+	use App\Models\M_umkm;
 	use App\Models\M_user;
 
-	class Pengelola extends \App\Controllers\BaseController{
+	class Umkm extends \App\Controllers\BaseController{
 
 		public function __construct(){
+			$this->m_umkm = new M_umkm();
 			$this->m_pengelola = new M_pengelola();
 			$this->m_user = new M_user();
 		}
@@ -23,36 +25,36 @@
 		}
 
 		public function index(){
-			return redirect()->to(base_url('pengelola/pengelola/list'));
+			return redirect()->to(base_url('pengelola/umkm/list'));
 		}
 
 		public function list(){
 			$this->newUser();
 	    $iduser = session()->get('iduser');
-			$l_pengelola = $this->m_pengelola->getAllPengelola();
+			$l_umkm = $this->m_umkm->getAllUmkm();
 			$detilUser = $this->m_pengelola->getJoinUserPengelola($iduser)[0];
 
 			$data = [
-				'title_meta' => view('partials/title-meta', ['title' => 'List User Pengelola']),
-				'l_pengelola' => $l_pengelola,
+				'title_meta' => view('partials/title-meta', ['title' => 'List UMKM']),
+				'l_umkm' => $l_umkm,
 				'detail_user' => $detilUser
 			];
 			
-			return view('pengelola/user/list-pengelola', $data);
+			return view('pengelola/user/list-umkm', $data);
 		}
 
 		public function detail($iduser){
 			$this->newUser();
 			$detilUser = $this->m_pengelola->getJoinUserPengelola(session()->get('iduser'))[0];
-			$detail_pengelola = $this->m_pengelola->getJoinUserPengelola($iduser)[0];
+			$detail_umkm = $this->m_umkm->getJoinUserUmkm($iduser)[0];
 
 			$data = [
-				'title_meta' => view('partials/title-meta', ['title' => 'Detail User Pengelola']),
-				'detail_pengelola' => $detail_pengelola,
+				'title_meta' => view('partials/title-meta', ['title' => 'Detail UMKM']),
+				'detail_umkm' => $detail_umkm,
 				'detail_user' => $detilUser
 			];
 
-			return view('pengelola/user/detail-pengelola', $data);
+			return view('pengelola/user/detail-umkm', $data);
 		}
 
 		public function add_proc(){
@@ -68,7 +70,7 @@
 						Username telah terdaftar
 					</div>';
 				session()->setFlashdata('notif', $alert);
-				return redirect()->to(base_url('pengelola/pengelola/list'));
+				return redirect()->to(base_url('pengelola/umkm/list'));
 			}
 
 			if ($cekEmail != 0) {
@@ -76,7 +78,7 @@
 						Email telah terdaftar
 					</div>';
 				session()->setFlashdata('notif', $alert);
-				return redirect()->to(base_url('pengelola/pengelola/list'));
+				return redirect()->to(base_url('pengelola/umkm/list'));
 			}
 
 			$dataUser = [
@@ -84,7 +86,7 @@
 				'pass' => $password,
 				'email' => $email,
 				'flag' => 1,
-				'idgroup' => 1
+				'idgroup' => 4
 			];
 
 			$this->m_user->insertUser($dataUser);
@@ -93,16 +95,39 @@
 					User berhasil dibuat
 				</div>';
 			session()->setFlashdata('notif', $alert);
-			return redirect()->to(base_url('pengelola/pengelola/list'));
+			return redirect()->to(base_url('pengelola/umkm/list'));
 		}
 
 		public function update_proc($iduser){
 			$this->newUser();
 
-			$nama = $_POST['nama'];
-			$alamat = $_POST['alamat'];
-			$notelp = $_POST['notelp'];
+			define('MB', 1048576);
+			if ($_FILES['umkm_pic']['size'] > 4*MB) { // JIKA FILE DI UPLOAD OLEH USER
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					File terlalu besar
+				</div>';
+				session()->setFlashdata('notif', $alert);
+				return redirect()->to(base_url('pengelola/umkm/detail/'.$iduser));
+			}
+			elseif ($_FILES['umkm_pic']['size'] != 0) {
+				$old_img = $this->m_umkm->getJoinUserUmkm($iduser)[0]->umkm_pic;
+				if ($old_img != 'image.jpg') {
+					unlink(ROOTPATH.'public/webdata/uploads/images/umkm/'.$old_img);
+				}
+				$img_path = $this->upload_img()['name'];
+			}
+			else{
+				$img_path = $this->m_umkm->getJoinUserUmkm($iduser)[0]->umkm_pic;
+			}
+
+			$umkm_name = $_POST['nama'];
+			$description = $_POST['description'];
+			$address = $_POST['alamat'];
+			$phone = $_POST['notelp'];
 			$whatsapp = $_POST['whatsapp'];
+			$instagram = $_POST['instagram'];
+			$web = $_POST['web'];
+
 			$email = $_POST['email'];
 			$old_email = $_POST['old_email'];
 
@@ -113,30 +138,34 @@
 						Email telah terdaftar
 					</div>';
 					session()->setFlashdata('notif', $alert);
-					return redirect()->to(base_url('pengelola/pengelola/detail/'.$iduser));
+					return redirect()->to(base_url('pengelola/umkm/detail/'.$iduser));
 				}
 				$this->m_user->updateEmail($email, $iduser);
 			}
 
 			$dataset = [
-				'name' => $nama,
-				'address' => $alamat,
-				'phone' => $notelp,
-				'whatsapp' => $whatsapp
+				'umkm_name' => $umkm_name,
+				'description' => $description,
+				'address' => $address,
+				'phone' => $phone,
+				'whatsapp' => $whatsapp,
+				'instagram' => $instagram,
+				'web' => $web,
+				'umkm_pic' => $img_path
 			];
 			
-			$this->m_pengelola->updatePengelola($dataset, $iduser);
+			$this->m_umkm->updateUmkm($dataset, $iduser);
 			
 			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
 				Profil berhasil diubah
 			</div>';
 			session()->setFlashdata('notif', $alert);
 
-			return redirect()->to(base_url('pengelola/pengelola/detail/'.$iduser));
+			return redirect()->to(base_url('pengelola/umkm/detail/'.$iduser));
 		}
 
 		public function flag_switch($iduser){
-			$flag = $this->m_pengelola->getJoinUserPengelola($iduser)[0]->flag;
+			$flag = $this->m_umkm->getJoinUserUmkm($iduser)[0]->flag;
 
 			if ($flag == 0) {
 				$this->m_user->aktifkanUser($iduser);
@@ -155,8 +184,42 @@
 				session()->setFlashdata('notif', $alert);
 			}
 			
-			return redirect()->to(base_url('pengelola/pengelola/detail/'.$iduser));
+			return redirect()->to(base_url('pengelola/umkm/detail/'.$iduser));
 		}
+
+		public function upload_img(){
+      $validationRule = [
+        'umkm_pic' => [
+          'label' => 'Image File',
+          'rules' => 'uploaded[umkm_pic]'
+            . '|is_image[umkm_pic]'
+            . '|mime_in[umkm_pic,image/jpg,image/jpeg,image/png,image/webp]'
+            . '|max_size[umkm_pic,4000]',
+        ],
+      ];
+
+      if (! $this->validate($validationRule)) {
+        $data = $this->validator->getErrors();
+				
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					'.$data.'
+				</div>';
+				session()->setFlashdata('notif', $alert);
+
+				return redirect()->to(base_url('pengelola/umkm/list'));
+      }else{
+      	$img = $this->request->getFile('umkm_pic');
+      	$newName = $img->getRandomName();
+
+      	$img->move(ROOTPATH.'public/webdata/uploads/images/umkm/', $newName);
+      	$data = [
+      		'name' => $img->getName(),
+      		'type' => $img->getClientMimeType()
+      	];
+
+      	return $data;
+      }
+    }
 	}
 
 ?>

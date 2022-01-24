@@ -23,7 +23,12 @@
     function __construct(){
       $this->db = db_connect();
     }
-    
+   
+    public function getAllUmkm(){
+      $sql = "SELECT * FROM tb_user JOIN tb_umkm USING (iduser)";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function countUmkmByIdUser($iduser){
       $sql = "SELECT count(idumkm) as hitung FROM tb_umkm WHERE iduser = $iduser";
       return $this->db->query($sql)->getResult();

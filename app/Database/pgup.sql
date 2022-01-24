@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2022 at 08:56 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: Jan 24, 2022 at 11:34 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -35,8 +34,8 @@ CREATE TABLE `tb_comment` (
   `idcs` int(11) DEFAULT NULL,
   `iddesigner` int(11) DEFAULT NULL,
   `comment` text NOT NULL,
-  `file1` text,
-  `file2` text,
+  `file1` text DEFAULT NULL,
+  `file2` text DEFAULT NULL,
   `commenttime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -51,9 +50,22 @@ CREATE TABLE `tb_cs` (
   `name` text NOT NULL,
   `phone` varchar(15) NOT NULL,
   `whatsapp` varchar(15) NOT NULL,
-  `cs_pic` text,
+  `cs_pic` text DEFAULT NULL,
   `iduser` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_deposit`
+--
+
+CREATE TABLE `tb_deposit` (
+  `iddeposit` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `idorder` int(11) DEFAULT NULL,
+  `iddesigner` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -67,14 +79,21 @@ CREATE TABLE `tb_designer` (
   `description` text NOT NULL,
   `phone` varchar(15) NOT NULL,
   `whatsapp` varchar(15) NOT NULL,
-  `dribble` text NOT NULL,
-  `web` text,
+  `dribbble` text NOT NULL,
+  `web` text DEFAULT NULL,
   `bankaccount` varchar(30) NOT NULL,
   `bankname` varchar(50) NOT NULL,
-  `backaccname` varchar(100) NOT NULL,
-  `designer_pic` text,
+  `bankaccname` varchar(100) NOT NULL,
+  `designer_pic` text DEFAULT NULL,
   `iduser` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_designer`
+--
+
+INSERT INTO `tb_designer` (`iddesigner`, `name`, `description`, `phone`, `whatsapp`, `dribbble`, `web`, `bankaccount`, `bankname`, `bankaccname`, `designer_pic`, `iduser`) VALUES
+(1, 'Muhammad Amien Fadhillah', '', '082214996767', '082214996767', '', '', '9781948341', 'Mandiri', 'Muhammad Amien Fadhillah', '1643008401_7a809f5786e3b47fe35e.png', 7);
 
 -- --------------------------------------------------------
 
@@ -89,20 +108,20 @@ CREATE TABLE `tb_order` (
   `idcs` int(11) DEFAULT NULL,
   `iddesigner` int(11) DEFAULT NULL,
   `description` text NOT NULL,
-  `paymentproof` text,
+  `paymentproof` text DEFAULT NULL,
   `totalpayment` int(11) DEFAULT NULL,
-  `file1` text,
-  `file2` text,
-  `file3` text,
-  `file4` text,
+  `file1` text DEFAULT NULL,
+  `file2` text DEFAULT NULL,
+  `file3` text DEFAULT NULL,
+  `file4` text DEFAULT NULL,
   `idstatus` int(11) DEFAULT NULL,
   `idprodcat` int(11) DEFAULT NULL,
   `idgrouporder` int(11) DEFAULT NULL,
   `iddiscount` int(11) DEFAULT NULL,
-  `designpreview1` text,
-  `designpreview2` text,
-  `orderedfile1` text,
-  `orderedfile2` text,
+  `designpreview1` text DEFAULT NULL,
+  `designpreview2` text DEFAULT NULL,
+  `orderedfile1` text DEFAULT NULL,
+  `orderedfile2` text DEFAULT NULL,
   `designerrating` int(1) DEFAULT NULL,
   `csrating` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -127,7 +146,8 @@ CREATE TABLE `tb_pengelola` (
 --
 
 INSERT INTO `tb_pengelola` (`idpengelola`, `name`, `address`, `phone`, `whatsapp`, `iduser`) VALUES
-(1, 'Muhamad Yusuf Ramadhan', 'Bojongsoan 102', '082299013978', '082299013978', 1);
+(1, 'Muhamad Yusuf Ramadhan', 'Bojongsoan 102', '082299013978', '082299013978', 1),
+(3, 'Egan Kusmaya Putra', 'Bumi Parahyangan Kencana', '082215204919', '082215204919', 2);
 
 -- --------------------------------------------------------
 
@@ -137,7 +157,7 @@ INSERT INTO `tb_pengelola` (`idpengelola`, `name`, `address`, `phone`, `whatsapp
 
 CREATE TABLE `tb_portfolio` (
   `idportfolio` int(11) NOT NULL,
-  `img` text,
+  `img` text DEFAULT NULL,
   `description` text NOT NULL,
   `url` text NOT NULL,
   `iddesigner` int(11) DEFAULT NULL
@@ -153,10 +173,10 @@ CREATE TABLE `tb_static` (
   `idstatic` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
   `content` text NOT NULL,
-  `img1` text,
-  `img2` text,
-  `img3` text,
-  `img4` text,
+  `img1` text DEFAULT NULL,
+  `img2` text DEFAULT NULL,
+  `img3` text DEFAULT NULL,
+  `img4` text DEFAULT NULL,
   `tag` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -173,11 +193,19 @@ CREATE TABLE `tb_umkm` (
   `address` varchar(32) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `whatsapp` varchar(15) DEFAULT NULL,
-  `instagram` text,
-  `web` text,
-  `umkm_pic` text,
+  `instagram` text DEFAULT NULL,
+  `web` text DEFAULT NULL,
+  `umkm_pic` text DEFAULT NULL,
   `iduser` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_umkm`
+--
+
+INSERT INTO `tb_umkm` (`idumkm`, `umkm_name`, `description`, `address`, `phone`, `whatsapp`, `instagram`, `web`, `umkm_pic`, `iduser`) VALUES
+(1, 'PT. Jaya Abadi', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'bojongswan 1', '082215204919', '082215204919', 'instagram.com/ogura_yui', 'example123.com', '1642863035_1c1c40a46c6a83cf92ec.jpg', 5),
+(3, 'Toko Bagus', 'adalah saya', 'Bumi Parahyangan Kencana', '082215204919', '082215204919', 'egn234', 'egn234.com', '1642864955_b775a9b11376629a0ce8.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -188,7 +216,7 @@ CREATE TABLE `tb_umkm` (
 CREATE TABLE `tb_user` (
   `iduser` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `pass` text NOT NULL,
+  `pass` varchar(50) NOT NULL,
   `email` text NOT NULL,
   `flag` int(1) NOT NULL,
   `idgroup` int(2) NOT NULL
@@ -199,7 +227,28 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`iduser`, `username`, `pass`, `email`, `flag`, `idgroup`) VALUES
-(1, 'pengelola1', 'c20c8984f3db849ad612d2c40f0672ae', 'pengelola1@gmail.com', 1, 1);
+(1, 'pengelola1', 'c20c8984f3db849ad612d2c40f0672ae', 'pengelola1@gmail.com', 1, 1),
+(2, 'pengelola2', '9966b7ee997de5c313b743584f6b8830', 'egn234@gmail.com', 1, 1),
+(5, 'umkm1', '25d55ad283aa400af464c76d713c07ad', 'umkm1@gmail.com', 1, 4),
+(6, 'umkm2', '25d55ad283aa400af464c76d713c07ad', 'umkm2@gmail.com', 1, 4),
+(7, 'designer1', '25d55ad283aa400af464c76d713c07ad', 'designer1@gmail.com', 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_withdraw`
+--
+
+CREATE TABLE `tb_withdraw` (
+  `iddeposit` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `description` text DEFAULT NULL,
+  `status` enum('Requested','Processed','Confirmed') DEFAULT NULL,
+  `transferproof` text DEFAULT NULL,
+  `timerequest` datetime NOT NULL,
+  `idpengelola` int(11) DEFAULT NULL,
+  `iddesigner` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -326,6 +375,14 @@ ALTER TABLE `tb_cs`
   ADD KEY `iduser` (`iduser`);
 
 --
+-- Indexes for table `tb_deposit`
+--
+ALTER TABLE `tb_deposit`
+  ADD PRIMARY KEY (`iddeposit`),
+  ADD KEY `idorder` (`idorder`),
+  ADD KEY `iddesigner` (`iddesigner`);
+
+--
 -- Indexes for table `tb_designer`
 --
 ALTER TABLE `tb_designer`
@@ -380,6 +437,14 @@ ALTER TABLE `tb_user`
   ADD KEY `idgroup` (`idgroup`);
 
 --
+-- Indexes for table `tb_withdraw`
+--
+ALTER TABLE `tb_withdraw`
+  ADD PRIMARY KEY (`iddeposit`),
+  ADD KEY `idpengelola` (`idpengelola`),
+  ADD KEY `iddesigner` (`iddesigner`);
+
+--
 -- Indexes for table `tr_discount`
 --
 ALTER TABLE `tr_discount`
@@ -426,10 +491,16 @@ ALTER TABLE `tb_cs`
   MODIFY `idcs` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tb_deposit`
+--
+ALTER TABLE `tb_deposit`
+  MODIFY `iddeposit` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tb_designer`
 --
 ALTER TABLE `tb_designer`
-  MODIFY `iddesigner` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddesigner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_order`
@@ -441,7 +512,7 @@ ALTER TABLE `tb_order`
 -- AUTO_INCREMENT for table `tb_pengelola`
 --
 ALTER TABLE `tb_pengelola`
-  MODIFY `idpengelola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idpengelola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_portfolio`
@@ -459,13 +530,19 @@ ALTER TABLE `tb_static`
 -- AUTO_INCREMENT for table `tb_umkm`
 --
 ALTER TABLE `tb_umkm`
-  MODIFY `idumkm` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idumkm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tb_withdraw`
+--
+ALTER TABLE `tb_withdraw`
+  MODIFY `iddeposit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tr_discount`
@@ -517,6 +594,13 @@ ALTER TABLE `tb_cs`
   ADD CONSTRAINT `tb_cs_ibfk_1` FOREIGN KEY (`iduser`) REFERENCES `tb_user` (`iduser`);
 
 --
+-- Constraints for table `tb_deposit`
+--
+ALTER TABLE `tb_deposit`
+  ADD CONSTRAINT `tb_deposit_ibfk_1` FOREIGN KEY (`idorder`) REFERENCES `tb_order` (`idorder`),
+  ADD CONSTRAINT `tb_deposit_ibfk_2` FOREIGN KEY (`iddesigner`) REFERENCES `tb_designer` (`iddesigner`);
+
+--
 -- Constraints for table `tb_designer`
 --
 ALTER TABLE `tb_designer`
@@ -557,6 +641,13 @@ ALTER TABLE `tb_umkm`
 --
 ALTER TABLE `tb_user`
   ADD CONSTRAINT `tb_user_ibfk_1` FOREIGN KEY (`idgroup`) REFERENCES `tr_group` (`idgroup`);
+
+--
+-- Constraints for table `tb_withdraw`
+--
+ALTER TABLE `tb_withdraw`
+  ADD CONSTRAINT `tb_withdraw_ibfk_1` FOREIGN KEY (`idpengelola`) REFERENCES `tb_pengelola` (`idpengelola`),
+  ADD CONSTRAINT `tb_withdraw_ibfk_2` FOREIGN KEY (`iddesigner`) REFERENCES `tb_designer` (`iddesigner`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -24,6 +24,11 @@
     	$this->db = db_connect();
     }
 
+    public function getAllPengelola(){
+      $sql = "SELECT * FROM tb_user JOIN tb_pengelola USING (iduser)";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function countPengelolaByIdUser($iduser){
     	$sql = "SELECT count(idpengelola) as hitung FROM tb_pengelola WHERE iduser = $iduser";
     	return $this->db->query($sql)->getResult();

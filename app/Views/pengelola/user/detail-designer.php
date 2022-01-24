@@ -15,7 +15,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('designer/menu') ?>
+    <?= $this->include('pengelola/menu') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -29,12 +29,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="page-title mb-0 font-size-18"><?= $title ? lang('Files.'.$title.'') : '' ?></h4>
+                            <h4 class="page-title mb-0 font-size-18"><?= $title ?></h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/designer/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item active">Profil</li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item active">Detail Designer</li>
                                 </ol>
                             </div>
 
@@ -52,19 +52,32 @@
                                         <div class="d-flex align-items-start mt-3 mt-sm-0">
                                             <div class="flex-shrink-0">
                                                 <div class="avatar-xl me-3">
-                                                    <img src="<?=base_url()?>/webdata/uploads/images/designer/<?=$detail_user->designer_pic?>"  alt="" class="img-fluid rounded-circle d-block">
+                                                    <img src="<?=base_url()?>/webdata/uploads/images/designer/<?=$detail_designer->designer_pic?>" alt="" class="img-fluid rounded-circle d-block">
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
                                                 <div>
-                                                    <h5 class="font-size-16 mb-1"><?=$detail_user->name?></h5>
+                                                    <h5 class="font-size-16 mb-1"><?=$detail_designer->name?></h5>
                                                     <p class="text-muted font-size-13">Designer</p>
 
                                                     <div class="d-flex flex-wrap align-items-start gap-2 gap-lg-3 text-muted font-size-13">
-                                                        <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i><?=$detail_user->phone?></div>
-                                                        <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i><?=$detail_user->email?></div>
+                                                        <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i><?=$detail_designer->phone?></div>
+                                                        <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i><?=$detail_designer->email?></div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-auto order-1 order-sm-2">
+                                        <div class="d-flex align-items-start justify-content-end gap-2">
+                                            <div>
+                                            <?php if($detail_designer->flag == 0){?>
+                                                <button type="button" class="btn btn-soft-success" data-bs-toggle="modal" data-bs-target="#aktifkanUser">
+                                                    Aktifkan User
+                                                </button>
+                                            <?php }elseif($detail_designer->flag == 1){?>
+                                                <button type="button" class="btn btn-soft-danger" data-bs-toggle="modal" data-bs-target="#nonaktifkanUser">Nonaktifkan User</button>
+                                            <?php }?>
                                             </div>
                                         </div>
                                     </div>
@@ -76,9 +89,6 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link px-3" data-bs-toggle="tab" href="#about" role="tab">Ubah Profil</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#cpass" role="tab">Ubah Password</a>
                                     </li>
                                 </ul>
                             </div>
@@ -103,7 +113,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <?=$detail_user->name?>
+                                                            <?=$detail_designer->name?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -117,7 +127,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <?=$detail_user->email?>
+                                                            <?=$detail_designer->email?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -131,7 +141,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <?=$detail_user->phone?>
+                                                            <?=$detail_designer->phone?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -146,7 +156,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <?=$detail_user->whatsapp?>
+                                                            <?=$detail_designer->whatsapp?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -160,7 +170,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <a href="<?=$detail_user->dribbble?>"><?=$detail_user->dribbble?></a>
+                                                            <a href="<?=$detail_designer->dribbble?>"><?=$detail_designer->dribbble?></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -174,7 +184,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <a href="<?=$detail_user->web?>"><?=$detail_user->web?></a>
+                                                            <a href="<?=$detail_designer->web?>"><?=$detail_designer->web?></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -188,7 +198,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <?=$detail_user->bankname?>
+                                                            <?=$detail_designer->bankname?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -202,7 +212,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <?=$detail_user->bankaccount?>
+                                                            <?=$detail_designer->bankaccount?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -216,7 +226,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <?=$detail_user->bankaccname?>
+                                                            <?=$detail_designer->bankaccname?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -230,7 +240,7 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <?=$detail_user->description?>
+                                                            <?=$detail_designer->description?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -249,66 +259,66 @@
                                     <div class="card-body">
                                         <div class="mt-4 mt-lg-0">
                                             <h5 class="font-size-14 mb-4">Edit Profil Designer</h5>
-                                            <form action="<?=base_url()?>/designer/profile/update_proc/<?=$detail_user->iduser?>" method="post" enctype="multipart/form-data">
+                                            <form action="<?=base_url()?>/designer/profile/update_proc/<?=$detail_designer->iduser?>" method="post" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Nama Lengkap <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="nama" value="<?=$detail_user->name?>" class="form-control" required>
+                                                        <input type="text" name="nama" value="<?=$detail_designer->name?>" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Email <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="email" name="email" value="<?=$detail_user->email?>" class="form-control" required>
-                                                        <input type="email" name="old_email" value="<?=$detail_user->email?>" class="form-control" hidden>
+                                                        <input type="email" name="email" value="<?=$detail_designer->email?>" class="form-control" required>
+                                                        <input type="email" name="old_email" value="<?=$detail_designer->email?>" class="form-control" hidden>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Nomor Telpon <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="notelp" value="<?=$detail_user->phone?>" class="form-control" required>
+                                                        <input type="number" name="notelp" value="<?=$detail_designer->phone?>" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Nomor WhatsApp <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" name="whatsapp" value="<?=$detail_user->whatsapp?>" class="form-control" required>
+                                                        <input type="number" name="whatsapp" value="<?=$detail_designer->whatsapp?>" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Dribbble (Link)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="dribbble" value="<?=$detail_user->dribbble?>" class="form-control">
+                                                        <input type="text" name="dribbble" value="<?=$detail_designer->dribbble?>" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Website (Link)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="web" value="<?=$detail_user->web?>" class="form-control">
+                                                        <input type="text" name="web" value="<?=$detail_designer->web?>" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Nama Bank (Mandiri, BCA, dll.) <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="bankname" value="<?=$detail_user->bankname?>" class="form-control" required>
+                                                        <input type="text" name="bankname" value="<?=$detail_designer->bankname?>" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Nomor Rekening <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="bankaccount" value="<?=$detail_user->bankaccount?>" class="form-control" >
+                                                        <input type="text" name="bankaccount" value="<?=$detail_designer->bankaccount?>" class="form-control" >
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Nama di Rekening <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="bankaccname" value="<?=$detail_user->bankaccname?>" class="form-control" required>
+                                                        <input type="text" name="bankaccname" value="<?=$detail_designer->bankaccname?>" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Deskripsi / Bio</label>
                                                     <div class="col-sm-9">
-                                                        <textarea name="description" class="form-control"><?=$detail_user->description?></textarea>
+                                                        <textarea name="description" class="form-control"><?=$detail_designer->description?></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -333,48 +343,7 @@
                                 <!-- end card -->
                             </div>
                             <!-- end tab pane -->
-                            
-                            <div class="tab-pane" id="cpass" role="tabpanel">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="mt-4 mt-lg-0">
-                                            <h5 class="font-size-14 mb-4">Ubah Password</h5>
-                                            <form action="<?=base_url()?>/designer/profile/update_pass/<?=$detail_user->iduser?>" method="post">
 
-                                                <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Password Lama</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="password" name="old_pass" class="form-control">
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Password Baru</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="password" name="new_pass" class="form-control">
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-4">
-                                                    <label class="col-sm-3 col-form-label">Ulang Password Baru</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="password" name="auth_pass" class="form-control">
-                                                    </div>
-                                                </div>
-
-                                                <div class="row justify-content-end">
-                                                    <div class="col-sm-9">
-                                                        <div><button type="submit" class="btn btn-primary w-md">Submit</button></div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <!-- end card body -->
-                                </div>
-                                <!-- end card -->
-                            </div>
-                            <!-- end tab pane -->
                         </div>
 
                         <!-- end tab content -->
@@ -395,6 +364,51 @@
 </div>
 <!-- END layout-wrapper -->
 
+<!-- sample modal content -->
+<?php if($detail_designer->flag == 0){?>
+<div id="aktifkanUser" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Aktifkan User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Ingin Mengaktifkan User?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <a href="<?=base_url()?>/pengelola/designer/flag_switch/<?=$detail_designer->iduser?>" class="btn btn-primary">
+                    Aktifkan
+                </a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<?php }elseif($detail_designer->flag == 1){?>
+<div id="nonaktifkanUser" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Aktifkan User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Ingin Nonaktifkan User?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <a href="<?=base_url()?>/pengelola/designer/flag_switch/<?=$detail_designer->iduser?>" class="btn btn-primary">
+                    Nonaktifkan
+                </a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<?php }?>
+
 
 <?= $this->include('partials/right-sidebar') ?>
 
@@ -402,16 +416,6 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <script src="<?=base_url()?>/assets/js/app.js"></script>
-
-<script type="text/javascript">
-  $('#fileupload1').on('change',function(){
-    //get the file name
-    var fileName = $(this).val();
-    //replace the "Choose a file" label
-    var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
-    $(this).next('.custom-file-label').html(cleanFileName);
-  });
-</script>
 
 </body>
 

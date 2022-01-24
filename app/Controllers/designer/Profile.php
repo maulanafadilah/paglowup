@@ -73,7 +73,7 @@
 				$img_path = $this->upload_img()['name'];
 			}
 			else{
-				$img_path = $this->m_designer->getJoinUserUmkm($iduser)[0]->designer_pic;
+				$img_path = $this->m_designer->getJoinUserDesigner($iduser)[0]->designer_pic;
 			}
 
 			$name = $_POST['nama'];

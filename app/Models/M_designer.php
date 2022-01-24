@@ -24,6 +24,11 @@
       $this->db = db_connect();
     }
     
+    public function getAllDesigner(){
+      $sql = "SELECT * FROM tb_user JOIN tb_designer USING (iduser)";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function countDesignerByIdUser($iduser){
       $sql = "SELECT count(iddesigner) as hitung FROM tb_designer WHERE iduser = $iduser";
       return $this->db->query($sql)->getResult();

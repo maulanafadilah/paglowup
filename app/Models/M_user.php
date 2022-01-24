@@ -68,6 +68,20 @@
       $builder->update();
     }
 
+    public function aktifkanUser($iduser){
+      $builder = $this->db->table('tb_user');
+      $builder->set('flag', 1);
+      $builder->where('iduser', $iduser);
+      $builder->update();
+    }
+
+    public function nonaktifkanUser($iduser){
+      $builder = $this->db->table('tb_user');
+      $builder->set('flag', 0);
+      $builder->where('iduser', $iduser);
+      $builder->update();
+    }
+
 	}
 
 ?>

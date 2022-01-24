@@ -15,7 +15,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('pengelola/menu') ?>
+    <?= $this->include('umkm/menu') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -29,11 +29,11 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="page-title mb-0 font-size-18"><?= $title ?></h4>
+                            <h4 class="page-title mb-0 font-size-18"><?= $title ? lang('Files.'.$title.'') : '' ?></h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/umkm/dashboard">PAGlowUP</a></li>
                                     <li class="breadcrumb-item active">Dashboard</li>
                                 </ol>
                             </div>
@@ -1567,7 +1567,7 @@
 </div>
 <!-- END layout-wrapper -->
 
-<?= $this->include('pengelola/right-sidebar') ?>
+<?= $this->include('umkm/right-sidebar') ?>
 
 <?= $this->include('partials/vendor-scripts') ?>
 

@@ -50,6 +50,9 @@ $routes->get('about', 'Home::about');
 // -------------------- Pengelola -------------------- //
 
 $routes->add('pengelola', 'pengelola/Dashboard::index');
+$routes->add('umkm', 'umkm/Dashboard::index');
+$routes->add('cs', 'cs/Dashboard::index');
+$routes->add('designer', 'designer/Dashboard::index');
 
 // // User
 // $routes->get('pengelola/pengelola-user-pengelola', 'pengelola/Pengelola::user_pengelola');
@@ -76,30 +79,30 @@ $routes->add('pengelola', 'pengelola/Dashboard::index');
 
 
 
-// -------------------- Designer -------------------- //
-$routes->get('designer', 'Designer::index');
+// // -------------------- Designer -------------------- //
+// $routes->get('designer', 'Designer::index');
 
-// Withdrawal
-$routes->get('designer-withdrawal', 'Designer::withdrawal');
-$routes->get('designer-withdrawal-details', 'Designer::withdrawal_details');
-
-
-// Testimonials
-$routes->get('designer-testimonials', 'Designer::testimonials');
-
-// Profile
-$routes->get('designer-profile', 'Designer::profile');
-
-// Job
-$routes->get('designer-job-list', 'Designer::job_list');
-$routes->get('designer-chat', 'Designer::chat_cs');
+// // Withdrawal
+// $routes->get('designer-withdrawal', 'Designer::withdrawal');
+// $routes->get('designer-withdrawal-details', 'Designer::withdrawal_details');
 
 
-// -------------------- Customer Service -------------------- //
-$routes->get('cs', 'Cs::index');
-$routes->get('cs-chat', 'Cs::chat');
-$routes->get('cs-designer-list', 'Cs::designer_list');
-$routes->get('cs-profile', 'Cs::profile');
+// // Testimonials
+// $routes->get('designer-testimonials', 'Designer::testimonials');
+
+// // Profile
+// $routes->get('designer-profile', 'Designer::profile');
+
+// // Job
+// $routes->get('designer-job-list', 'Designer::job_list');
+// $routes->get('designer-chat', 'Designer::chat_cs');
+
+
+// // -------------------- Customer Service -------------------- //
+// $routes->get('cs', 'Cs::index');
+// $routes->get('cs-chat', 'Cs::chat');
+// $routes->get('cs-designer-list', 'Cs::designer_list');
+// $routes->get('cs-profile', 'Cs::profile');
 
 
 

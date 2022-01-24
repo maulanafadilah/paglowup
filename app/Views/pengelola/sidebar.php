@@ -10,7 +10,7 @@
                 <li class="menu-title" data-key="t-menu"><?= lang('Files.Menu') ?></li>
 
                 <li>
-                    <a href="pengelola">
+                    <a href="<?=base_url()?>/pengelola/dashboard">
                         <i data-feather="home"></i>
                         <span data-key="t-dashboard"><?= lang('Files.Dashboard') ?></span>
                     </a>
@@ -28,18 +28,18 @@
                             </a>
                         </li>
                         <li>
-                            <a href="pengelola-user-customerservice" data-key="t-user-grid">
+                            <a href="<?=base_url()?>/pengelola/cs/list" data-key="t-user-grid">
                                 <span data-key="t-authentication"><?= lang('Files.Customerservice') ?></span>
                             </a>
                         </li>
         
                         <li>
-                            <a href="pengelola-user-designer" data-key="t-user-grid">
+                            <a href="<?=base_url()?>/pengelola/designer/list" data-key="t-user-grid">
                                 <span data-key="t-authentication"><?= lang('Files.Designer') ?></span>
                             </a>
                         </li>  
                         <li>
-                            <a href="pengelola-user-umkm" data-key="t-user-grid">
+                            <a href="<?=base_url()?>/pengelola/umkm/list" data-key="t-user-grid">
                                 <span data-key="t-authentication"><?= lang('Files.Umkm') ?></span>
                             </a>
                         </li>   
