@@ -10,9 +10,9 @@
                 <li class="menu-title" data-key="t-menu"><?= lang('Files.Menu') ?></li>
 
                 <li>
-                    <a href="umkm">
+                    <a href="<?=base_url()?>/cs/designer/list">
                         <i data-feather="pen-tool"></i>
-                        <span data-key="t-pages"><?= lang('Files.Pesanan') ?></span>
+                        <span data-key="t-pages">Designer</span>
                     </a>
                 </li>
 
