@@ -39,6 +39,11 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getDesignerById($iddesigner){
+      $sql = "SELECT * FROM tb_designer WHERE iddesigner = $iddesigner";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function insertDesigner($data){
       $builder = $this->db->table('tb_designer');
       $builder->insert($data);

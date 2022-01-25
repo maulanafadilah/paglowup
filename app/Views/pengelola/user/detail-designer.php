@@ -90,6 +90,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link px-3" data-bs-toggle="tab" href="#about" role="tab">Ubah Profil</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#portf" role="tab">Portofolio</a>
+                                    </li>
                                 </ul>
                             </div>
                             <!-- end card body -->
@@ -344,6 +347,50 @@
                             </div>
                             <!-- end tab pane -->
 
+                            <div class="tab-pane" id="portf" role="tabpanel">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="mt-4 mt-lg-0">
+                                            <h5 class="font-size-14 mb-4">List Portfolio</h5>
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addPortfolio">
+                                                Tambah Portofolio
+                                            </button>
+                                            <?php if(!$l_portfolio){?>
+                                            <div class="my-5 pt-5">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="text-center mb-5">
+                                                                <h4 class="text-uppercase">Belum ada portofolio</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end row -->
+                                                </div>
+                                                <!-- end container -->
+                                            </div>
+                                            <!-- end content -->
+                                            <?php }else{
+                                            foreach ($l_portfolio as $data) {?>
+                                            <div class="col-sm-4 p-3">
+                                                <center class="img-thumbnail">
+                                                    <a data-bs-toggle="modal" data-bs-target="#zoomImg" data-id="<?= $data->idportfolio; ?>">
+                                                        <img src="<?= base_url(); ?>/webdata/uploads/images/designer/portfolio/<?= $data->img; ?>" class="img-fluid " style="max-height: 265px;" alt="Responsive image">
+                                                    </a>
+                                                    <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delPortfolio" data-id="<?=$data->idportfolio?>">
+                                                        Hapus Portfolio
+                                                    </a>
+                                                </center>
+                                            </div>
+                                            <?php }} ?>
+                                        </div>
+                                    </div>
+                                    <!-- end card body -->
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end tab pane -->
+
                         </div>
 
                         <!-- end tab content -->
@@ -409,6 +456,75 @@
 
 <?php }?>
 
+<!-- sample modal content -->
+<div id="zoomImg" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Tambah Portfolio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="fetched-data"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- sample modal content -->
+<div id="delPortfolio" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Hapus Portfolio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Ingin menghapus portofolio ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <span class="konfirmasi-delete-button"></span>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- sample modal content -->
+<div id="addPortfolio" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Tambah Portfolio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="konfirAdd" action="<?=base_url()?>/pengelola/portfolio/add_proc/<?=$detail_designer->iduser?>" enctype="multipart/form-data" method="post">
+                    <div class="mb-3">
+                        <label class="col-sm-3 col-form-label">Foto / Gambar Portofolio</label>
+                        <input type="file" name="foto" id="fileupload1" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>Deskripsi <span class="text-danger">*</span></label>
+                        <input type="text" name="description" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>URL</label>
+                        <input type="text" name="url" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" form="konfirAdd" class="btn btn-primary">Simpan</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <?= $this->include('partials/right-sidebar') ?>
 
@@ -416,6 +532,33 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <script src="<?=base_url()?>/assets/js/app.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#zoomImg').on('show.bs.modal', function(e) {
+            var rowid = $(e.relatedTarget).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url() ?>/pengelola/portfolio/list_portfolio',
+                data: 'rowid=' + rowid,
+                success: function(data) {
+                    $('.fetched-data').html(data); //menampilkan data ke dalam modal
+                }
+            });
+        });
+        $('#delPortfolio').on('show.bs.modal', function(e) {
+            var rowid = $(e.relatedTarget).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url() ?>/pengelola/portfolio/accDelPortfolio',
+                data: 'rowid=' + rowid,
+                success: function(data) {
+                    $('.konfirmasi-delete-button').html(data); //menampilkan data ke dalam modal
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 
