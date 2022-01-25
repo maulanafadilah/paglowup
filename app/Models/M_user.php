@@ -39,6 +39,11 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getUserByPortfolio($idportfolio){
+      $sql = "SELECT * FROM tb_user JOIN tb_designer USING (iduser) JOIN tb_portfolio USING (iddesigner)";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function cekEmailTerdaftar($email, $iduser){
       $sql = "SELECT count(iduser) as hitung FROM tb_user WHERE email = '$email' AND iduser != $iduser";
       return $this->db->query($sql)->getResult();

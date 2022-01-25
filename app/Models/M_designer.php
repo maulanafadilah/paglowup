@@ -49,6 +49,28 @@
       $builder->where('iduser', $iduser);
       $builder->update($dataset);
     }
+
+    public function getPortfolioById($id){
+      $sql = "SELECT * FROM tb_portfolio WHERE idportfolio = $id";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getPortfolioByIdDesigner($iddesigner){
+      $sql = "SELECT * FROM tb_portfolio WHERE iddesigner = $iddesigner";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function insertPortfolio($dataset){
+      $builder = $this->db->table('tb_portfolio');
+      $builder->insert($dataset);
+    }
+
+    public function deletePortfolio($idportfolio){
+      $builder = $this->db->table('tb_portfolio');
+      $builder->where('idportfolio', $idportfolio);
+      $builder->delete();
+    }
+
 	}
 
 ?>

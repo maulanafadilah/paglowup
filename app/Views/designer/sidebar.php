@@ -7,12 +7,12 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" data-key="t-menu"><?= lang('Files.Menu') ?></li>
+                <li class="menu-title" data-key="t-menu">Menu></li>
 
                 <li>
-                    <a href="designer">
+                    <a href="<?=base_url()?>/designer/portfolio/list">
                         <i data-feather="image"></i>
-                        <span data-key="t-pages"><?= lang('Files.Portofolio') ?></span>
+                        <span data-key="t-pages">Portofolio</span>
                     </a>
                 </li>
 
