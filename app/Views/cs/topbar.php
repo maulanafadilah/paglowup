@@ -3,7 +3,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="<?=base_url()?>/umkm/dashboard" class="logo logo-dark">
+                <a href="<?=base_url()?>/cs/dashboard" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="<?= base_url()?>/assets/images/logo-sm.svg" alt="" height="24">
                     </span>
@@ -12,7 +12,7 @@
                     </span>
                 </a>
 
-                <a href="<?=base_url()?>/umkm/dashboard" class="logo logo-light">
+                <a href="<?=base_url()?>/cs/dashboard" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="<?= base_url()?>/assets/images/logo-sm.svg" alt="" height="24">
                     </span>
@@ -46,8 +46,8 @@
                     <img class="rounded-circle header-profile-user" src="<?= base_url()?>/assets/images/users/avatar-1.jpg" alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ms-1 fw-medium">
                         <?php 
-                        if (isset($detail_user->umkm_name)) {
-                            echo $detail_user->umkm_name;
+                        if (isset($detail_user->name)) {
+                            echo $detail_user->name;
                         }else{
                             echo $detail_user->username;
                         }?>
@@ -57,7 +57,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="<?=base_url()?>/umkm/profile"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> <?= lang('Files.Profile') ?></a>
+                    <a class="dropdown-item" href="<?=base_url()?>/cs/profile"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> <?= lang('Files.Profile') ?></a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?=base_url()?>/logout"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> <?= lang('Files.Logout') ?></a>
                 </div>

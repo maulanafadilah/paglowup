@@ -15,7 +15,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('umkm/menu') ?>
+    <?= $this->include('cs/menu') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -1567,7 +1567,7 @@
 </div>
 <!-- END layout-wrapper -->
 
-<?= $this->include('umkm/right-sidebar') ?>
+<?= $this->include('cs/right-sidebar') ?>
 
 <?= $this->include('partials/vendor-scripts') ?>
 

@@ -10,34 +10,43 @@
                 <li class="menu-title" data-key="t-menu"><?= lang('Files.Menu') ?></li>
 
                 <li>
-                    <a href="umkm">
-                        <i data-feather="pen-tool"></i>
-                        <span data-key="t-pages"><?= lang('Files.Pesanan') ?></span>
+                    <a href="designer">
+                        <i data-feather="image"></i>
+                        <span data-key="t-pages"><?= lang('Files.Portofolio') ?></span>
                     </a>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="file-text"></i>
-                        <span data-key="t-authentication"><?= lang('Files.Transaction') ?></span>
+                        <i data-feather="pen-tool"></i>
+                        <span data-key="t-authentication"><?= lang('Files.Pekerjaan') ?></span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="umkm" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.ListPemesanan') ?></span>
+                            <a href="designer-job-list" data-key="t-user-grid">
+                                <span data-key="t-authentication"><?= lang('Files.ListPekerjaan') ?></span>
                             </a>
                         </li>
                         <li>
-                            <a href="cs-chat" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.DiskusiTrx') ?></span>
+                            <a href="designer-chat" data-key="t-user-grid">
+                                <span data-key="t-authentication"><?= lang('Files.DiskusiCS') ?></span>
                             </a>
                         </li>
-                        <li>
-                            <a href="cs-chat" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.Rating') ?></span>
-                            </a>
-                        </li>
+
                     </ul>
+                </li>
+
+                <li>
+                    <a href="designer-testimonials">
+                        <i data-feather="star"></i>
+                        <span data-key="t-pages"><?= lang('Files.Testimoni') ?></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="designer-withdrawal">
+                        <i data-feather="dollar-sign"></i>
+                        <span data-key="t-pages"><?= lang('Files.Withdrawal') ?></span>
+                    </a>
                 </li>
         </div>
         <!-- Sidebar -->

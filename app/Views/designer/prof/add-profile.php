@@ -195,6 +195,16 @@
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>
 
+<script type="text/javascript">
+  $('#fileupload1').on('change',function(){
+    //get the file name
+    var fileName = $(this).val();
+    //replace the "Choose a file" label
+    var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
+    $(this).next('.custom-file-label').html(cleanFileName);
+  });
+</script>
+
 <script src="<?=base_url()?>/assets/js/app.js"></script>
 
 </body>

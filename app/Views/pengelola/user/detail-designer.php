@@ -259,7 +259,7 @@
                                     <div class="card-body">
                                         <div class="mt-4 mt-lg-0">
                                             <h5 class="font-size-14 mb-4">Edit Profil Designer</h5>
-                                            <form action="<?=base_url()?>/designer/profile/update_proc/<?=$detail_designer->iduser?>" method="post" enctype="multipart/form-data">
+                                            <form action="<?=base_url()?>/pengelola/designer/update_proc/<?=$detail_designer->iduser?>" method="post" enctype="multipart/form-data">
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Nama Lengkap <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">

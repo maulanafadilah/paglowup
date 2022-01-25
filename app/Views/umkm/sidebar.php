@@ -7,12 +7,12 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" data-key="t-menu"><?= lang('Files.Menu') ?></li>
+                <li class="menu-title" data-key="t-menu">Menu</li>
 
                 <li>
                     <a href="umkm">
                         <i data-feather="pen-tool"></i>
-                        <span data-key="t-pages"><?= lang('Files.Pesanan') ?></span>
+                        <span data-key="t-pages">Pesanan</span>
                     </a>
                 </li>
 
