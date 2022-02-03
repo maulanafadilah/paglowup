@@ -41,7 +41,8 @@
                         </div>
                     </div>
                 </div>
-
+                
+                <?=session()->getFlashdata('notif')?>
             <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -70,7 +71,7 @@
                                                 <div class="my-4">
                                                     <label class="form-label" for="img1">Image 1</label>
                                                     <p>File Sebelumnya: <strong><?=$detail_frontpage->img1?></strong></p>
-                                                    <input type="file" class="form-control"  name="img10" id="img10"> 
+                                                    <input type="file" class="form-control"  name="img1" id="img1"> 
                                                 </div>
                                                 <div class="my-4">
                                                     <div class="custom-file">

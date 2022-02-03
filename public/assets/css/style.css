@@ -3037,3 +3037,7 @@ footer .bottom-footer {padding: 25px 0 70px 0;}
 }
 .related-product-slider .item {margin: 0 15px;}
 .related-product-slider .item .single-product {margin-bottom: 40px;}
+
+html{
+  scroll-behavior: smooth;
+}

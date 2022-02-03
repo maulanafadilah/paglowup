@@ -44,6 +44,22 @@
 			return view('pengelola/frontpage/list-home', $data);
 		}
 
+        public function contact(){
+			$this->newUser();
+	        $iduser = session()->get('iduser');
+			$l_frontpage = $this->m_frontpage->getContactFrontpage();
+			$detilUser = $this->m_pengelola->getJoinUserPengelola($iduser)[0];
+
+
+			$data = [
+				'title_meta' => view('partials/title-meta', ['title' => 'List Frontpage Home']),
+				'l_contact' => $l_frontpage,
+				'detail_user' => $detilUser
+			];
+			
+			return view('pengelola/frontpage/list-contact', $data);
+		}
+
 		public function detail($idstatic){
 			$this->newUser();
 			$detilUser = $this->m_pengelola->getJoinUserPengelola(session()->get('iduser'))[0];
@@ -75,102 +91,260 @@
         public function update_proc($idstatic){
 			$this->newUser();
 
+            
+			define('MB', 1048576);
+
+            // image1
+			if ($_FILES['img1']['size'] > 4*MB) { // JIKA FILE DI UPLOAD OLEH USER
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					File terlalu besar
+				</div>';
+				session()->setFlashdata('notif', $alert);
+				return redirect()->to(base_url('pengelola/frontpage/edit/'.$idstatic));
+			}
+			elseif ($_FILES['img1']['size'] != 0) {
+				$old_img = $this->m_frontpage->getDetailFrontpage($idstatic)[0]->img1;
+				if ($old_img !== NULL) {
+					unlink(ROOTPATH.'public/webdata/uploads/images/frontpage/'.$old_img);
+				}
+				$img_path1 = $this->upload_img()['name'];
+			}
+			else{
+				$img_path1 = $this->m_frontpage->getDetailFrontpage($idstatic)[0]->img1;
+			}
+
+            // image2
+			if ($_FILES['img2']['size'] > 4*MB) { // JIKA FILE DI UPLOAD OLEH USER
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					File terlalu besar
+				</div>';
+				session()->setFlashdata('notif', $alert);
+				return redirect()->to(base_url('pengelola/frontpage/edit/'.$idstatic));
+			}
+			elseif ($_FILES['img2']['size'] != 0) {
+				$old_img = $this->m_frontpage->getDetailFrontpage($idstatic)[0]->img2;
+				if ($old_img !== NULL) {
+					unlink(ROOTPATH.'public/webdata/uploads/images/frontpage/'.$old_img);
+				}
+				$img_path2 = $this->upload_img2()['name'];
+			}
+			else{
+				$img_path2 = $this->m_frontpage->getDetailFrontpage($idstatic)[0]->img2;
+			}
+
+            // image3
+			if ($_FILES['img3']['size'] > 4*MB) { // JIKA FILE DI UPLOAD OLEH USER
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					File terlalu besar
+				</div>';
+				session()->setFlashdata('notif', $alert);
+				return redirect()->to(base_url('pengelola/frontpage/edit/'.$idstatic));
+			}
+			elseif ($_FILES['img3']['size'] != 0) {
+				$old_img = $this->m_frontpage->getDetailFrontpage($idstatic)[0]->img3;
+				if ($old_img !== NULL) {
+					unlink(ROOTPATH.'public/webdata/uploads/images/frontpage/'.$old_img);
+				}
+				$img_path3 = $this->upload_img3()['name'];
+			}
+			else{
+				$img_path3 = $this->m_frontpage->getDetailFrontpage($idstatic)[0]->img3;
+			}
+
+            // image4
+			if ($_FILES['img4']['size'] > 4*MB) { // JIKA FILE DI UPLOAD OLEH USER
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					File terlalu besar
+				</div>';
+				session()->setFlashdata('notif', $alert);
+				return redirect()->to(base_url('pengelola/frontpage/edit/'.$idstatic));
+			}
+			elseif ($_FILES['img4']['size'] != 0) {
+				$old_img = $this->m_frontpage->getDetailFrontpage($idstatic)[0]->img4;
+				if ($old_img !== NULL) {
+					unlink(ROOTPATH.'public/webdata/uploads/images/frontpage/'.$old_img);
+				}
+				$img_path4 = $this->upload_img4()['name'];
+			}
+			else{
+				$img_path4 = $this->m_frontpage->getDetailFrontpage($idstatic)[0]->img4;
+			}
+
+
+            // mengambil variable
 			$judul = $_POST['title'];
 			$konten = $_POST['content'];
 			$penanda = $_POST['tag'];
-            $gmbr1 = $_POST['img1'];
 
-            if (!$this->validate([
-                $gmbr1 => [
-                    'rules' => 'is_image[$gmbr1]|mime_in[$gmbr1, image/jpg, image/jpeg, image/png]',
-                    'errors' => [
-                        'max_size' => 'Size Gambar terlalu besar',
-                        'is_image' => 'Yang anda pilih bukan gambar is_image',
-                        'mime_in' => 'Yang anda pilih bukan gambar'
-                    ]
-                ],
-                
-                // 'img2' => ['rules' => 'max_size[img2, 10240]|is_image[img2]|mime_in[img2, image/jpg, image/jpeg, image/png]'],
-                // 'img3' => ['rules' => 'max_size[img3, 10240]|is_image[img3]|mime_in[img3, image/jpg, image/jpeg, image/png]'],
-                // 'img4' => ['rules' => 'max_size[img4, 10240]|is_image[img4]|mime_in[img4, image/jpg, image/jpeg, image/png]'],
-            ])){
+			
+            // mengumpulkan dataset
+			$dataset = [
+				'title' => $judul,
+				'content' => $konten,
+				'tag' => $penanda,
+				'img1' => $img_path1,
+                'img2' => $img_path2,
+                'img3' => $img_path3,
+                'img4' => $img_path4,
+			];
+			
+			$this->m_frontpage->updateFrontpage($dataset, $idstatic);
+			
+			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
+				Profil berhasil diubah
+			</div>';
+			session()->setFlashdata('notif', $alert);
 
-                $validation = \Config\Services::validation();
-                dd($validation);
-                // return redirect()->to(base_url('pengelola/frontpage/edit/'.$idstatic))->withInput();
-            }
-
+			return redirect()->to(base_url('pengelola/frontpage/detail/'.$idstatic));
 		}
 
-        public function image_frontpage($idstatic){
+        public function upload_img(){
 
+            $idstatic = ('idstatic');
+            $validationRule = [
+              'img1' => [
+                'label' => 'Image File',
+                'rules' => 'uploaded[img1]'
+                  . '|is_image[img1]'
+                  . '|mime_in[img1,image/jpg,image/jpeg,image/png,image/webp]'
+                  . '|max_size[img1,4000]',
+              ],
+            ];
+      
+            if (! $this->validate($validationRule)) {
+              $data = $this->validator->getErrors();
+                      
+              print_r($data);
+                      $alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+                          Gambar yang anda upload tidak sesuai
+                      </div>';
+                      session()->setFlashdata('notif', $alert);
+      
+                      return redirect()->to(base_url('pengelola/frontpage/edit/'.$idstatic));
+            }else{
+                $img = $this->request->getFile('img1');
+                $newName = $img->getRandomName();
+      
+                $img->move(ROOTPATH.'public/webdata/uploads/images/frontpage/', $newName);
+                $data = [
+                    'name' => $img->getName(),
+                    'type' => $img->getClientMimeType()
+                ];
+      
+                return $data;
+            }
+        }	
+        
+        public function upload_img2(){
+
+            $idstatic = ('idstatic');
+            $validationRule = [
+              'img2' => [
+                'label' => 'Image File',
+                'rules' => 'uploaded[img2]'
+                  . '|is_image[img2]'
+                  . '|mime_in[img2,image/jpg,image/jpeg,image/png,image/webp]'
+                  . '|max_size[img2,4000]',
+              ],
+            ];
+      
+            if (! $this->validate($validationRule)) {
+              $data = $this->validator->getErrors();
+                      
+              print_r($data);
+                      $alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+                          Gambar yang anda upload tidak sesuai
+                      </div>';
+                      session()->setFlashdata('notif', $alert);
+      
+                      return redirect()->to(base_url('pengelola/frontpage/edit/'.$idstatic));
+            }else{
+                $img = $this->request->getFile('img2');
+                $newName = $img->getRandomName();
+      
+                $img->move(ROOTPATH.'public/webdata/uploads/images/frontpage/', $newName);
+                $data = [
+                    'name' => $img->getName(),
+                    'type' => $img->getClientMimeType()
+                ];
+      
+                return $data;
+            }
+        }
+        
+        public function upload_img3(){
+
+            $idstatic = ('idstatic');
+            $validationRule = [
+              'img3' => [
+                'label' => 'Image File',
+                'rules' => 'uploaded[img3]'
+                  . '|is_image[img3]'
+                  . '|mime_in[img3,image/jpg,image/jpeg,image/png,image/webp]'
+                  . '|max_size[img3,4000]',
+              ],
+            ];
+      
+            if (! $this->validate($validationRule)) {
+              $data = $this->validator->getErrors();
+                      
+              print_r($data);
+                      $alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+                          Gambar yang anda upload tidak sesuai
+                      </div>';
+                      session()->setFlashdata('notif', $alert);
+      
+                      return redirect()->to(base_url('pengelola/frontpage/edit/'.$idstatic));
+            }else{
+                $img = $this->request->getFile('img3');
+                $newName = $img->getRandomName();
+      
+                $img->move(ROOTPATH.'public/webdata/uploads/images/frontpage/', $newName);
+                $data = [
+                    'name' => $img->getName(),
+                    'type' => $img->getClientMimeType()
+                ];
+      
+                return $data;
+            }
         }
 
-		public function add_proc(){
-			$username = $_POST['username'];
-			$email = $_POST['email'];
-			$password = md5($_POST['pass']);
+        public function upload_img4(){
 
-			$cekUsername = $this->m_user->countUsername($username)[0]->hitung;
-			$cekEmail = $this->m_user->countUserByEmail($email)[0]->hitung;
-
-			if ($cekUsername != 0) {
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-						Username telah terdaftar
-					</div>';
-				session()->setFlashdata('notif', $alert);
-				return redirect()->to(base_url('pengelola/pengelola/list'));
-			}
-
-			if ($cekEmail != 0) {
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-						Email telah terdaftar
-					</div>';
-				session()->setFlashdata('notif', $alert);
-				return redirect()->to(base_url('pengelola/pengelola/list'));
-			}
-
-			$dataUser = [
-				'username' => $username,
-				'pass' => $password,
-				'email' => $email,
-				'flag' => 1,
-				'idgroup' => 1
-			];
-
-			$this->m_user->insertUser($dataUser);
-
-			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
-					User berhasil dibuat
-				</div>';
-			session()->setFlashdata('notif', $alert);
-			return redirect()->to(base_url('pengelola/pengelola/list'));
-		}
-
-		
-
-		public function flag_switch($iduser){
-			$flag = $this->m_pengelola->getJoinUserPengelola($iduser)[0]->flag;
-
-			if ($flag == 0) {
-				$this->m_user->aktifkanUser($iduser);
-
-				$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
-					User Diaktifkan
-				</div>';
-				session()->setFlashdata('notif', $alert);
-
-			}elseif ($flag == 1) {
-				$this->m_user->nonaktifkanUser($iduser);
-
-				$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
-					User Dinonaktifkan
-				</div>';
-				session()->setFlashdata('notif', $alert);
-			}
-			
-			return redirect()->to(base_url('pengelola/pengelola/detail/'.$iduser));
-		}
+            $idstatic = ('idstatic');
+            $validationRule = [
+              'img4' => [
+                'label' => 'Image File',
+                'rules' => 'uploaded[img4]'
+                  . '|is_image[img4]'
+                  . '|mime_in[img4,image/jpg,image/jpeg,image/png,image/webp]'
+                  . '|max_size[img4,4000]',
+              ],
+            ];
+      
+            if (! $this->validate($validationRule)) {
+              $data = $this->validator->getErrors();
+                      
+              print_r($data);
+                      $alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+                          Gambar yang anda upload tidak sesuai
+                      </div>';
+                      session()->setFlashdata('notif', $alert);
+      
+                      return redirect()->to(base_url('pengelola/frontpage/edit/'.$idstatic));
+            }else{
+                $img = $this->request->getFile('img4');
+                $newName = $img->getRandomName();
+      
+                $img->move(ROOTPATH.'public/webdata/uploads/images/frontpage/', $newName);
+                $data = [
+                    'name' => $img->getName(),
+                    'type' => $img->getClientMimeType()
+                ];
+      
+                return $data;
+            }
+        }
 	}
 
 ?>

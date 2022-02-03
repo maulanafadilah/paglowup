@@ -44,8 +44,10 @@
 				<div data-src="<?= base_url()?>/assets/images/home/slide-1.jpg">
 					<div class="camera_caption">
 						<div class="container">
-							<h5 class="wow fadeInUp animated">We’r Awesome</h5>
-							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s"><span>Digital Agency</span><br><span>That Help You to</span><br><span>Go Ahead</span></h1>
+							<h5 class="wow fadeInUp animated"><?=$hero1->content?></h5>
+							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s">
+							<?=$hero1->title?>
+							</h1>
 							<a href="course-2-column.html" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Explore Now</a>
 							<div class="wow fadeInRight animated image-shape-one" data-wow-delay="0.33s">
 								<svg  version="1.1" class="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="778" height="576">
@@ -53,7 +55,30 @@
 										<use xlink:href="#shape-one" />
 									</clipPath>
 									<g clip-path="url(#shape-one)">
-										<image width="778" height="576" href="<?= base_url()?>/assets/images/home/1.jpg" class="banner-img-one">
+										<image width="778" height="576" href="<?= base_url()?>/webdata/uploads/images/frontpage/<?=$hero1->img1?>" class="banner-img-one">
+										</image>
+									</g>
+								</svg>
+							</div>
+							<div class="wow fadeInRight animated image-shape-two" data-wow-delay="0.39s"><div class="theme-shape-two"></div></div>
+						</div> <!-- /.container -->
+					</div> <!-- /.camera_caption -->
+				</div>
+				<div data-src="<?= base_url()?>/assets/images/home/slide-1.jpg">
+					<div class="camera_caption">
+						<div class="container">
+							<h5 class="wow fadeInUp animated"><?=$hero2->content?></h5>
+							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s">
+							<?=$hero2->title?>
+							</h1>
+							<a href="course-2-column.html" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Explore Now</a>
+							<div class="wow fadeInRight animated image-shape-one" data-wow-delay="0.33s">
+								<svg  version="1.1" class="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="778" height="576">
+									<clipPath class="clip1">
+										<use xlink:href="#shape-one" />
+									</clipPath>
+									<g clip-path="url(#shape-one)">
+										<image width="778" height="576" href="<?= base_url()?>/webdata/uploads/images/frontpage/<?=$hero2->img1?>" class="banner-img-one">
 										</image>
 									</g>
 								</svg>
@@ -73,29 +98,29 @@
 			-->
 			<div class="what-we-do">
 				<div class="container">
-					<h3>The thing that motivates me is a very common form of motivation. And that is, with other folk counting on me, it's so easy to be motivated.</h3>
-					<h6>we work with business &amp; provide solution to client with their business problem</h6>
+					<h3><?=$l_do->title?></h3>
+					<h6><?=$l_do->content?></h6>
 
 					<div class="row">
 						<div class="col-md-4 col-sm-6 col-xs-12 wow fadeInLeft">
 							<div class="single-block">
 								<div class="icon color-one"><i class="flaticon-note"></i></div>
-								<h6>Financial Advise</h6>
-								<h5><a href="#" class="tran3s">Market Statics Growth &amp; Advance Analysis</a></h5>
+								<h6><?=$l_dc1->title?></h6>
+								<h5><a href="#" class="tran3s"><?=$l_dc1->content?></a></h5>
 							</div> <!-- /.single-block -->
 						</div> <!-- /.col- -->
 						<div class="col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
 							<div class="single-block">
 								<div class="icon color-two middle-block"><i class="flaticon-bar-chart2"></i></div>
-								<h6>Market Analysis</h6>
-								<h5><a href="#" class="tran3s">Market Statics Growth &amp; Advance Analysis</a></h5>
+								<h6><?=$l_dc2->title?></h6>
+								<h5><a href="#" class="tran3s"><?=$l_dc2->content?></a></h5>
 							</div> <!-- /.single-block -->
 						</div> <!-- /.col- -->
 						<div class="col-md-4 hidden-sm col-xs-12 wow fadeInRight">
 							<div class="single-block">
 								<div class="icon color-three"><i class="flaticon-diamond"></i></div>
-								<h6>Web Solution</h6>
-								<h5><a href="#" class="tran3s">Market Statics Growth &amp; Advance Analysis</a></h5>
+								<h6><?=$l_dc3->title?></h6>
+								<h5><a href="#" class="tran3s"><?=$l_dc2->content?></a></h5>
 							</div> <!-- /.single-block -->
 						</div> <!-- /.col- -->
 					</div> <!-- /.row -->
@@ -109,14 +134,15 @@
 				More About Us
 			============================================== 
 			-->
-			<div class="more-about-us">
+			<section id="about">
+			<div class="more-about-us" id="#about">
 				<div class="image-box">
 					<svg  version="1.1" class="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="854" height="632">
 						<clipPath class="clip1">
 							<use xlink:href="#shape-one" />
 						</clipPath>
 						<g clip-path="url(#shape-one)">
-							<image width="854" height="632" href="<?= base_url()?>/assets/images/home/2.jpg" class="image-shape">
+							<image width="854" height="632" href="<?= base_url()?>/webdata/uploads/images/frontpage/<?=$l_about->img1?>" class="image-shape">
 							</image>
 						</g>
 					</svg>
@@ -126,14 +152,14 @@
 					<div class="row">
 						<div class="col-lg-7 col-md-offset-5">
 							<div class="main-content">
-								<h2>We’r a dynamic team of creatives people innovation &amp; Marketing Expert.</h2>
+								<h2><?=$l_about->title?></h2>
 								<div class="main-wrapper">
 									<h4>Best Digital Agency in Asia</h4>
-									<p>We provide marketing services to startups and small businesses to looking for a partner of their digital media, design &amp; dev, lead generation, and communications requirents. We work with you, not for you. Although we have great resources.</p>
-									<img src="<?= base_url()?>/assets/images/home/sign.png" alt="sign">
+									<p><?=$l_about->content?></p>									
+									<img src="<?= base_url()?>/webdata/uploads/images/frontpage/<?=$l_about->img2?>" alt="sign">
 									<div class="button-wrapper p-bg-color">
 										<span>Learn More</span>
-										<a href="about-us.html" class="hvr-icon-wobble-horizontal">More About us <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+										<a href="about-us.html" class="hvr-icon-wobble-horizontal">See Our Pricing <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 									</div> <!-- /.button-wrapper -->
 								</div> <!-- /.main-wrapper -->
 							</div> <!-- /.main-content -->
@@ -141,45 +167,8 @@
 					</div> <!-- /.row -->
 				</div> <!-- /.container -->
 			</div> <!-- /.more-about-us -->
+			</section>
 
-
-
-			
-			<!-- 
-			=============================================
-				Theme Counter
-			============================================== 
-			-->
-			<div class="theme-counter">
-				<div class="container">
-					<div class="row">
-		        		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-		        			<div class="single-box">
-		        				<h2 class="number"><span class="timer" data-from="0" data-to="2730" data-speed="1000" data-refresh-interval="5">0</span>+</h2>
-		        				<p>Completed Projects</p>
-		        			</div> <!-- /.single-box -->
-		        		</div>
-		        		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-		        			<div class="single-box">
-		        				<h2 class="number"><span class="timer" data-from="0" data-to="39" data-speed="1000" data-refresh-interval="5">0</span></h2>
-		        				<p>Availble Country</p>
-		        			</div> <!-- /.single-box -->
-		        		</div>
-		        		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-		        			<div class="single-box">
-		        				<h2 class="number"><span class="timer" data-from="0" data-to="125" data-speed="1000" data-refresh-interval="5">0</span>M</h2>
-		        				<p>User Worldwide</p>
-		        			</div> <!-- /.single-box -->
-		        		</div>
-		        		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-		        			<div class="single-box border-fix">
-		        				<h2 class="number"><span class="timer" data-from="0" data-to="12" data-speed="1000" data-refresh-interval="5">0</span></h2>
-		        				<p>Award Winner</p>
-		        			</div> <!-- /.single-box -->
-		        		</div>
-		        	</div> <!-- /.row -->
-				</div> <!-- /.container -->
-			</div> <!-- /.theme-counter -->
 
 			
 			<!-- 
@@ -187,12 +176,13 @@
 				Our Portfolio
 			============================================== 
 			-->
-			<div class="our-portfolio">
+			<section id="portofolio">
+			<div class="our-portfolio mt-5">
 				<div class="container">
 					<div class="theme-title">
 						<h6>Recent work</h6>
 						<h2>We’ve done lot’s of work, Let’s <br>Check some from here</h2>
-						<a href="portfolio-v1.html" class="tran3s">See All projects</a>
+						<!-- <a href="portfolio-v1.html" class="tran3s">See All projects</a> -->
 					</div> <!-- /.theme-title -->
 				</div> <!-- /.container -->
 
@@ -227,57 +217,39 @@
 					</div> <!-- /.row -->
 				</div> <!-- /.wrapper -->
 			</div> <!-- /.our-portfolio -->
-
+			</section>
 
 			<!-- 
 			=============================================
 				Home Service Section
 			============================================== 
 			-->
+			<section id="service">
 			<div class="home-service-section">
 				<div class="container">
 					<div class="col-md-9 col-md-offset-3 main-container">
 						<div class="theme-title">
 							<h6>Our Services</h6>
-							<h2>We provide wide range of web &amp; <br>business services.</h2>
-							<p>We’ve strong  work history with different business services</p>
-							<a href="service-v1.html" class="tran3s">See All Services</a>
+							<h2><?=$l_services->title?></h2>
+							<p><?=$l_services->content?></p>
+							<a href="service" class="tran3s">See All Services</a>
 						</div> <!-- /.theme-title -->
 						<ul class="clearfix row">
+							<?php foreach ($l_sc as $b) {?>
 							<li class="col-md-6">
 								<div>
-									<i class="flaticon-user"></i>
-									<h5><a href="service-v1.html" class="tran3s">Business Consulting</a></h5>
-									<p>Lorem ipsum dolor sit amet, percipitur sadipscing. </p>
+									<i class="<?=$b->img1?>"></i>
+									<h5><a href="service" class="tran3s"><?=$b->title?></a></h5>
+									<p><?=$b->content?></p>
 								</div>
 							</li>
-							<li class="col-md-6">
-								<div>
-									<i class="flaticon-layers"></i>
-									<h5><a href="service-v1.html" class="tran3s">Interface Design</a></h5>
-									<p>Lorem ipsum dolor sit amet, percipitur sadipscing. </p>
-								</div>
-							</li>
-							<li class="col-md-6">
-								<div>
-									<i class="flaticon-bar-chart"></i>
-									<h5><a href="service-v1.html" class="tran3s">SEO &amp; SMM services</a></h5>
-									<p>Lorem ipsum dolor sit amet, percipitur sadipscing. </p>
-								</div>
-							</li>
-							<li class="col-md-6">
-								<div>
-									<i class="flaticon-smartphone"></i>
-									<h5><a href="service-v1.html" class="tran3s">Apps Development</a></h5>
-									<p>Lorem ipsum dolor sit amet, percipitur sadipscing. </p>
-								</div>
-							</li>
+							<?php } ?>
 						</ul>
 					</div> <!-- /.main-container -->
 					<img src="<?= base_url()?>/assets/images/home/shape-2.png" alt="Image" class="wow fadeInLeft">
 				</div> <!-- /.container -->
 			</div> <!-- /.home-service-section -->
-
+			</section>
 
 
 			<!-- ==================== TWO SECTION WRAPPER ====================== -->
@@ -293,8 +265,8 @@
 							<div class="col-md-6 col-xs-12 wow fadeInLeft">
 								<div class="theme-title">
 									<h6>Our pricing</h6>
-									<h2>Not any hidden <br>charge, Choose you <br>pricing plan</h2>
-									<p>We have differe type of pricing table to choose with <br>your need with resonable price. </p>
+									<h2><?=$l_pricing->title?></h2>
+									<p><?=$l_pricing->content?></p>
 								</div> <!-- /.theme-title -->
 								<ul class="nav nav-tabs">
 									<li class="active"><a data-toggle="tab" href="#monthly">Monthly</a></li>
@@ -307,18 +279,14 @@
 									<div id="monthly" class="tab-pane fade in active">
 								    	<div class="clearfix">
 								    		<div class="float-left left-side">
-								    			<span><sub>$</sub>96.<sup>99</sup></span>
-								    			<h6>Business</h6>
+								    			<span><sub>$</sub><?=$l_popt1->content?></span>
+								    			<h6><?=$l_popt1->title?></h6>
 								    			<a href="#">+</a>
 								    		</div> <!-- /.left-side -->
 								    		<div class="right-side float-left">
-								    			<h6>40% OFF</h6>
-								    			<h4>Weekly Package</h4>
+								    			<h4><?=$l_pdetail1->title?></h4>
 								    			<ul>
-								    				<li>50GB Bandwidth</li>
-								    				<li>Business & Financ Analysing</li>
-								    				<li>24 hour support</li>
-								    				<li>Customer Managemet</li>
+								    				<?=$l_pdetail1->content?>								    				
 								    			</ul>
 								    		</div> <!-- /.right-side -->
 								    	</div>
@@ -326,18 +294,14 @@
 								  	<div id="yearly" class="tab-pane fade">
 								    	<div class="clearfix">
 								    		<div class="float-left left-side">
-								    			<span><sub>$</sub>296.<sup>99</sup></span>
-								    			<h6>Business</h6>
+								    			<span><sub>$</sub><?=$l_popt2->content?></span>
+								    			<h6><?=$l_popt2->title?></h6>
 								    			<a href="#">+</a>
 								    		</div> <!-- /.left-side -->
 								    		<div class="right-side float-left">
-								    			<h6>40% OFF</h6>
-								    			<h4>Weekly Package</h4>
+								    			<h4><?=$l_pdetail2->title?></h4>
 								    			<ul>
-								    				<li>50GB Bandwidth</li>
-								    				<li>Business & Financ Analysing</li>
-								    				<li>24 hour support</li>
-								    				<li>Customer Managemet</li>
+													<?=$l_pdetail2->content?>
 								    			</ul>
 								    		</div> <!-- /.right-side -->
 								    	</div>
@@ -361,7 +325,7 @@
 								<use xlink:href="#shape-one" />
 							</clipPath>
 							<g clip-path="url(#shape-one)">
-								<image width="854" height="630" href="<?= base_url()?>/assets/images/home/5.jpg" class="image-shape">
+								<image width="854" height="630" href="<?= base_url()?>/webdata/uploads/images/frontpage/<?=$l_testi->img1?>" class="image-shape">
 								</image>
 							</g>
 						</svg>
@@ -371,7 +335,7 @@
 						<div class="main-container col-md-6 col-md-offset-6">
 							<div class="theme-title">
 								<h6>Testimonials</h6>
-								<h2>Check what’s our client <br>Say about us</h2>
+								<h2><?=$l_testi->title?></h2>
 							</div> <!-- /.theme-title -->
 							<div class="testimonial-slider">
 								<div class="item">

@@ -44,7 +44,7 @@
 				<div class="opacity">
 					<h1>Contact US</h1>
 					<ul>
-						<li><a href="index.html">Home</a></li>
+						<li><a href="/">Home</a></li>
 						<li>/</li>
 						<li>Contact</li>
 					</ul>
@@ -73,9 +73,9 @@
 						</div> <!-- /.col- -->
 						<div class="col-lg-5 col-md-6 col-xs-12">
 							<div class="contact-address">
-								<h2>Don’t Hesitate to contact with us for any kind of information</h2>
-								<p>Call us for imiditate support this number</p>
-								<a href="#" class="tran3s">880 876 65 455</a>
+								<h2><?=$l_contact1->title?></h2>
+								<p><?=$l_contact2->title?></p>
+								<a href="#" class="tran3s"><?=$l_contact2->content?></a>
 								<ul>
 									<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 									<li><a href="" class="tran3s"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>

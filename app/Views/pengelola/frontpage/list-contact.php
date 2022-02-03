@@ -74,7 +74,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $c = 1;?>
-                                        <?php foreach ($l_home as $a) {?>
+                                        <?php foreach ($l_contact as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
                                             <th><?=$a->tag?></th>

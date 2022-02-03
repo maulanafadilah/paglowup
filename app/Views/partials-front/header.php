@@ -19,9 +19,9 @@
 						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
 								<ul class="nav">									
 									<li class="menu-list <?php if($title == 'Home'){echo "active";}?>"><a href="/" class="tran3s">Home</a></li>
-									<li class="menu-list <?php if($title == 'Service'){echo "active";}?>"><a href="/service" class="tran3s">Service</a></li>
-									<li class="menu-list <?php if($title == 'Portofolio'){echo "active";}?>"><a href="/portofolio" class="tran3s">Portofolio</a></li>
-									<li class="menu-list <?php if($title == 'About'){echo "active";}?>"><a href="/about" class="tran3s">About Us</a></li>
+									<li class="menu-list <?php if($title == '#about'){echo "active";}?>"><a href="#about" class="tran3s">About Us</a></li>
+									<li class="menu-list <?php if($title == '#portofolio'){echo "active";}?>"><a href="#portofolio" class="tran3s">Portofolio</a></li>
+									<li class="menu-list <?php if($title == '#service'){echo "active";}?>"><a href="#service" class="tran3s">Service</a></li>
 									<li class="menu-list <?php if($title == 'Contact'){echo "active";}?>"><a href="/contact" class="tran3s">Contact Us</a></li>
 									<li class="login-button"><a href="<?=base_url()?>/login" class="tran3s">login</a></li>
 								</ul>

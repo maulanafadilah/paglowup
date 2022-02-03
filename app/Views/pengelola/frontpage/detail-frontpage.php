@@ -85,7 +85,7 @@
 
                                             <div class="card-body">
                                                 <div>
-                                                    <img src="<?=base_url()?>/assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
+                                                    <img src="<?=base_url()?>/webdata/uploads/images/frontpage/<?=$detail_frontpage->img1?>" class="img-fluid" alt="This is an image">
                                                 </div>
                                             </div><!-- end card-body -->
                                         </div><!-- end card -->
@@ -99,7 +99,7 @@
 
                                                 <div class="card-body">
                                                     <div>
-                                                        <img src="<?=base_url()?>/assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
+                                                        <img src="<?=base_url()?>/webdata/uploads/images/frontpage/<?=$detail_frontpage->img2?>" class="img-fluid" alt="This is an image">
                                                     </div>
                                                 </div><!-- end card-body -->
                                             </div><!-- end card -->
@@ -115,7 +115,7 @@
 
                                             <div class="card-body">
                                                 <div>
-                                                    <img src="<?=base_url()?>/assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
+                                                    <img src="<?=base_url()?>/webdata/uploads/images/frontpage/<?=$detail_frontpage->img3?>" class="img-fluid" alt="This is an image">
                                                 </div>
                                             </div><!-- end card-body -->
                                         </div><!-- end card -->
@@ -129,7 +129,7 @@
 
                                             <div class="card-body">
                                                 <div>
-                                                    <img src="<?=base_url()?>/assets/images/small/img-2.jpg" class="img-fluid" alt="Responsive image">
+                                                    <img src="<?=base_url()?>/webdata/uploads/images/frontpage/<?=$detail_frontpage->img4?>" class="img-fluid" alt="This is an image">
                                                 </div>
                                             </div><!-- end card-body -->
                                         </div><!-- end card -->

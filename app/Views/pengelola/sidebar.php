@@ -80,15 +80,9 @@
                             <a href="<?=base_url()?>/pengelola/frontpage/home" data-key="t-user-grid">
                                 <span data-key="t-authentication"><?= lang('Files.Home') ?></span>
                             </a>
-                        </li>
+                        </li>        
                         <li>
-                            <a href="pengelola-frontpage-about" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.About') ?></span>
-                            </a>
-                        </li>
-        
-                        <li>
-                            <a href="pengelola-frontpage-contact" data-key="t-user-grid">
+                            <a href="<?=base_url()?>/pengelola/frontpage/contact" data-key="t-user-grid">
                                 <span data-key="t-authentication"><?= lang('Files.Contact') ?></span>
                             </a>
                         </li>   
