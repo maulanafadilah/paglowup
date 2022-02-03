@@ -62,48 +62,6 @@
 						</div> <!-- /.container -->
 					</div> <!-- /.camera_caption -->
 				</div>
-				<div data-src="<?= base_url()?>/assets/images/home/slide-1.jpg">
-					<div class="camera_caption">
-						<div class="container">
-							<h5 class="wow fadeInUp animated">We’r Awesome</h5>
-							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s"><span>Digital Agency</span><br><span>That Help You to</span><br><span>Go Ahead</span></h1>
-							<a href="course-2-column.html" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Explore Now</a>
-							<div class="wow fadeInRight animated image-shape-one" data-wow-delay="0.33s">
-								<svg  version="1.1" class="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="778" height="576">
-									<clipPath class="clip1">
-										<use xlink:href="#shape-one" />
-									</clipPath>
-									<g clip-path="url(#shape-one)">
-										<image width="778" height="576" href="<?= base_url()?>/assets/images/home/1.jpg" class="banner-img-one">
-										</image>
-									</g>
-								</svg>
-							</div>
-							<div class="wow fadeInRight animated image-shape-two" data-wow-delay="0.39s"><div class="theme-shape-two"></div></div>
-						</div> <!-- /.container -->
-					</div> <!-- /.camera_caption -->
-				</div>
-				<div data-src="<?= base_url()?>/assets/images/home/slide-1.jpg">
-					<div class="camera_caption">
-						<div class="container">
-							<h5 class="wow fadeInUp animated">We’r Awesome</h5>
-							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s"><span>Digital Agency</span><br><span>That Help You to</span><br><span>Go Ahead</span></h1>
-							<a href="course-2-column.html" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Explore Now</a>
-							<div class="wow fadeInRight animated image-shape-one" data-wow-delay="0.33s">
-								<svg  version="1.1" class="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="778" height="576">
-									<clipPath class="clip1">
-										<use xlink:href="#shape-one" />
-									</clipPath>
-									<g clip-path="url(#shape-one)">
-										<image width="778" height="576" href="<?= base_url()?>/assets/images/home/1.jpg" class="banner-img-one">
-										</image>
-									</g>
-								</svg>
-							</div>
-							<div class="wow fadeInRight animated image-shape-two" data-wow-delay="0.39s"><div class="theme-shape-two"></div></div>
-						</div> <!-- /.container -->
-					</div> <!-- /.camera_caption -->
-				</div>
 			</div> <!-- /#theme-main-banner -->
 
 

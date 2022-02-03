@@ -73,23 +73,23 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="layout"></i>
-                        <span data-key="t-authentication"><?= lang('Files.Frontpage') ?></span>
+                        <span data-key="t-frontpage"><?= lang('Files.Frontpage') ?></span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="pengelola-frontpage-home" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.Home') ?></span>
+                            <a href="home" data-key="t-user-grid">
+                                <span data-key="t-home"><?= lang('Files.Home') ?></span>
                             </a>
                         </li>
                         <li>
-                            <a href="pengelola-frontpage-about" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.About') ?></span>
+                            <a href="about" data-key="t-user-grid">
+                                <span data-key="t-about"><?= lang('Files.About') ?></span>
                             </a>
                         </li>
         
                         <li>
                             <a href="pengelola-frontpage-contact" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.Contact') ?></span>
+                                <span data-key="t-contact"><?= lang('Files.Contact') ?></span>
                             </a>
                         </li>   
                     </ul>
