@@ -23,8 +23,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="designer-job-list" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.ListPekerjaan') ?></span>
+                            <a href="<?=base_url()?>/designer/pesanan/list" data-key="t-user-grid">
+                                <span data-key="t-authentication">List Pekerjaan</span>
                             </a>
                         </li>
                         <li>
