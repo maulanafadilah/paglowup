@@ -60,9 +60,11 @@
                                         <a class="nav-link px-3 <?=(isset($_GET['t']))?'':'active'?>" data-bs-toggle="tab" href="#tabDetail" role="tab">Detail</a>
                                     </li>
                                     
+                                    <?php if($l_detail->idstatus > 2 && $l_detail->idstatus < 8){?>
                                     <li class="nav-item">
                                         <a class="nav-link px-3 <?=(isset($_GET['t']))?($_GET['t'] == 2)?'active':'':''?>" data-bs-toggle="tab" href="#tabChat" role="tab">Komentar</a>
                                     </li>
+                                    <?php }?>
                                 </ul>
                             </div>
                             <!-- end card body -->
@@ -158,24 +160,6 @@
                                                         font-size-16">
                                                         <?=$l_detail->statusdesc?>
                                                     </div>
-                                                    <?php if (!is_null($l_detail->paymentproof)){?>
-                                                    <br>
-                                                    <br>
-                                                    <a href="<?=base_url()?>/webdata/uploads/images/cs/paypr/<?=$l_detail->paymentproof?>" target="_blank">
-                                                        Bukti Pembayaran <i class="fa fa-external-link-alt"></i>
-                                                    </a>
-                                                    <?php }?>
-                                                    <br>
-                                                    <br>
-                                                    <?php if($l_detail->idstatus == 1 && is_null($l_detail->idcs)){?>
-                                                    <button type="button" data-bs-toggle="modal" data-bs-target="#verifPayment" class="btn btn-sm btn-success">
-                                                        <i class="fa fa-check"></i> Verifikasi Pembayaran
-                                                    </button>
-                                                    <?php }else{ ?>
-                                                    <button type="button" class="btn btn-sm btn-success" disabled>
-                                                        <i class="fa fa-check"></i> Telah diverifikasi oleh <?=$l_detail->cs_name?>
-                                                    </button>
-                                                    <?php } ?>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -187,62 +171,42 @@
                                                             <?=date_format($date, 'd F Y h:i:s A')?>
                                                         </p>
                                                     </div>
-
-                                                    <div class="mt-4">
-                                                        <h5 class="font-size-15">Metode Pembayaran:</h5>
-                                                        <p class="mb-1">Transfer & Upload Bukti Bayar</p>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="py-2 mt-3">
-                                            <h5 class="font-size-15">Ringkasan Pesanan</h5>
-                                        </div>
-                                        <div class="p-4 border rounded">
-                                            <div class="table-responsive">
-                                                <table class="table table-nowrap align-middle mb-0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Item</th>
-                                                            <th class="text-end" style="width: 120px;">Harga</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <h5 class="font-size-15 mb-1">Kategori: <?=$l_detail->category?></h5>
-                                                                <p class="font-size-13 text-muted mb-0">Jenis Pesanan: <?=$l_detail->orderdesc?></p>
-                                                            </td>
-                                                            <td class="text-end">Rp.<?=$l_detail->price?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row" colspan="1" class="text-end">Diskon</th>
-                                                            <td class="text-end">
-                                                                <?=(!is_null($l_detail->iddiscount))?'Rp. '.($l_detail->price*($l_detail->discountamount/100)):'Rp. 0'?>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row" colspan="1" class="border-0 text-end">Total</th>
-                                                            <td class="border-0 text-end">
-                                                                <h4 class="m-0">
-                                                                    Rp.<?=$l_detail->totalpayment?>
-                                                                </h4>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
                                             </div>
                                         </div>
                                         <div class="d-print-none mt-3">
                                             <div class="float-end">
-                                                <?php if ($l_detail->idstatus == 2){?>
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#approveAg" class="btn btn-success">
-                                                    <i class="fa fa-check"></i> Approve Persetujuan
+                                                <?php if ($l_detail->idstatus == 5){?>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#uploadPrev" class="btn btn-info">
+                                                    <i class="fa fa-upload"></i> Kirim Preview
+                                                </button>
+                                                <?php }?>
+                                                <?php if ($l_detail->idstatus == 6){?>
+                                                <button type="button" class="btn btn-info" disabled>
+                                                    <i class="fa fa-check"></i> Preview telah dikirim
+                                                </button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#uploadWork" class="btn btn-info">
+                                                    <i class="fa fa-upload"></i> Upload File HD
                                                 </button>
                                                 <?php }?>
                                             </div>
                                         </div>
+
+                                        <?php if($l_detail->idstatus == 8){?>
+                                        <hr class="my-4">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div>
+                                                    <h5 class="font-size-15 mb-3">Rating desain:</h5>
+                                                    <div id="rating-desain"></div><br><br>
+                                                    <?php if(!is_null($l_detail->reviewdesigner)){?>
+                                                    <div><?=$l_detail->reviewdesigner?></div>
+                                                    <?php }?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php }?>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -251,11 +215,11 @@
                     </div>
                     <!-- end tab panel -->
 
+                    <?php if($l_detail->idstatus > 2 && $l_detail->idstatus < 8){?>
                     <div class="tab-pane <?=(isset($_GET['t']))?($_GET['t'] == 2)?'active':'':''?>" id="tabChat" role="tabpanel">
-                    <?php if($l_detail->idstatus > 2){
-                        echo $this->include('designer/pesanan/comment-csde');
-                    }?>
+                        <?=$this->include('designer/pesanan/comment-csde')?>
                     </div>
+                    <?php }?>
                     <!-- end tab panel -->
 
                 </div> <!-- end tab content -->
@@ -271,66 +235,121 @@
 </div>
 <!-- END layout-wrapper -->
 
-<?php if($l_detail->idstatus == 1 && is_null($l_detail->idcs)){?>
+<?php if($l_detail->idstatus > 2){?>
 <!-- sample modal content -->
-<div id="verifPayment" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="sendAttachmentCSDE" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Verifikasi Pembayaran</h5>
+                <h5 class="modal-title" id="myModalLabel">Tambah Attachment</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Konfirmasi pembayaran untuk pemesanan ini?
+                <form id="konfirAdd" action="<?=base_url()?>/designer/pesanan/send_comment_csde/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
+                    <div class="mb-3">
+                        <label class="col-sm-3 col-form-label">Attachment 1</label>
+                        <input type="file" name="file1" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-sm-3 col-form-label">Attachment 2</label>
+                        <input type="file" name="file2" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>Komentar</label>
+                        <input type="text" name="comment" class="form-control" required>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <a href="<?=base_url()?>/cs/pesanan/verif_payment/<?=$l_detail->idorder?>" class="btn btn-primary">Konfirmasi</a>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<?php } ?>
-
-<?php if($l_detail->idstatus == 2){?>
-<!-- sample modal content -->
-<div id="approveAg" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Verifikasi Pembayaran</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Approve Persetujuan?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <a href="<?=base_url()?>/cs/pesanan/approve_umkm/<?=$l_detail->idorder?>" class="btn btn-primary">Konfirmasi</a>
+                <button type="submit" form="konfirAdd" class="btn btn-primary">Kirim</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <?php }?>
 
+
+<?php if($l_detail->idstatus == 4 && $l_detail->idstatus == 7){?>
 <!-- sample modal content -->
-<div id="setDesigner" class="modal fade" tabindex="-1">
+<div id="reqStatusReviewCS" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Set Designer</h5>
+                <h5 class="modal-title" id="myModalLabel">Tambah Attachment</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Pilih Designer untuk menyelesaikan pesanan ini?
+                Ingin Mengajukan Review ke CS?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <span class="konfirmasi-set-button"></span>
+                <a href="<?=base_url()?>/designer/pesanan/req_review_cs/<?=$l_detail->idorder?>" class="btn btn-primary">Ya</a>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<?php }?>
+
+<?php if($l_detail->idstatus == 5){ ?>
+<!-- sample modal content -->
+<div id="uploadPrev" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Upload Preview Untuk UMKM</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="upPrevAcc" action="<?=base_url()?>/designer/pesanan/send_prev_umkm/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
+                    <div class="mb-3">
+                        <label class="col-sm-3 col-form-label">Attachment 1</label>
+                        <input type="file" name="prev1" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-sm-3 col-form-label">Attachment 2</label>
+                        <input type="file" name="prev2" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" form="upPrevAcc" class="btn btn-primary">Kirim</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<?php }?>
+
+<?php if($l_detail->idstatus == 6){ ?>
+<!-- sample modal content -->
+<div id="uploadWork" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Upload File</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadFileWork" action="<?=base_url()?>/designer/pesanan/upload_work/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
+                    <div class="mb-3">
+                        <label class="col-sm-3 col-form-label">Attachment 1</label>
+                        <input type="file" name="orderedfile1" accept="image/jpg,image/jpeg,image/png,image/webp,application/vnd.rar,application/zip" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-sm-3 col-form-label">Attachment 1</label>
+                        <input type="file" name="orderedfile2" accept="image/jpg,image/jpeg,image/png,image/webp,application/vnd.rar,application/zip" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" form="uploadFileWork" class="btn btn-primary">Upload</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<?php }?>
 
 <?= $this->include('designer/right-sidebar') ?>
 
@@ -345,20 +364,23 @@
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
+<!-- rater js -->
+<script src="<?=base_url()?>/assets/libs/rater-js/index.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#setDesigner').on('show.bs.modal', function(e) {
-            var rowid = $(e.relatedTarget).data('id');
-            $.ajax({
-                type: 'POST',
-                url: '<?= base_url() ?>/cs/pesanan/konfirSet/<?=$l_detail->idorder?>',
-                data: 'rowid=' + rowid,
-                success: function(data) {
-                    $('.konfirmasi-set-button').html(data); //menampilkan data ke dalam modal
-                }
-            });
-        });
+function onload(event) {
+    // rating-desain
+    var basicRating = raterJs( {
+        starSize:30,
+        readOnly: true, 
+        rating: <?php echo $l_detail->designerrating?>,
+        element:document.querySelector("#rating-desain"), 
+        rateCallback:function rateCallback(rating, done) {
+            this.setRating(rating); 
+            done(); 
+        }
     });
+}
+window.addEventListener("load", onload, false); 
 </script>
 
 <script src="<?=base_url()?>/assets/js/app.js"></script>

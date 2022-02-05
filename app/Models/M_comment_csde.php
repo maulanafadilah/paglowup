@@ -37,6 +37,7 @@
         tb_designer.designer_pic as designer_pic
         FROM tb_comment_csde LEFT JOIN tb_cs USING (idcs)
           LEFT JOIN tb_designer using (iddesigner)
+          WHERE idorder = $idorder
           ORDER BY commenttime";
 
       return $this->db->query($sql)->getResult();

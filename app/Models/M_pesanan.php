@@ -140,6 +140,38 @@
       $builder->where('idorder', $idorder);
       $builder->update();
     }
+
+    public function reqReviewCsByDesigner($idorder){
+      $builder = $this->db->table('tb_order');
+      $builder->set('idstatus', 5);
+      $builder->where('idorder', $idorder);
+      $builder->update();
+    }
+
+    public function reqRevision($idorder){
+      $builder = $this->db->table('tb_order');
+      $builder->set('idstatus', 7);
+      $builder->where('idorder', $idorder);
+      $builder->update();
+    }
+
+    public function uploadPreview($dataset, $idorder){
+      $builder = $this->db->table('tb_order');
+      $builder->where('idorder', $idorder);
+      $builder->update($dataset);
+    }
+
+    public function sendReviewByUmkm($dataset, $idorder){
+      $builder = $this->db->table('tb_order');
+      $builder->where('idorder', $idorder);
+      $builder->update($dataset);
+    }
+
+    // public function uploadWorkByDesigner($dataset, $idorder){
+    //   $builder = $this->db->table('tb_order');
+    //   $builder->where('idorder', $idorder);
+    //   $builder->update($dataset);
+    // }
 	}
 
 ?>

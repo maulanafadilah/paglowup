@@ -37,6 +37,7 @@
         tb_umkm.umkm_pic as umkm_pic
         FROM tb_comment_csum LEFT JOIN tb_cs USING (idcs)
           LEFT JOIN tb_umkm using (idumkm)
+          WHERE idorder = $idorder
           ORDER BY commenttime";
 
       return $this->db->query($sql)->getResult();

@@ -84,38 +84,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-8 col-5">
-                            <ul class="list-inline user-chat-nav text-end mb-0">
-                                <li class="list-inline-item">
-                                    <div class="dropdown">
-                                        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="bx bx-search"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-md p-2">
-                                            <form class="px-2">
-                                                <div>
-                                                    <input type="text" class="form-control border bg-soft-light" placeholder="Search...">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="list-inline-item">
-                                    <div class="dropdown">
-                                        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="bx bx-dots-horizontal-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">Profile</a>
-                                            <a class="dropdown-item" href="#">Archive</a>
-                                            <a class="dropdown-item" href="#">Muted</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
 
@@ -141,7 +109,7 @@
                                             
                                             <?php if(!is_null($csum->file1)){?>
                                             <li class="list-inline-item message-img-list">
-                                                <a class="d-inline-block m-1" href="">
+                                                <a class="d-inline-block m-1" href="<?=base_url()?>/webdata/uploads/comment/<?=$csum->file1?>" target="_blank">
                                                     <img src="<?=base_url()?>/webdata/uploads/comment/<?=$csum->file1?>" alt="" class="rounded img-thumbnail">
                                                 </a>
                                             </li>
@@ -149,7 +117,7 @@
 
                                             <?php if(!is_null($csum->file2)){?>
                                             <li class="list-inline-item message-img-list">
-                                                <a class="d-inline-block m-1" href="">
+                                                <a class="d-inline-block m-1" href="<?=base_url()?>/webdata/uploads/comment/<?=$csum->file2?>" target="_blank">
                                                     <img src="<?=base_url()?>/webdata/uploads/comment/<?=$csum->file2?>" alt="" class="rounded img-thumbnail">
                                                 </a>
                                             </li>
@@ -175,7 +143,7 @@
                                             
                                             <?php if(!is_null($csum->file1)){?>
                                             <li class="list-inline-item message-img-list">
-                                                <a class="d-inline-block m-1" href="">
+                                                <a class="d-inline-block m-1" href="<?=base_url()?>/webdata/uploads/comment/<?=$csum->file1?>" target="_blank">
                                                     <img src="<?=base_url()?>/webdata/uploads/comment/<?=$csum->file1?>" alt="" class="rounded img-thumbnail">
                                                 </a>
                                             </li>
@@ -183,7 +151,7 @@
 
                                             <?php if(!is_null($csum->file2)){?>
                                             <li class="list-inline-item message-img-list">
-                                                <a class="d-inline-block m-1" href="">
+                                                <a class="d-inline-block m-1" href="<?=base_url()?>/webdata/uploads/comment/<?=$csum->file2?>" target="_blank">
                                                     <img src="<?=base_url()?>/webdata/uploads/comment/<?=$csum->file2?>" alt="" class="rounded img-thumbnail">
                                                 </a>
                                             </li>
@@ -202,7 +170,7 @@
                 </div>
 
                 <div class="p-3 border-top">
-                    <form id="sendComment" method="post" action="<?=base_url()?>/cs/pesanan/send_comment_csum/<?=$l_detail->idorder?>">
+                    <form id="sendCommentCSUM" method="post" action="<?=base_url()?>/cs/pesanan/send_comment_csum/<?=$l_detail->idorder?>">
                         <div class="row">
                             <div class="col">
                                 <div class="position-relative">
@@ -210,7 +178,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <a class="btn btn-secondary w-md waves-effect waves-light">
+                                <a class="btn btn-secondary w-md waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#sendAttachmentCSUM">
                                     <span class="d-none d-sm-inline-block me-2">Attachment</span><i class="mdi mdi-paperclip float-end"></i>
                                 </a>
                             </div>

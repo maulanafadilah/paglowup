@@ -85,6 +85,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-8 col-5">
+                            <ul class="list-inline user-chat-nav text-end mb-0">
+                                <li class="list-inline-item">
+                                    <div class="dropdown">
+                                        <?php if($l_detail->idstatus == 4 && $l_detail->idstatus == 7){?>
+                                        <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#reqStatusReviewCS">
+                                            Ajukan Status Review CS
+                                        </button>
+                                        <?php }elseif($l_detail->idstatus == 5){?>
+                                        <button class="btn btn-success" type="button" disabled>
+                                            Sedang Direview CS
+                                        </button>
+                                        <?php }?>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -102,40 +119,6 @@
                             <div class="conversation-list">
                                 <div class="ctext-wrap">
                                     <div class="ctext-wrap-content">
-                                        <h5 class="conversation-name"><span class="user-name"><?=$csde->cs_name?></span> <span class="time"><?=$csde->commenttime?></span></h5>
-                                        <p class="mb-0"><?=$csde->comment?></p>
-                                        
-                                        <?php if (!is_null($csde->file1) || !is_null($csde->file2)){?>
-                                        <ul class="list-inline message-img mt-3  mb-0">
-                                            
-                                            <?php if(!is_null($csde->file1)){?>
-                                            <li class="list-inline-item message-img-list">
-                                                <a class="d-inline-block m-1" href="">
-                                                    <img src="<?=base_url()?>/webdata/uploads/comment/<?=$csde->file1?>" alt="" class="rounded img-thumbnail">
-                                                </a>
-                                            </li>
-                                            <?php } ?>
-
-                                            <?php if(!is_null($csde->file2)){?>
-                                            <li class="list-inline-item message-img-list">
-                                                <a class="d-inline-block m-1" href="">
-                                                    <img src="<?=base_url()?>/webdata/uploads/comment/<?=$csde->file2?>" alt="" class="rounded img-thumbnail">
-                                                </a>
-                                            </li>
-                                            <?php } ?>
-                                        </ul>
-                                        <?php }?>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-                        <?php }}else{?>
-                        <li>
-                            <div class="conversation-list">
-                                <div class="ctext-wrap">
-                                    <div class="ctext-wrap-content">
                                         <h5 class="conversation-name"><span class="user-name"><?=$csde->designer_name?></span> <span class="time"><?=$csde->commenttime?></span></h5>
                                         <p class="mb-0"><?=$csde->comment?></p>
                                         
@@ -144,7 +127,7 @@
                                             
                                             <?php if(!is_null($csde->file1)){?>
                                             <li class="list-inline-item message-img-list">
-                                                <a class="d-inline-block m-1" href="">
+                                                <a class="d-inline-block m-1" href="<?=base_url()?>/webdata/uploads/comment/<?=$csde->file1?>" target="_blank">
                                                     <img src="<?=base_url()?>/webdata/uploads/comment/<?=$csde->file1?>" alt="" class="rounded img-thumbnail">
                                                 </a>
                                             </li>
@@ -152,7 +135,7 @@
 
                                             <?php if(!is_null($csde->file2)){?>
                                             <li class="list-inline-item message-img-list">
-                                                <a class="d-inline-block m-1" href="">
+                                                <a class="d-inline-block m-1" href="<?=base_url()?>/webdata/uploads/comment/<?=$csde->file2?>" target="_blank">
                                                     <img src="<?=base_url()?>/webdata/uploads/comment/<?=$csde->file2?>" alt="" class="rounded img-thumbnail">
                                                 </a>
                                             </li>
@@ -165,13 +148,47 @@
                             </div>
 
                         </li>
-                        <?php }}?>
+                        <?php }else{?>
+                        <li>
+                            <div class="conversation-list">
+                                <div class="ctext-wrap">
+                                    <div class="ctext-wrap-content">
+                                        <h5 class="conversation-name"><span class="user-name"><?=$csde->cs_name?></span> <span class="time"><?=$csde->commenttime?></span></h5>
+                                        <p class="mb-0"><?=$csde->comment?></p>
+                                        
+                                        <?php if (!is_null($csde->file1) || !is_null($csde->file2)){?>
+                                        <ul class="list-inline message-img mt-3  mb-0">
+                                            
+                                            <?php if(!is_null($csde->file1)){?>
+                                            <li class="list-inline-item message-img-list">
+                                                <a class="d-inline-block m-1" href="<?=base_url()?>/webdata/uploads/comment/<?=$csde->file1?>" target="_blank">
+                                                    <img src="<?=base_url()?>/webdata/uploads/comment/<?=$csde->file1?>" alt="" class="rounded img-thumbnail">
+                                                </a>
+                                            </li>
+                                            <?php } ?>
+
+                                            <?php if(!is_null($csde->file2)){?>
+                                            <li class="list-inline-item message-img-list">
+                                                <a class="d-inline-block m-1" href="<?=base_url()?>/webdata/uploads/comment/<?=$csde->file2?>" target="_blank">
+                                                    <img src="<?=base_url()?>/webdata/uploads/comment/<?=$csde->file2?>" alt="" class="rounded img-thumbnail">
+                                                </a>
+                                            </li>
+                                            <?php } ?>
+                                        </ul>
+                                        <?php }?>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                        <?php }}}?>
 
                     </ul>
                 </div>
 
                 <div class="p-3 border-top">
-                    <form id="sendComment" method="post" action="<?=base_url()?>/cs/pesanan/send_comment_csde/<?=$l_detail->idorder?>">
+                    <form id="sendComment" method="post" action="<?=base_url()?>/designer/pesanan/send_comment_csde/<?=$l_detail->idorder?>">
                         <div class="row">
                             <div class="col">
                                 <div class="position-relative">
@@ -179,7 +196,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <a class="btn btn-secondary w-md waves-effect waves-light">
+                                <a class="btn btn-secondary w-md waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#sendAttachmentCSDE">
                                     <span class="d-none d-sm-inline-block me-2">Attachment</span><i class="mdi mdi-paperclip float-end"></i>
                                 </a>
                             </div>

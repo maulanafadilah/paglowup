@@ -4,6 +4,7 @@
 	use App\Controllers\BaseController;
 	use App\Models\M_umkm;
 	use App\Models\M_pesanan;
+	use App\Models\M_comment_csum;
 	use App\Models\M_user;
 	use CodeIgniter\Files\File;
 
@@ -12,6 +13,7 @@
 		function __construct(){
 			$this->m_umkm = new M_umkm();
 			$this->m_user = new M_user();
+			$this->m_comment_csum = new M_comment_csum();
 			$this->m_pesanan = new M_pesanan();
 			$this->request = \Config\Services::request();
 		}
@@ -58,11 +60,13 @@
 			}
 
 			$l_detail = $this->m_pesanan->getOrderById($idorder)[0];
+			$l_comments_csum = $this->m_comment_csum->getCommentsByIdOrder($idorder);
 			$detilUser = $this->m_umkm->getJoinUserUmkm($iduser)[0];
 
 			$data = [
 				'title_meta' => view('partials/title-meta', ['title' => 'Detail Pemesanan']),
 				'l_detail' => $l_detail,
+				'l_comments_csum' => $l_comments_csum,
 				'detail_user' => $detilUser
 			];
 
@@ -107,10 +111,10 @@
 				'idstatus' => 1
 			];
 			
-
 			if (isset($_POST['discountcode'])) {
 				$cek_kode = $this->m_pesanan->countDiscountByCode($_POST['discountcode'])[0]->hitung;
-				if ($cek_kode != 0) {
+				$flag = $this->m_pesanan->getDiscountByCode($discountcode)[0]->flag;
+				if ($cek_kode != 0 && $flag == 1) {
 					$iddiscount = $this->m_pesanan->getDiscountByCode($_POST['discountcode'])[0]->iddiscount;
 					$discountamount = $this->m_pesanan->getDiscountByCode($_POST['discountcode'])[0]->discountamount;
 					$totalpayment = round($price - ($price*($discountamount/100)));
@@ -219,6 +223,84 @@
 
 			session()->setFlashdata($alert);
 			return redirect()->to(base_url('umkm/pesanan/detail/'.$idorder));
+		}
+
+		public function send_comment_csum($idorder){
+			$this->newUser();
+			$iduser = session()->get('iduser');
+			$idumkm = $this->m_umkm->getJoinUserUmkm($iduser)[0]->idumkm;
+			$comment = $_POST['comment'];
+			$commenttime = date('Y-m-d h:i:s');
+
+			$dataset = [
+				'idumkm' => $idumkm,
+				'idorder' => $idorder,
+				'comment' => $comment,
+				'commenttime' => $commenttime
+			];
+
+			define('MB', 1048576);
+			if (isset($_POST['file1']) || isset($_POST['file2'])) {
+				if ($_FILES['file1']['size'] > 4*MB) {
+					$v_foto = TRUE;
+				}
+				elseif ($_FILES['file1']['size'] != 0) {
+					$file1 = $this->upload_file1($dataset)['name'];
+					$dataset += ['file1' => $file1];
+				}
+
+				if ($_FILES['file2']['size'] > 4*MB) {
+					$v_foto = TRUE;
+				}
+				elseif ($_FILES['file2']['size'] != 0) {
+					$file2 = $this->upload_file2($dataset)['name'];
+					$dataset += ['file2' => $file2];
+				}
+
+				if ($v_foto){
+					$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+						File terlalu besar
+					</div>';
+					$data_session = [
+						'alert' => $alert
+					];
+
+					session()->setFlashdata($data_session);
+					return redirect()->to(base_url('umkm/pesanan/detail/'.$idorder.'?t=2'));
+				}
+			}
+
+			$this->m_comment_csum->sendComment($dataset);
+			return redirect()->to(base_url('umkm/pesanan/detail/'.$idorder.'#chat'));
+		}
+
+		public function send_review($idorder){
+			$this->newUser();
+			$iduser = session()->get('iduser');
+			$idumkm = $this->m_umkm->getJoinUserUmkm($iduser)[0]->idumkm;
+
+			$designerrating = $_POST['designerrating'];
+			$reviewdesigner = $_POST['reviewdesigner'];
+			$csrating = $_POST['csrating'];
+			$reviewcs = $_POST['reviewcs'];
+
+
+			$dataset = [
+				'designerrating' => $designerrating,
+				'reviewdesigner' => $reviewdesigner,
+				'csrating' => $csrating,
+				'reviewcs' => $reviewcs,
+				'idstatus' => 8
+			];
+
+			$this->m_pesanan->sendReviewByUmkm($dataset, $idorder);
+
+			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
+				Berhasil Review, anda bisa mengunduh desain HD
+			</div>';
+
+			session()->setFlashdata($alert);
+			return redirect()->to(base_url('umkm/pesanan/detail/'.$idorder.'?t=2'));
 		}
 
     public function upload_img1(){
@@ -348,6 +430,74 @@
       	$newName = 'file4_'.$img->getRandomName();
 
       	$img->move(ROOTPATH.'public/webdata/uploads/images/umkm/orders/', $newName);
+      	$data = [
+      		'name' => $img->getName(),
+      		'type' => $img->getClientMimeType()
+      	];
+
+      	return $data;
+      }
+    }
+
+    public function upload_file1($dataset){
+      $validationRule = [
+        'file1' => [
+          'label' => 'Image File',
+          'rules' => 'uploaded[file1]'
+            . '|is_image[file1]'
+            . '|mime_in[file1,image/jpg,image/jpeg,image/png,image/webp]'
+            . '|max_size[file1,4000]',
+        ],
+      ];
+
+      if (! $this->validate($validationRule)) {
+        $data = $this->validator->getErrors();
+				
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					Format file salah
+				</div>';
+				session()->setFlashdata('notif', $alert);
+
+				return redirect()->to(base_url('umkm/pesanan/detail/'.$dataset['idorder'].'?t=2'));
+      }else{
+      	$img = $this->request->getFile('file1');
+      	$newName = 'file1_'.'_'.$dataset['idcs'].$img->getRandomName();
+
+      	$img->move(ROOTPATH.'public/webdata/uploads/comment/', $newName);
+      	$data = [
+      		'name' => $img->getName(),
+      		'type' => $img->getClientMimeType()
+      	];
+
+      	return $data;
+      }
+    }
+
+    public function upload_file2($dataset){
+      $validationRule = [
+        'file2' => [
+          'label' => 'Image File',
+          'rules' => 'uploaded[file2]'
+            . '|is_image[file2]'
+            . '|mime_in[file2,image/jpg,image/jpeg,image/png,image/webp]'
+            . '|max_size[file2,4000]',
+        ],
+      ];
+
+      if (! $this->validate($validationRule)) {
+        $data = $this->validator->getErrors();
+				
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					Format file salah
+				</div>';
+				session()->setFlashdata('notif', $alert);
+
+				return redirect()->to(base_url('umkm/pesanan/detail/'.$dataset['idorder'].'?t=2'));
+      }else{
+      	$img = $this->request->getFile('file2');
+      	$newName = 'file2_'.'_'.$dataset['idcs'].$img->getRandomName();
+
+      	$img->move(ROOTPATH.'public/webdata/uploads/comment/', $newName);
       	$data = [
       		'name' => $img->getName(),
       		'type' => $img->getClientMimeType()

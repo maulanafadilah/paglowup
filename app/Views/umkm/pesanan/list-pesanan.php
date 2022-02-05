@@ -61,7 +61,7 @@
                                 <a href="<?=base_url()?>/umkm/pesanan/add" type="button" class="btn btn-info">
                                     Tambah Pemesanan
                                 </a>
-                                <table class="table dtable table-bordered dt-responsive table-sm nowrap w-100">
+                                <table class="table dtable align-middle dt-responsive table-check nowrap" style="border-collapse: collapse; border-spacing: 0 8px; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th width="7%">No.</th>
@@ -87,10 +87,22 @@
                                                 }
                                                 ?>
                                             </td>
-                                            <td><?=$a->idstatus?></td>
+                                            <td>
+                                                <span class="badge 
+                                                <?php if($a->idstatus == 1 || $a->idstatus == 3 || $a->idstatus == 4 || $a->idstatus == 5 || $a->idstatus == 6){
+                                                    echo 'badge-soft-danger';
+                                                }elseif($a->idstatus == 2 || $a->idstatus == 7){
+                                                    echo 'badge-soft-success';
+                                                }elseif($a->idstatus == 8){
+                                                    echo 'badge-soft-secondary';
+                                                }elseif($a->idstatus == 9){
+                                                    echo 'badge-soft-danger';
+                                                }?> font-size-12">
+                                                    <?=$a->statusdesc?>
+                                                </span></td>
                                             <td>
                                                 <div class="d-grid gap-2">
-                                                    <a href="<?=base_url()?>/umkm/pesanan/detail/<?=$a->idorder?>" class="btn btn-sm btn-outline-info">detail</a>
+                                                    <a href="<?=base_url()?>/umkm/pesanan/detail/<?=$a->idorder?>" class="btn btn-outline-info">Detail</a>
                                                 </div>
                                             </td>
                                         </tr>
