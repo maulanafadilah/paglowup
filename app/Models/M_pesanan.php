@@ -166,12 +166,11 @@
       $builder->where('idorder', $idorder);
       $builder->update($dataset);
     }
-
-    // public function uploadWorkByDesigner($dataset, $idorder){
-    //   $builder = $this->db->table('tb_order');
-    //   $builder->where('idorder', $idorder);
-    //   $builder->update($dataset);
-    // }
+    
+    public function addDepositDesigner($dataset){
+      $builder = $this->db->table('tb_deposit');
+      $builder->insert($data);
+    }
 	}
 
 ?>

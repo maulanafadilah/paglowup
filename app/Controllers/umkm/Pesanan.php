@@ -293,6 +293,16 @@
 				'idstatus' => 8
 			];
 
+			$amount = $this->m_pesanan->getOrderById($idorder)[0]->price;
+			$iddesigner = $this->m_pesanan->getOrderById($idorder)[0]->iddesigner;
+
+			$deposit = [
+				'amount' => $amount,
+				'iddesigner' => $iddesigner,
+				'idorder' => $idorder
+			];
+
+			$this->m_pesanan->addDepositDesigner($dataset);
 			$this->m_pesanan->sendReviewByUmkm($dataset, $idorder);
 
 			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
