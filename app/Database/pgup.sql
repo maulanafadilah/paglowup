@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2022 at 11:34 AM
+-- Generation Time: Feb 05, 2022 at 06:15 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -24,20 +24,53 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_comment`
+-- Table structure for table `tb_comment_csde`
 --
 
-CREATE TABLE `tb_comment` (
+CREATE TABLE `tb_comment_csde` (
   `idcomment` int(11) NOT NULL,
   `idorder` int(11) DEFAULT NULL,
-  `idumkm` int(11) DEFAULT NULL,
   `idcs` int(11) DEFAULT NULL,
   `iddesigner` int(11) DEFAULT NULL,
   `comment` text NOT NULL,
   `file1` text DEFAULT NULL,
   `file2` text DEFAULT NULL,
   `commenttime` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_comment_csde`
+--
+
+INSERT INTO `tb_comment_csde` (`idcomment`, `idorder`, `idcs`, `iddesigner`, `comment`, `file1`, `file2`, `commenttime`) VALUES
+(1, 2, NULL, 1, 'lorem ipsum dolor sit amet', NULL, NULL, '2022-02-03 07:44:16'),
+(2, 2, NULL, 1, 'ini contoh nya', 'file1_1643940094_4179e2a009bfaed5aa11.jpg_1', 'file2_1643940094_0f2bb239aeaa8d68422a.jpg_1', '2022-02-03 08:01:34'),
+(3, 2, 1, NULL, 'aduh gimana yak', NULL, NULL, '2022-02-04 02:30:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_comment_csum`
+--
+
+CREATE TABLE `tb_comment_csum` (
+  `idcomment` int(11) NOT NULL,
+  `idorder` int(11) DEFAULT NULL,
+  `idumkm` int(11) DEFAULT NULL,
+  `idcs` int(11) DEFAULT NULL,
+  `comment` text NOT NULL,
+  `file1` text DEFAULT NULL,
+  `file2` text DEFAULT NULL,
+  `commenttime` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_comment_csum`
+--
+
+INSERT INTO `tb_comment_csum` (`idcomment`, `idorder`, `idumkm`, `idcs`, `comment`, `file1`, `file2`, `commenttime`) VALUES
+(1, 2, NULL, 1, 'testing', NULL, NULL, '2022-02-03 09:32:19'),
+(2, 2, NULL, 1, 'testing 2', NULL, NULL, '2022-02-03 09:36:13');
 
 -- --------------------------------------------------------
 
@@ -53,6 +86,13 @@ CREATE TABLE `tb_cs` (
   `cs_pic` text DEFAULT NULL,
   `iduser` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_cs`
+--
+
+INSERT INTO `tb_cs` (`idcs`, `name`, `phone`, `whatsapp`, `cs_pic`, `iduser`) VALUES
+(1, 'Hafidz Perdana', '08228567385', '08228567385', 'image.jpg', 8);
 
 -- --------------------------------------------------------
 
@@ -103,7 +143,7 @@ INSERT INTO `tb_designer` (`iddesigner`, `name`, `description`, `phone`, `whatsa
 
 CREATE TABLE `tb_order` (
   `idorder` int(11) NOT NULL,
-  `orderdate` date NOT NULL,
+  `orderdate` datetime NOT NULL,
   `idumkm` int(11) NOT NULL,
   `idcs` int(11) DEFAULT NULL,
   `iddesigner` int(11) DEFAULT NULL,
@@ -123,8 +163,17 @@ CREATE TABLE `tb_order` (
   `orderedfile1` text DEFAULT NULL,
   `orderedfile2` text DEFAULT NULL,
   `designerrating` int(1) DEFAULT NULL,
-  `csrating` int(1) DEFAULT NULL
+  `csrating` int(1) DEFAULT NULL,
+  `reviewcs` text DEFAULT NULL,
+  `reviewdesigner` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_order`
+--
+
+INSERT INTO `tb_order` (`idorder`, `orderdate`, `idumkm`, `idcs`, `iddesigner`, `description`, `paymentproof`, `totalpayment`, `file1`, `file2`, `file3`, `file4`, `idstatus`, `idprodcat`, `idgrouporder`, `iddiscount`, `designpreview1`, `designpreview2`, `orderedfile1`, `orderedfile2`, `designerrating`, `csrating`, `reviewcs`, `reviewdesigner`) VALUES
+(2, '2022-02-02 00:00:00', 1, 1, 1, '<p>ditampilkan sebaik mungkin</p>', 'paypr2121_1643858732_6690dea5d4cd7a5cae0f.jpg', 250000, NULL, NULL, NULL, NULL, 8, 2, 1, NULL, 'prev1_1643981521_30184005eef2c81de027.jpg', 'file2_1643981521_6610da005146aaf61b3c.png', 'orderedfile1_1644030757_a080ac025854a2217442.zip', 'orderedfile2_1644030757_a89a852248e136397d3e.jpg', 4, 5, '', '');
 
 -- --------------------------------------------------------
 
@@ -162,6 +211,13 @@ CREATE TABLE `tb_portfolio` (
   `url` text NOT NULL,
   `iddesigner` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_portfolio`
+--
+
+INSERT INTO `tb_portfolio` (`idportfolio`, `img`, `description`, `url`, `iddesigner`) VALUES
+(1, '1643107598_b9b4c13c3084678539fb.jpg', 'sample portfolio 1', 'example.com', 1);
 
 -- --------------------------------------------------------
 
@@ -231,7 +287,8 @@ INSERT INTO `tb_user` (`iduser`, `username`, `pass`, `email`, `flag`, `idgroup`)
 (2, 'pengelola2', '9966b7ee997de5c313b743584f6b8830', 'egn234@gmail.com', 1, 1),
 (5, 'umkm1', '25d55ad283aa400af464c76d713c07ad', 'umkm1@gmail.com', 1, 4),
 (6, 'umkm2', '25d55ad283aa400af464c76d713c07ad', 'umkm2@gmail.com', 1, 4),
-(7, 'designer1', '25d55ad283aa400af464c76d713c07ad', 'designer1@gmail.com', 1, 3);
+(7, 'designer1', '25d55ad283aa400af464c76d713c07ad', 'designer1@gmail.com', 1, 3),
+(8, 'custserv1', '42a9e5f9920ad5ff82ac73d8152fd03a', 'custserv1@gmail.com', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -262,6 +319,13 @@ CREATE TABLE `tr_discount` (
   `discountamount` int(11) NOT NULL,
   `flag` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tr_discount`
+--
+
+INSERT INTO `tr_discount` (`iddiscount`, `discountcode`, `discountamount`, `flag`) VALUES
+(1, 'BAZZARMNG', 25, 1);
 
 -- --------------------------------------------------------
 
@@ -302,7 +366,7 @@ CREATE TABLE `tr_grouporder` (
 
 INSERT INTO `tr_grouporder` (`idgrouporder`, `orderdesc`, `price`) VALUES
 (1, 'desain logo', 250000),
-(2, 'design kemasan', 200000),
+(2, 'desain kemasan', 200000),
 (3, 'desain logo & kemasan', 400000);
 
 -- --------------------------------------------------------
@@ -358,14 +422,22 @@ INSERT INTO `tr_statusorder` (`idstatus`, `statusdesc`) VALUES
 --
 
 --
--- Indexes for table `tb_comment`
+-- Indexes for table `tb_comment_csde`
 --
-ALTER TABLE `tb_comment`
+ALTER TABLE `tb_comment_csde`
+  ADD PRIMARY KEY (`idcomment`),
+  ADD KEY `idorder` (`idorder`),
+  ADD KEY `idcs` (`idcs`),
+  ADD KEY `iddesigner` (`iddesigner`);
+
+--
+-- Indexes for table `tb_comment_csum`
+--
+ALTER TABLE `tb_comment_csum`
   ADD PRIMARY KEY (`idcomment`),
   ADD KEY `idorder` (`idorder`),
   ADD KEY `idumkm` (`idumkm`),
-  ADD KEY `idcs` (`idcs`),
-  ADD KEY `iddesigner` (`iddesigner`);
+  ADD KEY `idcs` (`idcs`);
 
 --
 -- Indexes for table `tb_cs`
@@ -479,16 +551,22 @@ ALTER TABLE `tr_statusorder`
 --
 
 --
--- AUTO_INCREMENT for table `tb_comment`
+-- AUTO_INCREMENT for table `tb_comment_csde`
 --
-ALTER TABLE `tb_comment`
-  MODIFY `idcomment` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tb_comment_csde`
+  MODIFY `idcomment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tb_comment_csum`
+--
+ALTER TABLE `tb_comment_csum`
+  MODIFY `idcomment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_cs`
 --
 ALTER TABLE `tb_cs`
-  MODIFY `idcs` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_deposit`
@@ -506,7 +584,7 @@ ALTER TABLE `tb_designer`
 -- AUTO_INCREMENT for table `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `idorder` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idorder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_pengelola`
@@ -518,7 +596,7 @@ ALTER TABLE `tb_pengelola`
 -- AUTO_INCREMENT for table `tb_portfolio`
 --
 ALTER TABLE `tb_portfolio`
-  MODIFY `idportfolio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idportfolio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_static`
@@ -536,7 +614,7 @@ ALTER TABLE `tb_umkm`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_withdraw`
@@ -548,7 +626,7 @@ ALTER TABLE `tb_withdraw`
 -- AUTO_INCREMENT for table `tr_discount`
 --
 ALTER TABLE `tr_discount`
-  MODIFY `iddiscount` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddiscount` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tr_group`
@@ -579,13 +657,20 @@ ALTER TABLE `tr_statusorder`
 --
 
 --
--- Constraints for table `tb_comment`
+-- Constraints for table `tb_comment_csde`
 --
-ALTER TABLE `tb_comment`
-  ADD CONSTRAINT `tb_comment_ibfk_1` FOREIGN KEY (`idorder`) REFERENCES `tb_order` (`idorder`),
-  ADD CONSTRAINT `tb_comment_ibfk_2` FOREIGN KEY (`idumkm`) REFERENCES `tb_umkm` (`idumkm`),
-  ADD CONSTRAINT `tb_comment_ibfk_3` FOREIGN KEY (`idcs`) REFERENCES `tb_cs` (`idcs`),
-  ADD CONSTRAINT `tb_comment_ibfk_4` FOREIGN KEY (`iddesigner`) REFERENCES `tb_designer` (`iddesigner`);
+ALTER TABLE `tb_comment_csde`
+  ADD CONSTRAINT `tb_comment_csde_ibfk_1` FOREIGN KEY (`idorder`) REFERENCES `tb_order` (`idorder`),
+  ADD CONSTRAINT `tb_comment_csde_ibfk_2` FOREIGN KEY (`idcs`) REFERENCES `tb_cs` (`idcs`),
+  ADD CONSTRAINT `tb_comment_csde_ibfk_3` FOREIGN KEY (`iddesigner`) REFERENCES `tb_designer` (`iddesigner`);
+
+--
+-- Constraints for table `tb_comment_csum`
+--
+ALTER TABLE `tb_comment_csum`
+  ADD CONSTRAINT `tb_comment_csum_ibfk_1` FOREIGN KEY (`idorder`) REFERENCES `tb_order` (`idorder`),
+  ADD CONSTRAINT `tb_comment_csum_ibfk_2` FOREIGN KEY (`idumkm`) REFERENCES `tb_umkm` (`idumkm`),
+  ADD CONSTRAINT `tb_comment_csum_ibfk_3` FOREIGN KEY (`idcs`) REFERENCES `tb_cs` (`idcs`);
 
 --
 -- Constraints for table `tb_cs`
