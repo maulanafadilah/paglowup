@@ -1,9 +1,5 @@
-<?php 
-    use App\Models\M_designer;
-    $this->m_designer = new M_designer();
-    
-?>
 <?= $this->include('partials/head-main') ?>
+
 <head>
 
     <?= $title_meta ?>
@@ -26,7 +22,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('cs/menu') ?>
+    <?= $this->include('pengelola/menu') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -44,8 +40,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/cs/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item active">List Designer</li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item active">List Permintaan Withdraw dari Designer</li>
                                 </ol>
                             </div>
 
@@ -58,47 +54,39 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">Designer yang terdaftar pada PAGlowUP</p>
+                                <p class="card-title-desc">Customer Service yang terdaftar pada PAGlowUP</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
-                                <table class="table dtable table-bordered dt-responsive table-sm nowrap w-100">
+                                <table class="table dtable table-bordered table-striped dt-responsive table-sm nowrap w-100">
                                     <thead>
                                         <tr>
                                             <th width="7%">No.</th>
-                                            <th>Nama</th>
-                                            <th>Rating</th>
-                                            <th>Total Transaksi</th>
-                                            <th>Total Transaksi Ongoing</th>
-                                            <th>Total Transaksi Selesai</th>
-                                            <th>Aksi</th>
+                                            <th>Status</th>
+                                            <th>Tanggal Request</th>
+                                            <th>Designer</th>
+                                            <th>Besaran</th>
+                                            <th width="10%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $c = 1;?>
-                                        <?php foreach ($l_designer as $a) {?>
+                                        <?php foreach ($l_withdraw as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
+                                            <td><?=$a->status?></td>
+                                            <td><?=$a->timerequest?></td>
                                             <td><?=$a->designer_name?></td>
-                                            <td><?=$a->rating?>/5</td>
-                                            <td><?=$a->total_transaksi?></td>
-                                            <td>
-                                                <?= $this->m_designer->countStatusOngoing($a->iddesigner)[0]->hitung?>
-                                            </td>
-                                            <td>
-                                                <?= $this->m_designer->countStatusDone($a->iddesigner)[0]->hitung?>
-                                            </td>
+                                            <td>Rp <?=number_format($a->amount, 0, ',', '.')?></td>
                                             <td>
                                                 <div class="d-grid gap-2">
-                                                    <?php if($a->iduser != session()->get('iduser')){?>
-                                                    <a href="<?=base_url()?>/cs/designer/detail/<?=$a->iduser?>" class="btn btn-sm btn-outline-info">detail</a> 
-                                                    <?php }else{ ?>
-                                                    <a href="<?=base_url()?>/cs/profile" class="btn btn-sm btn-outline-info">detail</a> 
-                                                    <?php } ?>
+                                                    <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?= $a->idwithdraw ?>">
+                                                        Detail
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <?php $c = $c+1; ?>
+                                        <?php $c++; ?>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -112,7 +100,6 @@
         </div>
         <!-- End Page-content -->
 
-
         <?= $this->include('partials/footer') ?>
     </div>
     <!-- end main content-->
@@ -120,7 +107,16 @@
 </div>
 <!-- END layout-wrapper -->
 
-<?= $this->include('cs/right-sidebar') ?>
+<!-- sample modal content -->
+<div id="myModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="fetched-data"></div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+<?= $this->include('pengelola/right-sidebar') ?>
 
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>
@@ -135,7 +131,20 @@
 
 <!-- Datatable init js -->
 <script type="text/javascript">
-    $('.dtable').DataTable();
+    $(document).ready(function() {
+        $('.dtable').DataTable();
+        $('#myModal').on('show.bs.modal', function(e) {
+            var rowid = $(e.relatedTarget).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url() ?>/pengelola/withdraw/list_wth',
+                data: 'rowid=' + rowid,
+                success: function(data) {
+                    $('.fetched-data').html(data); //menampilkan data ke dalam modal
+                }
+            });
+        });
+    });
 </script>
 
 <script src="<?=base_url()?>/assets/js/app.js"></script>

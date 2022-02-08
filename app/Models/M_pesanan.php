@@ -171,6 +171,67 @@
       $builder = $this->db->table('tb_deposit');
       $builder->insert($data);
     }
+
+    public function getDailyIncomes(){
+      $sql = "SELECT SUM(tr_grouporder.price) as daily_incomes FROM tb_order 
+        LEFT JOIN tr_grouporder USING (idgrouporder) 
+        WHERE YEAR(orderdate) = ".date('Y')." 
+        AND MONTH(orderdate) = ".date('m')." 
+        AND DAY(orderdate) = ".date('d')."
+        AND idstatus = 8";
+
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getAllIncomes(){
+      $sql = "SELECT * FROM tb_order JOIN tr_grouporder USING (idgrouporder) WHERE idstatus = 8";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getTotalIncomes(){
+      $sql = "SELECT sum(tr_grouporder.price) AS incomes FROM tb_order 
+        JOIN tr_grouporder USING (idgrouporder)
+        WHERE idstatus = 8
+        ORDER BY orderdate DESC";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getAllCsRating(){
+      $sql = "SELECT ROUND(AVG(csrating)) AS csrate FROM tb_order WHERE idstatus = 8";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getAllDesignerRating(){
+      $sql = "SELECT ROUND(AVG(designerrating)) AS desrate FROM tb_order WHERE idstatus = 8";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getAllClosedOrder(){
+      $sql = "SELECT count(idorder) AS hitung FROM tb_order where idstatus = 8";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getTop10Cs(){
+      $sql = "SELECT tb_user.iduser AS iduser, tb_cs.name AS cs_name, tb_cs.cs_pic AS cs_pic, ROUND(AVG(tb_order.csrating)) AS rating, count(tb_order.idcs) AS total_transaksi 
+        FROM tb_cs JOIN tb_order USING (idcs)
+        JOIN tb_user USING (iduser) 
+        GROUP BY cs_name 
+        ORDER BY rating, total_transaksi
+        LIMIT 10";
+
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getTop10Designer(){
+      $sql = "SELECT tb_user.iduser AS iduser, tb_designer.name AS designer_name, tb_designer.designer_pic AS designer_pic, ROUND(AVG(tb_order.designerrating)) AS rating, count(tb_order.iddesigner) AS total_transaksi 
+        FROM tb_designer JOIN tb_order USING (iddesigner)
+        JOIN tb_user USING(iduser) 
+        GROUP BY designer_name 
+        ORDER BY rating, total_transaksi
+        LIMIT 10";
+
+      return $this->db->query($sql)->getResult();
+    }
 	}
 
 ?>

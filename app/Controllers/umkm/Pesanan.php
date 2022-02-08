@@ -299,7 +299,8 @@
 			$deposit = [
 				'amount' => $amount,
 				'iddesigner' => $iddesigner,
-				'idorder' => $idorder
+				'idorder' => $idorder,
+				'dateincome' => date('Y-m-d');
 			];
 
 			$this->m_pesanan->addDepositDesigner($deposit);

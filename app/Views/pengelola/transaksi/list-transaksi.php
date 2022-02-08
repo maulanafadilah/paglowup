@@ -22,7 +22,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('designer/menu') ?>
+    <?= $this->include('pengelola/menu') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -41,7 +41,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="<?=base_url()?>/cs/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item active">List Pemesanan</li>
+                                    <li class="breadcrumb-item active">List Transaksi</li>
                                 </ol>
                             </div>
 
@@ -54,20 +54,22 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">List Pemesanan</p>
+                                <p class="card-title-desc">Daftar semua transaksi yang berlangsung</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
                                 <div class="table-responsive">
-                                    <table class="table dtable align-middle dt-responsive table-check nowrap" style="border-collapse: collapse; border-spacing: 0 8px; width: 100%;">
+                                    <table class="dtable table table-sm table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th width="7%">No.</th>
-                                                <!-- <th>Pemesan</th> -->
-                                                <th>Tanggal Pemesanan</th>
-                                                <!-- <th>Deskripsi</th> -->
                                                 <th>Status</th>
-                                                <th width="10%">Aksi</th>
+                                                <th>Tanggal Pemesanan</th>
+                                                <th>Rating CS</th>
+                                                <th>Rating Designer</th>
+                                                <th>Jenis Pesanan</th>
+                                                <th>Total Harga</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -75,41 +77,40 @@
                                             <?php foreach ($l_pesanan as $a) {?>
                                             <tr>
                                                 <td><?=$c?></td>
-                                                <!-- <td><?=$a->umkm_name?></td> -->
+                                                <td><?=$a->statusdesc?></td>
                                                 <td><?=$a->orderdate?></td>
-                                                <!-- <td>
-                                                    <?php $countDesc = count(explode(" ", $a->description));
-                                                    if ($countDesc > 12) {
-                                                      $slice = array_slice(explode(" ", $a->description), 0, 12);
-                                                      echo implode(" ", $slice)."....";
-                                                    } else {
-                                                      echo $a->description;
-                                                    }
-                                                    ?>
-                                                </td> -->
-                                                <td>
-                                                    <span class="badge 
-                                                    <?php if($a->idstatus == 1 || $a->idstatus == 3 || $a->idstatus == 4 || $a->idstatus == 5 || $a->idstatus == 6){
-                                                        echo 'badge-soft-danger';
-                                                    }elseif($a->idstatus == 2 || $a->idstatus == 7){
-                                                        echo 'badge-soft-success';
-                                                    }elseif($a->idstatus == 8){
-                                                        echo 'badge-soft-secondary';
-                                                    }elseif($a->idstatus == 9){
-                                                        echo 'badge-soft-danger';
-                                                    }?> font-size-12">
-                                                        <?=$a->statusdesc?>
-                                                    </span>
-                                                </td>
+                                                <td><?=$a->csrating?>/5</td>
+                                                <td><?=$a->designerrating?>/5</td>
+                                                <td><?=$a->category?></td>
+                                                <td>Rp.<?=$a->totalpayment?></td>
                                                 <td>
                                                     <div class="d-grid gap-2">
-                                                        <a href="<?=base_url()?>/designer/pesanan/detail/<?=$a->idorder?>" class="btn btn-outline-info">Detail Pekerjaan</a>
+                                                        <div class="btn-group">
+                                                            <a href="<?=base_url()?>/pengelola/transaksi/detail/<?=$a->idorder?>" class="btn btn-sm btn-outline-info">Detail</a>
+                                                            <?php if($a->idstatus < 8){?>
+                                                            <button class="btn btn-sm btn-outline-danger">
+                                                                Batalkan
+                                                            </button>
+                                                            <?php } ?>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <?php $c = $c+1; ?>
                                             <?php } ?>
                                         </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th></th>
+                                                <th>Status</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -129,7 +130,7 @@
 </div>
 <!-- END layout-wrapper -->
 
-<?= $this->include('designer/right-sidebar') ?>
+<?= $this->include('pengelola/right-sidebar') ?>
 
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>
@@ -138,15 +139,27 @@
 <script src="<?=base_url()?>/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?=base_url()?>/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
-<!-- Responsive examples -->
-<script src="<?=base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?=base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-
 <!-- Datatable init js -->
 <script type="text/javascript">
-    $('.dtable').DataTable();
+  $(document).ready(function(){
+    $('.dtable').DataTable({
+      initComplete: function() {
+        this.api().columns([1]).every( function() {
+          var column = this;
+          var select = $('<select class="col-12"><option value=""></option></select>').appendTo($(column.footer()).empty()).on('change', function(){
+            var val = $.fn.dataTable.util.escapeRegex(
+              $(this).val()
+            );
+            column.search( val ? '^'+val+'$' : '', true, false).draw();
+          });
+          column.data().unique().sort().each( function ( d, j ) {
+            select.append( '<option value="'+d+'">'+d+'</option>' )
+          });
+        });
+      }
+    });
+} );
 </script>
-
 <script src="<?=base_url()?>/assets/js/app.js"></script>
 
 </body>

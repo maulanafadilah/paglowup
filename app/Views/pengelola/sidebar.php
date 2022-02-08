@@ -47,9 +47,30 @@
                 </li>
 
                 <li>
-                    <a href="<?=base_url()?>/pengelola/discount/list">
+                    <a href="<?=base_url()?>/pengelola/report">
+                        <i data-feather="dollar-sign"></i>
+                        <span data-key="t-pages">Report</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?=base_url()?>/pengelola/transaksi/list">
                         <i data-feather="file-text"></i>
+                        <span data-key="t-pages">Transaksi</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?=base_url()?>/pengelola/discount/list">
+                        <i data-feather="percent"></i>
                         <span data-key="t-pages">Kelola Kode Diskon</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?=base_url()?>/pengelola/withdraw">
+                        <i data-feather="percent"></i>
+                        <span data-key="t-pages">Withdrawal Request</span>
                     </a>
                 </li>
         </div>

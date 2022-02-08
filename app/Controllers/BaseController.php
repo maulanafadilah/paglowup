@@ -17,6 +17,7 @@ use Psr\Log\LoggerInterface;
  *
  * For security be sure to declare any new methods as protected or private.
  */
+date_default_timezone_set("Asia/Jakarta");
 
 class BaseController extends Controller
 {
