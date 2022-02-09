@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2022 at 06:15 AM
+-- Generation Time: Feb 09, 2022 at 06:57 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -103,6 +103,7 @@ INSERT INTO `tb_cs` (`idcs`, `name`, `phone`, `whatsapp`, `cs_pic`, `iduser`) VA
 CREATE TABLE `tb_deposit` (
   `iddeposit` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
+  `dateincome` date NOT NULL,
   `idorder` int(11) DEFAULT NULL,
   `iddesigner` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -173,7 +174,9 @@ CREATE TABLE `tb_order` (
 --
 
 INSERT INTO `tb_order` (`idorder`, `orderdate`, `idumkm`, `idcs`, `iddesigner`, `description`, `paymentproof`, `totalpayment`, `file1`, `file2`, `file3`, `file4`, `idstatus`, `idprodcat`, `idgrouporder`, `iddiscount`, `designpreview1`, `designpreview2`, `orderedfile1`, `orderedfile2`, `designerrating`, `csrating`, `reviewcs`, `reviewdesigner`) VALUES
-(2, '2022-02-02 00:00:00', 1, 1, 1, '<p>ditampilkan sebaik mungkin</p>', 'paypr2121_1643858732_6690dea5d4cd7a5cae0f.jpg', 250000, NULL, NULL, NULL, NULL, 8, 2, 1, NULL, 'prev1_1643981521_30184005eef2c81de027.jpg', 'file2_1643981521_6610da005146aaf61b3c.png', 'orderedfile1_1644030757_a080ac025854a2217442.zip', 'orderedfile2_1644030757_a89a852248e136397d3e.jpg', 4, 5, '', '');
+(2, '2022-02-02 00:00:00', 1, 1, 1, '<p>ditampilkan sebaik mungkin</p>', 'paypr2121_1643858732_6690dea5d4cd7a5cae0f.jpg', 250000, NULL, NULL, NULL, NULL, 8, 2, 1, NULL, 'prev1_1643981521_30184005eef2c81de027.jpg', 'file2_1643981521_6610da005146aaf61b3c.png', 'orderedfile1_1644030757_a080ac025854a2217442.zip', 'orderedfile2_1644030757_a89a852248e136397d3e.jpg', 4, 5, '', ''),
+(3, '2022-02-06 00:00:00', 3, 1, 1, '<p>ditampilkan sebaik mungkin</p>', 'paypr2121_1643858732_6690dea5d4cd7a5cae0f.jpg', 250000, NULL, NULL, NULL, NULL, 8, 2, 1, NULL, 'prev1_1643981521_30184005eef2c81de027.jpg', 'file2_1643981521_6610da005146aaf61b3c.png', 'orderedfile1_1644030757_a080ac025854a2217442.zip', 'orderedfile2_1644030757_a89a852248e136397d3e.jpg', 4, 5, '', ''),
+(4, '2022-02-04 00:00:00', 3, 1, 1, '<p>ditampilkan sebaik mungkin</p>', 'paypr2121_1643858732_6690dea5d4cd7a5cae0f.jpg', 250000, NULL, NULL, NULL, NULL, 8, 2, 1, NULL, 'prev1_1643981521_30184005eef2c81de027.jpg', 'file2_1643981521_6610da005146aaf61b3c.png', 'orderedfile1_1644030757_a080ac025854a2217442.zip', 'orderedfile2_1644030757_a89a852248e136397d3e.jpg', 4, 5, '', '');
 
 -- --------------------------------------------------------
 
@@ -297,15 +300,25 @@ INSERT INTO `tb_user` (`iduser`, `username`, `pass`, `email`, `flag`, `idgroup`)
 --
 
 CREATE TABLE `tb_withdraw` (
-  `iddeposit` int(11) NOT NULL,
+  `idwithdraw` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `description` text DEFAULT NULL,
-  `status` enum('Requested','Processed','Confirmed') DEFAULT NULL,
+  `status` enum('Requested','Processed','Confirmed','Cancelled') DEFAULT NULL,
   `transferproof` text DEFAULT NULL,
   `timerequest` datetime NOT NULL,
+  `cancelledreason` text NOT NULL,
   `idpengelola` int(11) DEFAULT NULL,
   `iddesigner` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_withdraw`
+--
+
+INSERT INTO `tb_withdraw` (`idwithdraw`, `amount`, `description`, `status`, `transferproof`, `timerequest`, `cancelledreason`, `idpengelola`, `iddesigner`) VALUES
+(1, 250000, 'sample withdraw', 'Cancelled', NULL, '2022-02-08 06:44:46', 'kurang uang', 1, 1),
+(2, 100000, 'sample withdraw 2', 'Confirmed', '1644306420_28487f15a203cbe3b5cb.jpg', '2022-02-10 06:44:46', '', 1, 1),
+(3, 200000, 'butuh uang', 'Processed', NULL, '2022-02-09 11:16:32', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -512,7 +525,7 @@ ALTER TABLE `tb_user`
 -- Indexes for table `tb_withdraw`
 --
 ALTER TABLE `tb_withdraw`
-  ADD PRIMARY KEY (`iddeposit`),
+  ADD PRIMARY KEY (`idwithdraw`),
   ADD KEY `idpengelola` (`idpengelola`),
   ADD KEY `iddesigner` (`iddesigner`);
 
@@ -584,7 +597,7 @@ ALTER TABLE `tb_designer`
 -- AUTO_INCREMENT for table `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `idorder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idorder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_pengelola`
@@ -620,7 +633,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_withdraw`
 --
 ALTER TABLE `tb_withdraw`
-  MODIFY `iddeposit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idwithdraw` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tr_discount`
