@@ -41,7 +41,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item active">Histori Withdraw</li>
+                                    <li class="breadcrumb-item active">List Permintaan Withdraw</li>
                                 </ol>
                             </div>
 
@@ -54,7 +54,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">Histori Permintaan Withdraw dari Designer</p>
+                                <p class="card-title-desc">Request withdraw</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
@@ -64,41 +64,33 @@
                                             <th width="7%">No.</th>
                                             <th>Status</th>
                                             <th>Tanggal Request</th>
-                                            <th>Designer</th>
                                             <th>Besaran</th>
                                             <th width="10%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $c = 1;?>
-                                        <?php foreach ($l_withdraw as $a) {
-                                            if(is_null($a->idpengelola) || $a->idpengelola == $detail_user->idpengelola){?>
+                                        <?php foreach ($l_withdraw as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
                                             <td><?=$a->status?></td>
                                             <td><?=$a->timerequest?></td>
-                                            <td><?=$a->designer_name?></td>
                                             <td>Rp <?=number_format($a->amount, 0, ',', '.')?></td>
                                             <td>
                                                 <div class="d-grid gap-2">
                                                     <div class="btn-group">
-                                                    <button type="button" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailReq" data-id="<?= $a->idwithdraw ?>">
-                                                        Detail
-                                                    </button>
-                                                    <?php if($a->status == 'Processed'){?>
-                                                    <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#confirmReq" data-id="<?= $a->idwithdraw ?>">
-                                                        Konfirmasi
-                                                    </button>
-                                                    <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#cancelReq" data-id="<?= $a->idwithdraw ?>">
-                                                        Batalkan
-                                                    </button>
-                                                    <?php }?>
+                                                        <button type="button" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?= $a->idwithdraw ?>">
+                                                            Detail
+                                                        </button>
+                                                        <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#procWithdraw" data-id="<?= $a->idwithdraw ?>">
+                                                            Proses Withdraw
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <?php $c++; ?>
-                                        <?php }} ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
 
@@ -119,7 +111,7 @@
 <!-- END layout-wrapper -->
 
 <!-- sample modal content -->
-<div id="detailReq" class="modal fade" tabindex="-1">
+<div id="myModal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="fetched-data"></div>
@@ -128,19 +120,10 @@
 </div><!-- /.modal -->
 
 <!-- sample modal content -->
-<div id="confirmReq" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="fetched-data2"></div>
-        </div>
-    </div>
-</div><!-- /.modal -->
-
-<!-- sample modal content -->
-<div id="cancelReq" class="modal fade" tabindex="-1">
+<div id="procWithdraw" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="fetched-data3"></div>
+            <div class="fetched-data2"></div>
         </div>
     </div>
 </div><!-- /.modal -->
@@ -157,12 +140,11 @@
 <!-- Responsive examples -->
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-
 <!-- Datatable init js -->
 <script type="text/javascript">
     $(document).ready(function() {
         $('.dtable').DataTable();
-        $('#detailReq').on('show.bs.modal', function(e) {
+        $('#myModal').on('show.bs.modal', function(e) {
             var rowid = $(e.relatedTarget).data('id');
             $.ajax({
                 type: 'POST',
@@ -173,25 +155,14 @@
                 }
             });
         });
-        $('#confirmReq').on('show.bs.modal', function(e) {
+        $('#procWithdraw').on('show.bs.modal', function(e) {
             var rowid = $(e.relatedTarget).data('id');
             $.ajax({
                 type: 'POST',
-                url: '<?= base_url() ?>/pengelola/withdraw/list_wth_confirm',
+                url: '<?= base_url() ?>/pengelola/withdraw/list_wth_proc',
                 data: 'rowid=' + rowid,
                 success: function(data) {
                     $('.fetched-data2').html(data); //menampilkan data ke dalam modal
-                }
-            });
-        });
-        $('#cancelReq').on('show.bs.modal', function(e) {
-            var rowid = $(e.relatedTarget).data('id');
-            $.ajax({
-                type: 'POST',
-                url: '<?= base_url() ?>/pengelola/withdraw/list_wth_cancel',
-                data: 'rowid=' + rowid,
-                success: function(data) {
-                    $('.fetched-data3').html(data); //menampilkan data ke dalam modal
                 }
             });
         });

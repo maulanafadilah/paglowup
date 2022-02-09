@@ -25,27 +25,36 @@
                 <td>:</td>
                 <td><?=$with->status?></td>
             </tr>
-            <?php if($with->status == 'Confirmed'){?>
             <tr>
-                <td>Telah diproses oleh</td>
-                <td>:</td>
-                <td><?=$with->pengelola_name?></td>
+                <td>Transfer Ke</td>
             </tr>
             <tr>
-                <td>Bukti transfer</td>
+                <td>Bank</td>
                 <td>:</td>
-                <td><img src="<?=base_url()?>/webdata/uploads/images/pengelola/withdrawproof/<?=$with->transferproof?>"></td>
+                <td><?=$with->bankname?></td>
             </tr>
-            <?php }elseif($with->status == 'Cancelled'){?>
             <tr>
-                <td>Alasan Ditolak</td>
+                <td>Atas Nama</td>
                 <td>:</td>
-                <td><?=$with->cancelledreason?></td>
+                <td><?=$with->bankaccname?></td>
             </tr>
-            <?php }?>
+            <tr>
+                <td>Nomor Rekening</td>
+                <td>:</td>
+                <td><?=$with->bankaccount?></td>
+            </tr>
         </table>
+    </div>
+    <div class="mb-3">
+        <form id="upProof" action="<?=base_url()?>/pengelola/withdraw/bayar/<?=$with->idwithdraw?>" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label>Upload Bukti Transfer</label>
+                <input type="file" name="transferproof" id="fileupload1" class="form-control">
+            </div>
+        </form>
     </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+    <button type="submit" form="upProof" class="btn btn-primary">Upload Bukti Transfer</button>
 </div>

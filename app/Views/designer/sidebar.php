@@ -35,17 +35,31 @@
 
                     </ul>
                 </li>
+                
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="dollar-sign"></i>
+                        <span data-key="t-authentication">Withdrawal</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="<?=base_url()?>/designer/withdraw" data-key="t-user-grid">
+                                <span data-key="t-authentication">Daftar Withdraw</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url()?>/designer/withdraw/requested" data-key="t-user-grid">
+                                <span data-key="t-authentication">Sedang Diproses</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
 
                 <li>
-                    <a href="designer-testimonials">
+                    <a href="<?=base_url()?>/designer/reputation">
                         <i data-feather="star"></i>
-                        <span data-key="t-pages"><?= lang('Files.Testimoni') ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="designer-withdrawal">
-                        <i data-feather="dollar-sign"></i>
-                        <span data-key="t-pages"><?= lang('Files.Withdrawal') ?></span>
+                        <span data-key="t-pages">Rating & Testimoni</span>
                     </a>
                 </li>
         </div>

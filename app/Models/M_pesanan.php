@@ -232,6 +232,11 @@
 
       return $this->db->query($sql)->getResult();
     }
+
+    public function getRepByIddesigner($iddesigner){
+      $sql = "SELECT idorder, designerrating, reviewdesigner FROM tb_order WHERE idstatus = 8 AND iddesigner = $iddesigner";
+      return $this->db->query($sql)->getResult();
+    }
 	}
 
 ?>
