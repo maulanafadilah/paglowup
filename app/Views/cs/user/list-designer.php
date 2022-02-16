@@ -1,5 +1,9 @@
+<?php 
+    use App\Models\M_designer;
+    $this->m_designer = new M_designer();
+    
+?>
 <?= $this->include('partials/head-main') ?>
-
 <head>
 
     <?= $title_meta ?>
@@ -63,9 +67,10 @@
                                         <tr>
                                             <th width="7%">No.</th>
                                             <th>Nama</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
-                                            <th>Status</th>
+                                            <th>Rating</th>
+                                            <th>Total Transaksi</th>
+                                            <th>Total Transaksi Ongoing</th>
+                                            <th>Total Transaksi Selesai</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -74,15 +79,14 @@
                                         <?php foreach ($l_designer as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
-                                            <td><?=$a->name?></td>
-                                            <td><?=$a->username?></td>
-                                            <td><?=$a->email?></td>
+                                            <td><?=$a->designer_name?></td>
+                                            <td><?=$a->rating?>/5</td>
+                                            <td><?=$a->total_transaksi?></td>
                                             <td>
-                                            <?php if($a->flag == 1){?>
-                                                Aktif    
-                                            <?php }else{?>
-                                                Tidak Aktif    
-                                            <?php }?>    
+                                                <?= $this->m_designer->countStatusOngoing($a->iddesigner)[0]->hitung?>
+                                            </td>
+                                            <td>
+                                                <?= $this->m_designer->countStatusDone($a->iddesigner)[0]->hitung?>
                                             </td>
                                             <td>
                                                 <div class="d-grid gap-2">

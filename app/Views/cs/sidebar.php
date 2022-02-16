@@ -15,6 +15,12 @@
                         <span data-key="t-pages">Designer</span>
                     </a>
                 </li>
+                <li>
+                    <a href="<?=base_url()?>/cs/pesanan/list">
+                        <i data-feather="pen-tool"></i>
+                        <span data-key="t-pages">Pesanan</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">

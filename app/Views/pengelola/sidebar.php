@@ -47,29 +47,43 @@
                 </li>
 
                 <li>
-                    <a href="pengelola-transaction">
-                        <i data-feather="file-text"></i>
-                        <span data-key="t-pages"><?= lang('Files.Transaction') ?></span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="pengelola-portofolio-designer">
-                        <i data-feather="image"></i>
-                        <span data-key="t-pages"><?= lang('Files.Portofolio_designer') ?></span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="pengelola-withdrawal">
+                    <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="dollar-sign"></i>
-                        <span data-key="t-pages"><?= lang('Files.Withdrawal') ?></span>
+                        <span data-key="t-authentication">Report</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="<?=base_url()?>/pengelola/report" data-key="t-user-grid">
+                                <span data-key="t-authentication">Summary</span>
+                            </a>
+                        </li>
+                            <a href="<?=base_url()?>/pengelola/withdraw" data-key="t-user-grid">
+                                <span data-key="t-authentication">Histori Withdraw</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url()?>/pengelola/withdraw/requested" data-key="t-user-grid">
+                                <span data-key="t-authentication">Permohonan Withdraw</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="<?=base_url()?>/pengelola/transaksi/list">
+                        <i data-feather="file-text"></i>
+                        <span data-key="t-pages">Transaksi</span>
                     </a>
                 </li>
 
-
+                <li>
+                    <a href="<?=base_url()?>/pengelola/discount/list">
+                        <i data-feather="percent"></i>
+                        <span data-key="t-pages">Kelola Kode Diskon</span>
+                    </a>
+                </li>
+                
                 <li class="menu-title mt-2" data-key="t-menu"><?= lang('Files.Layout') ?></li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="layout"></i>
@@ -85,7 +99,7 @@
                             <a href="<?=base_url()?>/pengelola/frontpage/contact" data-key="t-user-grid">
                                 <span data-key="t-authentication"><?= lang('Files.Contact') ?></span>
                             </a>
-                        </li>   
+                        </li>
                     </ul>
                 </li>
         </div>

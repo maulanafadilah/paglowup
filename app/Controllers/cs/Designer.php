@@ -34,7 +34,7 @@
 			$this->newUser();
 
 	    $iduser = session()->get('iduser');
-			$l_designer = $this->m_designer->getAllDesigner();
+			$l_designer = $this->m_designer->getAllDesignerJoined();
 			$detilUser = $this->m_cs->getJoinUserCs($iduser)[0];
 
 			$data = [

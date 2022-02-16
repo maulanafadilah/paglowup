@@ -10,7 +10,7 @@
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
                 <li>
-                    <a href="umkm">
+                    <a href="<?=base_url()?>/umkm/pesanan/list">
                         <i data-feather="pen-tool"></i>
                         <span data-key="t-pages">Pesanan</span>
                     </a>

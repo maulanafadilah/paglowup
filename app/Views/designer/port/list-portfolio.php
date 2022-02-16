@@ -155,7 +155,7 @@
                 <form id="konfirAdd" action="<?=base_url()?>/designer/portfolio/add_proc" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Foto / Gambar Portofolio</label>
-                        <input type="file" name="foto" id="fileupload1" class="form-control">
+                        <input type="file" name="foto" id="fileupload1" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
                     </div>
                     <div class="mb-3">
                         <label>Deskripsi <span class="text-danger">*</span></label>
