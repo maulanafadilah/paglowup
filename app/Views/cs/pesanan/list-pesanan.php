@@ -108,7 +108,7 @@
                                                         <div class="btn-group">
                                                             <a href="<?=base_url()?>/cs/pesanan/detail/<?=$a->idorder?>" class="btn btn-sm btn-outline-info">Detail</a>
                                                             <?php if($a->idstatus != 9){?>
-                                                            <button class="btn btn-sm btn-outline-danger">
+                                                            <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#cancelOrder" data-id="<?= $a->idorder ?>">
                                                                 Batalkan
                                                             </button>
                                                             <?php } ?>
@@ -138,6 +138,15 @@
 </div>
 <!-- END layout-wrapper -->
 
+<!-- sample modal content -->
+<div id="cancelOrder" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="fetched-data"></div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
 <?= $this->include('cs/right-sidebar') ?>
 
 <!-- JAVASCRIPT -->
@@ -153,7 +162,20 @@
 
 <!-- Datatable init js -->
 <script type="text/javascript">
-    $('.dtable').DataTable();
+    $(document).ready(function() {
+        $('.dtable').DataTable();
+        $('#cancelOrder').on('show.bs.modal', function(e) {
+            var rowid = $(e.relatedTarget).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url() ?>/cs/pesanan/list_ord_cancel',
+                data: 'rowid=' + rowid,
+                success: function(data) {
+                    $('.fetched-data').html(data); //menampilkan data ke dalam modal
+                }
+            });
+        });
+    });
 </script>
 
 <script src="<?=base_url()?>/assets/js/app.js"></script>

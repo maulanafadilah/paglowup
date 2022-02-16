@@ -226,7 +226,7 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <?php if($l_detail->idstatus > 1 && $l_detail->idstatus < 8 ){?>
+                                        <?php if($l_detail->idstatus == 1 && $l_detail->idstatus < 8 ){?>
                                         <div class="d-print-none mt-3">
                                             <div class="float-end">
                                                 <?php if (is_null($l_detail->paymentproof)){?>
@@ -414,6 +414,8 @@
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
+<?php if (!is_null($l_detail->orderedfile1) || !is_null($l_detail->orderedfile2)) {?>
+<?php if(is_null($l_detail->designerrating) || is_null($l_detail->csrating)){?>
 <!-- ckeditor -->
 <script src="<?=base_url()?>/assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 <script type="text/javascript">
@@ -432,7 +434,9 @@ ClassicEditor
         console.log( error );
     } );
 </script>
+<?php }}?>
 
+<?php if(!is_null($l_detail->designerrating) && !is_null($l_detail->csrating)){?>
 <!-- rater js -->
 <script src="<?=base_url()?>/assets/libs/rater-js/index.js"></script>
 <script type="text/javascript">
@@ -462,6 +466,7 @@ function onload(event) {
 }
 window.addEventListener("load", onload, false); 
 </script>
+<?php }?>
 
 <script src="<?=base_url()?>/assets/js/app.js"></script>
 

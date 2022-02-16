@@ -62,7 +62,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div>
-                                            <form id="addPesanan" action="<?=base_url()?>/umkm/pesanan/create_proc/" method="post" enctype="multipart/form-data">
+                                            <form id="addPesanan" action="<?=base_url()?>/umkm/pesanan/create_proc" method="post" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">

@@ -91,7 +91,6 @@
 		}
 
 		public function create_proc(){
-			$this->newUser();
 			$iduser = session()->get('iduser');
 			$v_foto = FALSE;
 
@@ -111,9 +110,9 @@
 				'idstatus' => 1
 			];
 			
-			if (isset($_POST['discountcode'])) {
+			if (!empty($_POST['discountcode'])) {
 				$cek_kode = $this->m_pesanan->countDiscountByCode($_POST['discountcode'])[0]->hitung;
-				$flag = $this->m_pesanan->getDiscountByCode($discountcode)[0]->flag;
+				$flag = $this->m_pesanan->getDiscountByCode($_POST['discountcode'])[0]->flag;
 				if ($cek_kode != 0 && $flag == 1) {
 					$iddiscount = $this->m_pesanan->getDiscountByCode($_POST['discountcode'])[0]->iddiscount;
 					$discountamount = $this->m_pesanan->getDiscountByCode($_POST['discountcode'])[0]->discountamount;
@@ -240,34 +239,32 @@
 			];
 
 			define('MB', 1048576);
-			if (isset($_POST['file1']) || isset($_POST['file2'])) {
-				if ($_FILES['file1']['size'] > 4*MB) {
-					$v_foto = TRUE;
-				}
-				elseif ($_FILES['file1']['size'] != 0) {
-					$file1 = $this->upload_file1($dataset)['name'];
-					$dataset += ['file1' => $file1];
-				}
+			if ($_FILES['file1']['size'] > 4*MB) {
+				$v_foto = TRUE;
+			}
+			elseif ($_FILES['file1']['size'] != 0) {
+				$file1 = $this->upload_file1($dataset)['name'];
+				$dataset += ['file1' => $file1];
+			}
 
-				if ($_FILES['file2']['size'] > 4*MB) {
-					$v_foto = TRUE;
-				}
-				elseif ($_FILES['file2']['size'] != 0) {
-					$file2 = $this->upload_file2($dataset)['name'];
-					$dataset += ['file2' => $file2];
-				}
+			if ($_FILES['file2']['size'] > 4*MB) {
+				$v_foto = TRUE;
+			}
+			elseif ($_FILES['file2']['size'] != 0) {
+				$file2 = $this->upload_file2($dataset)['name'];
+				$dataset += ['file2' => $file2];
+			}
 
-				if ($v_foto){
-					$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-						File terlalu besar
-					</div>';
-					$data_session = [
-						'alert' => $alert
-					];
+			if ($v_foto){
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					File terlalu besar
+				</div>';
+				$data_session = [
+					'alert' => $alert
+				];
 
-					session()->setFlashdata($data_session);
-					return redirect()->to(base_url('umkm/pesanan/detail/'.$idorder.'?t=2'));
-				}
+				session()->setFlashdata($data_session);
+				return redirect()->to(base_url('umkm/pesanan/detail/'.$idorder.'?t=2'));
 			}
 
 			$this->m_comment_csum->sendComment($dataset);
@@ -300,7 +297,7 @@
 				'amount' => $amount,
 				'iddesigner' => $iddesigner,
 				'idorder' => $idorder,
-				'dateincome' => date('Y-m-d');
+				'dateincome' => date('Y-m-d')
 			];
 
 			$this->m_pesanan->addDepositDesigner($deposit);
@@ -316,12 +313,12 @@
 
     public function upload_img1(){
       $validationRule = [
-        'file1' => [
+        'foto1' => [
           'label' => 'Image File',
-          'rules' => 'uploaded[file1]'
-            . '|is_image[file1]'
-            . '|mime_in[file1,image/jpg,image/jpeg,image/png,image/webp]'
-            . '|max_size[file1,4000]',
+          'rules' => 'uploaded[foto1]'
+            . '|is_image[foto1]'
+            . '|mime_in[foto1,image/jpg,image/jpeg,image/png,image/webp]'
+            . '|max_size[foto1,4000]',
         ],
       ];
 
@@ -335,7 +332,7 @@
 
 				return redirect()->to(base_url('umkm/pesanan/add'));
       }else{
-      	$img = $this->request->getFile('file1');
+      	$img = $this->request->getFile('foto1');
       	$newName = 'file1_'.$img->getRandomName();
 
       	$img->move(ROOTPATH.'public/webdata/uploads/images/umkm/orders/', $newName);
@@ -350,12 +347,12 @@
 
     public function upload_img2(){
       $validationRule = [
-        'file2' => [
+        'foto2' => [
           'label' => 'Image File',
-          'rules' => 'uploaded[file2]'
-            . '|is_image[file2]'
-            . '|mime_in[file2,image/jpg,image/jpeg,image/png,image/webp]'
-            . '|max_size[file2,4000]',
+          'rules' => 'uploaded[foto2]'
+            . '|is_image[foto2]'
+            . '|mime_in[foto2,image/jpg,image/jpeg,image/png,image/webp]'
+            . '|max_size[foto2,4000]',
         ],
       ];
 
@@ -369,7 +366,7 @@
 
 				return redirect()->to(base_url('umkm/pesanan/add'));
       }else{
-      	$img = $this->request->getFile('file2');
+      	$img = $this->request->getFile('foto2');
       	$newName = 'file2_'.$img->getRandomName();
 
       	$img->move(ROOTPATH.'public/webdata/uploads/images/umkm/orders/', $newName);
@@ -384,12 +381,12 @@
 
     public function upload_img3(){
       $validationRule = [
-        'file3' => [
+        'foto3' => [
           'label' => 'Image File',
-          'rules' => 'uploaded[file3]'
-            . '|is_image[file3]'
-            . '|mime_in[file3,image/jpg,image/jpeg,image/png,image/webp]'
-            . '|max_size[file3,4000]',
+          'rules' => 'uploaded[foto3]'
+            . '|is_image[foto3]'
+            . '|mime_in[foto3,image/jpg,image/jpeg,image/png,image/webp]'
+            . '|max_size[foto3,4000]',
         ],
       ];
 
@@ -403,7 +400,7 @@
 
 				return redirect()->to(base_url('umkm/pesanan/add'));
       }else{
-      	$img = $this->request->getFile('file3');
+      	$img = $this->request->getFile('foto3');
       	$newName = 'file3_'.$img->getRandomName();
 
       	$img->move(ROOTPATH.'public/webdata/uploads/images/umkm/orders/', $newName);
@@ -418,12 +415,12 @@
 
     public function upload_img4(){
       $validationRule = [
-        'file4' => [
+        'foto4' => [
           'label' => 'Image File',
-          'rules' => 'uploaded[file4]'
-            . '|is_image[file4]'
-            . '|mime_in[file4,image/jpg,image/jpeg,image/png,image/webp]'
-            . '|max_size[file4,4000]',
+          'rules' => 'uploaded[foto4]'
+            . '|is_image[foto4]'
+            . '|mime_in[foto4,image/jpg,image/jpeg,image/png,image/webp]'
+            . '|max_size[foto4,4000]',
         ],
       ];
 
@@ -437,7 +434,7 @@
 
 				return redirect()->to(base_url('umkm/pesanan/add'));
       }else{
-      	$img = $this->request->getFile('file4');
+      	$img = $this->request->getFile('foto4');
       	$newName = 'file4_'.$img->getRandomName();
 
       	$img->move(ROOTPATH.'public/webdata/uploads/images/umkm/orders/', $newName);

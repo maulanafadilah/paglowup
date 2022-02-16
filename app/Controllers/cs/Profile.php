@@ -2,14 +2,14 @@
 
 	use CodeIgniter\Controller;
 	use App\Controllers\BaseController;
-	use App\Models\M_Cs;
-	use App\Models\M_User;
+	use App\Models\M_cs;
+	use App\Models\M_user;
 	use CodeIgniter\Files\File;
 
 	class Profile extends \App\Controllers\BaseController{
 
 		function __construct(){
-			$this->m_cs = new M_Cs();
+			$this->m_cs = new M_cs();
 			$this->m_user = new M_user();
 			$this->request = \Config\Services::request();
 		}

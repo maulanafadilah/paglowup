@@ -59,12 +59,6 @@
                                     <li class="nav-item">
                                         <a class="nav-link px-3 <?=(isset($_GET['t']))?'':'active'?>" data-bs-toggle="tab" href="#tabDetail" role="tab">Detail</a>
                                     </li>
-                                    
-                                    <?php if($l_detail->idstatus > 2 && $l_detail->idstatus < 8){?>
-                                    <li class="nav-item">
-                                        <a class="nav-link px-3 <?=(isset($_GET['t']))?($_GET['t'] == 2)?'active':'':''?>" data-bs-toggle="tab" href="#tabChat" role="tab">Komentar</a>
-                                    </li>
-                                    <?php }?>
                                 </ul>
                             </div>
                             <!-- end card body -->
@@ -176,6 +170,11 @@
                                         </div>
                                         <div class="d-print-none mt-3">
                                             <div class="float-end">
+                                                <?php if ($l_detail->idstatus == 4 || $l_detail->idstatus == 7){?>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#reqStatusReviewCS" class="btn btn-info">
+                                                    <i class="fa fa-upload"></i> Ajukan Review CS
+                                                </button>
+                                                <?php }?>
                                                 <?php if ($l_detail->idstatus == 5){?>
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#uploadPrev" class="btn btn-info">
                                                     <i class="fa fa-upload"></i> Kirim Preview
@@ -212,14 +211,12 @@
                             </div>
                         </div>
                         <!-- end row -->
+                        <?php if($l_detail->idstatus > 2 && $l_detail->idstatus < 8){?>
+                        <?=$this->include('designer/pesanan/comment-csde')?>
+                        <?php }?>
                     </div>
                     <!-- end tab panel -->
 
-                    <?php if($l_detail->idstatus > 2 && $l_detail->idstatus < 8){?>
-                    <div class="tab-pane <?=(isset($_GET['t']))?($_GET['t'] == 2)?'active':'':''?>" id="tabChat" role="tabpanel">
-                        <?=$this->include('designer/pesanan/comment-csde')?>
-                    </div>
-                    <?php }?>
                     <!-- end tab panel -->
 
                 </div> <!-- end tab content -->
@@ -270,13 +267,13 @@
 <?php }?>
 
 
-<?php if($l_detail->idstatus == 4 && $l_detail->idstatus == 7){?>
+<?php if($l_detail->idstatus == 4 || $l_detail->idstatus == 7){?>
 <!-- sample modal content -->
 <div id="reqStatusReviewCS" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Tambah Attachment</h5>
+                <h5 class="modal-title" id="myModalLabel">Ajukan Review</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -364,6 +361,7 @@
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
+<?php if(!is_null($l_detail->designerrating)){ ?>
 <!-- rater js -->
 <script src="<?=base_url()?>/assets/libs/rater-js/index.js"></script>
 <script type="text/javascript">
@@ -382,6 +380,7 @@ function onload(event) {
 }
 window.addEventListener("load", onload, false); 
 </script>
+<?php }?>
 
 <script src="<?=base_url()?>/assets/js/app.js"></script>
 

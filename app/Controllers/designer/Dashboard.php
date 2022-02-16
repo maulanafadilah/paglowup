@@ -2,12 +2,12 @@
 
 	use CodeIgniter\Controller;
 	use App\Controllers\BaseController;
-	use App\Models\M_Designer;
+	use App\Models\M_designer;
 
 	class Dashboard extends \App\Controllers\BaseController{
 
 		public function __construct(){
-			$this->m_designer = new M_Designer();
+			$this->m_designer = new M_designer();
 		}
 		
 		public function newUser(){

@@ -93,7 +93,7 @@
 			$this->newUser();
 			$iduser = session()->get('iduser');
 			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
-			$comment = $_POST['comment'];
+			$comment = $this->request->getVar('comment');
 			$commenttime = date('Y-m-d h:i:s');
 
 			$dataset = [
@@ -104,34 +104,32 @@
 			];
 
 			define('MB', 1048576);
-			if (isset($_POST['file1']) || isset($_POST['file2'])) {
-				if ($_FILES['file1']['size'] > 4*MB) {
-					$v_foto = TRUE;
-				}
-				elseif ($_FILES['file1']['size'] != 0) {
-					$file1 = $this->upload_file1($dataset)['name'];
-					$dataset += ['file1' => $file1];
-				}
+			if ($_FILES['file1']['size'] > 4*MB) {
+				$v_foto = TRUE;
+			}
+			elseif ($_FILES['file1']['size'] != 0) {
+				$file1 = $this->upload_file1($dataset)['name'];
+				$dataset += ['file1' => $file1];
+			}
 
-				if ($_FILES['file2']['size'] > 4*MB) {
-					$v_foto = TRUE;
-				}
-				elseif ($_FILES['file2']['size'] != 0) {
-					$file2 = $this->upload_file2($dataset)['name'];
-					$dataset += ['file2' => $file2];
-				}
+			if ($_FILES['file2']['size'] > 4*MB) {
+				$v_foto = TRUE;
+			}
+			elseif ($_FILES['file2']['size'] != 0) {
+				$file2 = $this->upload_file2($dataset)['name'];
+				$dataset += ['file2' => $file2];
+			}
 
-				if ($v_foto){
-					$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-						File terlalu besar
-					</div>';
-					$data_session = [
-						'alert' => $alert
-					];
+			if ($v_foto){
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					File terlalu besar
+				</div>';
+				$data_session = [
+					'alert' => $alert
+				];
 
-					session()->setFlashdata($data_session);
-					return redirect()->to(base_url('cs/pesanan/detail/'.$idorder.'?t=2'));
-				}
+				session()->setFlashdata($data_session);
+				return redirect()->to(base_url('cs/pesanan/detail/'.$idorder.'?t=2'));
 			}
 
 			$this->m_comment_csum->sendComment($dataset);
@@ -153,34 +151,32 @@
 			];
 
 			define('MB', 1048576);
-			if (isset($_POST['file1']) || isset($_POST['file2'])) {
-				if ($_FILES['file1']['size'] > 4*MB) {
-					$v_foto = TRUE;
-				}
-				elseif ($_FILES['file1']['size'] != 0) {
-					$file1 = $this->upload_file1($dataset)['name'];
-					$dataset += ['file1' => $file1];
-				}
+			if ($_FILES['file1']['size'] > 4*MB) {
+				$v_foto = TRUE;
+			}
+			elseif ($_FILES['file1']['size'] != 0) {
+				$file1 = $this->upload_file1($dataset)['name'];
+				$dataset += ['file1' => $file1];
+			}
 
-				if ($_FILES['file2']['size'] > 4*MB) {
-					$v_foto = TRUE;
-				}
-				elseif ($_FILES['file2']['size'] != 0) {
-					$file2 = $this->upload_file2($dataset)['name'];
-					$dataset += ['file2' => $file2];
-				}
+			if ($_FILES['file2']['size'] > 4*MB) {
+				$v_foto = TRUE;
+			}
+			elseif ($_FILES['file2']['size'] != 0) {
+				$file2 = $this->upload_file2($dataset)['name'];
+				$dataset += ['file2' => $file2];
+			}
 
-				if ($v_foto){
-					$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-						File terlalu besar
-					</div>';
-					$data_session = [
-						'alert' => $alert
-					];
+			if ($v_foto){
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					File terlalu besar
+				</div>';
+				$data_session = [
+					'alert' => $alert
+				];
 
-					session()->setFlashdata($data_session);
-					return redirect()->to(base_url('cs/pesanan/detail/'.$idorder.'?t=2'));
-				}
+				session()->setFlashdata($data_session);
+				return redirect()->to(base_url('cs/pesanan/detail/'.$idorder.'?t=2'));
 			}
 
 			$this->m_comment_csde->sendComment($dataset);
@@ -286,6 +282,29 @@
                     Pilih
                 </a>';
 				}
+			}
+		}
+
+		public function cancel_order($idorder){
+			$this->newUser();
+			$iduser = session()->get('iduser');
+			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
+
+			$this->m_pesanan->cancelOrderById($idorder, $idcs);
+
+			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
+				Pesanan berhasil dibatalkan
+			</div>';
+			session()->setFlashdata('notif', $alert);
+			return redirect()->to(base_url('cs/pesanan/list'));
+		}
+
+		public function list_ord_cancel(){
+			if ($_POST['rowid']) {
+				$id = $_POST['rowid'];
+				$order = $this->m_pesanan->getOrderById($id)[0];
+				$data = ['ord' => $order];
+				echo view('cs/pesanan/part-mod-cancel', $data);
 			}
 		}
 

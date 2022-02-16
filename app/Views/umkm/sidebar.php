@@ -23,7 +23,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="umkm" data-key="t-user-grid">
+                            <a href="<?=base_url()?>/umkm/pesanan/list" data-key="t-user-grid">
                                 <span data-key="t-authentication"><?= lang('Files.ListPemesanan') ?></span>
                             </a>
                         </li>

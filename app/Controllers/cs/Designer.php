@@ -11,7 +11,7 @@
 
 		function __construct(){
 			$this->m_user = new M_user();
-			$this->m_cs = new M_Cs();
+			$this->m_cs = new M_cs();
 			$this->m_designer = new M_designer();
 			$this->request = \Config\Services::request();
 		}

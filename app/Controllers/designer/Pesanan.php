@@ -182,38 +182,38 @@
 			];
 
 			define('MB', 1048576);
-			if (isset($_POST['file1']) || isset($_POST['file2'])) {
-				if ($_FILES['file1']['size'] > 4*MB) {
-					$v_foto = TRUE;
-				}
-				elseif ($_FILES['file1']['size'] != 0) {
-					$file1 = $this->upload_file1($dataset)['name'];
-					$dataset += ['file1' => $file1];
-				}
-
-				if ($_FILES['file2']['size'] > 4*MB) {
-					$v_foto = TRUE;
-				}
-				elseif ($_FILES['file2']['size'] != 0) {
-					$file2 = $this->upload_file2($dataset)['name'];
-					$dataset += ['file2' => $file2];
-				}
-
-				if ($v_foto){
-					$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-						File terlalu besar
-					</div>';
-					$data_session = [
-						'alert' => $alert
-					];
-
-					session()->setFlashdata($data_session);
-					return redirect()->to(base_url('designer/pesanan/detail/'.$idorder.'?t=2'));
-				}
+			if ($_FILES['file1']['size'] > 4*MB) {
+				$v_foto = TRUE;
+			}
+			elseif ($_FILES['file1']['size'] != 0) {
+				$file1 = $this->upload_file1($dataset)['name'];
+				$dataset += ['file1' => $file1];
+				echo "in";
 			}
 
+			if ($_FILES['file2']['size'] > 4*MB) {
+				$v_foto = TRUE;
+			}
+			elseif ($_FILES['file2']['size'] != 0) {
+				$file2 = $this->upload_file2($dataset)['name'];
+				$dataset += ['file2' => $file2];
+				echo "in";
+			}
+
+			if ($v_foto){
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					File terlalu besar
+				</div>';
+				$data_session = [
+					'alert' => $alert
+				];
+
+				session()->setFlashdata($data_session);
+				return redirect()->to(base_url('designer/pesanan/detail/'.$idorder));
+			}
+			
 			$this->m_comment_csde->sendComment($dataset);
-			return redirect()->to(base_url('designer/pesanan/detail/'.$idorder.'?t=2'));
+			return redirect()->to(base_url('designer/pesanan/detail/'.$idorder));
 		}
 
 		public function req_review_cs($idorder){
@@ -227,7 +227,7 @@
 				Telah meminta pengajuan review desain ke CS
 			</div>';
 			session()->setFlashdata('notif', $alert);
-			return redirect()->to(base_url('designer/pesanan/detail/'.$idorder.'?t=2'));
+			return redirect()->to(base_url('designer/pesanan/detail/'.$idorder));
 		}
 
     public function upload_file1($dataset){

@@ -8,7 +8,7 @@
 	class Withdraw extends \App\Controllers\BaseController{
 
 		public function __construct(){
-			$this->m_designer = new M_Designer();
+			$this->m_designer = new M_designer();
 			$this->m_withdraw = new M_withdraw();
 		}
 		
