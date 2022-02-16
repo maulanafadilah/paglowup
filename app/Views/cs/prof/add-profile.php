@@ -114,7 +114,7 @@
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Foto Profil</label>
                                                     <div class="col-sm-9">
-                                                      <input type="file" name="cs_pic" id="fileupload1" class="form-control">
+                                                      <input type="file" name="cs_pic" id="fileupload1" class="form-control" accept="image/png, image/jpg, image/jpeg">
                                                     </div>
                                                 </div>
                                                 <span class="text-xs text-danger">

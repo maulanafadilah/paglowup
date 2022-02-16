@@ -248,11 +248,11 @@
                 <form id="konfirAdd" action="<?=base_url()?>/designer/pesanan/send_comment_csde/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="file1" class="form-control">
+                        <input type="file" name="file1" class="form-control" accept="image/png, image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="file2" class="form-control">
+                        <input type="file" name="file2" class="form-control" accept="image/png, image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label>Komentar</label>
@@ -304,11 +304,11 @@
                 <form id="upPrevAcc" action="<?=base_url()?>/designer/pesanan/send_prev_umkm/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="prev1" class="form-control">
+                        <input type="file" name="prev1" class="form-control" accept="image/png, image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="prev2" class="form-control">
+                        <input type="file" name="prev2" class="form-control" accept="image/png, image/jpg, image/jpeg">
                     </div>
                 </form>
             </div>

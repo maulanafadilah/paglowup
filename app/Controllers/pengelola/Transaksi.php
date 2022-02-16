@@ -5,8 +5,8 @@
 	use App\Models\M_pengelola;
 	use App\Models\M_pesanan;
 	use App\Models\M_designer;
-	use App\Models\m_comment_csum;
-	use App\Models\m_comment_csde;
+	use App\Models\M_comment_csum;
+	use App\Models\M_comment_csde;
 
 	class Transaksi extends \App\Controllers\BaseController{
 

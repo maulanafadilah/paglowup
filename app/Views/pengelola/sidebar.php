@@ -82,6 +82,26 @@
                         <span data-key="t-pages">Kelola Kode Diskon</span>
                     </a>
                 </li>
+                
+                <li class="menu-title mt-2" data-key="t-menu"><?= lang('Files.Layout') ?></li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="layout"></i>
+                        <span data-key="t-authentication"><?= lang('Files.Frontpage') ?></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="<?=base_url()?>/pengelola/frontpage/home" data-key="t-user-grid">
+                                <span data-key="t-authentication"><?= lang('Files.Home') ?></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url()?>/pengelola/frontpage/contact" data-key="t-user-grid">
+                                <span data-key="t-authentication"><?= lang('Files.Contact') ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
         </div>
         <!-- Sidebar -->
     </div>

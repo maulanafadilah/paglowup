@@ -3,7 +3,7 @@
 	use CodeIgniter\Controller;
 	use App\Controllers\BaseController;
 	use App\Models\M_pengelola;
-	use App\Models\m_withdraw;
+	use App\Models\M_withdraw;
 
 	class Withdraw extends \App\Controllers\BaseController{
 
