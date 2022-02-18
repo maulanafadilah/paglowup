@@ -237,6 +237,24 @@
 				'comment' => $comment,
 				'commenttime' => $commenttime
 			];
+			
+			$this->m_comment_csum->sendComment($dataset);
+			return redirect()->to(base_url('umkm/pesanan/detail/'.$idorder.'#chat'));
+		}
+
+		public function send_comment_csum_img($idorder){
+			$this->newUser();
+			$iduser = session()->get('iduser');
+			$idumkm = $this->m_umkm->getJoinUserUmkm($iduser)[0]->idumkm;
+			$comment = $_POST['comment'];
+			$commenttime = date('Y-m-d h:i:s');
+
+			$dataset = [
+				'idumkm' => $idumkm,
+				'idorder' => $idorder,
+				'comment' => $comment,
+				'commenttime' => $commenttime
+			];
 
 			define('MB', 1048576);
 			if ($_FILES['file1']['size'] > 4*MB) {

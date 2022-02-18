@@ -172,6 +172,24 @@
 			$iddesigner = $this->m_designer->getJoinUserDesigner($iduser)[0]->iddesigner;
 			$comment = $_POST['comment'];
 			$commenttime = date('Y-m-d h:i:s');
+
+			$dataset = [
+				'iddesigner' => $iddesigner,
+				'comment' => $comment,
+				'commenttime' => $commenttime,
+				'idorder' => $idorder
+			];
+			
+			$this->m_comment_csde->sendComment($dataset);
+			return redirect()->to(base_url('designer/pesanan/detail/'.$idorder));
+		}
+
+		public function send_comment_csde_img($idorder){
+			$this->newUser();
+			$iduser = session()->get('iduser');
+			$iddesigner = $this->m_designer->getJoinUserDesigner($iduser)[0]->iddesigner;
+			$comment = $_POST['comment'];
+			$commenttime = date('Y-m-d h:i:s');
 			$v_foto = FALSE;
 
 			$dataset = [

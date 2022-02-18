@@ -377,7 +377,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="csumSendForm" action="<?=base_url()?>/umkm/pesanan/send_comment_csum/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
+                <form id="csumSendForm" action="<?=base_url()?>/umkm/pesanan/send_comment_csum_img/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
                         <input type="file" name="file1" class="form-control" accept="image/png, image/jpg, image/jpeg">

@@ -97,7 +97,7 @@
                                                 <div class="col-sm-4 p-3">
                                                     <center class="img-thumbnail">
                                                         <a data-bs-toggle="modal" data-bs-target="#modalFile1">
-                                                            <img src="<?= base_url(); ?>/webdata/uploads/images/cs/orders/<?=$l_detail->file1?>" class="img-fluid " style="max-height: 265px;" alt="Responsive image">
+                                                            <img src="<?= base_url(); ?>/webdata/uploads/images/umkm/orders/<?=$l_detail->file1?>" class="img-fluid " style="max-height: 265px;" alt="Responsive image">
                                                         </a>
                                                     </center>
                                                 </div>
@@ -107,7 +107,7 @@
                                                 <div class="col-sm-4 p-3">
                                                     <center class="img-thumbnail">
                                                         <a data-bs-toggle="modal" data-bs-target="#modalFile2">
-                                                            <img src="<?= base_url(); ?>/webdata/uploads/images/cs/orders/<?=$l_detail->file2?>" class="img-fluid " style="max-height: 265px;" alt="Responsive image">
+                                                            <img src="<?= base_url(); ?>/webdata/uploads/images/umkm/orders/<?=$l_detail->file2?>" class="img-fluid " style="max-height: 265px;" alt="Responsive image">
                                                         </a>
                                                     </center>
                                                 </div>
@@ -117,7 +117,7 @@
                                                 <div class="col-sm-4 p-3">
                                                     <center class="img-thumbnail">
                                                         <a data-bs-toggle="modal" data-bs-target="#modalFile3">
-                                                            <img src="<?= base_url(); ?>/webdata/uploads/images/cs/orders/<?=$l_detail->file3?>" class="img-fluid " style="max-height: 265px;" alt="Responsive image">
+                                                            <img src="<?= base_url(); ?>/webdata/uploads/images/umkm/orders/<?=$l_detail->file3?>" class="img-fluid " style="max-height: 265px;" alt="Responsive image">
                                                         </a>
                                                     </center>
                                                 </div>
@@ -127,7 +127,7 @@
                                                 <div class="col-sm-4 p-3">
                                                     <center class="img-thumbnail">
                                                         <a data-bs-toggle="modal" data-bs-target="#modalFile4">
-                                                            <img src="<?= base_url(); ?>/webdata/uploads/images/cs/orders/<?=$l_detail->file4?>" class="img-fluid " style="max-height: 265px;" alt="Responsive image">
+                                                            <img src="<?= base_url(); ?>/webdata/uploads/images/umkm/orders/<?=$l_detail->file4?>" class="img-fluid " style="max-height: 265px;" alt="Responsive image">
                                                         </a>
                                                     </center>
                                                 </div>
@@ -242,7 +242,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="konfirAdd" action="<?=base_url()?>/designer/pesanan/send_comment_csde/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
+                <form id="konfirAdd" action="<?=base_url()?>/designer/pesanan/send_comment_csde_img/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
                         <input type="file" name="file1" class="form-control" accept="image/png, image/jpg, image/jpeg">

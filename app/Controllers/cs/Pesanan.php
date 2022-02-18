@@ -103,6 +103,24 @@
 				'commenttime' => $commenttime
 			];
 
+			$this->m_comment_csum->sendComment($dataset);
+			return redirect()->to(base_url('cs/pesanan/detail/'.$idorder.'#chat'));
+		}
+
+		public function send_comment_csum_img($idorder){
+			$this->newUser();
+			$iduser = session()->get('iduser');
+			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
+			$comment = $this->request->getVar('comment');
+			$commenttime = date('Y-m-d h:i:s');
+
+			$dataset = [
+				'idcs' => $idcs,
+				'idorder' => $idorder,
+				'comment' => $comment,
+				'commenttime' => $commenttime
+			];
+
 			define('MB', 1048576);
 			if ($_FILES['file1']['size'] > 4*MB) {
 				$v_foto = TRUE;
@@ -137,6 +155,24 @@
 		}
 
 		public function send_comment_csde($idorder){
+			$this->newUser();
+			$iduser = session()->get('iduser');
+			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
+			$comment = $_POST['comment'];
+			$commenttime = date('Y-m-d h:i:s');
+
+			$dataset = [
+				'idcs' => $idcs,
+				'idorder' => $idorder,
+				'comment' => $comment,
+				'commenttime' => $commenttime
+			];
+
+			$this->m_comment_csde->sendComment($dataset);
+			return redirect()->to(base_url('cs/pesanan/detail/'.$idorder.'?t=2'));
+		}
+
+		public function send_comment_csde_img($idorder){
 			$this->newUser();
 			$iduser = session()->get('iduser');
 			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
