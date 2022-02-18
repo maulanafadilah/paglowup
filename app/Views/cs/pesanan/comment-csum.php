@@ -130,7 +130,7 @@
                             </div>
 
                         </li>
-                        <?php }}else{?>
+                        <?php }else{?>
                         <li>
                             <div class="conversation-list">
                                 <div class="ctext-wrap">
@@ -164,11 +164,10 @@
                             </div>
 
                         </li>
-                        <?php }}?>
+                        <?php }}}?>
 
                     </ul>
                 </div>
-
                 <div class="p-3 border-top">
                     <form id="sendCommentCSUM" method="post" action="<?=base_url()?>/cs/pesanan/send_comment_csum/<?=$l_detail->idorder?>">
                         <div class="row">

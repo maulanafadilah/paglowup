@@ -165,9 +165,9 @@
                                                     <?php if (!is_null($l_detail->paymentproof)){?>
                                                     <br>
                                                     <br>
-                                                    <button href="<?=base_url()?>/webdata/uploads/images/umkm/paypr/<?=$l_detail->paymentproof?>" >
+                                                    <a href="<?=base_url()?>/webdata/uploads/images/umkm/paypr/<?=$l_detail->paymentproof?>" >
                                                         Bukti Pembayaran <i class="fa fa-external-link-alt"></i>
-                                                    </button>
+                                                    </a>
                                                     <?php }?>
                                                     <br>
                                                     <br>
@@ -537,6 +537,7 @@
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
+<?php if(!is_null($l_detail->designerrating)){ ?>
 <!-- rater js -->
 <script src="<?=base_url()?>/assets/libs/rater-js/index.js"></script>
 <script type="text/javascript">
@@ -555,6 +556,7 @@ function onload(event) {
 }
 window.addEventListener("load", onload, false); 
 </script>
+<?php }?>
 
 <script type="text/javascript">
     $(document).ready(function() {

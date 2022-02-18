@@ -125,7 +125,7 @@
                             </div>
 
                         </li>
-                        <?php }}else{?>
+                        <?php }else{?>
                         <li>
                             <div class="conversation-list">
                                 <div class="ctext-wrap">
@@ -159,7 +159,7 @@
                             </div>
 
                         </li>
-                        <?php }}?>
+                        <?php }}}?>
 
                     </ul>
                 </div>
