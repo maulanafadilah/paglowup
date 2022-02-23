@@ -36,6 +36,36 @@
 
       return $this->db->query($sql)->getResult();
     }
+    
+    public function getAllOrderFiltered(){
+      $sql = "SELECT * FROM tb_umkm
+                JOIN tb_order USING (idumkm)
+                LEFT JOIN tr_discount USING (iddiscount)
+                LEFT JOIN tr_statusorder USING (idstatus)
+                LEFT JOIN tr_prodcat USING (idprodcat)
+                LEFT JOIN tr_grouporder USING (idgrouporder)
+                WHERE tb_order.paymentproof IS NULL 
+                AND now() > (DATE_ADD(tb_order.orderdate, INTERVAL 2 DAY))
+                AND tb_order.idstatus = 1
+                ORDER BY orderdate DESC
+              ";
+
+      return $this->db->query($sql)->getResult();
+    }
+    
+    public function getAllCanceledOrder(){
+      $sql = "SELECT * FROM tb_umkm
+                JOIN tb_order USING (idumkm)
+                LEFT JOIN tr_discount USING (iddiscount)
+                LEFT JOIN tr_statusorder USING (idstatus)
+                LEFT JOIN tr_prodcat USING (idprodcat)
+                LEFT JOIN tr_grouporder USING (idgrouporder)
+                WHERE tb_order.idstatus = 9 
+                ORDER BY orderdate DESC
+              ";
+
+      return $this->db->query($sql)->getResult();
+    }
 
     public function getOrderById($idorder){
       $sql = "SELECT tb_order.*, tb_umkm.umkm_name as umkm_name, tb_umkm.umkm_pic as umkm_pic, tb_designer.name as designer_name, tb_designer.designer_pic as designer_pic, tb_cs.name as cs_name, tb_cs.cs_pic as cs_pic, tr_discount.*, tr_grouporder.*, tr_prodcat.*, tr_statusorder.*

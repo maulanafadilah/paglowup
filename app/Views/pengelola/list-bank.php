@@ -54,33 +54,35 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">Customer Service yang terdaftar pada PAGlowUP</p>
+                                <p class="card-title-desc">Daftar Informasi Bank</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addDiscount">
-                                    Tambah Kode Diskon Baru
+                                    Tambah Info Bank Baru
                                 </button>
                                 <table class="table dtable table-bordered dt-responsive table-sm nowrap w-100">
                                     <thead>
                                         <tr>
                                             <th width="7%">No.</th>
-                                            <th>Kode Diskon</th>
-                                            <th>Persentase Diskon</th>
-                                            <th>Status</th>
+                                            <th>Nama Bank</th>
+                                            <th>Nama Pemegang</th>
+                                            <th>Rekening</th>
+                                            <th>status</th>
                                             <th width="10%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $c = 1;?>
-                                        <?php foreach ($l_discount as $a) {?>
+                                        <?php foreach ($l_bank as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
-                                            <td><?=$a->discountcode?></td>
-                                            <td><?=$a->discountamount?>%</td>
+                                            <td><?=$a->bankname?></td>
+                                            <td><?=$a->bankaccname?></td>
+                                            <td><?=$a->bankaccnumber?></td>
                                             <td>
                                             <?php if($a->flag == 1){?>
-                                                Aktif    
+                                                Aktif
                                             <?php }else{?>
                                                 Tidak Aktif    
                                             <?php }?>    
@@ -88,11 +90,11 @@
                                             <td>
                                                 <div class="d-grid gap-2">
                                                     <?php if($a->flag == 0){?>
-                                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#switchDiskon<?=$a->iddiscount?>">
+                                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#switchBank<?=$a->idbank?>">
                                                         Aktifkan
                                                     </button>
                                                     <?php }else{?>
-                                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#switchDiskon<?=$a->iddiscount?>">
+                                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#switchBank<?=$a->idbank?>">
                                                         Nonaktifkan
                                                     </button>
                                                     <?php }?>
@@ -125,32 +127,36 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Tambah Kode Diskon</h5>
+                <h5 class="modal-title" id="myModalLabel">Tambah Informasi Bank</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="konfirAddDiskon" action="<?=base_url()?>/pengelola/discount/add_proc" method="post">
-                  <div class="form-group">
-                    <label>Kode Diskon</label>
-                    <input type="text" name="discountcode" class="form-control" required>
+                <form id="konfirAddBank" action="<?=base_url()?>/pengelola/bank/add_proc" method="post">
+                  <div class="mb-3">
+                    <label>Nama Bank</label>
+                    <input type="text" name="bankname" class="form-control" required>
                   </div>
-                  <div class="form-group">
-                    <label>Besar diskon (1 - 100)</label>
-                    <input type="number" min="1" max="100" name="discountamount" class="form-control" required>
+                  <div class="mb-3">
+                    <label>Nama Pemegang Rekening</label>
+                    <input type="text" name="bankaccname" class="form-control" required>
+                  </div>
+                  <div class="mb-3">
+                    <label>Nomor Rekening</label>
+                    <input type="number" name="bankaccnumber" class="form-control" required>
                   </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" form="konfirAddDiskon" class="btn btn-primary">Simpan</button>
+                <button type="submit" form="konfirAddBank" class="btn btn-primary">Simpan</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<?php foreach($l_discount as $b) {?>
+<?php foreach($l_bank as $b) {?>
 <!-- sample modal content -->
-<div id="switchDiskon<?=$b->iddiscount?>" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="switchBank<?=$b->idbank?>" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -159,14 +165,14 @@
             </div>
             <div class="modal-body">
                 <?php if($b->flag == 0){?>
-                Aktifkan Kode Diskon <?=$b->discountcode?>?
+                Aktifkan informasi bank ini?
                 <?php }else{?>
-                Nonaktifkan Kode Diskon <?=$b->discountcode?>?
+                Nonaktifkan informasi bank ini?
                 <?php }?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <a href="<?=base_url()?>/pengelola/discount/flag_switch/<?=$b->iddiscount?>" class="btn btn-primary">
+                <a href="<?=base_url()?>/pengelola/bank/flag_switch/<?=$b->idbank?>" class="btn btn-primary">
                 <?php if($b->flag == 0){?> Aktifkan <?php }else{?> Nonaktifkan <?php }?>
                 </a>
             </div>

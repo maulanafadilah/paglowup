@@ -161,12 +161,23 @@
                                                         font-size-16">
                                                         <?=$l_detail->statusdesc?>
                                                     </div>
+
                                                     <?php if (!is_null($l_detail->paymentproof)){?>
                                                     <br>
                                                     <br>
                                                     <a href="<?=base_url()?>/webdata/uploads/images/umkm/paypr/<?=$l_detail->paymentproof?>" target="_blank">
                                                         Bukti Pembayaran <i class="fa fa-external-link-alt"></i>
                                                     </a>
+                                                    <?php }if(is_null($l_detail->paymentproof) && $l_detail->idstatus == 1){?>
+                                                    <br>
+                                                    <br>
+                                                    <p>
+                                                        Batas pembayaran berakhir pada: <br>
+                                                        <?php $datelate = date('Y-m-d h:i:s', strtotime($l_detail->orderdate.'+ 2 days')) ?>
+                                                        <?php $date = date_create($datelate); ?>
+                                                        <?=date_format($date, 'd F Y h:i:s A')?>
+                                                        (<span id="demo"></span>)
+                                                    </p>
                                                     <?php }?>
                                                 </div>
                                             </div>
@@ -206,19 +217,19 @@
                                                                 <h5 class="font-size-15 mb-1">Kategori: <?=$l_detail->category?></h5>
                                                                 <p class="font-size-13 text-muted mb-0">Jenis Pesanan: <?=$l_detail->orderdesc?></p>
                                                             </td>
-                                                            <td class="text-end">Rp.<?=$l_detail->price?></td>
+                                                            <td class="text-end">Rp.<?=number_format($l_detail->price, 0, ',', '.')?></td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row" colspan="1" class="text-end">Diskon</th>
                                                             <td class="text-end">
-                                                                <?=(!is_null($l_detail->iddiscount))?'Rp. '.($l_detail->price*($l_detail->discountamount/100)):'Rp. 0'?>
+                                                                <?=(!is_null($l_detail->iddiscount))?'Rp. '.(number_format($l_detail->price*($l_detail->discountamount/100), 0, ',', '.')):'Rp 0'?>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row" colspan="1" class="border-0 text-end">Total</th>
                                                             <td class="border-0 text-end">
                                                                 <h4 class="m-0">
-                                                                    <?=$l_detail->totalpayment?>
+                                                                    Rp <?=number_format($l_detail->totalpayment, 0, ',', '.')?>
                                                                 </h4>
                                                             </td>
                                                         </tr>
@@ -229,7 +240,11 @@
                                         <?php if($l_detail->idstatus == 1 && $l_detail->idstatus < 8 ){?>
                                         <div class="d-print-none mt-3">
                                             <div class="float-end">
-                                                <?php if (is_null($l_detail->paymentproof)){?>
+                                                <?php if (is_null($l_detail->paymentproof) && date('Y-m-d h:i:s') < $datelate) {?>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#cancelOrder" class="btn btn-danger">
+                                                    </i> Batalkan Pesanan
+                                                </button>
+                                                <?php }if (is_null($l_detail->paymentproof)){?>
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#uploadPayment" class="btn btn-success">
                                                     <i class="fa fa-upload"></i> Upload Bukti Pembayaran
                                                 </button>
@@ -294,13 +309,39 @@
 
 <!-- sample modal content -->
 <div id="uploadPayment" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="myModalLabel">Upload Bukti Pembayaran</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <div class="mb-3">
+                    <h5>Total biaya yang harus dibayar: <?=number_format($l_detail->totalpayment, 0, ',', '.')?></h5>
+                    Daftar Bank yang tersedia:
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th width="7%">No.</th>
+                                <th>Nama Bank</th>
+                                <th>Nama Pemegang</th>
+                                <th>Rekening</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $c = 1;?>
+                            <?php foreach ($l_info_bank as $a) {?>
+                            <tr>
+                                <td><?=$c?></td>
+                                <td><?=$a->bankname?></td>
+                                <td><?=$a->bankaccname?></td>
+                                <td><?=$a->bankaccnumber?></td>
+                            </tr>
+                            <?php $c = $c+1; ?>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
                 <form id="konfirPayment" action="<?=base_url()?>/umkm/pesanan/upload_payment/<?=$l_detail->idorder?>" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label class="col-sm-12 col-form-label">Bukti Pembayaran</label>
@@ -315,6 +356,27 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<?php if(is_null($l_detail->paymentproof) && date('Y-m-d h:i:s') < $datelate){?>
+<!-- sample modal content -->
+<div id="cancelOrder" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Konfirmasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Apakah anda ingin membatalkan pesanan ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <a href="<?=base_url()?>/umkm/pesanan/cancel_order/<?=$l_detail->idorder?>" class="btn btn-danger">Batalkan</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<?php }?>
 
 <?php if (!is_null($l_detail->orderedfile1) || !is_null($l_detail->orderedfile2)) {?>
 <?php if(is_null($l_detail->designerrating) || is_null($l_detail->csrating)){?>
@@ -414,25 +476,58 @@
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
+<?php if(is_null($l_detail->paymentproof) && $l_detail->idstatus == 1){?>
+<script type="text/javascript">
+    // Set the date we're counting down to
+    var countDownDate = new Date("<?php echo date('Y-m-d h:i:s', strtotime($l_detail->orderdate.'+ 2 days'))?>").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+      // Get today's date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="demo"
+      document.getElementById("demo").innerHTML = days + " Hari " + hours + ":"
+      + minutes + ":" + seconds;
+
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+</script>
+<?php }?>
+
 <?php if (!is_null($l_detail->orderedfile1) || !is_null($l_detail->orderedfile2)) {?>
 <?php if(is_null($l_detail->designerrating) || is_null($l_detail->csrating)){?>
 <!-- ckeditor -->
 <script src="<?=base_url()?>/assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 <script type="text/javascript">
-ClassicEditor
-    .create( document.querySelector( '.texteditor' ), {
-        toolbar: [ 'bold', 'italic', 'link', 'undo', 'redo', 'numberedList', 'bulletedList' ]
-    } )
-    .catch( error => {
-        console.log( error );
-    } );
-ClassicEditor
-    .create( document.querySelector( '.texteditor2' ), {
-        toolbar: [ 'bold', 'italic', 'link', 'undo', 'redo', 'numberedList', 'bulletedList' ]
-    } )
-    .catch( error => {
-        console.log( error );
-    } );
+    ClassicEditor
+        .create( document.querySelector( '.texteditor' ), {
+            toolbar: [ 'bold', 'italic', 'link', 'undo', 'redo', 'numberedList', 'bulletedList' ]
+        } )
+        .catch( error => {
+            console.log( error );
+        } );
+    ClassicEditor
+        .create( document.querySelector( '.texteditor2' ), {
+            toolbar: [ 'bold', 'italic', 'link', 'undo', 'redo', 'numberedList', 'bulletedList' ]
+        } )
+        .catch( error => {
+            console.log( error );
+        } );
 </script>
 <?php }}?>
 
@@ -440,31 +535,31 @@ ClassicEditor
 <!-- rater js -->
 <script src="<?=base_url()?>/assets/libs/rater-js/index.js"></script>
 <script type="text/javascript">
-function onload(event) {
-    // rating-desain
-    var basicRating = raterJs( {
-        starSize:30,
-        readOnly: true, 
-        rating: <?php echo $l_detail->designerrating?>,
-        element:document.querySelector("#rating-desain"), 
-        rateCallback:function rateCallback(rating, done) {
-            this.setRating(rating); 
-            done(); 
-        }
-    });
-    // rating-cs
-    var basicRating = raterJs( {
-        starSize:30,
-        readOnly: true, 
-        rating: <?php echo $l_detail->csrating?>,
-        element:document.querySelector("#rating-cs"), 
-        rateCallback:function rateCallback(rating, done) {
-            this.setRating(rating); 
-            done(); 
-        }
-    });
-}
-window.addEventListener("load", onload, false); 
+    function onload(event) {
+        // rating-desain
+        var basicRating = raterJs( {
+            starSize:30,
+            readOnly: true, 
+            rating: <?php echo $l_detail->designerrating?>,
+            element:document.querySelector("#rating-desain"), 
+            rateCallback:function rateCallback(rating, done) {
+                this.setRating(rating); 
+                done(); 
+            }
+        });
+        // rating-cs
+        var basicRating = raterJs( {
+            starSize:30,
+            readOnly: true, 
+            rating: <?php echo $l_detail->csrating?>,
+            element:document.querySelector("#rating-cs"), 
+            rateCallback:function rateCallback(rating, done) {
+                this.setRating(rating); 
+                done(); 
+            }
+        });
+    }
+    window.addEventListener("load", onload, false); 
 </script>
 <?php }?>
 

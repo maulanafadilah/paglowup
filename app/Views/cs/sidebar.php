@@ -25,22 +25,17 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="file-text"></i>
-                        <span data-key="t-authentication"><?= lang('Files.Transaction') ?></span>
+                        <span data-key="t-authentication">Transaksi</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="umkm" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.ListPemesanan') ?></span>
+                            <a href="<?=base_url()?>/cs/pesanan/list" data-key="t-user-grid">
+                                <span data-key="t-authentication">List Pemesanan</span>
                             </a>
                         </li>
                         <li>
-                            <a href="cs-chat" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.DiskusiTrx') ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cs-chat" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.Rating') ?></span>
+                            <a href="<?=base_url()?>/cs/pesanan2/list" data-key="t-user-grid">
+                                <span data-key="t-authentication">List Pesanan Batal</span>
                             </a>
                         </li>
                     </ul>

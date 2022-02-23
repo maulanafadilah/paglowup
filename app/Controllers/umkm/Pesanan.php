@@ -3,6 +3,7 @@
 	use CodeIgniter\Controller;
 	use App\Controllers\BaseController;
 	use App\Models\M_umkm;
+	use App\Models\M_bank;
 	use App\Models\M_pesanan;
 	use App\Models\M_comment_csum;
 	use App\Models\M_user;
@@ -12,6 +13,7 @@
 
 		function __construct(){
 			$this->m_umkm = new M_umkm();
+			$this->m_bank = new M_bank();
 			$this->m_user = new M_user();
 			$this->m_comment_csum = new M_comment_csum();
 			$this->m_pesanan = new M_pesanan();
@@ -61,12 +63,14 @@
 
 			$l_detail = $this->m_pesanan->getOrderById($idorder)[0];
 			$l_comments_csum = $this->m_comment_csum->getCommentsByIdOrder($idorder);
+			$l_info_bank = $this->m_bank->getAllActiveBank();
 			$detilUser = $this->m_umkm->getJoinUserUmkm($iduser)[0];
 
 			$data = [
 				'title_meta' => view('partials/title-meta', ['title' => 'Detail Pemesanan']),
 				'l_detail' => $l_detail,
 				'l_comments_csum' => $l_comments_csum,
+				'l_info_bank' => $l_info_bank,
 				'detail_user' => $detilUser
 			];
 
@@ -221,6 +225,19 @@
 			</div>';
 
 			session()->setFlashdata($alert);
+			return redirect()->to(base_url('umkm/pesanan/detail/'.$idorder));
+		}
+
+		public function cancel_order($idorder){
+			$this->newUser();
+			$iduser = session()->get('iduser');
+			
+			$this->m_pesanan->cancelOrderById($idorder, $idcs);
+
+			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
+				Pesanan berhasil dibatalkan
+			</div>';
+			session()->setFlashdata('notif', $alert);
 			return redirect()->to(base_url('umkm/pesanan/detail/'.$idorder));
 		}
 

@@ -70,16 +70,35 @@
                 </li>
 
                 <li>
-                    <a href="<?=base_url()?>/pengelola/transaksi/list">
+                    <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="file-text"></i>
-                        <span data-key="t-pages">Transaksi</span>
+                        <span data-key="t-authentication">Transaksi</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="<?=base_url()?>/pengelola/pesanan/list" data-key="t-user-grid">
+                                <span data-key="t-authentication">List Transaksi</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url()?>/pengelola/pesanan2/list" data-key="t-user-grid">
+                                <span data-key="t-authentication">Histori Transaksi Batal</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li>
                     <a href="<?=base_url()?>/pengelola/discount/list">
                         <i data-feather="percent"></i>
                         <span data-key="t-pages">Kelola Kode Diskon</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?=base_url()?>/pengelola/bank/list">
+                        <i data-feather="percent"></i>
+                        <span data-key="t-pages">Kelola Info Bank</span>
                     </a>
                 </li>
                 
