@@ -117,7 +117,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Deskripsi Foto 1</label>
+                                                        <label class="form-label">Foto Produk, Foto Kemasan</label>
                                                         <div class="col-sm-12">
                                                           <input type="file" name="foto1" class="form-control fileupload" accept="image/png, image/jpg, image/jpeg">
                                                         </div>
@@ -125,7 +125,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Deskripsi Foto 2</label>
+                                                        <label class="form-label">Foto Produk, Foto Kemasan</label>
                                                         <div class="col-sm-12">
                                                           <input type="file" name="foto2" class="form-control fileupload" accept="image/png, image/jpg, image/jpeg">
                                                         </div>
@@ -136,7 +136,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Deskripsi Foto 3</label>
+                                                        <label class="form-label">Foto Produk, Foto Kemasan</label>
                                                         <div class="col-sm-12">
                                                           <input type="file" name="foto3" class="form-control fileupload" accept="image/png, image/jpg, image/jpeg">
                                                         </div>
@@ -144,7 +144,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Deskripsi Foto 4</label>
+                                                        <label class="form-label">Foto Produk, Foto Kemasan</label>
                                                         <div class="col-sm-12">
                                                           <input type="file" name="foto4" class="form-control fileupload" accept="image/png, image/jpg, image/jpeg">
                                                         </div>

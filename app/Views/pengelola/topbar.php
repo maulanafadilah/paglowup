@@ -5,7 +5,7 @@
             <div class="navbar-brand-box">
                 <a href="<?=base_url()?>/pengelola/dashboard" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="<?= base_url()?>/assets/images/logo-sm.svg" alt="" height="24">
+                        <img src="<?= base_url()?>/assets/images/favicon.ico" alt="" height="24">
                     </span>
                     <span class="logo-lg">
                         <img src="<?= base_url()?>/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">PAGlowUP</span>
@@ -14,7 +14,7 @@
 
                 <a href="<?=base_url()?>/pengelola/dashboard" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="<?= base_url()?>/assets/images/logo-sm.svg" alt="" height="24">
+                        <img src="<?= base_url()?>/assets/images/favicon.ico" alt="" height="24">
                     </span>
                     <span class="logo-lg">
                         <img src="<?= base_url()?>/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">PAGlowUP</span>

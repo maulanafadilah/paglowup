@@ -93,7 +93,7 @@
 			$this->newUser();
 			$iduser = session()->get('iduser');
 			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
-			$comment = $this->request->getVar('comment');
+			$comment = $_POST['comment'];
 			$commenttime = date('Y-m-d h:i:s');
 
 			$dataset = [
@@ -111,8 +111,9 @@
 			$this->newUser();
 			$iduser = session()->get('iduser');
 			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
-			$comment = $this->request->getVar('comment');
+			$comment = $_POST['comment'];
 			$commenttime = date('Y-m-d h:i:s');
+			$v_foto = FALSE;
 
 			$dataset = [
 				'idcs' => $idcs,
@@ -178,6 +179,7 @@
 			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
 			$comment = $_POST['comment'];
 			$commenttime = date('Y-m-d h:i:s');
+			$v_foto = FALSE;
 
 			$dataset = [
 				'idcs' => $idcs,

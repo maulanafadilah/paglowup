@@ -11,17 +11,10 @@
 
                 <li>
                     <a href="<?=base_url()?>/cs/designer/list">
-                        <i data-feather="pen-tool"></i>
+                        <i data-feather="users"></i>
                         <span data-key="t-pages">Designer</span>
                     </a>
                 </li>
-                <li>
-                    <a href="<?=base_url()?>/cs/pesanan/list">
-                        <i data-feather="pen-tool"></i>
-                        <span data-key="t-pages">Pesanan</span>
-                    </a>
-                </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="file-text"></i>

@@ -6,8 +6,8 @@
     <div class="mb-3">
         <table>
             <tr>
-                <td>Nama Pemohon</td>
-                <td>:</td>
+                <td width="23%">Nama Pemohon</td>
+                <td width="2%">:</td>
                 <td><?=$with->designer_name?></td>
             </tr>
             <tr>
@@ -34,7 +34,9 @@
             <tr>
                 <td>Bukti transfer</td>
                 <td>:</td>
-                <td><img src="<?=base_url()?>/webdata/uploads/images/pengelola/withdrawproof/<?=$with->transferproof?>"></td>
+                <td>
+                    <img src="<?=base_url()?>/webdata/uploads/images/pengelola/withdrawproof/<?=$with->transferproof?>" style="max-width: 500px">
+                </td>
             </tr>
             <?php }elseif($with->status == 'Cancelled'){?>
             <tr>

@@ -82,7 +82,7 @@
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-grow-1">
                                                     <div class="mb-4">
-                                                        <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="24"><span class="logo-txt">Minia</span>
+                                                        <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="30">
                                                     </div>
                                                 </div>
                                                 <div class="flex-shrink-0">
@@ -165,7 +165,7 @@
                                                     <?php if (!is_null($l_detail->paymentproof)){?>
                                                     <br>
                                                     <br>
-                                                    <a href="<?=base_url()?>/webdata/uploads/images/umkm/paypr/<?=$l_detail->paymentproof?>" >
+                                                    <a href="<?=base_url()?>/webdata/uploads/images/umkm/paypr/<?=$l_detail->paymentproof?>" target="_blank">
                                                         Bukti Pembayaran <i class="fa fa-external-link-alt"></i>
                                                     </a>
                                                     <?php }?>
@@ -453,11 +453,11 @@
                 <form id="csumSendForm" action="<?=base_url()?>/cs/pesanan/send_comment_csum_img/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="file1" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
+                        <input type="file" name="file1" class="form-control" accept="image/png, image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="file2" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
+                        <input type="file" name="file2" class="form-control" accept="image/png, image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label>Komentar</label>

@@ -76,7 +76,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="<?=base_url()?>/pengelola/pesanan/list" data-key="t-user-grid">
+                            <a href="<?=base_url()?>/pengelola/transaksi/list" data-key="t-user-grid">
                                 <span data-key="t-authentication">List Transaksi</span>
                             </a>
                         </li>
@@ -97,7 +97,7 @@
 
                 <li>
                     <a href="<?=base_url()?>/pengelola/bank/list">
-                        <i data-feather="percent"></i>
+                        <i data-feather="credit-card"></i>
                         <span data-key="t-pages">Kelola Info Bank</span>
                     </a>
                 </li>

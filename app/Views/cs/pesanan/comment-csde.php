@@ -194,7 +194,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <a class="btn btn-secondary w-md waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#sendAttachment">
+                                <a class="btn btn-secondary w-md waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#sendAttachmentCSDE">
                                     <span class="d-none d-sm-inline-block me-2">Attachment</span><i class="mdi mdi-paperclip float-end"></i>
                                 </a>
                             </div>

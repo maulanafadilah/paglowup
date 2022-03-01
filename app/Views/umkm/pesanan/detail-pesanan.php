@@ -82,7 +82,7 @@
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-grow-1">
                                                     <div class="mb-4">
-                                                        <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="24"><span class="logo-txt">Minia</span>
+                                                        <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="30">
                                                     </div>
                                                 </div>
                                                 <div class="flex-shrink-0">
@@ -356,7 +356,7 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
+<?php if($l_detail->idstatus == 1 && $l_detail->idstatus < 8 ){?>
 <?php if(is_null($l_detail->paymentproof) && date('Y-m-d h:i:s') < $datelate){?>
 <!-- sample modal content -->
 <div id="cancelOrder" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -376,7 +376,7 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<?php }?>
+<?php }}?>
 
 <?php if (!is_null($l_detail->orderedfile1) || !is_null($l_detail->orderedfile2)) {?>
 <?php if(is_null($l_detail->designerrating) || is_null($l_detail->csrating)){?>

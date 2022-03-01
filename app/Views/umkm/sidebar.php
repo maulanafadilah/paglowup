@@ -10,35 +10,19 @@
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
                 <li>
-                    <a href="<?=base_url()?>/umkm/pesanan/list">
-                        <i data-feather="pen-tool"></i>
-                        <span data-key="t-pages">Pesanan</span>
+                    <a href="<?=base_url()?>/umkm/dashboard">
+                        <i data-feather="home"></i>
+                        <span data-key="t-dashboard">Home</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="file-text"></i>
-                        <span data-key="t-authentication"><?= lang('Files.Transaction') ?></span>
+                    <a href="<?=base_url()?>/umkm/pesanan/list">
+                        <i data-feather="shopping-cart"></i>
+                        <span data-key="t-pages">Pesanan</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="<?=base_url()?>/umkm/pesanan/list" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.ListPemesanan') ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cs-chat" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.DiskusiTrx') ?></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cs-chat" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.Rating') ?></span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
+            </ul>
         </div>
         <!-- Sidebar -->
     </div>

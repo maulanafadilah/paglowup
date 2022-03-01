@@ -265,7 +265,8 @@
 			$idumkm = $this->m_umkm->getJoinUserUmkm($iduser)[0]->idumkm;
 			$comment = $_POST['comment'];
 			$commenttime = date('Y-m-d h:i:s');
-
+			$v_foto = FALSE;
+			
 			$dataset = [
 				'idumkm' => $idumkm,
 				'idorder' => $idorder,
