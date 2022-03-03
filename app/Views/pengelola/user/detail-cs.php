@@ -58,8 +58,8 @@
                                             <div class="flex-grow-1">
                                                 <div>
                                                     <h5 class="font-size-16 mb-1"><?=$detail_cs->name?></h5>
-                                                    <p class="text-muted font-size-13">Customer Service</p>
-
+                                                    <p class="text-muted font-size-13">Customer Service<br></p>
+                                                    <div id="rating-cs"></div>
                                                     <div class="d-flex flex-wrap align-items-start gap-2 gap-lg-3 text-muted font-size-13">
                                                         <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i><?=$detail_cs->phone?></div>
                                                         <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i><?=$detail_cs->email?></div>
@@ -86,6 +86,9 @@
                                 <ul class="nav nav-tabs-custom card-header-tabs border-top mt-4" id="pills-tab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link px-3 active" data-bs-toggle="tab" href="#overview" role="tab">Detail Profil</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#pesanan" role="tab">Daftar Transaksi</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link px-3" data-bs-toggle="tab" href="#about" role="tab">Ubah Profil</a>
@@ -169,6 +172,72 @@
                                     <!-- end card body -->
                                 </div>
                                 <!-- end card -->
+                            </div>
+                            <!-- end tab pane -->
+
+                            <div class="tab-pane" id="pesanan" role="tabpanel">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <p class="card-title-desc">List Pemesanan</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <?=session()->getFlashdata('notif');?>
+                                        <div class="table-responsive">
+                                            <table class="table dtable align-middle table-check nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="7%">No.</th>
+                                                        <th>Pemesan</th>
+                                                        <th>Tanggal Pemesanan</th>
+                                                        <th>Deskripsi</th>
+                                                        <th>Status</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $c = 1;?>
+                                                    <?php foreach ($l_pesanan as $a) {?>
+                                                    <tr>
+                                                        <td><?=$c?></td>
+                                                        <td><?=$a->umkm_name?></td>
+                                                        <td><?=$a->orderdate?></td>
+                                                        <td>
+                                                            <?php $countDesc = count(explode(" ", $a->description));
+                                                            if ($countDesc > 12) {
+                                                              $slice = array_slice(explode(" ", $a->description), 0, 12);
+                                                              echo implode(" ", $slice)."....";
+                                                            } else {
+                                                              echo $a->description;
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge 
+                                                            <?php if($a->idstatus == 1 || $a->idstatus == 3 || $a->idstatus == 4 || $a->idstatus == 5 || $a->idstatus == 6){
+                                                                echo 'badge-soft-danger';
+                                                            }elseif($a->idstatus == 2 || $a->idstatus == 7){
+                                                                echo 'badge-soft-success';
+                                                            }elseif($a->idstatus == 8){
+                                                                echo 'badge-soft-secondary';
+                                                            }elseif($a->idstatus == 9){
+                                                                echo 'badge-soft-danger';
+                                                            }?> font-size-12">
+                                                                <?=$a->statusdesc?>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-grid gap-2">
+                                                                <a href="<?=base_url()?>/pengelola/transaksi/detail/<?=$a->idorder?>" class="btn btn-sm btn-outline-info">Detail</a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <?php $c = $c+1; ?>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- end tab pane -->
 
@@ -298,6 +367,35 @@
 <?= $this->include('partials/vendor-scripts') ?>
 
 <script src="<?=base_url()?>/assets/js/app.js"></script>
+
+<!-- Required datatable js -->
+<script src="<?=base_url()?>/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?=base_url()?>/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="<?=base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?=base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<?php if(!is_null($rating)){?>
+<!-- rater js -->
+<script src="<?=base_url()?>/assets/libs/rater-js/index.js"></script>
+<script type="text/javascript">
+function onload(event) {
+    // rating-cs
+    var basicRating = raterJs( {
+        starSize:20,
+        readOnly: true, 
+        rating: <?php echo $rating?>,
+        element:document.querySelector("#rating-cs"), 
+        rateCallback:function rateCallback(rating, done) {
+            this.setRating(rating); 
+            done(); 
+        }
+    });
+}
+window.addEventListener("load", onload, false); 
+</script>
+<?php } ?>
 
 </body>
 

@@ -97,6 +97,11 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function countOrderByUmkm($idumkm){
+      $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE idumkm = $idumkm";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function getOrderByDesigner($iddesigner){
       $sql = "SELECT * FROM tb_umkm
                 JOIN tb_order USING (idumkm)
@@ -105,6 +110,20 @@
                 LEFT JOIN tr_prodcat USING (idprodcat)
                 LEFT JOIN tr_grouporder USING (idgrouporder)
                 WHERE iddesigner = $iddesigner
+                ORDER BY orderdate DESC
+              ";
+
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getOrderByCs($idcs){
+      $sql = "SELECT * FROM tb_umkm
+                JOIN tb_order USING (idumkm)
+                LEFT JOIN tr_discount USING (iddiscount)
+                LEFT JOIN tr_statusorder USING (idstatus)
+                LEFT JOIN tr_prodcat USING (idprodcat)
+                LEFT JOIN tr_grouporder USING (idgrouporder)
+                WHERE idcs = $idcs
                 ORDER BY orderdate DESC
               ";
 

@@ -4,12 +4,14 @@
 	use App\Controllers\BaseController;
 	use App\Models\M_pengelola;
 	use App\Models\M_cs;
+	use App\Models\M_pesanan;
 	use App\Models\M_user;
 
 	class Cs extends \App\Controllers\BaseController{
 
 		public function __construct(){
 			$this->m_cs = new M_cs();
+			$this->m_pesanan = new M_pesanan();
 			$this->m_pengelola = new M_pengelola();
 			$this->m_user = new M_user();
 		}
@@ -31,7 +33,7 @@
 		public function list(){
 			$this->newUser();
 	    $iduser = session()->get('iduser');
-			$l_cs = $this->m_cs->getAllCs();
+			$l_cs = $this->m_cs->getAllCsJoined();
 			$detilUser = $this->m_pengelola->getJoinUserPengelola($iduser)[0];
 
 			$data = [
@@ -47,10 +49,14 @@
 			$this->newUser();
 			$detilUser = $this->m_pengelola->getJoinUserPengelola(session()->get('iduser'))[0];
 			$detail_cs = $this->m_cs->getJoinUserCs($iduser)[0];
+			$l_pesanan = $this->m_pesanan->getOrderByCs($detail_cs->idcs);
+			$rating = $this->m_cs->getRatingCsById($detail_cs->idcs)[0]->rating;
 
 			$data = [
 				'title_meta' => view('partials/title-meta', ['title' => 'Detail Customer Service']),
 				'detail_cs' => $detail_cs,
+				'l_pesanan' => $l_pesanan,
+				'rating' => $rating,
 				'detail_user' => $detilUser
 			];
 

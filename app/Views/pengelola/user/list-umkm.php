@@ -1,3 +1,7 @@
+<?php 
+    use App\Models\M_pesanan;
+    $this->m_pesanan = new M_pesanan();
+?>
 <?= $this->include('partials/head-main') ?>
 
 <head>
@@ -69,6 +73,7 @@
                                             <th>Username</th>
                                             <th>Email</th>
                                             <th>Status</th>
+                                            <th>Total Pesanan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -87,6 +92,7 @@
                                                 Tidak Aktif    
                                             <?php }?>    
                                             </td>
+                                            <td><?=$this->m_pesanan->countOrderByUmkm($a->idumkm)[0]->hitung?></td>
                                             <td>
                                                 <div class="d-grid gap-2">
                                                     <?php if($a->iduser != session()->get('iduser')){?>

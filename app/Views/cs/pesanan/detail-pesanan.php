@@ -517,11 +517,11 @@
             <div class="modal-body">
                 <form id="upPrevAcc" action="<?=base_url()?>/cs/pesanan/send_prev_umkm/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 1</label>
+                        <label class="col-sm-3 col-form-label">Attachment 1 (max size 256kb)</label>
                         <input type="file" name="prev1" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
                     </div>
                     <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 2</label>
+                        <label class="col-sm-3 col-form-label">Attachment 2 (max size 256kb)</label>
                         <input type="file" name="prev2" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
                     </div>
                 </form>

@@ -39,6 +39,23 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getAllCsJoined(){
+      $sql = "SELECT tb_user.iduser AS iduser, tb_user.username as username, tb_user.flag as flag, tb_user.email as email, tb_cs.name AS cs_name, tb_cs.cs_pic AS cs_pic, ROUND(AVG(tb_order.csrating)) AS rating, count(tb_order.idcs) AS total_transaksi 
+        FROM tb_cs JOIN tb_order USING (idcs)
+        JOIN tb_user USING (iduser)";
+
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getRatingCsById($idcs){
+      $sql = "SELECT ROUND(AVG(tb_order.csrating)) AS rating 
+        FROM tb_cs JOIN tb_order USING (idcs)
+        JOIN tb_user USING (iduser)
+        WHERE idcs = $idcs";
+
+      return $this->db->query($sql)->getResult();
+    }
+
     public function insertCs($data){
       $builder = $this->db->table('tb_cs');
       $builder->insert($data);

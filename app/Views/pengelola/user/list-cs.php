@@ -68,6 +68,7 @@
                                             <th>Nama</th>
                                             <th>Username</th>
                                             <th>Email</th>
+                                            <th>Rating</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -77,9 +78,10 @@
                                         <?php foreach ($l_cs as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
-                                            <td><?=$a->name?></td>
+                                            <td><?=$a->cs_name?></td>
                                             <td><?=$a->username?></td>
                                             <td><?=$a->email?></td>
+                                            <td><?=$a->rating?>/5</td>
                                             <td>
                                             <?php if($a->flag == 1){?>
                                                 Aktif    

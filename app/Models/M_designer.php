@@ -32,10 +32,16 @@
     public function getAllDesignerJoined(){
       $sql = "SELECT tb_user.iduser AS iduser, tb_designer.iddesigner AS iddesigner, tb_designer.name AS designer_name, tb_designer.designer_pic AS designer_pic, ROUND(AVG(tb_order.designerrating)) AS rating, count(tb_order.iddesigner) AS total_transaksi 
         FROM tb_designer JOIN tb_order USING (iddesigner)
-        JOIN tb_user USING(iduser) 
-        GROUP BY designer_name 
-        ORDER BY rating, total_transaksi
-        LIMIT 10";
+        JOIN tb_user USING(iduser)";
+
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getRatingDesignerById($iddesigner){
+      $sql = "SELECT ROUND(AVG(tb_order.designerrating)) AS rating 
+        FROM tb_designer JOIN tb_order USING (iddesigner)
+        JOIN tb_user USING (iduser)
+        WHERE iddesigner = $iddesigner";
 
       return $this->db->query($sql)->getResult();
     }

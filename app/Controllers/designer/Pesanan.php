@@ -79,7 +79,7 @@
 			];
 
 			define('MB', 1048576);
-			if ($_FILES['prev1']['size'] > 4*MB) {
+			if ($_FILES['prev1']['size'] > 262144) {
 				$v_file = TRUE;
 			}
 			elseif ($_FILES['prev1']['size'] != 0) {
@@ -87,7 +87,7 @@
 				$dataset += ['designpreview1' => $prev1];
 			}
 
-			if ($_FILES['prev2']['size'] > 4*MB) {
+			if ($_FILES['prev2']['size'] > 262144) {
 				$v_file = TRUE;
 			}
 			elseif ($_FILES['prev2']['size'] != 0) {
@@ -97,7 +97,7 @@
 
 			if ($v_file){
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					File terlalu besar
+					File terlalu besar, max size 256kb
 				</div>';
 				$data_session = [
 					'alert' => $alert
@@ -206,7 +206,6 @@
 			elseif ($_FILES['file1']['size'] != 0) {
 				$file1 = $this->upload_file1($dataset)['name'];
 				$dataset += ['file1' => $file1];
-				echo "in";
 			}
 
 			if ($_FILES['file2']['size'] > 4*MB) {
@@ -215,7 +214,6 @@
 			elseif ($_FILES['file2']['size'] != 0) {
 				$file2 = $this->upload_file2($dataset)['name'];
 				$dataset += ['file2' => $file2];
-				echo "in";
 			}
 
 			if ($v_foto){

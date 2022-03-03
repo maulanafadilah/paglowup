@@ -4,12 +4,14 @@
 	use App\Controllers\BaseController;
 	use App\Models\M_pengelola;
 	use App\Models\M_designer;
+	use App\Models\M_pesanan;
 	use App\Models\M_user;
 
 	class Designer extends \App\Controllers\BaseController{
 
 		public function __construct(){
 			$this->m_designer = new M_designer();
+			$this->m_pesanan = new M_pesanan();
 			$this->m_pengelola = new M_pengelola();
 			$this->m_user = new M_user();
 		}
@@ -47,16 +49,20 @@
 			$this->newUser();
 			$detilUser = $this->m_pengelola->getJoinUserPengelola(session()->get('iduser'))[0];
 			$detail_designer = $this->m_designer->getJoinUserDesigner($iduser)[0];
+			$l_pesanan = $this->m_pesanan->getOrderByDesigner($detail_designer->iddesigner);
 			$l_portfolio = $this->m_designer->getPortfolioByIdDesigner($detail_designer->iddesigner);
+			$rating = $this->m_designer->getRatingDesignerById($detail_designer->iddesigner)[0]->rating;
 
 			$data = [
 				'title_meta' => view('partials/title-meta', ['title' => 'Detail Designer']),
 				'detail_designer' => $detail_designer,
 				'detail_user' => $detilUser,
+				'rating' => $rating,
+				'l_pesanan' => $l_pesanan,
 				'l_portfolio' => $l_portfolio
 			];
 
-			return view('pengelola/user/detail-Designer', $data);
+			return view('pengelola/user/detail-designer', $data);
 		}
 
 		public function add_proc(){
