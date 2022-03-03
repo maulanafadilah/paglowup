@@ -1,3 +1,8 @@
+<?php 
+    use App\Models\M_designer;
+    $this->m_designer = new M_designer();
+    
+?>
 <?= $this->include('partials/head-main') ?>
 
 <head>
@@ -296,30 +301,37 @@
                                         <tr>
                                             <th width="7%">No.</th>
                                             <th>Nama</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
+                                            <th>Rating</th>
+                                            <th>Total Transaksi</th>
+                                            <th>Total Transaksi Ongoing</th>
+                                            <th>Total Transaksi Selesai</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $c = 1;?>
-                                        <?php foreach ($l_designer as $a) {
-                                            if ($a->flag == 1) {?>
+                                        <?php foreach ($l_designer as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
-                                            <td><?=$a->name?></td>
-                                            <td><?=$a->username?></td>
-                                            <td><?=$a->email?></td>
+                                            <td><?=$a->designer_name?></td>
+                                            <td><?=$a->rating?>/5</td>
+                                            <td><?=$a->total_transaksi?></td>
+                                            <td>
+                                                <?= $this->m_designer->countStatusOngoing($a->iddesigner)[0]->hitung?>
+                                            </td>
+                                            <td>
+                                                <?= $this->m_designer->countStatusDone($a->iddesigner)[0]->hitung?>
+                                            </td>
                                             <td>
                                                 <div class="d-grid gap-2">
-                                                    <a class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#setDesigner" data-id="<?=$a->iddesigner?>">
+                                                    <a class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#setDesigner" data-id="<?=$a->iddesigner?>">
                                                         Pilih
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
                                         <?php $c = $c+1; ?>
-                                        <?php }} ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
