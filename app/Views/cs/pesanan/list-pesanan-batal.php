@@ -130,7 +130,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">histori Pemesanan yang telah dibatalkan</p>
+                                <p class="card-title-desc">Histori Pemesanan yang telah dibatalkan</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>

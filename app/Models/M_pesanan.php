@@ -212,6 +212,13 @@
       $builder->update();
     }
 
+    public function umkmCancelOrderById($idorder){
+      $builder = $this->db->table('tb_order');
+      $builder->set('idstatus', 9);
+      $builder->where('idorder', $idorder);
+      $builder->update();
+    }
+
     public function uploadPreview($dataset, $idorder){
       $builder = $this->db->table('tb_order');
       $builder->where('idorder', $idorder);

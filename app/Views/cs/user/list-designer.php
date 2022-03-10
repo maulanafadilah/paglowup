@@ -80,7 +80,7 @@
                                         <tr>
                                             <td><?=$c?></td>
                                             <td><?=$a->designer_name?></td>
-                                            <td><?=$a->rating?>/5</td>
+                                            <td><?=(!$a->rating)?'-':$a->rating?>/5</td>
                                             <td><?=$a->total_transaksi?></td>
                                             <td>
                                                 <?= $this->m_designer->countStatusOngoing($a->iddesigner)[0]->hitung?>
@@ -91,7 +91,7 @@
                                             <td>
                                                 <div class="d-grid gap-2">
                                                     <?php if($a->iduser != session()->get('iduser')){?>
-                                                    <a href="<?=base_url()?>/cs/designer/detail/<?=$a->iduser?>" class="btn btn-sm btn-outline-info">detail</a> 
+                                                    <a href="<?=base_url()?>/cs/designer/detail/<?=$a->iduser?>" class="btn btn-sm btn-outline-info">Detail</a> 
                                                     <?php }else{ ?>
                                                     <a href="<?=base_url()?>/cs/profile" class="btn btn-sm btn-outline-info">detail</a> 
                                                     <?php } ?>

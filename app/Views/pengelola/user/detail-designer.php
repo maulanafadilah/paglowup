@@ -396,7 +396,7 @@
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Foto Profil</label>
                                                     <div class="col-sm-9">
-                                                      <input type="file" name="designer_pic" id="fileupload1" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                                                      <input type="file" name="designer_pic" id="fileupload1" class="form-control" accept=" image/jpg, image/jpeg">
                                                     </div>
                                                 </div>
                                                 <span class="text-xs text-danger">
@@ -574,7 +574,7 @@
                 <form id="konfirAdd" action="<?=base_url()?>/pengelola/portfolio/add_proc/<?=$detail_designer->iduser?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Foto / Gambar Portofolio</label>
-                        <input type="file" name="foto" id="fileupload1" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
+                        <input type="file" name="foto" id="fileupload1" class="form-control" accept=" image/jpg, image/jpeg" required>
                     </div>
                     <div class="mb-3">
                         <label>Deskripsi <span class="text-danger">*</span></label>

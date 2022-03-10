@@ -79,19 +79,14 @@
                                                 <td><?=$c?></td>
                                                 <td><?=$a->statusdesc?></td>
                                                 <td><?=$a->orderdate?></td>
-                                                <td><?=$a->csrating?>/5</td>
-                                                <td><?=$a->designerrating?>/5</td>
+                                                <td><?=(!$a->csrating)?'-':$a->csrating?>/5</td>
+                                                <td><?=(!$a->designerrating)?'-':$a->designerrating?>/5</td>
                                                 <td><?=$a->category?></td>
                                                 <td>Rp.<?=$a->totalpayment?></td>
                                                 <td>
                                                     <div class="d-grid gap-2">
                                                         <div class="btn-group">
                                                             <a href="<?=base_url()?>/pengelola/transaksi/detail/<?=$a->idorder?>" class="btn btn-sm btn-outline-info">Detail</a>
-                                                            <?php if($a->idstatus < 8){?>
-                                                            <button class="btn btn-sm btn-outline-danger">
-                                                                Batalkan
-                                                            </button>
-                                                            <?php } ?>
                                                         </div>
                                                     </div>
                                                 </td>

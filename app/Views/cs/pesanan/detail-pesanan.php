@@ -431,11 +431,11 @@
                 <form id="csdeSendForm" action="<?=base_url()?>/cs/pesanan/send_comment_csde_img/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="file1" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                        <input type="file" name="file1" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="file2" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                        <input type="file" name="file2" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label>Komentar</label>
@@ -465,11 +465,11 @@
                 <form id="csumSendForm" action="<?=base_url()?>/cs/pesanan/send_comment_csum_img/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="file1" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                        <input type="file" name="file1" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="file2" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                        <input type="file" name="file2" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label>Komentar</label>
@@ -518,11 +518,11 @@
                 <form id="upPrevAcc" action="<?=base_url()?>/cs/pesanan/send_prev_umkm/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1 (max size 256kb)</label>
-                        <input type="file" name="prev1" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
+                        <input type="file" name="prev1" class="form-control" accept=" image/jpg, image/jpeg" required>
                     </div>
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 2 (max size 256kb)</label>
-                        <input type="file" name="prev2" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
+                        <input type="file" name="prev2" class="form-control" accept=" image/jpg, image/jpeg" required>
                     </div>
                 </form>
             </div>

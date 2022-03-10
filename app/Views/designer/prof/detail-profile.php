@@ -296,7 +296,7 @@
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Nomor Rekening <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="bankaccount" value="<?=$detail_user->bankaccount?>" class="form-control" >
+                                                        <input type="text" name="bankaccount" value="<?=$detail_user->bankaccount?>" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">
@@ -314,7 +314,7 @@
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Foto Profil</label>
                                                     <div class="col-sm-9">
-                                                      <input type="file" name="designer_pic" id="fileupload1" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                                                      <input type="file" name="designer_pic" id="fileupload1" class="form-control" accept=" image/jpg, image/jpeg">
                                                     </div>
                                                 </div>
                                                 <span class="text-xs text-danger">
