@@ -1,3 +1,8 @@
+<?php 
+    use App\Models\M_designer;
+    $this->m_designer = new M_designer();
+    
+?>
 <?= $this->include('partials/head-main') ?>
 
 <head>
@@ -82,7 +87,7 @@
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-grow-1">
                                                     <div class="mb-4">
-                                                        <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="24"><span class="logo-txt">Minia</span>
+                                                        <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="30">
                                                     </div>
                                                 </div>
                                                 <div class="flex-shrink-0">
@@ -165,7 +170,7 @@
                                                     <?php if (!is_null($l_detail->paymentproof)){?>
                                                     <br>
                                                     <br>
-                                                    <a href="<?=base_url()?>/webdata/uploads/images/umkm/paypr/<?=$l_detail->paymentproof?>" >
+                                                    <a href="<?=base_url()?>/webdata/uploads/images/umkm/paypr/<?=$l_detail->paymentproof?>" target="_blank">
                                                         Bukti Pembayaran <i class="fa fa-external-link-alt"></i>
                                                     </a>
                                                     <?php }?>
@@ -296,30 +301,37 @@
                                         <tr>
                                             <th width="7%">No.</th>
                                             <th>Nama</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
+                                            <th>Rating</th>
+                                            <th>Total Transaksi</th>
+                                            <th>Total Transaksi Ongoing</th>
+                                            <th>Total Transaksi Selesai</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $c = 1;?>
-                                        <?php foreach ($l_designer as $a) {
-                                            if ($a->flag == 1) {?>
+                                        <?php foreach ($l_designer as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
-                                            <td><?=$a->name?></td>
-                                            <td><?=$a->username?></td>
-                                            <td><?=$a->email?></td>
+                                            <td><?=$a->designer_name?></td>
+                                            <td><?=$a->rating?>/5</td>
+                                            <td><?=$a->total_transaksi?></td>
+                                            <td>
+                                                <?= $this->m_designer->countStatusOngoing($a->iddesigner)[0]->hitung?>
+                                            </td>
+                                            <td>
+                                                <?= $this->m_designer->countStatusDone($a->iddesigner)[0]->hitung?>
+                                            </td>
                                             <td>
                                                 <div class="d-grid gap-2">
-                                                    <a class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#setDesigner" data-id="<?=$a->iddesigner?>">
+                                                    <a class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#setDesigner" data-id="<?=$a->iddesigner?>">
                                                         Pilih
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
                                         <?php $c = $c+1; ?>
-                                        <?php }} ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -419,11 +431,11 @@
                 <form id="csdeSendForm" action="<?=base_url()?>/cs/pesanan/send_comment_csde_img/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="file1" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                        <input type="file" name="file1" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="file2" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                        <input type="file" name="file2" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label>Komentar</label>
@@ -453,11 +465,11 @@
                 <form id="csumSendForm" action="<?=base_url()?>/cs/pesanan/send_comment_csum_img/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="file1" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
+                        <input type="file" name="file1" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="file2" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
+                        <input type="file" name="file2" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label>Komentar</label>
@@ -505,12 +517,12 @@
             <div class="modal-body">
                 <form id="upPrevAcc" action="<?=base_url()?>/cs/pesanan/send_prev_umkm/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="prev1" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
+                        <label class="col-sm-3 col-form-label">Attachment 1 (max size 256kb)</label>
+                        <input type="file" name="prev1" class="form-control" accept=" image/jpg, image/jpeg" required>
                     </div>
                     <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="prev2" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
+                        <label class="col-sm-3 col-form-label">Attachment 2 (max size 256kb)</label>
+                        <input type="file" name="prev2" class="form-control" accept=" image/jpg, image/jpeg" required>
                     </div>
                 </form>
             </div>

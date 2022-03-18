@@ -34,7 +34,9 @@
             <tr>
                 <td>Bukti transfer</td>
                 <td>:</td>
-                <td><img src="<?=base_url()?>/webdata/uploads/images/pengelola/withdrawproof/<?=$with->transferproof?>"></td>
+                <td>
+                    <img src="<?=base_url()?>/webdata/uploads/images/pengelola/withdrawproof/<?=$with->transferproof?>" style="max-width: 500px">
+                </td>
             </tr>
             <?php }elseif($with->status == 'Cancelled'){?>
             <tr>

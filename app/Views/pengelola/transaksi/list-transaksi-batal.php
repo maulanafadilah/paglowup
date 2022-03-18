@@ -40,8 +40,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/cs/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item active">List Transaksi</li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item active">List Pesanan yang dibatalkan</li>
                                 </ol>
                             </div>
 
@@ -49,44 +49,61 @@
                     </div>
                 </div>
                 <!-- end page title -->
-
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">Daftar semua transaksi yang berlangsung</p>
+                                <p class="card-title-desc">histori Pemesanan yang telah dibatalkan</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
                                 <div class="table-responsive">
-                                    <table class="dtable table table-sm table-bordered table-striped">
+                                    <table class="table dtable align-middle table-check nowrap">
                                         <thead>
                                             <tr>
                                                 <th width="7%">No.</th>
-                                                <th>Status</th>
+                                                <th>Pemesan</th>
                                                 <th>Tanggal Pemesanan</th>
-                                                <th>Rating CS</th>
-                                                <th>Rating Designer</th>
-                                                <th>Jenis Pesanan</th>
-                                                <th>Total Harga</th>
+                                                <th>Deskripsi</th>
+                                                <th>Status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php $c = 1;?>
-                                            <?php foreach ($l_pesanan as $a) {?>
+                                            <?php foreach ($l_pesanan_batal as $b) {?>
                                             <tr>
                                                 <td><?=$c?></td>
-                                                <td><?=$a->statusdesc?></td>
-                                                <td><?=$a->orderdate?></td>
-                                                <td><?=(!$a->csrating)?'-':$a->csrating?>/5</td>
-                                                <td><?=(!$a->designerrating)?'-':$a->designerrating?>/5</td>
-                                                <td><?=$a->category?></td>
-                                                <td>Rp.<?=$a->totalpayment?></td>
+                                                <td><?=$b->umkm_name?></td>
+                                                <td><?=$b->orderdate?></td>
+                                                <td>
+                                                    <?php $countDesc = count(explode(" ", $b->description));
+                                                    if ($countDesc > 12) {
+                                                      $slice = array_slice(explode(" ", $b->description), 0, 12);
+                                                      echo implode(" ", $slice)."....";
+                                                    } else {
+                                                      echo $b->description;
+                                                    }
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <span class="badge 
+                                                    <?php if($b->idstatus == 1 || $b->idstatus == 3 || $b->idstatus == 4 || $b->idstatus == 5 || $b->idstatus == 6){
+                                                        echo 'badge-soft-danger';
+                                                    }elseif($b->idstatus == 2 || $b->idstatus == 7){
+                                                        echo 'badge-soft-success';
+                                                    }elseif($b->idstatus == 8){
+                                                        echo 'badge-soft-secondary';
+                                                    }elseif($b->idstatus == 9){
+                                                        echo 'badge-soft-danger';
+                                                    }?> font-size-12">
+                                                        <?=$b->statusdesc?>
+                                                    </span>
+                                                </td>
                                                 <td>
                                                     <div class="d-grid gap-2">
                                                         <div class="btn-group">
-                                                            <a href="<?=base_url()?>/pengelola/transaksi/detail/<?=$a->idorder?>" class="btn btn-sm btn-outline-info">Detail</a>
+                                                            <a href="<?=base_url()?>/pengelola/transaksi/detail/<?=$b->idorder?>" class="btn btn-sm btn-outline-info">Detail</a>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -94,18 +111,6 @@
                                             <?php $c = $c+1; ?>
                                             <?php } ?>
                                         </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th></th>
-                                                <th>Status</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -125,6 +130,15 @@
 </div>
 <!-- END layout-wrapper -->
 
+<!-- sample modal content -->
+<div id="cancelOrder" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="fetched-data"></div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
 <?= $this->include('pengelola/right-sidebar') ?>
 
 <!-- JAVASCRIPT -->
@@ -134,27 +148,28 @@
 <script src="<?=base_url()?>/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?=base_url()?>/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
+<!-- Responsive examples -->
+<script src="<?=base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?=base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
 <!-- Datatable init js -->
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('.dtable').DataTable({
-      initComplete: function() {
-        this.api().columns([1]).every( function() {
-          var column = this;
-          var select = $('<select class="col-12"><option value=""></option></select>').appendTo($(column.footer()).empty()).on('change', function(){
-            var val = $.fn.dataTable.util.escapeRegex(
-              $(this).val()
-            );
-            column.search( val ? '^'+val+'$' : '', true, false).draw();
-          });
-          column.data().unique().sort().each( function ( d, j ) {
-            select.append( '<option value="'+d+'">'+d+'</option>' )
-          });
+    $(document).ready(function() {
+        $('.dtable').DataTable();
+        $('#cancelOrder').on('show.bs.modal', function(e) {
+            var rowid = $(e.relatedTarget).data('id');
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url() ?>/pengelola/pesanan2/list_ord_cancel',
+                data: 'rowid=' + rowid,
+                success: function(data) {
+                    $('.fetched-data').html(data); //menampilkan data ke dalam modal
+                }
+            });
         });
-      }
     });
-} );
 </script>
+
 <script src="<?=base_url()?>/assets/js/app.js"></script>
 
 </body>

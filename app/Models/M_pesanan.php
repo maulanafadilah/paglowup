@@ -36,6 +36,36 @@
 
       return $this->db->query($sql)->getResult();
     }
+    
+    public function getAllOrderFiltered(){
+      $sql = "SELECT * FROM tb_umkm
+                JOIN tb_order USING (idumkm)
+                LEFT JOIN tr_discount USING (iddiscount)
+                LEFT JOIN tr_statusorder USING (idstatus)
+                LEFT JOIN tr_prodcat USING (idprodcat)
+                LEFT JOIN tr_grouporder USING (idgrouporder)
+                WHERE tb_order.paymentproof IS NULL 
+                AND now() > (DATE_ADD(tb_order.orderdate, INTERVAL 2 DAY))
+                AND tb_order.idstatus = 1
+                ORDER BY orderdate DESC
+              ";
+
+      return $this->db->query($sql)->getResult();
+    }
+    
+    public function getAllCanceledOrder(){
+      $sql = "SELECT * FROM tb_umkm
+                JOIN tb_order USING (idumkm)
+                LEFT JOIN tr_discount USING (iddiscount)
+                LEFT JOIN tr_statusorder USING (idstatus)
+                LEFT JOIN tr_prodcat USING (idprodcat)
+                LEFT JOIN tr_grouporder USING (idgrouporder)
+                WHERE tb_order.idstatus = 9 
+                ORDER BY orderdate DESC
+              ";
+
+      return $this->db->query($sql)->getResult();
+    }
 
     public function getOrderById($idorder){
       $sql = "SELECT tb_order.*, tb_umkm.umkm_name as umkm_name, tb_umkm.umkm_pic as umkm_pic, tb_designer.name as designer_name, tb_designer.designer_pic as designer_pic, tb_cs.name as cs_name, tb_cs.cs_pic as cs_pic, tr_discount.*, tr_grouporder.*, tr_prodcat.*, tr_statusorder.*
@@ -67,6 +97,11 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function countOrderByUmkm($idumkm){
+      $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE idumkm = $idumkm";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function getOrderByDesigner($iddesigner){
       $sql = "SELECT * FROM tb_umkm
                 JOIN tb_order USING (idumkm)
@@ -75,6 +110,20 @@
                 LEFT JOIN tr_prodcat USING (idprodcat)
                 LEFT JOIN tr_grouporder USING (idgrouporder)
                 WHERE iddesigner = $iddesigner
+                ORDER BY orderdate DESC
+              ";
+
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getOrderByCs($idcs){
+      $sql = "SELECT * FROM tb_umkm
+                JOIN tb_order USING (idumkm)
+                LEFT JOIN tr_discount USING (iddiscount)
+                LEFT JOIN tr_statusorder USING (idstatus)
+                LEFT JOIN tr_prodcat USING (idprodcat)
+                LEFT JOIN tr_grouporder USING (idgrouporder)
+                WHERE idcs = $idcs
                 ORDER BY orderdate DESC
               ";
 
@@ -159,6 +208,13 @@
       $builder = $this->db->table('tb_order');
       $builder->set('idstatus', 9);
       $builder->set('idcs', $idcs);
+      $builder->where('idorder', $idorder);
+      $builder->update();
+    }
+
+    public function umkmCancelOrderById($idorder){
+      $builder = $this->db->table('tb_order');
+      $builder->set('idstatus', 9);
       $builder->where('idorder', $idorder);
       $builder->update();
     }

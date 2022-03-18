@@ -49,7 +49,7 @@
         <form id="upProof" action="<?=base_url()?>/pengelola/withdraw/bayar/<?=$with->idwithdraw?>" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label>Upload Bukti Transfer</label>
-                <input type="file" name="transferproof" id="fileupload1" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
+                <input type="file" name="transferproof" id="fileupload1" class="form-control" accept=" image/jpg, image/jpeg" required>
             </div>
         </form>
     </div>

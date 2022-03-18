@@ -58,7 +58,7 @@
 			$iduser = session()->get('iduser');
 
 			$l_detail = $this->m_pesanan->getOrderById($idorder)[0];
-			$l_designer = $this->m_designer->getAllDesigner();
+			$l_designer = $this->m_designer->getAllDesignerJoined();
 			$l_comments_csum = $this->m_comment_csum->getCommentsByIdOrder($idorder);
 			$l_comments_csde = $this->m_comment_csde->getCommentsByIdOrder($idorder);
 			$detilUser = $this->m_cs->getJoinUserCs($iduser)[0];
@@ -93,7 +93,7 @@
 			$this->newUser();
 			$iduser = session()->get('iduser');
 			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
-			$comment = $this->request->getVar('comment');
+			$comment = $_POST['comment'];
 			$commenttime = date('Y-m-d h:i:s');
 
 			$dataset = [
@@ -111,8 +111,9 @@
 			$this->newUser();
 			$iduser = session()->get('iduser');
 			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
-			$comment = $this->request->getVar('comment');
+			$comment = $_POST['comment'];
 			$commenttime = date('Y-m-d h:i:s');
+			$v_foto = FALSE;
 
 			$dataset = [
 				'idcs' => $idcs,
@@ -178,6 +179,7 @@
 			$idcs = $this->m_cs->getJoinUserCs($iduser)[0]->idcs;
 			$comment = $_POST['comment'];
 			$commenttime = date('Y-m-d h:i:s');
+			$v_foto = FALSE;
 
 			$dataset = [
 				'idcs' => $idcs,
@@ -271,7 +273,7 @@
 			];
 
 			define('MB', 1048576);
-			if ($_FILES['prev1']['size'] > 4*MB) {
+			if ($_FILES['prev1']['size'] > 262144) {
 				$v_file = TRUE;
 			}
 			elseif ($_FILES['prev1']['size'] != 0) {
@@ -279,7 +281,7 @@
 				$dataset += ['designpreview1' => $prev1];
 			}
 
-			if ($_FILES['prev2']['size'] > 4*MB) {
+			if ($_FILES['prev2']['size'] > 262144) {
 				$v_file = TRUE;
 			}
 			elseif ($_FILES['prev2']['size'] != 0) {
@@ -289,7 +291,7 @@
 
 			if ($v_file){
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					File terlalu besar
+					File terlalu besar, max file 256kb
 				</div>';
 				$data_session = [
 					'alert' => $alert

@@ -41,7 +41,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="<?=base_url()?>/cs/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item active">List Pemesanan</li>
+                                    <li class="breadcrumb-item active">List Pesanan yang dibatalkan</li>
                                 </ol>
                             </div>
 
@@ -54,7 +54,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">List Pemesanan</p>
+                                <p class="card-title-desc">List Pesanan yang belum membayar</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
@@ -126,6 +126,77 @@
                     </div> <!-- end col -->
                 </div> <!-- end row -->
 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <p class="card-title-desc">Histori Pemesanan yang telah dibatalkan</p>
+                            </div>
+                            <div class="card-body">
+                                <?=session()->getFlashdata('notif');?>
+                                <div class="table-responsive">
+                                    <table class="table dtable align-middle table-check nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th width="7%">No.</th>
+                                                <th>Pemesan</th>
+                                                <th>Tanggal Pemesanan</th>
+                                                <th>Deskripsi</th>
+                                                <th>Status</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $c = 1;?>
+                                            <?php foreach ($l_pesanan_batal as $b) {
+                                                if ($b->idcs == $detail_user->idcs || is_null($b->idcs)) {
+                                            ?>
+                                            <tr>
+                                                <td><?=$c?></td>
+                                                <td><?=$b->umkm_name?></td>
+                                                <td><?=$b->orderdate?></td>
+                                                <td>
+                                                    <?php $countDesc = count(explode(" ", $b->description));
+                                                    if ($countDesc > 12) {
+                                                      $slice = array_slice(explode(" ", $b->description), 0, 12);
+                                                      echo implode(" ", $slice)."....";
+                                                    } else {
+                                                      echo $b->description;
+                                                    }
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <span class="badge 
+                                                    <?php if($b->idstatus == 1 || $b->idstatus == 3 || $b->idstatus == 4 || $b->idstatus == 5 || $b->idstatus == 6){
+                                                        echo 'badge-soft-danger';
+                                                    }elseif($b->idstatus == 2 || $b->idstatus == 7){
+                                                        echo 'badge-soft-success';
+                                                    }elseif($b->idstatus == 8){
+                                                        echo 'badge-soft-secondary';
+                                                    }elseif($b->idstatus == 9){
+                                                        echo 'badge-soft-danger';
+                                                    }?> font-size-12">
+                                                        <?=$b->statusdesc?>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div class="d-grid gap-2">
+                                                        <div class="btn-group">
+                                                            <a href="<?=base_url()?>/cs/pesanan/detail/<?=$b->idorder?>" class="btn btn-sm btn-outline-info">Detail</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php $c = $c+1; ?>
+                                            <?php }} ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+                </div> <!-- end row -->
+
             </div> <!-- container-fluid -->
         </div>
         <!-- End Page-content -->
@@ -168,7 +239,7 @@
             var rowid = $(e.relatedTarget).data('id');
             $.ajax({
                 type: 'POST',
-                url: '<?= base_url() ?>/cs/pesanan/list_ord_cancel',
+                url: '<?= base_url() ?>/cs/pesanan2/list_ord_cancel',
                 data: 'rowid=' + rowid,
                 success: function(data) {
                     $('.fetched-data').html(data); //menampilkan data ke dalam modal

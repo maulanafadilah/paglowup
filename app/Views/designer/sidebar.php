@@ -17,23 +17,10 @@
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
+                    <a href="<?=base_url()?>/designer/pesanan/list">
                         <i data-feather="pen-tool"></i>
-                        <span data-key="t-authentication"><?= lang('Files.Pekerjaan') ?></span>
+                        <span data-key="t-pages">List Pekerjaan</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="<?=base_url()?>/designer/pesanan/list" data-key="t-user-grid">
-                                <span data-key="t-authentication">List Pekerjaan</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="designer-chat" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.DiskusiCS') ?></span>
-                            </a>
-                        </li>
-
-                    </ul>
                 </li>
                 
                 <li>

@@ -57,6 +57,7 @@
                                 <span data-key="t-authentication">Summary</span>
                             </a>
                         </li>
+                        <li>                    
                             <a href="<?=base_url()?>/pengelola/withdraw" data-key="t-user-grid">
                                 <span data-key="t-authentication">Histori Withdraw</span>
                             </a>
@@ -70,16 +71,35 @@
                 </li>
 
                 <li>
-                    <a href="<?=base_url()?>/pengelola/transaksi/list">
+                    <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="file-text"></i>
-                        <span data-key="t-pages">Transaksi</span>
+                        <span data-key="t-authentication">Transaksi</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="<?=base_url()?>/pengelola/transaksi/list" data-key="t-user-grid">
+                                <span data-key="t-authentication">List Transaksi</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?=base_url()?>/pengelola/pesanan2/list" data-key="t-user-grid">
+                                <span data-key="t-authentication">Histori Transaksi Batal</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li>
                     <a href="<?=base_url()?>/pengelola/discount/list">
                         <i data-feather="percent"></i>
                         <span data-key="t-pages">Kelola Kode Diskon</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?=base_url()?>/pengelola/bank/list">
+                        <i data-feather="credit-card"></i>
+                        <span data-key="t-pages">Kelola Info Bank</span>
                     </a>
                 </li>
                 

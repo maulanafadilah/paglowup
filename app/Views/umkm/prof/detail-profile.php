@@ -276,7 +276,7 @@
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Foto Profil UMKM</label>
                                                     <div class="col-sm-9">
-                                                      <input type="file" name="umkm_pic" id="fileupload1" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                                                      <input type="file" name="umkm_pic" id="fileupload1" class="form-control" accept=" image/jpg, image/jpeg">
                                                     </div>
                                                 </div>
                                                 <span class="text-xs text-danger">

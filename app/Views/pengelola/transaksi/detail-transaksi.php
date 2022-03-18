@@ -94,7 +94,7 @@
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-grow-1">
                                                     <div class="mb-4">
-                                                        <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="24"><span class="logo-txt">Minia</span>
+                                                        <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="30">
                                                     </div>
                                                 </div>
                                                 <div class="flex-shrink-0">

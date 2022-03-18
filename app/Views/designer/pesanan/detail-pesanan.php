@@ -76,7 +76,7 @@
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-grow-1">
                                                     <div class="mb-4">
-                                                        <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="24"><span class="logo-txt">Minia</span>
+                                                        <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="30">
                                                     </div>
                                                 </div>
                                                 <div class="flex-shrink-0">
@@ -245,11 +245,11 @@
                 <form id="konfirAdd" action="<?=base_url()?>/designer/pesanan/send_comment_csde_img/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="file1" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                        <input type="file" name="file1" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="file2" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                        <input type="file" name="file2" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label>Komentar</label>
@@ -300,12 +300,12 @@
             <div class="modal-body">
                 <form id="upPrevAcc" action="<?=base_url()?>/designer/pesanan/send_prev_umkm/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="prev1" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                        <label class="col-sm-3 col-form-label">Attachment 1 (max size 256kb)</label>
+                        <input type="file" name="prev1" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                     <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="prev2" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                        <label class="col-sm-3 col-form-label">Attachment 2 (max size 256kb)</label>
+                        <input type="file" name="prev2" class="form-control" accept=" image/jpg, image/jpeg">
                     </div>
                 </form>
             </div>
@@ -331,11 +331,11 @@
                 <form id="uploadFileWork" action="<?=base_url()?>/designer/pesanan/upload_work/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="orderedfile1" accept="image/jpg,image/jpeg,image/png,image/webp,application/vnd.rar,application/zip" class="form-control">
+                        <input type="file" name="orderedfile1" accept="image/jpg,image/jpeg,image/webp,application/vnd.rar,application/zip" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="orderedfile2" accept="image/jpg,image/jpeg,image/png,image/webp,application/vnd.rar,application/zip" class="form-control">
+                        <input type="file" name="orderedfile2" accept="image/jpg,image/jpeg,image/webp,application/vnd.rar,application/zip" class="form-control">
                     </div>
                 </form>
             </div>

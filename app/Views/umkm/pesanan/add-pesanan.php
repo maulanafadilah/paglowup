@@ -68,7 +68,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label">Pilih Tipe Desain</label>
                                                         <select class="form-select" name="idgrouporder" required>
-                                                            <option>Pilih</option>
+                                                            <option value="0">Pilih</option>
                                                             <?php foreach ($l_jenis_pesanan as $a) { ?>
                                                             <option value="<?=$a->idgrouporder?>"
                                                                 <?php 
@@ -89,7 +89,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label">Pilih Jenis Produk</label>
                                                         <select class="form-select" name="idprodcat" required>
-                                                            <option>Pilih</option>
+                                                            <option value="0">Pilih</option>
                                                             <?php foreach ($l_kat_pesanan as $b) { ?>
                                                             <option value="<?=$b->idprodcat?>"
                                                                 <?php 
@@ -115,38 +115,27 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Deskripsi Foto 1</label>
+                                                        <label class="form-label">Foto Produk</label>
                                                         <div class="col-sm-12">
-                                                          <input type="file" name="foto1" class="form-control fileupload" accept="image/png, image/jpg, image/jpeg">
+                                                          <input type="file" name="foto1" class="form-control fileupload" accept="image/jpg, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Deskripsi Foto 2</label>
+                                                        <label class="form-label">Foto Kemasan</label>
                                                         <div class="col-sm-12">
-                                                          <input type="file" name="foto2" class="form-control fileupload" accept="image/png, image/jpg, image/jpeg">
+                                                          <input type="file" name="foto2" class="form-control fileupload" accept="image/jpg, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Deskripsi Foto 3</label>
+                                                        <label class="form-label">Foto logo saat ini</label>
                                                         <div class="col-sm-12">
-                                                          <input type="file" name="foto3" class="form-control fileupload" accept="image/png, image/jpg, image/jpeg">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Deskripsi Foto 4</label>
-                                                        <div class="col-sm-12">
-                                                          <input type="file" name="foto4" class="form-control fileupload" accept="image/png, image/jpg, image/jpeg">
+                                                          <input type="file" name="foto3" class="form-control fileupload" accept="image/jpg, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -1,7 +1,3 @@
-<?php 
-    use App\Models\M_pesanan;
-    $this->m_pesanan = new M_pesanan();
-?>
 <?= $this->include('partials/head-main') ?>
 
 <head>
@@ -45,7 +41,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item active">List UMKM</li>
+                                    <li class="breadcrumb-item active">List Kode Diskon yang tersedia</li>
                                 </ol>
                             </div>
 
@@ -58,48 +54,50 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">UMKM yang terdaftar pada PAGlowUP</p>
+                                <p class="card-title-desc">Daftar Informasi Bank</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserUmkm">
-                                    Tambah UMKM
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addDiscount">
+                                    Tambah Info Bank Baru
                                 </button>
                                 <table class="table dtable table-bordered dt-responsive table-sm nowrap w-100">
                                     <thead>
                                         <tr>
                                             <th width="7%">No.</th>
-                                            <th>Nama</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
-                                            <th>Status</th>
-                                            <th>Total Pesanan</th>
-                                            <th>Aksi</th>
+                                            <th>Nama Bank</th>
+                                            <th>Nama Pemegang</th>
+                                            <th>Rekening</th>
+                                            <th>status</th>
+                                            <th width="10%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $c = 1;?>
-                                        <?php foreach ($l_umkm as $a) {?>
+                                        <?php foreach ($l_bank as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
-                                            <td><?=$a->umkm_name?></td>
-                                            <td><?=$a->username?></td>
-                                            <td><?=$a->email?></td>
+                                            <td><?=$a->bankname?></td>
+                                            <td><?=$a->bankaccname?></td>
+                                            <td><?=$a->bankaccnumber?></td>
                                             <td>
                                             <?php if($a->flag == 1){?>
-                                                Aktif    
+                                                Aktif
                                             <?php }else{?>
                                                 Tidak Aktif    
                                             <?php }?>    
                                             </td>
-                                            <td><?=$this->m_pesanan->countOrderByUmkm($a->idumkm)[0]->hitung?></td>
                                             <td>
                                                 <div class="d-grid gap-2">
-                                                    <?php if($a->iduser != session()->get('iduser')){?>
-                                                    <a href="<?=base_url()?>/pengelola/umkm/detail/<?=$a->iduser?>" class="btn btn-sm btn-outline-info">detail</a> 
-                                                    <?php }else{ ?>
-                                                    <a href="<?=base_url()?>/pengelola/profile" class="btn btn-sm btn-outline-info">detail</a> 
-                                                    <?php } ?>
+                                                    <?php if($a->flag == 0){?>
+                                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#switchBank<?=$a->idbank?>">
+                                                        Aktifkan
+                                                    </button>
+                                                    <?php }else{?>
+                                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#switchBank<?=$a->idbank?>">
+                                                        Nonaktifkan
+                                                    </button>
+                                                    <?php }?>
                                                 </div>
                                             </td>
                                         </tr>
@@ -117,7 +115,6 @@
         </div>
         <!-- End Page-content -->
 
-
         <?= $this->include('partials/footer') ?>
     </div>
     <!-- end main content-->
@@ -126,36 +123,64 @@
 <!-- END layout-wrapper -->
 
 <!-- sample modal content -->
-<div id="addUserUmkm" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="addDiscount" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Tambah UMKM</h5>
+                <h5 class="modal-title" id="myModalLabel">Tambah Informasi Bank</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="konfirAdd" action="<?=base_url()?>/pengelola/umkm/add_proc" method="post">
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" name="email" class="form-control" required>
+                <form id="konfirAddBank" action="<?=base_url()?>/pengelola/bank/add_proc" method="post">
+                  <div class="mb-3">
+                    <label>Nama Bank</label>
+                    <input type="text" name="bankname" class="form-control" required>
                   </div>
-                  <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" name="username" class="form-control" required>
+                  <div class="mb-3">
+                    <label>Nama Pemegang Rekening</label>
+                    <input type="text" name="bankaccname" class="form-control" required>
                   </div>
-                  <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="pass" class="form-control" required>
+                  <div class="mb-3">
+                    <label>Nomor Rekening</label>
+                    <input type="number" name="bankaccnumber" class="form-control" required>
                   </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" form="konfirAdd" class="btn btn-primary">Simpan</button>
+                <button type="submit" form="konfirAddBank" class="btn btn-primary">Simpan</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<?php foreach($l_bank as $b) {?>
+<!-- sample modal content -->
+<div id="switchBank<?=$b->idbank?>" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Peringatan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php if($b->flag == 0){?>
+                Aktifkan informasi bank ini?
+                <?php }else{?>
+                Nonaktifkan informasi bank ini?
+                <?php }?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <a href="<?=base_url()?>/pengelola/bank/flag_switch/<?=$b->idbank?>" class="btn btn-primary">
+                <?php if($b->flag == 0){?> Aktifkan <?php }else{?> Nonaktifkan <?php }?>
+                </a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<?php } ?>
 
 <?= $this->include('pengelola/right-sidebar') ?>
 
