@@ -245,6 +245,24 @@
       $sql = "SELECT idorder, designerrating, reviewdesigner FROM tb_order WHERE idstatus = 8 AND iddesigner = $iddesigner";
       return $this->db->query($sql)->getResult();
     }
+
+    public function getNewestFile(){
+      $sql = "SELECT designpreview1 from tb_order WHERE idstatus = 8 ORDER BY idorder DESC LIMIT 5";
+
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getTestimonial(){
+      $sql = "SELECT * FROM tb_order JOIN tb_umkm USING (idumkm) WHERE idstatus = 8 AND designerrating = 5 ORDER BY idorder ASC LIMIT 2";
+
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countTransaction(){
+      $sql = "SELECT count(*) AS ct FROM tb_order";
+
+      return $this->db->query($sql)->getResult();
+    }
 	}
 
 ?>

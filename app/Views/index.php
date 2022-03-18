@@ -48,7 +48,7 @@
 							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s">
 							<?=$hero1->title?>
 							</h1>
-							<a href="course-2-column.html" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Explore Now</a>
+							<a href="course-2-column.html" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Ayo Daftar</a>
 							<div class="wow fadeInRight animated image-shape-one" data-wow-delay="0.33s">
 								<svg  version="1.1" class="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="778" height="576">
 									<clipPath class="clip1">
@@ -71,7 +71,7 @@
 							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s">
 							<?=$hero2->title?>
 							</h1>
-							<a href="course-2-column.html" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Explore Now</a>
+							<a href="course-2-column.html" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Ayo Daftar</a>
 							<div class="wow fadeInRight animated image-shape-one" data-wow-delay="0.33s">
 								<svg  version="1.1" class="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="778" height="576">
 									<clipPath class="clip1">
@@ -159,7 +159,7 @@
 									<img src="<?= base_url()?>/webdata/uploads/images/frontpage/<?=$l_about->img2?>" alt="sign">
 									<div class="button-wrapper p-bg-color">
 										<span>Learn More</span>
-										<a href="about-us.html" class="hvr-icon-wobble-horizontal">See Our Pricing <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+										<a href="#pricing" class="hvr-icon-wobble-horizontal">See Our Pricing <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 									</div> <!-- /.button-wrapper -->
 								</div> <!-- /.main-wrapper -->
 							</div> <!-- /.main-content -->
@@ -181,7 +181,7 @@
 				<div class="container">
 					<div class="theme-title">
 						<h6>Recent work</h6>
-						<h2>We’ve done lot’s of work, Let’s <br>Check some from here</h2>
+						<h2><?=$l_work->title?></h2>
 						<!-- <a href="portfolio-v1.html" class="tran3s">See All projects</a> -->
 					</div> <!-- /.theme-title -->
 				</div> <!-- /.container -->
@@ -189,30 +189,14 @@
 				<div class="wrapper">
 					<div class="row">
 						<div class="portfolio-slider">
+						<?php foreach ($l_rwork as $item) {?>
 							<div class="item">
 								<div class="image">
-									<img src="<?= base_url()?>/assets/images/portfolio/1.jpg" alt="">
-									<div class="opacity tran4s"><a data-fancybox="project" href="<?= base_url()?>/assets/images/portfolio/1.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
+									<img src="<?= base_url()?>/webdata/uploads/prev_data/<?=$item->designpreview1?>" alt="">
+									
 								</div>
 							</div>
-							<div class="item">
-								<div class="image">
-									<img src="<?= base_url()?>/assets/images/portfolio/2.jpg" alt="">
-									<div class="opacity tran4s"><a data-fancybox="project" href="<?= base_url()?>/assets/images/portfolio/2.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="image">
-									<img src="<?= base_url()?>/assets/images/portfolio/3.jpg" alt="">
-									<div class="opacity tran4s"><a data-fancybox="project" href="<?= base_url()?>/assets/images/portfolio/3.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="image">
-									<img src="<?= base_url()?>/assets/images/portfolio/4.jpg" alt="">
-									<div class="opacity tran4s"><a data-fancybox="project" href="<?= base_url()?>/assets/images/portfolio/4.jpg" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
-								</div>
-							</div>
+						<?php } ?>
 						</div> <!-- /.portfolio-slider -->
 					</div> <!-- /.row -->
 				</div> <!-- /.wrapper -->
@@ -232,7 +216,6 @@
 							<h6>Our Services</h6>
 							<h2><?=$l_services->title?></h2>
 							<p><?=$l_services->content?></p>
-							<a href="service" class="tran3s">See All Services</a>
 						</div> <!-- /.theme-title -->
 						<ul class="clearfix row">
 							<?php foreach ($l_sc as $b) {?>
@@ -246,7 +229,7 @@
 							<?php } ?>
 						</ul>
 					</div> <!-- /.main-container -->
-					<img src="<?= base_url()?>/assets/images/home/shape-2.png" alt="Image" class="wow fadeInLeft">
+					<img src="<?= base_url()?>/webdata/uploads/images/frontpage/<?=$l_services->img1?>" alt="Image" class="wow fadeInLeft">
 				</div> <!-- /.container -->
 			</div> <!-- /.home-service-section -->
 			</section>
@@ -259,6 +242,7 @@
 					Pricing Plan Style One
 				============================================== 
 				-->
+				<section id="pricing">
 				<div class="pricing-plan-one">
 					<div class="container">
 						<div class="row">
@@ -269,8 +253,9 @@
 									<p><?=$l_pricing->content?></p>
 								</div> <!-- /.theme-title -->
 								<ul class="nav nav-tabs">
-									<li class="active"><a data-toggle="tab" href="#monthly">Monthly</a></li>
-									<li><a data-toggle="tab" href="#yearly">Yearly</a></li>
+									<li class="active"><a data-toggle="tab" href="#monthly">Logo</a></li>
+									<li><a data-toggle="tab" href="#yearly">Kemasan</a></li>
+									<li><a data-toggle="tab" href="#both">Logo & Kemasan</a></li>
 								</ul>
 							</div> <!-- /.col- -->
 
@@ -279,31 +264,31 @@
 									<div id="monthly" class="tab-pane fade in active">
 								    	<div class="clearfix">
 								    		<div class="float-left left-side">
-								    			<span><sub>$</sub><?=$l_popt1->content?></span>
+								    			<span><sub>Rp</sub><?=$l_popt1->content?></span>
 								    			<h6><?=$l_popt1->title?></h6>
-								    			<a href="#">+</a>
+								    			<a href="login">+</a>
 								    		</div> <!-- /.left-side -->
-								    		<div class="right-side float-left">
-								    			<h4><?=$l_pdetail1->title?></h4>
-								    			<ul>
-								    				<?=$l_pdetail1->content?>								    				
-								    			</ul>
-								    		</div> <!-- /.right-side -->
+								    		
 								    	</div>
 									</div> <!-- /#monthly -->
 								  	<div id="yearly" class="tab-pane fade">
 								    	<div class="clearfix">
 								    		<div class="float-left left-side">
-								    			<span><sub>$</sub><?=$l_popt2->content?></span>
+								    			<span><sub>Rp</sub><?=$l_popt2->content?></span>
 								    			<h6><?=$l_popt2->title?></h6>
-								    			<a href="#">+</a>
+								    			<a href="login">+</a>
 								    		</div> <!-- /.left-side -->
-								    		<div class="right-side float-left">
-								    			<h4><?=$l_pdetail2->title?></h4>
-								    			<ul>
-													<?=$l_pdetail2->content?>
-								    			</ul>
-								    		</div> <!-- /.right-side -->
+								    		
+								    	</div>
+								  	</div> <!-- /#yearly -->
+									  <div id="both" class="tab-pane fade">
+								    	<div class="clearfix">
+								    		<div class="float-left left-side">
+								    			<span><sub>Rp</sub><?=$l_popt3->content?></span>
+								    			<h6><?=$l_popt3->title?></h6>
+								    			<a href="login">+</a>
+								    		</div> <!-- /.left-side -->
+								    		
 								    	</div>
 								  	</div> <!-- /#yearly -->
 								</div>
@@ -311,7 +296,7 @@
 						</div> <!-- /.row -->
 					</div> <!-- /.container -->
 				</div> <!-- /.pricing-plan-one -->
-
+				</section>
 
 				<!-- 
 				=============================================
@@ -338,26 +323,18 @@
 								<h2><?=$l_testi->title?></h2>
 							</div> <!-- /.theme-title -->
 							<div class="testimonial-slider">
+								<?php foreach ($l_rtesti as $item) {?>
 								<div class="item">
 									<div class="wrapper">
-										<p>Their testimonial videos aren't production quality, but they get the message across, cover useful &amp; relevant information which goes to show you don't need to invest thousands in production get some testimonial videos up with quality. </p>
+										<?=$item->reviewdesigner?>
 										<div class="name clearfix">
-											<img src="<?= base_url()?>/assets/images/home/3.jpg" alt="">
-											<h5>Rashed Kabir</h5>
-											<span>Gazipur</span>
+											<img src="<?= base_url()?>/webdata/uploads/images/umkm/<?=$item->umkm_pic?>" alt="">
+											<h5><?=$item->umkm_name?></h5>
+											<p><?=$item->address?></p>
 										</div>
 									</div> <!-- /.wrapper -->
 								</div> <!-- /.item -->
-								<div class="item">
-									<div class="wrapper">
-										<p>Their testimonial videos aren't production quality, but they get the message across, cover useful &amp; relevant information which goes to show you don't need to invest thousands in production get some testimonial videos up with quality. </p>
-										<div class="name clearfix">
-											<img src="<?= base_url()?>/assets/images/home/4.jpg" alt="">
-											<h5>Zubayer Hasan</h5>
-											<span>Uttara</span>
-										</div>
-									</div> <!-- /.wrapper -->
-								</div> <!-- /.item -->
+								<?php } ?>
 							</div> <!-- /.testimonial-slider -->
 						</div> <!-- /.main-container -->
 					</div> <!-- /.container -->

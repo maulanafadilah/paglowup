@@ -1308,7 +1308,7 @@ header.theme-menu-wrapper.menu-style-three.fixed #mega-menu-wrapper .nav>li>a {p
 .pricing-plan-one .nav-tabs {border: none;margin-top: 46px;}
 .pricing-plan-one .nav-tabs > li {margin: 0;}
 .pricing-plan-one .nav-tabs > li > a {
-  width: 152px;
+  width: 172px;
   line-height: 55px;
   font-size: 18px;
   padding: 0;
@@ -1325,7 +1325,7 @@ header.theme-menu-wrapper.menu-style-three.fixed #mega-menu-wrapper .nav>li>a {p
 .pricing-plan-one .nav-tabs > li.active > a:hover,
 .pricing-plan-one .nav-tabs > li.active > a:focus {color: #fff;}
 .pricing-plan-one .tab-content .left-side {
-  width: 43%;
+  width: 100%;
   background: #2adc65;
   text-align: center;
   color: #fff;

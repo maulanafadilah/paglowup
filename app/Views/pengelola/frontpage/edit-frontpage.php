@@ -66,8 +66,9 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="tag" class="form-label">Tag</label>
-                                                    <input class="form-control" type="text" value="<?=$detail_frontpage->tag?>" name="tag" id="tag">
+                                                    <input class="form-control" type="text" value="<?=$detail_frontpage->tag?>" name="tag" id="tag" disabled>
                                                 </div>
+                                                <input type="hidden" value="<?=$detail_frontpage->tag?>" name="tag" id="tag">
                                                 <div class="my-4">
                                                     <label class="form-label" for="img1">Image 1</label>
                                                     <p>File Sebelumnya: <strong><?=$detail_frontpage->img1?></strong></p>

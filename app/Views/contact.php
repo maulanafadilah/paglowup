@@ -61,16 +61,7 @@
 			<div class="contact-us">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-7 col-md-6 col-xs-12">
-							<div class="contact-us-form">
-								<form action="inc/sendemail.php" class="form-validation" autocomplete="off">
-									<input type="email" placeholder="Email Address*" name="email">
-									<input type="text" placeholder="Subject*" name="sub">
-									<textarea placeholder="Your Message*" name="message"></textarea>
-									<button class="p-bg-color hvr-trim-two">SEND MESSAGE</button>
-								</form>
-							</div> <!-- /.contact-us-form -->
-						</div> <!-- /.col- -->
+					
 						<div class="col-lg-5 col-md-6 col-xs-12">
 							<div class="contact-address">
 								<h2><?=$l_contact1->title?></h2>

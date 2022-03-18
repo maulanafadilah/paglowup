@@ -49,6 +49,13 @@
       $builder->where('iduser', $iduser);
       $builder->update($dataset);
     }
+
+    public function countUmkm(){
+      $sql = "SELECT count(*) AS cm FROM tb_umkm";
+
+      return $this->db->query($sql)->getResult();
+    }
+
 	}
 
 ?>

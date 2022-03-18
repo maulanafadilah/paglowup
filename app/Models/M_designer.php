@@ -97,6 +97,12 @@
       $builder->delete();
     }
 
+    public function countDesigner(){
+      $sql = "SELECT count(*) AS cd FROM tb_designer";
+
+      return $this->db->query($sql)->getResult();
+    }
+
 	}
 
 ?>

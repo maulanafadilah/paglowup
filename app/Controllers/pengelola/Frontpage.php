@@ -191,7 +191,7 @@
 			$this->m_frontpage->updateFrontpage($dataset, $idstatic);
 			
 			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
-				Profil berhasil diubah
+				Frontpage berhasil diubah
 			</div>';
 			session()->setFlashdata('notif', $alert);
 

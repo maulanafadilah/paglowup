@@ -2,11 +2,18 @@
 
 namespace App\Controllers;
 use App\Models\M_frontpage;
+use App\Models\M_pesanan;
+use App\Models\M_umkm;
+use App\Models\M_designer;
+use PhpParser\Node\Stmt\Return_;
 
 class Home extends BaseController
 {
 	public function __construct(){
 		$this->m_frontpage = new M_frontpage();
+		$this->m_pesanan = new M_pesanan();
+		$this->m_umkm = new M_umkm();
+		$this->m_designer = new M_designer();
 	}
 
 	public function index()
@@ -33,12 +40,30 @@ class Home extends BaseController
 		$l_pricing = $this->m_frontpage->getHomePricing()[0];
 		$l_popt1 = $this->m_frontpage->getHomePricingOpt()[0];
 		$l_popt2 = $this->m_frontpage->getHomePricingOpt()[1];
+		$l_popt3 = $this->m_frontpage->getHomePricingOpt()[2];
 		$l_pdetail1 = $this->m_frontpage->getHomePricingDetail()[0];
 		$l_pdetail2 = $this->m_frontpage->getHomePricingDetail()[1];
 
+		// Recent Work File
+		$l_work = $this->m_frontpage->getWork()[0];
+		$l_rwork = $this->m_pesanan->getNewestFile();
 
 		// Testimonials
 		$l_testi = $this->m_frontpage->getHomeTestimonials()[0];
+		$l_rtesti = $this->m_pesanan->getTestimonial();
+
+		// Count
+		$c_trs = $this->m_pesanan->countTransaction()[0];
+		$c_dsg = $this->m_designer->countDesigner()[0];
+		$c_umk = $this->m_umkm->countUmkm()[0];
+
+		
+		
+		// $c_trs = json_encode($c_trs, JSON_NUMERIC_CHECK);
+		// var_dump($c_trs);
+
+		// die;
+
 		$data = [
 			'title_meta' => view('partials-front/title-meta', ['title' => 'Home']),
 
@@ -52,6 +77,9 @@ class Home extends BaseController
 			'l_dc2' => $l_dc2,
 			'l_dc3' => $l_dc3,
 
+			// work
+			'l_work' => $l_work,
+			'l_rwork' => $l_rwork,
 
 			'l_about' => $l_about,
 			'l_services' => $l_services,
@@ -59,11 +87,16 @@ class Home extends BaseController
 			'l_pricing' => $l_pricing,
 			'l_popt1' => $l_popt1,
 			'l_popt2' => $l_popt2,
+			'l_popt3' => $l_popt3,
 			'l_pdetail1' => $l_pdetail1,
 			'l_pdetail2' => $l_pdetail2,
 
 			'l_testi' => $l_testi,
+			'l_rtesti' => $l_rtesti,
 
+			'c_trs' => $c_trs,
+			'c_dsg' => $c_dsg,
+			'c_umkm' => $c_umk,
 			// 'page_title' => view('partials-front/page-title', ['title' => 'Nazox', 'pagetitle' => 'Dashboard'])
 		];
 		return view('index', $data);

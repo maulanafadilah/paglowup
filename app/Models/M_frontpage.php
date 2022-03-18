@@ -25,7 +25,7 @@
     }
 
     public function getHomeFrontpage(){
-      $sql = "SELECT * FROM tb_static WHERE tag LIKE '%home%'";
+      $sql = "SELECT * FROM tb_static WHERE tag LIKE '%home%' ORDER BY tag ASC";
       return $this->db->query($sql)->getResult();
     }
 
@@ -98,6 +98,11 @@
 
     public function getContact(){
         $sql = "SELECT * FROM tb_static WHERE tag = 'contact'";
+        return $this->db->query($sql)->getResult();
+    }
+
+    public function getWork(){
+        $sql = "SELECT * FROM tb_static WHERE tag = 'recent_work'";
         return $this->db->query($sql)->getResult();
     }
 
