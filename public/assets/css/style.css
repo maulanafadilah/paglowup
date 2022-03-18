@@ -1212,8 +1212,8 @@ header.theme-menu-wrapper.menu-style-three.fixed #mega-menu-wrapper .nav>li>a {p
           transform:scale(0.9);
 }
 .home-service-section ul li div i.flaticon-user {color: #088ed3;}
-.home-service-section ul li div i.flaticon-layers {color: #ff5757;}
-.home-service-section ul li div i.flaticon-bar-chart {color: #2ed876;}
+.home-service-section ul li div i.flaticon-check {color: #ff5757;}
+.home-service-section ul li div i.flaticon-drawing {color: #2ed876;}
 .home-service-section ul li div i.flaticon-smartphone {color: #ffba34;}
 /*------------------- Two Section Wrapper -----------------*/
 .two-section-wrapper {background: url(../images/home/shape-3.png) no-repeat center;}
@@ -1745,7 +1745,7 @@ footer .bottom-footer {padding: 25px 0 70px 0;}
 /*----------------------- End Hone Three Version -------------------*/
 /*------------------ Theme Inner Banner -----------------*/
 .inner-page-banner {
-  background: url(../images/inner-page/banner.jpg) no-repeat center;
+  background: url(../../webdata/uploads/images/frontpage/banner.jpeg) no-repeat center;
   background-size: cover;
   background-attachment: fixed;
   position: relative;

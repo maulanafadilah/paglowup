@@ -101,7 +101,8 @@
 
 			<!-- Google Map _______________________ -->
 			<div id="google-map-area">
-				<div class="google-map" id="contact-google-map" data-map-lat="40.925372" data-map-lng="-74.276544" data-map-title="Find Map" data-map-zoom="12"></div>
+				<!-- <div class="google-map" id="contact-google-map" data-map-lat="40.925372" data-map-lng="-74.276544" data-map-title="Find Map" data-map-zoom="12"></div> -->
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.304837803706!2d107.62814151477318!3d-6.973316494962308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e9afad6fa06f%3A0xd4fc2f579a78668a!2sFakultas%20Ilmu%20Terapan%20Universitas%20Telkom!5e0!3m2!1sid!2sid!4v1647598627619!5m2!1sid!2sid" width="100%" height="500px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 	   		 </div>
 
             <!-- 
@@ -140,6 +141,7 @@
 		<!-- Validation -->
 		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/contact-form/validate.js"></script>
 		<script type="text/javascript" src="<?= base_url()?>/assets/vendor/contact-form/jquery.form.js"></script>
+
 		<!-- Google map js -->
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ8VrXgGZ3QSC-0XubNhuB2uKKCwqVaD0&callback=googleMap" type="text/javascript"></script> <!-- Gmap Helper -->
 		<script src="<?= base_url()?>/assets/vendor/gmaps.min.js"></script>

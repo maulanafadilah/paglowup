@@ -31,6 +31,7 @@ class Home extends BaseController
 
 		// about
 		$l_about = $this->m_frontpage->getHomeAbout()[0];
+		$l_about2 = $this->m_frontpage->getHomeAbout()[1];
 		
 		// services
 		$l_services = $this->m_frontpage->getHomeServices()[0];
@@ -82,6 +83,7 @@ class Home extends BaseController
 			'l_rwork' => $l_rwork,
 
 			'l_about' => $l_about,
+			'l_about2' => $l_about2,
 			'l_services' => $l_services,
 			'l_sc' => $l_sc,
 			'l_pricing' => $l_pricing,
@@ -107,8 +109,18 @@ class Home extends BaseController
 	{
 		$l_contact1 = $this->m_frontpage->getContact()[0];
 		$l_contact2 = $this->m_frontpage->getContact()[1];
+		
+		// Count
+		$c_trs = $this->m_pesanan->countTransaction()[0];
+		$c_dsg = $this->m_designer->countDesigner()[0];
+		$c_umk = $this->m_umkm->countUmkm()[0];
 
 		$data = [
+			
+			'c_trs' => $c_trs,
+			'c_dsg' => $c_dsg,
+			'c_umkm' => $c_umk,
+
 			'l_contact1' => $l_contact1,
 			'l_contact2' => $l_contact2,
 			'title_meta' => view('partials-front/title-meta', ['title' => 'Contact']),

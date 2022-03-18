@@ -104,23 +104,23 @@
 					<div class="row">
 						<div class="col-md-4 col-sm-6 col-xs-12 wow fadeInLeft">
 							<div class="single-block">
-								<div class="icon color-one"><i class="flaticon-note"></i></div>
+								<div class="icon color-one"><i class="flaticon-drawing"></i></div>
 								<h6><?=$l_dc1->title?></h6>
 								<h5><a href="#" class="tran3s"><?=$l_dc1->content?></a></h5>
 							</div> <!-- /.single-block -->
 						</div> <!-- /.col- -->
 						<div class="col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
 							<div class="single-block">
-								<div class="icon color-two middle-block"><i class="flaticon-bar-chart2"></i></div>
+								<div class="icon color-two middle-block"><i class="flaticon-diamond"></i></div>
 								<h6><?=$l_dc2->title?></h6>
 								<h5><a href="#" class="tran3s"><?=$l_dc2->content?></a></h5>
 							</div> <!-- /.single-block -->
 						</div> <!-- /.col- -->
 						<div class="col-md-4 hidden-sm col-xs-12 wow fadeInRight">
 							<div class="single-block">
-								<div class="icon color-three"><i class="flaticon-diamond"></i></div>
+								<div class="icon color-three"><i class="flaticon-user"></i></div>
 								<h6><?=$l_dc3->title?></h6>
-								<h5><a href="#" class="tran3s"><?=$l_dc2->content?></a></h5>
+								<h5><a href="#" class="tran3s"><?=$l_dc3->content?></a></h5>
 							</div> <!-- /.single-block -->
 						</div> <!-- /.col- -->
 					</div> <!-- /.row -->
@@ -154,7 +154,7 @@
 							<div class="main-content">
 								<h2><?=$l_about->title?></h2>
 								<div class="main-wrapper">
-									<h4>Best Digital Agency in Asia</h4>
+									<h4><?=$l_about2->title?></h4>
 									<p><?=$l_about->content?></p>									
 									<img src="<?= base_url()?>/webdata/uploads/images/frontpage/<?=$l_about->img2?>" alt="sign">
 									<div class="button-wrapper p-bg-color">
