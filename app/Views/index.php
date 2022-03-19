@@ -48,7 +48,7 @@
 							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s">
 							<?=$hero1->title?>
 							</h1>
-							<a href="course-2-column.html" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Ayo Daftar</a>
+							<a href="login" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Ayo Daftar</a>
 							<div class="wow fadeInRight animated image-shape-one" data-wow-delay="0.33s">
 								<svg  version="1.1" class="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="778" height="576">
 									<clipPath class="clip1">
@@ -71,7 +71,7 @@
 							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s">
 							<?=$hero2->title?>
 							</h1>
-							<a href="course-2-column.html" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Ayo Daftar</a>
+							<a href="login" class="tran3s hvr-trim wow fadeInUp animated p-bg-color button-one" data-wow-delay="0.3s">Ayo Daftar</a>
 							<div class="wow fadeInRight animated image-shape-one" data-wow-delay="0.33s">
 								<svg  version="1.1" class="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="778" height="576">
 									<clipPath class="clip1">
@@ -106,21 +106,21 @@
 							<div class="single-block">
 								<div class="icon color-one"><i class="flaticon-drawing"></i></div>
 								<h6><?=$l_dc1->title?></h6>
-								<h5><a href="#" class="tran3s"><?=$l_dc1->content?></a></h5>
+								<h5><?=$l_dc1->content?></h5>
 							</div> <!-- /.single-block -->
 						</div> <!-- /.col- -->
 						<div class="col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
 							<div class="single-block">
 								<div class="icon color-two middle-block"><i class="flaticon-diamond"></i></div>
 								<h6><?=$l_dc2->title?></h6>
-								<h5><a href="#" class="tran3s"><?=$l_dc2->content?></a></h5>
+								<h5><?=$l_dc2->content?></h5>
 							</div> <!-- /.single-block -->
 						</div> <!-- /.col- -->
 						<div class="col-md-4 hidden-sm col-xs-12 wow fadeInRight">
 							<div class="single-block">
 								<div class="icon color-three"><i class="flaticon-user"></i></div>
 								<h6><?=$l_dc3->title?></h6>
-								<h5><a href="#" class="tran3s"><?=$l_dc3->content?></a></h5>
+								<h5><?=$l_dc3->content?></h5>
 							</div> <!-- /.single-block -->
 						</div> <!-- /.col- -->
 					</div> <!-- /.row -->

@@ -3,11 +3,18 @@
 	
 	use CodeIgniter\Controller;
 	use App\Models\M_user;
+	use App\Models\M_pesanan;
 
 	class login extends BaseController{
 
 		public function index(){
+			$this->m_pesanan = new M_pesanan();
+
+			$l_rtesti2 = $this->m_pesanan->getTestimonial();
+			
 			$data = [
+				// 'l_rtesti' => $l_rtesti,
+				'l_rtesti2' => $l_rtesti2,
 				'title_meta' => view('partials/title-meta', ['title' => 'Login | PAGlowUP'])
 			];
 			return view('auth-login', $data);

@@ -309,7 +309,7 @@
     }
 
     public function getTestimonial(){
-      $sql = "SELECT * FROM tb_order JOIN tb_umkm USING (idumkm) WHERE idstatus = 8 AND designerrating = 5 ORDER BY idorder ASC LIMIT 2";
+      $sql = "SELECT * FROM tb_order JOIN tb_umkm USING (idumkm) WHERE idstatus = 8 AND designerrating = 5 ORDER BY idorder ASC LIMIT 3";
 
       return $this->db->query($sql)->getResult();
     }
