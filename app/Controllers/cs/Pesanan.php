@@ -58,7 +58,7 @@
 			$iduser = session()->get('iduser');
 
 			$l_detail = $this->m_pesanan->getOrderById($idorder)[0];
-			$l_designer = $this->m_designer->getAllDesignerJoined();
+			$l_designer = $this->m_designer->getAllActiveDesigner();
 			$l_comments_csum = $this->m_comment_csum->getCommentsByIdOrder($idorder);
 			$l_comments_csde = $this->m_comment_csde->getCommentsByIdOrder($idorder);
 			$detilUser = $this->m_cs->getJoinUserCs($iduser)[0];

@@ -313,9 +313,14 @@
                                         <?php foreach ($l_designer as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
-                                            <td><?=$a->designer_name?></td>
-                                            <td><?=$a->rating?>/5</td>
-                                            <td><?=$a->total_transaksi?></td>
+                                            <td><?=$a->name?></td>
+                                            <td>
+                                                <?php $rating = $this->m_designer->getRatingDesignerById($a->iddesigner)[0]->rating?>
+                                                <?=(!$rating)?'-':$rating.'/5'?>
+                                            </td>
+                                            <td>
+                                                <?= $this->m_designer->countAllStatus($a->iddesigner)[0]->hitung?>
+                                            </td>
                                             <td>
                                                 <?= $this->m_designer->countStatusOngoing($a->iddesigner)[0]->hitung?>
                                             </td>
