@@ -260,18 +260,47 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getPotentialIncomes(){
+      $sql = "SELECT sum(tr_grouporder.price) AS p_incomes FROM tb_order 
+        JOIN tr_grouporder USING (idgrouporder)
+        WHERE idstatus != 9
+        ORDER BY orderdate DESC";
+      return $this->db->query($sql)->getResult();        
+    }
+
+    public function getTodayIncomes(){
+      $today = date('Y-m-d');
+      $sql = "SELECT SUM(totalpayment) AS today FROM tb_order where orderdate LIKE '$today%'";
+      return $this->db->query($sql)->getResult();        
+    }
+
+    public function getTotalWithdrawal(){
+      $sql = "SELECT sum(amount) as withdrawal FROM tb_withdraw WHERE status = 'Confirmed'";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function getAllCsRating(){
-      $sql = "SELECT ROUND(AVG(csrating)) AS csrate FROM tb_order WHERE idstatus = 8";
+      $sql = "SELECT ROUND(AVG(csrating), 2) AS csrate FROM tb_order WHERE idstatus = 8";
       return $this->db->query($sql)->getResult();
     }
 
     public function getAllDesignerRating(){
-      $sql = "SELECT ROUND(AVG(designerrating)) AS desrate FROM tb_order WHERE idstatus = 8";
+      $sql = "SELECT ROUND(AVG(designerrating), 2) AS desrate FROM tb_order WHERE idstatus = 8";
       return $this->db->query($sql)->getResult();
     }
 
-    public function getAllClosedOrder(){
+    public function countAllOrder(){
+      $sql = "SELECT count(idorder) AS hitung FROM tb_order";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countAllClosedOrder(){
       $sql = "SELECT count(idorder) AS hitung FROM tb_order where idstatus = 8";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countAllCanceledOrder(){
+      $sql = "SELECT count(idorder) AS hitung FROM tb_order where idstatus = 9";
       return $this->db->query($sql)->getResult();
     }
 
