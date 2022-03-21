@@ -475,8 +475,8 @@ header.theme-menu-wrapper.menu-style-three #mega-menu-wrapper {margin-top: 20px;
 .menu-style-two #mega-menu-wrapper .navbar-toggle .icon-bar {background: #fff !important;}
 header.theme-menu-wrapper.fixed #mega-menu-wrapper .nav>li.menu-list>a {padding-bottom: 38px;}
 .theme-menu-wrapper.fixed .logo {
-  -webkit-transform:rotate(90deg);
-          transform:rotate(90deg);
+  /* -webkit-transform:rotate(90deg);
+          transform:rotate(90deg); */
 }
 header.theme-menu-wrapper.menu-style-three.fixed {padding-top: 35px;}
 .theme-menu-wrapper.menu-style-three.fixed .top-header {display: none;}
@@ -1453,7 +1453,7 @@ footer .footer-logo h5 a {
   font-weight: 600;
   font-size: 16px;
   color: #222222;
-  margin: 30px 0 15px 0;
+  margin: 40px 0 40px 0;
 }
 footer h4 {
   font-size: 20px;
