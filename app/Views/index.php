@@ -191,9 +191,9 @@
 						<div class="portfolio-slider">
 						<?php foreach ($l_rwork as $item) {?>
 							<div class="item">
-								<div class="image">
+								<div class="image" style="border-style: solid; border-color: #f2f2f2;">
 									<img src="<?= base_url()?>/webdata/uploads/prev_data/<?=$item->designpreview1?>" alt="">
-									
+									<div class="opacity tran4s"><a data-fancybox="project" href="<?= base_url()?>/webdata/uploads/prev_data/<?=$item->designpreview1?>" class="tran3s" title="We’ve done lot’s of work, Let’s Check"></a></div>
 								</div>
 							</div>
 						<?php } ?>
