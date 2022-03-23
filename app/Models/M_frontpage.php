@@ -102,7 +102,7 @@
     }
 
     public function getWork(){
-        $sql = "SELECT * FROM tb_static WHERE tag = 'recent_work'";
+        $sql = "SELECT * FROM tb_static WHERE tag = 'home_recent_work'";
         return $this->db->query($sql)->getResult();
     }
 

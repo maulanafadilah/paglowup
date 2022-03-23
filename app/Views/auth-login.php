@@ -25,7 +25,7 @@
                                 <div class="d-flex flex-column h-100">
                                     <div class="mb-4 mb-md-5 text-center">
                                         <a href="/" class="d-block auth-logo">
-                                            <img src="<?=base_url()?>/assets/images/logo-sm.svg" alt="" height="28"> <span class="logo-txt">PAGlowUP</span>
+                                            <img src="<?=base_url()?>/assets/images/logo/logox.png" alt="" height="52"> <span class="logo-txt"></span>
                                         </a>
                                     </div>
                                     <div class="auth-content my-auto">
@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-4 mt-md-5 text-center">
-                                        <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> PAGlowUP   . Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                                        <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> PAGlowUP   . Crafted with <i class="mdi mdi-heart text-danger"></i> by StartUpHub</p>
                                     </div>
                                 </div>
                             </div>

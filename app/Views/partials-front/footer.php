@@ -9,10 +9,14 @@
 						<div class="col-md-3 col-sm-6 col-xs-12">
 							<div class="footer-logo">
 								<a href="#"><img src="<?= base_url()?>/assets/images/logo/logox.png" alt="Logo"></a>
-								<a href="#"><img src="<?= base_url()?>/assets/images/logo/logo_telkom.png" alt="Logo"></a>
-								<a href="#"><img src="<?= base_url()?>/assets/images/logo/logo_02.png" alt="Logo"></a>
-								<h5><a href="#" class="tran3s">gulluinc@gmail.com</a></h5>
-								<h6 class="p-color">202. 277. 3894</h6>
+								<ul style="margin-top: 20px;">
+									<li style="display: inline; margin-left: 15px;"><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li style="display: inline; margin-left: 30px;"><a href="" class="tran3s"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li style="display: inline; margin-left: 30px;"><a href="" class="tran3s"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+									<li style="display: inline; margin-left: 30px;"><a href="" class="tran3s"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+								</ul>
+								<h5><a href="#" class="tran3s">admin@paglowup.com</a></h5>
+								<h6 class="p-color">0853-2703-4142</h6>
 							</div>
 						</div>
 						<!-- <div class="col-md-3 col-sm-6 col-xs-12 footer-list">
@@ -40,12 +44,12 @@
 							<form action="#">
 								<input type="text" placeholder="Enter your mail">
 							</form>
-							<ul>
-								<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="" class="tran3s"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="" class="tran3s"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-								<li><a href="" class="tran3s"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-							</ul>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12">
+							<div class="footer-logo">
+							<a href="#"><img src="<?= base_url()?>/assets/images/logo/logo_telkom.png" alt="Logo"></a>
+							<a href="#"><img src="<?= base_url()?>/assets/images/logo/logo_02.png" alt="Logo"></a>
+							</div>
 						</div>
 					</div> <!-- /.row -->
 
