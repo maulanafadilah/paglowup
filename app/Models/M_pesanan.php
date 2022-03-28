@@ -308,8 +308,9 @@
       $sql = "SELECT tb_user.iduser AS iduser, tb_cs.name AS cs_name, tb_cs.cs_pic AS cs_pic, ROUND(AVG(tb_order.csrating)) AS rating, count(tb_order.idcs) AS total_transaksi 
         FROM tb_cs JOIN tb_order USING (idcs)
         JOIN tb_user USING (iduser) 
+        WHERE tb_order.csrating is not null
         GROUP BY cs_name 
-        ORDER BY rating, total_transaksi
+        ORDER BY total_transaksi DESC, rating
         LIMIT 10";
 
       return $this->db->query($sql)->getResult();
@@ -319,8 +320,9 @@
       $sql = "SELECT tb_user.iduser AS iduser, tb_designer.name AS designer_name, tb_designer.designer_pic AS designer_pic, ROUND(AVG(tb_order.designerrating)) AS rating, count(tb_order.iddesigner) AS total_transaksi 
         FROM tb_designer JOIN tb_order USING (iddesigner)
         JOIN tb_user USING(iduser) 
+        WHERE tb_order.designerrating is not null
         GROUP BY designer_name 
-        ORDER BY rating, total_transaksi
+        ORDER BY total_transaksi DESC, rating 
         LIMIT 10";
 
       return $this->db->query($sql)->getResult();

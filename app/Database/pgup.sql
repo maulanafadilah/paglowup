@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2022 at 06:57 AM
+-- Generation Time: Mar 28, 2022 at 07:05 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `pgup`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_bank`
+--
+
+CREATE TABLE `tb_bank` (
+  `idbank` int(11) NOT NULL,
+  `bankname` varchar(50) NOT NULL,
+  `bankaccname` varchar(50) NOT NULL,
+  `bankaccnumber` varchar(50) NOT NULL,
+  `flag` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_bank`
+--
+
+INSERT INTO `tb_bank` (`idbank`, `bankname`, `bankaccname`, `bankaccnumber`, `flag`) VALUES
+(1, 'MANDIRI', 'EGAN KUSMAYA PUTRA', '0008374617381', 1),
+(2, 'BNI', 'MUHAMMAD YUSUF RAMADHAN', '0009278647183', 1);
 
 -- --------------------------------------------------------
 
@@ -45,7 +67,9 @@ CREATE TABLE `tb_comment_csde` (
 INSERT INTO `tb_comment_csde` (`idcomment`, `idorder`, `idcs`, `iddesigner`, `comment`, `file1`, `file2`, `commenttime`) VALUES
 (1, 2, NULL, 1, 'lorem ipsum dolor sit amet', NULL, NULL, '2022-02-03 07:44:16'),
 (2, 2, NULL, 1, 'ini contoh nya', 'file1_1643940094_4179e2a009bfaed5aa11.jpg_1', 'file2_1643940094_0f2bb239aeaa8d68422a.jpg_1', '2022-02-03 08:01:34'),
-(3, 2, 1, NULL, 'aduh gimana yak', NULL, NULL, '2022-02-04 02:30:39');
+(3, 2, 1, NULL, 'aduh gimana yak', NULL, NULL, '2022-02-04 02:30:39'),
+(4, 5, NULL, 1, 'ini contoh nya', NULL, NULL, '2022-02-16 02:21:05'),
+(5, 5, NULL, 1, 'ini contoh nya 2', 'file1__11644996442_216071610b31fd04139f.jpg', NULL, '2022-02-16 02:27:22');
 
 -- --------------------------------------------------------
 
@@ -134,7 +158,8 @@ CREATE TABLE `tb_designer` (
 --
 
 INSERT INTO `tb_designer` (`iddesigner`, `name`, `description`, `phone`, `whatsapp`, `dribbble`, `web`, `bankaccount`, `bankname`, `bankaccname`, `designer_pic`, `iduser`) VALUES
-(1, 'Muhammad Amien Fadhillah', '', '082214996767', '082214996767', '', '', '9781948341', 'Mandiri', 'Muhammad Amien Fadhillah', '1643008401_7a809f5786e3b47fe35e.png', 7);
+(1, 'Muhammad Amien Fadhillah', '', '082214996767', '082214996767', '', '', '9781948341', 'Mandiri', 'Muhammad Amien Fadhillah', '1643008401_7a809f5786e3b47fe35e.png', 7),
+(2, 'Rayhan Ampurama', '', '02218439923', '082218435891', '', '', '9781948341', 'MANDIRI', 'RAYHAN AMPURAMA', 'image.jpg', 9);
 
 -- --------------------------------------------------------
 
@@ -176,7 +201,10 @@ CREATE TABLE `tb_order` (
 INSERT INTO `tb_order` (`idorder`, `orderdate`, `idumkm`, `idcs`, `iddesigner`, `description`, `paymentproof`, `totalpayment`, `file1`, `file2`, `file3`, `file4`, `idstatus`, `idprodcat`, `idgrouporder`, `iddiscount`, `designpreview1`, `designpreview2`, `orderedfile1`, `orderedfile2`, `designerrating`, `csrating`, `reviewcs`, `reviewdesigner`) VALUES
 (2, '2022-02-02 00:00:00', 1, 1, 1, '<p>ditampilkan sebaik mungkin</p>', 'paypr2121_1643858732_6690dea5d4cd7a5cae0f.jpg', 250000, NULL, NULL, NULL, NULL, 8, 2, 1, NULL, 'prev1_1643981521_30184005eef2c81de027.jpg', 'file2_1643981521_6610da005146aaf61b3c.png', 'orderedfile1_1644030757_a080ac025854a2217442.zip', 'orderedfile2_1644030757_a89a852248e136397d3e.jpg', 4, 5, '', ''),
 (3, '2022-02-06 00:00:00', 3, 1, 1, '<p>ditampilkan sebaik mungkin</p>', 'paypr2121_1643858732_6690dea5d4cd7a5cae0f.jpg', 250000, NULL, NULL, NULL, NULL, 8, 2, 1, NULL, 'prev1_1643981521_30184005eef2c81de027.jpg', 'file2_1643981521_6610da005146aaf61b3c.png', 'orderedfile1_1644030757_a080ac025854a2217442.zip', 'orderedfile2_1644030757_a89a852248e136397d3e.jpg', 4, 5, '', ''),
-(4, '2022-02-04 00:00:00', 3, 1, 1, '<p>ditampilkan sebaik mungkin</p>', 'paypr2121_1643858732_6690dea5d4cd7a5cae0f.jpg', 250000, NULL, NULL, NULL, NULL, 8, 2, 1, NULL, 'prev1_1643981521_30184005eef2c81de027.jpg', 'file2_1643981521_6610da005146aaf61b3c.png', 'orderedfile1_1644030757_a080ac025854a2217442.zip', 'orderedfile2_1644030757_a89a852248e136397d3e.jpg', 4, 5, '', '');
+(4, '2022-02-04 00:00:00', 3, 1, 1, '<p>ditampilkan sebaik mungkin</p>', 'paypr2121_1643858732_6690dea5d4cd7a5cae0f.jpg', 250000, NULL, NULL, NULL, NULL, 8, 2, 1, NULL, 'prev1_1643981521_30184005eef2c81de027.jpg', 'file2_1643981521_6610da005146aaf61b3c.png', 'orderedfile1_1644030757_a080ac025854a2217442.zip', 'orderedfile2_1644030757_a89a852248e136397d3e.jpg', 4, 5, '', ''),
+(5, '2022-02-16 10:45:23', 1, 1, 1, '<p>btuh desain dengan tema kerajinan tangan</p><p>kebutuhan tema minimalis &amp; simple</p>', NULL, 250000, NULL, NULL, NULL, NULL, 9, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, '2022-02-04 10:03:21', 3, 1, NULL, '<p>butuh urgent, bisa selesai dalam 3 hari mulai dari persetujuan kontrak</p>', 'paypr4363_1645669534_2b27020162ce74bcdfa0.jpg', 400000, 'file1_1645239801_6211a056c7d3d4a03980.jpg', NULL, NULL, NULL, 3, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, '2022-03-10 09:02:51', 1, NULL, NULL, '<p>&nbsp;rdsfa</p>', NULL, 400000, NULL, NULL, NULL, NULL, 1, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -239,6 +267,32 @@ CREATE TABLE `tb_static` (
   `tag` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_static`
+--
+
+INSERT INTO `tb_static` (`idstatic`, `title`, `content`, `img1`, `img2`, `img3`, `img4`, `tag`) VALUES
+(1, 'Digital Agency <br> That Help You <br> To Go Ahead', 'We\'re Awesome', '1643904187_de64e102c2c6300642c0.jpg', '1643904187_6ff784a20cd4a0b5a4a7.jpg', '1643904187_95ed4c8119dad7f033de.jpg', '1643904187_ebceb6bcd69f0ba6050c.jpg', 'home_hero'),
+(3, 'We’r a dynamic team of creatives people innovation & Marketing Expertx', 'We provide marketing services to startups and small businesses to looking for a partner of their digital media, design & dev, lead generation, and communications requirents. We work with you, not for you. Although we have great resources.', '1643904979_5057f52d90e5172667d5.jpg', '1643905472_63179d38874a3aaf30cc.png', NULL, NULL, 'home_about'),
+(4, 'We provide wide range of web & business services.', 'We’ve strong work history with different business services', '1643866842_f452d66882aeed3b41f6.png', NULL, NULL, NULL, 'home_services'),
+(5, 'Business Consulting', 'Lorem ipsum dolor sit amet, percipitur sadipscing.', 'flaticon-user', NULL, NULL, NULL, 'home_services_categories'),
+(6, 'SEO & SMM services', 'Lorem ipsum dolor sit amet, percipitur sadipscing elit 3.', 'flaticon-layers', NULL, NULL, NULL, 'home_services_categories'),
+(7, 'Interface Design', 'Lorem ipsum dolor sit amet, percipitur sadipscing.', 'flaticon-bar-chart', NULL, NULL, NULL, 'home_services_categories'),
+(8, 'Apps Development', 'Lorem ipsum dolor sit amet, percipitur sadipscing.', 'flaticon-smartphone', NULL, NULL, NULL, 'home_services_categories'),
+(9, 'Kami menyediakan <br> penawaran dan pelayanan <br> terbaik untuk kamu!', 'Dapatkan pelayanan jasa desain kemasan dan logo kami segera!', NULL, NULL, NULL, NULL, 'home_pricing'),
+(10, 'Design Logo', 'Rp250.000,-', NULL, NULL, NULL, NULL, 'home_pricing_opt'),
+(11, 'Design Packaging', 'Rp200.000,-', NULL, NULL, NULL, NULL, 'home_pricing_opt'),
+(12, 'Weekly Package', '<li>50GB Bandwidth</li>					    		<li>Business & Financ Analysing</li>				    				<li>24 hour support</li>								    				<li>Customer Managemet</li>', NULL, NULL, NULL, NULL, 'home_pricing_detail'),
+(13, 'Yearly Package', '<li>50GB Bandwidth</li>					    		<li>Business & Financ Analysing</li>				    				<li>24 hour support</li>								    				<li>Customer Managemet</li>', NULL, NULL, NULL, NULL, 'home_pricing_detail'),
+(14, 'Lorem Ipsum Dolor <br> Sit Amet 2', 'We\'re', '1643904733_cbf042e67f9a85952531.jpg', NULL, NULL, NULL, 'home_hero'),
+(16, 'The thing that motivates me is a very common form of motivation. And that is, with other folk counting on me, it\'s so easy to be motivated.', 'we work with business & provide solution to client with their business problema', NULL, NULL, NULL, NULL, 'home_do'),
+(17, 'Financial Advise', 'Market Statics Growth & Advance Analysis', NULL, NULL, NULL, NULL, 'home_do_categories'),
+(18, 'Market Analysis', 'Market Statics Growth & Advance Analysis', NULL, NULL, NULL, NULL, 'home_do_categories'),
+(19, 'Web Solution', 'Market Statics Growth & Advance Analysis', NULL, NULL, NULL, NULL, 'home_do_categories'),
+(20, 'Check what’s our client <br> Say about us', '', '1643906497_9b7eed4d9b69ee62c814.jpg', NULL, NULL, NULL, 'home_testimonials'),
+(21, 'Don’t Hesitate to <br> contact with us for any <br> kind of information', '', NULL, NULL, NULL, NULL, 'contact'),
+(22, 'Call us for imiditate support this number', '880 876 65 455', NULL, NULL, NULL, NULL, 'contact');
+
 -- --------------------------------------------------------
 
 --
@@ -291,7 +345,9 @@ INSERT INTO `tb_user` (`iduser`, `username`, `pass`, `email`, `flag`, `idgroup`)
 (5, 'umkm1', '25d55ad283aa400af464c76d713c07ad', 'umkm1@gmail.com', 1, 4),
 (6, 'umkm2', '25d55ad283aa400af464c76d713c07ad', 'umkm2@gmail.com', 1, 4),
 (7, 'designer1', '25d55ad283aa400af464c76d713c07ad', 'designer1@gmail.com', 1, 3),
-(8, 'custserv1', '42a9e5f9920ad5ff82ac73d8152fd03a', 'custserv1@gmail.com', 1, 2);
+(8, 'custserv1', '42a9e5f9920ad5ff82ac73d8152fd03a', 'custserv1@gmail.com', 1, 2),
+(9, 'designer2', '8218c5b2fd2e8558a937745134a34a9f', 'designer2@gmail.com', 1, 3),
+(10, 'designer3', '2a29cf3b35c1a89f61dd90464e472ced', 'designer3@gmail.com', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -435,6 +491,12 @@ INSERT INTO `tr_statusorder` (`idstatus`, `statusdesc`) VALUES
 --
 
 --
+-- Indexes for table `tb_bank`
+--
+ALTER TABLE `tb_bank`
+  ADD PRIMARY KEY (`idbank`);
+
+--
 -- Indexes for table `tb_comment_csde`
 --
 ALTER TABLE `tb_comment_csde`
@@ -564,10 +626,16 @@ ALTER TABLE `tr_statusorder`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_bank`
+--
+ALTER TABLE `tb_bank`
+  MODIFY `idbank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tb_comment_csde`
 --
 ALTER TABLE `tb_comment_csde`
-  MODIFY `idcomment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idcomment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_comment_csum`
@@ -591,13 +659,13 @@ ALTER TABLE `tb_deposit`
 -- AUTO_INCREMENT for table `tb_designer`
 --
 ALTER TABLE `tb_designer`
-  MODIFY `iddesigner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `iddesigner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `idorder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idorder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tb_pengelola`
@@ -615,7 +683,7 @@ ALTER TABLE `tb_portfolio`
 -- AUTO_INCREMENT for table `tb_static`
 --
 ALTER TABLE `tb_static`
-  MODIFY `idstatic` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idstatic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tb_umkm`
@@ -627,7 +695,7 @@ ALTER TABLE `tb_umkm`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_withdraw`

@@ -172,8 +172,14 @@
 		public function list_wth_confirm(){
 			if ($_POST['rowid']) {
 				$id = $_POST['rowid'];
+				$incomes = $this->m_withdraw->getTotalIncomesByDesigner($id)[0]->incomes;
+				$outcomes = $this->m_withdraw->getTotalOutcomesByDesigner($id)[0]->outcomes;
+				$total_deposit = $incomes - $outcomes;
 				$withdraw = $this->m_withdraw->getWithdrawById($id)[0];
-				$data = ['with' => $withdraw];
+				$data = [
+					'with' => $withdraw,
+					'total_deposit' => $total_deposit
+				];
 				echo view('pengelola/wth/part-mod-confirm', $data);
 			}
 		}

@@ -223,19 +223,21 @@
                                                                 <h5 class="font-size-15 mb-1">Kategori: <?=$l_detail->category?></h5>
                                                                 <p class="font-size-13 text-muted mb-0">Jenis Pesanan: <?=$l_detail->orderdesc?></p>
                                                             </td>
-                                                            <td class="text-end">Rp.<?=$l_detail->price?></td>
+                                                            <td class="text-end">
+                                                                Rp. <?=number_format($l_detail->price, 0, ',', '.')?>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row" colspan="1" class="text-end">Diskon</th>
                                                             <td class="text-end">
-                                                                <?=(!is_null($l_detail->iddiscount))?'Rp. '.($l_detail->price*($l_detail->discountamount/100)):'Rp. 0'?>
+                                                                <?=(!is_null($l_detail->iddiscount))?'Rp. '.number_format(($l_detail->price*($l_detail->discountamount/100)), 0, ',', '.'):'Rp. 0'?>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row" colspan="1" class="border-0 text-end">Total</th>
                                                             <td class="border-0 text-end">
                                                                 <h4 class="m-0">
-                                                                    Rp.<?=$l_detail->totalpayment?>
+                                                                    Rp. <?=number_format($l_detail->totalpayment, 0, ',', '.')?>
                                                                 </h4>
                                                             </td>
                                                         </tr>
@@ -258,6 +260,9 @@
                                                 <?php if ($l_detail->idstatus == 6){?>
                                                 <button type="button" class="btn btn-info" disabled>
                                                     <i class="fa fa-check"></i> Preview telah dikirim
+                                                </button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#showPreview" class="btn btn-info">
+                                                    <i class="fa fa-search"></i> Lihat
                                                 </button>
                                                 <?php }?>
                                             </div>
@@ -362,184 +367,7 @@
 </div>
 <!-- END layout-wrapper -->
 
-<?php if($l_detail->idstatus == 1 && is_null($l_detail->idcs)){?>
-<!-- sample modal content -->
-<div id="verifPayment" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Verifikasi Pembayaran</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Konfirmasi pembayaran untuk pemesanan ini?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <a href="<?=base_url()?>/cs/pesanan/verif_payment/<?=$l_detail->idorder?>" class="btn btn-primary">Konfirmasi</a>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<?php } ?>
-
-<?php if($l_detail->idstatus == 2){?>
-<!-- sample modal content -->
-<div id="approveAg" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Verifikasi Pembayaran</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Approve Persetujuan?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <a href="<?=base_url()?>/cs/pesanan/approve_umkm/<?=$l_detail->idorder?>" class="btn btn-primary">Konfirmasi</a>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<?php }?>
-
-<!-- sample modal content -->
-<div id="setDesigner" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Set Designer</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Pilih Designer untuk menyelesaikan pesanan ini?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <span class="konfirmasi-set-button"></span>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<?php if(!is_null($l_detail->iddesigner)){?>
-<!-- sample modal content -->
-<div id="sendAttachmentCSDE" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Tambah Attachment</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="csdeSendForm" action="<?=base_url()?>/cs/pesanan/send_comment_csde_img/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
-                    <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="file1" class="form-control" accept=" image/jpg, image/jpeg">
-                    </div>
-                    <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="file2" class="form-control" accept=" image/jpg, image/jpeg">
-                    </div>
-                    <div class="mb-3">
-                        <label>Komentar</label>
-                        <input type="text" name="comment" class="form-control" required>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" form="csdeSendForm" class="btn btn-primary">Kirim</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<?php }?>
-
-<?php if(!is_null($l_detail->idcs)){?>
-<!-- sample modal content -->
-<div id="sendAttachmentCSUM" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Tambah Attachment</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="csumSendForm" action="<?=base_url()?>/cs/pesanan/send_comment_csum_img/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
-                    <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 1</label>
-                        <input type="file" name="file1" class="form-control" accept=" image/jpg, image/jpeg">
-                    </div>
-                    <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 2</label>
-                        <input type="file" name="file2" class="form-control" accept=" image/jpg, image/jpeg">
-                    </div>
-                    <div class="mb-3">
-                        <label>Komentar</label>
-                        <input type="text" name="comment" class="form-control" required>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" form="csumSendForm" class="btn btn-primary">Kirim</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<?php }?>
-
-<?php if($l_detail->idstatus == 5){?>
-<!-- sample modal content -->
-<div id="reqStatusRevisi" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Tolak Desain</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Tolak desain dan ajukan revisi ke Designer?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <a href="<?=base_url()?>/cs/pesanan/tolak_review/<?=$l_detail->idorder?>" class="btn btn-primary">Ya</a>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<!-- sample modal content -->
-<div id="uploadPrev" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Upload Preview Untuk UMKM</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="upPrevAcc" action="<?=base_url()?>/cs/pesanan/send_prev_umkm/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
-                    <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 1 (max size 256kb)</label>
-                        <input type="file" name="prev1" class="form-control" accept=" image/jpg, image/jpeg" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 2 (max size 256kb)</label>
-                        <input type="file" name="prev2" class="form-control" accept=" image/jpg, image/jpeg" required>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                <button type="submit" form="upPrevAcc" class="btn btn-primary">Kirim</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<?php }?>
+<?= $this->include('cs/pesanan/part-modals') ?>
 
 <?= $this->include('cs/right-sidebar') ?>
 
