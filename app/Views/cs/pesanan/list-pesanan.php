@@ -80,12 +80,14 @@
                                                 <td><?=$a->umkm_name?></td>
                                                 <td><?=$a->orderdate?></td>
                                                 <td>
-                                                    <?php $countDesc = count(explode(" ", $a->description));
+                                                    <?php 
+                                                    $trimmed = explode("</p><p>", $a->description);
+                                                    $countDesc = count(explode(" ", $trimmed[0]));
                                                     if ($countDesc > 12) {
-                                                      $slice = array_slice(explode(" ", $a->description), 0, 12);
+                                                      $slice = array_slice(explode(" ", $trimmed[0]), 0, 12);
                                                       echo implode(" ", $slice)."....";
                                                     } else {
-                                                      echo $a->description;
+                                                      echo $trimmed[0];
                                                     }
                                                     ?>
                                                 </td>

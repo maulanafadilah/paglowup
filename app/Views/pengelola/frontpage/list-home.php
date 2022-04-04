@@ -78,26 +78,32 @@
                                         <tr>
                                             <td><?=$c?></td>
                                             <th><?=$a->tag?></th>
-                                            <td><?php 
-                                                $total_kata = count(explode(" ", $a->title));
-                                                if($total_kata > 5){
-                                                    $slice = array_slice(explode(" ", $a->title), 0, 5);
-                                                    echo implode(" ", $slice).'.....';
-                                                } else {
-                                                    echo $a->title;
-                                                }
-                                                ?></td>
-                                            <td>
-                                                <?php 
-                                                $total_kata = count(explode(" ", $a->content));
-                                                if($total_kata > 5){
-                                                    $slice = array_slice(explode(" ", $a->content), 0, 5);
-                                                    echo implode(" ", $slice).'.....';
-                                                } else {
-                                                    echo $a->content;
-                                                }
-                                                ?>
-                                            </td>
+                                                <td>
+                                                    <?php 
+                                                    $trimmed = explode("</p><p>", $a->title);
+                                                    $countDesc = count(explode(" ", $trimmed[0]));
+                                                    if ($countDesc > 12) {
+                                                      $slice = array_slice(explode(" ", $trimmed[0]), 0, 12);
+                                                      echo implode(" ", $slice)."....";
+                                                    } else {
+                                                      echo $trimmed[0];
+                                                    }
+                                                    ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php 
+                                                    $trimmed = explode("</p><p>", $a->content);
+                                                    $countDesc = count(explode(" ", $trimmed[0]));
+                                                    if ($countDesc > 12) {
+                                                      $slice = array_slice(explode(" ", $trimmed[0]), 0, 12);
+                                                      echo implode(" ", $slice)."....";
+                                                    } else {
+                                                      echo $trimmed[0];
+                                                    }
+                                                    ?>
+                                                </td>
+
                                             <td>
                                             <?=$a->img1?>
                                             </td>
