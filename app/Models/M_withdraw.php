@@ -91,6 +91,18 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getDailyIncomesDesigner($iddesigner){
+      $sql = "SELECT SUM(tr_grouporder.price) as daily_incomes FROM tb_order 
+        LEFT JOIN tr_grouporder USING (idgrouporder) 
+        WHERE YEAR(orderdate) = ".date('Y')." 
+        AND MONTH(orderdate) = ".date('m')." 
+        AND DAY(orderdate) = ".date('d')."
+        AND idstatus = 8
+        AND tb_order.iddesigner = $iddesigner";
+
+      return $this->db->query($sql)->getResult();
+    }
+
     public function getTotalOutcomesByDesigner($iddesigner){
       $sql = "SELECT sum(amount) as outcomes FROM tb_withdraw WHERE iddesigner = $iddesigner AND status = 'Confirmed'";
       return $this->db->query($sql)->getResult();

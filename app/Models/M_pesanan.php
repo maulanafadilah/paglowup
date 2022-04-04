@@ -97,8 +97,90 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getOrderByIdUmkmLimit($idumkm){
+      $sql = "SELECT * FROM tb_umkm
+                JOIN tb_order USING (idumkm)
+                LEFT JOIN tr_discount USING (iddiscount)
+                LEFT JOIN tr_statusorder USING (idstatus)
+                LEFT JOIN tr_prodcat USING (idprodcat)
+                LEFT JOIN tr_grouporder USING (idgrouporder)
+                WHERE idumkm = $idumkm
+                ORDER BY orderdate DESC
+                LIMIT 5
+              ";
+
+      return $this->db->query($sql)->getResult();
+    }
+
     public function countOrderByUmkm($idumkm){
       $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE idumkm = $idumkm";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countClosedOrderByUmkm($idumkm){
+      $sql = "SELECT count(idorder) AS hitung FROM tb_order WHERE idumkm = $idumkm AND idstatus = 8";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countCancelOrderByUmkm($idumkm){
+      $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE idumkm = $idumkm AND idstatus = 9";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countPendingOrderByUmkm($idumkm){
+      $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE idumkm = $idumkm AND idstatus < 8";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countOrderByCs($idcs){
+      $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE idcs = $idcs";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countCancelOrderByCs($idcs){
+      $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE idcs = $idcs AND idstatus = 9";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countPendingOrderByCs($idcs){
+      $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE idcs = $idcs AND idstatus < 8";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countOrderByDesigner($iddesigner){
+      $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE iddesigner = $iddesigner";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countCancelOrderByDesigner($iddesigner){
+      $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE iddesigner = $iddesigner AND idstatus = 9";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countPendingOrderByDesigner($iddesigner){
+      $sql = "SELECT count(idorder) as hitung FROM tb_order WHERE iddesigner = $iddesigner AND idstatus < 8";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function countClosedOrderByDesigner($iddesigner){
+      $sql = "SELECT count(idorder) AS hitung FROM tb_order WHERE iddesigner = $iddesigner AND idstatus = 8";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getTestimoniByDesigner($iddesigner){
+      $sql = "SELECT * FROM tb_order 
+                JOIN tb_umkm USING (idumkm)
+                LEFT JOIN tr_discount USING (iddiscount)
+                LEFT JOIN tr_statusorder USING (idstatus)
+                LEFT JOIN tr_prodcat USING (idprodcat)
+                LEFT JOIN tr_grouporder USING (idgrouporder)
+                WHERE idstatus = 8  
+                AND iddesigner = $iddesigner
+                AND reviewdesigner IS NOT NULL 
+                ORDER BY orderdate DESC 
+                LIMIT 5
+              ";
+
       return $this->db->query($sql)->getResult();
     }
 
@@ -129,6 +211,21 @@
 
       return $this->db->query($sql)->getResult();
     }
+
+    public function getOrderByCsLimit($idcs){
+      $sql = "SELECT * FROM tb_umkm
+                JOIN tb_order USING (idumkm)
+                LEFT JOIN tr_discount USING (iddiscount)
+                LEFT JOIN tr_statusorder USING (idstatus)
+                LEFT JOIN tr_prodcat USING (idprodcat)
+                LEFT JOIN tr_grouporder USING (idgrouporder)
+                WHERE idcs = $idcs
+                ORDER BY orderdate DESC
+                LIMIT 5
+              ";
+
+      return $this->db->query($sql)->getResult();
+    }    
 
     public function getGroupOrder(){
       $sql = "SELECT * FROM tr_grouporder";
