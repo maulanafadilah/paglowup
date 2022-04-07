@@ -52,7 +52,7 @@
                                         <div class="d-flex align-items-start mt-3 mt-sm-0">
                                             <div class="flex-shrink-0">
                                                 <div class="avatar-xl me-3">
-                                                    <img src="<?=base_url()?>/webdata/uploads/images/designer/<?=$detail_user->designer_pic?>"  alt="" class="img-fluid rounded-circle d-block">
+                                                    <img src="<?=base_url()?>/webdata/uploads/images/designer/<?=$detail_user->designer_pic?>"  alt="" class="img-fluid rounded-circle d-block" style="max-height: 100%">
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
@@ -72,13 +72,13 @@
 
                                 <ul class="nav nav-tabs-custom card-header-tabs border-top mt-4" id="pills-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link px-3 active" data-bs-toggle="tab" href="#overview" role="tab">Detail Profil</a>
+                                        <a class="nav-link px-3 <?=(isset($_GET['t']))?'':'active'?>" data-bs-toggle="tab" href="#overview" role="tab">Detail Profil</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#about" role="tab">Ubah Profil</a>
+                                        <a class="nav-link px-3 <?=(isset($_GET['t']))?($_GET['t'] == 2)?'active':'':''?>" data-bs-toggle="tab" href="#about" role="tab">Ubah Profil</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#cpass" role="tab">Ubah Password</a>
+                                        <a class="nav-link px-3 <?=(isset($_GET['t']))?($_GET['t'] == 3)?'active':'':''?>" data-bs-toggle="tab" href="#cpass" role="tab">Ubah Password</a>
                                     </li>
                                 </ul>
                             </div>
@@ -87,7 +87,7 @@
                         <!-- end card -->
 
                         <div class="tab-content">
-                            <div class="tab-pane active" id="overview" role="tabpanel">
+                            <div class="tab-pane <?=(isset($_GET['t']))?'':'active'?>" id="overview" role="tabpanel">
                                 <div class="card">
                                     <div class="card-header">
                                         <h5 class="card-title mb-0">Overview</h5>
@@ -160,7 +160,9 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <a href="<?=$detail_user->dribbble?>"><?=$detail_user->dribbble?></a>
+                                                            <a href="<?=prep_url($detail_user->dribbble)?>" target="_blank">
+                                                                <?=$detail_user->dribbble?>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -174,7 +176,9 @@
                                                     </div>
                                                     <div class="col-xl">
                                                         <div class="text-muted">
-                                                            <a href="<?=$detail_user->web?>"><?=$detail_user->web?></a>
+                                                            <a href="<?=prep_url($detail_user->web)?>" target="_blank">
+                                                                <?=$detail_user->web?>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -244,7 +248,7 @@
                             </div>
                             <!-- end tab pane -->
 
-                            <div class="tab-pane" id="about" role="tabpanel">
+                            <div class="tab-pane <?=(isset($_GET['t']))?($_GET['t'] == 2)?'active':'':''?>" id="about" role="tabpanel">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="mt-4 mt-lg-0">
@@ -334,7 +338,7 @@
                             </div>
                             <!-- end tab pane -->
                             
-                            <div class="tab-pane" id="cpass" role="tabpanel">
+                            <div class="tab-pane <?=(isset($_GET['t']))?($_GET['t'] == 3)?'active':'':''?>" id="cpass" role="tabpanel">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="mt-4 mt-lg-0">

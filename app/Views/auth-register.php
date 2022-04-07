@@ -56,7 +56,7 @@
                                                 <label for="userpassword" class="form-label">Password</label>
                                                 <input type="password" class="form-control" name="password" pattern=".{8,}" title="min. 8 characters" id="userpassword" placeholder="Enter password" required>
                                                 <div class="invalid-feedback">
-                                                    Please Enter Password
+                                                    Minimum 8 Characters
                                                 </div>       
                                             </div>
                                             <div class="mb-3">
@@ -67,10 +67,6 @@
                                                     <option value="4">UMKM</option>
                                                 </select>
                                             </div>
-                                            <!--
-                                            <div class="mb-4">
-                                                <p class="mb-0">By registering you agree to the PAGlowUP <a href="#" class="text-primary">Terms of Use</a></p>
-                                            </div> -->
                                             <div class="mb-3">
                                                 <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
                                             </div>

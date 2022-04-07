@@ -117,7 +117,7 @@
           'label' => 'Image File',
           'rules' => 'uploaded[foto]'
             . '|is_image[foto]'
-            . '|mime_in[foto,image/jpg,image/jpeg,image/png,image/webp]'
+            . '|mime_in[foto,image/jpg,image/jpeg,image/webp]'
             . '|max_size[foto,4000]',
         ],
       ];
@@ -126,7 +126,7 @@
         $data = $this->validator->getErrors();
 				
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					'.$data.'
+					File Format Salah
 				</div>';
 				session()->setFlashdata('notif', $alert);
 

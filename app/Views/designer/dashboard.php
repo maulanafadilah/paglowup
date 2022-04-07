@@ -298,7 +298,7 @@ function getChartColorsArray(chartId) {
 //
 var piechartColors = getChartColorsArray("#wallet-balance");
 var options = {
-    series: [<?php echo $pendapatan-$pengeluaran.", ".$pengeluaran?>],
+    series: [<?php echo ($pendapatan || $pengeluaran)?$pendapatan-$pengeluaran.", ".$pengeluaran:"0, 0"?>],
     chart: {
         width: 250,
         height: 250,
@@ -376,8 +376,8 @@ var options = {
         show: false
     },
     series: [
-        <?php echo round((($total_order - $canceled_order) / $total_order)* 100, 2)?>,
-        <?php echo round((($closed_order - $canceled_order) / $closed_order)* 100, 2)?>,  
+        <?php echo ($total_order == 0)?0:round((($total_order - $canceled_order) / $total_order)* 100, 2)?>,
+        <?php echo ($closed_order == 0)?0:round((($closed_order - $canceled_order) / $closed_order)* 100, 2)?>,  
         ],
     labels: ['Series A'],
 }
@@ -393,7 +393,7 @@ chart.render();
 var basicRating = raterJs( {
     starSize:30,
     readOnly: true, 
-    rating: <?php echo $des_rate?>,
+    rating: <?php echo ($des_rate)?$des_rate:0?>,
     element:document.querySelector("#rating-desain"), 
     rateCallback:function rateCallback(rating, done) {
         this.setRating(rating); 

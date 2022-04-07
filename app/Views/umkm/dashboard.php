@@ -403,8 +403,8 @@ var options = {
         show: false
     },
     series: [
-        <?php echo round((($total_order - $closed_order) / $total_order)* 100, 2)?>,
-        <?php echo round((($total_order - $inwork_order - $canceled_order) / $total_order)* 100, 2)?>,  
+        <?php echo ($total_order == 0)?0:round((($total_order - $closed_order) / $total_order)* 100, 2)?>,
+        <?php echo ($total_order == 0)?0:round((($total_order - $inwork_order - $canceled_order) / $total_order)* 100, 2)?>,  
         ],
     labels: ['Series A'],
 }
@@ -420,7 +420,7 @@ chart.render();
 var basicRating = raterJs( {
     starSize:30,
     readOnly: true, 
-    rating: <?php echo $totaldesrate?>,
+    rating: <?php echo ($totaldesrate)?$totaldesrate:0?>,
     element:document.querySelector("#rating-desain"), 
     rateCallback:function rateCallback(rating, done) {
         this.setRating(rating); 
@@ -431,7 +431,7 @@ var basicRating = raterJs( {
 var basicRating = raterJs( {
     starSize:30,
     readOnly: true, 
-    rating: <?php echo $totalcsrate?>,
+    rating: <?php echo ($totalcsrate)?$totalcsrate:0?>,
     element:document.querySelector("#rating-cs"), 
     rateCallback:function rateCallback(rating, done) {
         this.setRating(rating); 

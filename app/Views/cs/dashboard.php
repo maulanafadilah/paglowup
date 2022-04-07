@@ -377,7 +377,7 @@ var options = {
         show: false
     },
     series: [
-        <?php echo round((($totalorder - $canceledorder) / $totalorder)* 100, 2)?>  
+        <?php echo ($totalorder == 0)?0:round((($totalorder - $canceledorder) / $totalorder)* 100, 2)?>  
         ],
     labels: ['Series A'],
 }
