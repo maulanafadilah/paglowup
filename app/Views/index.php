@@ -200,6 +200,17 @@
 						</div> <!-- /.portfolio-slider -->
 					</div> <!-- /.row -->
 				</div> <!-- /.wrapper -->
+				<div class="more-about-us">
+					<div class="main-content">
+						<div class="main-wrapper">
+						<div class="button-wrapper p-bg-color">
+							<span>Learn More</span>
+							<a href="/portofolio" class="hvr-icon-wobble-horizontal">See Our Gallery <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+						</div>
+					</div>
+					</div>
+				</div>
+				
 			</div> <!-- /.our-portfolio -->
 			</section>
 

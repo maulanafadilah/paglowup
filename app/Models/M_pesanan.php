@@ -447,6 +447,20 @@
 
       return $this->db->query($sql)->getResult();
     }
+
+    public function getPortofolioData(){
+      $sql = "SELECT idorder, designpreview1, idgrouporder  from tb_order WHERE idstatus = 8 ORDER BY idorder DESC LIMIT 10";
+
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getDetailPortofolio($idorder){
+      $sql = "SELECT tr_grouporder.orderdesc, tb_order.description, tr_prodcat.category, DATE(tb_order.orderdate) AS orderdate, tb_order.designpreview1, tb_umkm.umkm_name
+      FROM tb_order JOIN tb_umkm USING (idumkm) JOIN tr_grouporder USING (idgrouporder) JOIN tr_prodcat USING (idprodcat)
+      WHERE tb_order.idorder = $idorder";
+
+      return $this->db->query($sql)->getResult();
+    }
 	}
 
 ?>
