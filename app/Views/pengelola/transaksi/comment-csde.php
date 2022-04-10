@@ -3,7 +3,7 @@
             <div class="p-3 px-4 border-bottom">
                 <div class="d-flex align-items-start ">
                     <div class="flex-grow-1">
-                        <h5 class="font-size-16 mb-1">Histori Chat CS - Designer</h5>
+                        <h5 class="font-size-16 mb-1">Riwayat Chat CS - Designer</h5>
                     </div>
                 </div>
             </div>

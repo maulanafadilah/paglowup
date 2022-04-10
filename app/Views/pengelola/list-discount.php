@@ -58,9 +58,11 @@
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addDiscount">
-                                    Tambah Kode Diskon Baru
-                                </button>
+                                <div style="margin-bottom: 15px">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addDiscount">
+                                        Tambah Kode Diskon Baru
+                                    </button>
+                                </div>
                                 <table class="table dtable table-bordered dt-responsive table-sm nowrap w-100">
                                     <thead>
                                         <tr>

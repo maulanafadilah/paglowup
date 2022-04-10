@@ -53,16 +53,31 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">histori Pemesanan yang telah dibatalkan</p>
+                                <p class="card-title-desc">Riwayat Pemesanan yang telah dibatalkan</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
+                                <div class="category-filter">
+                                  <select id="categoryFilter" style="display: inline; margin: 10px">
+                                    <option value="">Filter Status</option>
+                                    <option value="Menunggu Pembayaran">Menunggu Pembayaran</option>
+                                    <option value="Pembayaran Diterima">Pembayaran Diterima</option>
+                                    <option value="Pesanan Diproses">Pesanan Diproses</option>
+                                    <option value="Pengerjaan Desain">Pengerjaan Desain</option>
+                                    <option value="Review CS">Review CS</option>
+                                    <option value="Revisi">Revisi</option>
+                                    <option value="Closed">Closed</option>
+                                    <option value="Dibatalkan">Dibatalkan</option>
+                                  </select>
+                                </div>
+
                                 <div class="table-responsive">
-                                    <table class="table dtable align-middle table-check nowrap">
+                                    <table class="table align-middle table-check nowrap" id="filterTable">
                                         <thead>
                                             <tr>
                                                 <th width="7%">No.</th>
                                                 <th>Pemesan</th>
+                                                <th>Tipe Pesanan</th>
                                                 <th>Tanggal Pemesanan</th>
                                                 <th>Deskripsi</th>
                                                 <th>Status</th>
@@ -75,6 +90,15 @@
                                             <tr>
                                                 <td><?=$c?></td>
                                                 <td><?=$b->umkm_name?></td>
+                                                <td>
+                                                <?php if($b->idgrouporder == 1){?>
+                                                    Desain Logo
+                                                <?php }elseif($b->idgrouporder == 2){?>
+                                                    Desain Kemasan
+                                                <?php }elseif($b->idgrouporder == 3){?>
+                                                    Desain Logo & Kemasan
+                                                <?php }?>
+                                                </td>
                                                 <td><?=$b->orderdate?></td>
                                                 <td>
                                                     <?php 
@@ -156,20 +180,51 @@
 
 <!-- Datatable init js -->
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.dtable').DataTable();
-        $('#cancelOrder').on('show.bs.modal', function(e) {
-            var rowid = $(e.relatedTarget).data('id');
-            $.ajax({
-                type: 'POST',
-                url: '<?= base_url() ?>/pengelola/pesanan2/list_ord_cancel',
-                data: 'rowid=' + rowid,
-                success: function(data) {
-                    $('.fetched-data').html(data); //menampilkan data ke dalam modal
-                }
-            });
-        });
+
+    $("document").ready(function () {
+
+      $("#filterTable").dataTable({
+        "searching": true
+      });
+
+      //Get a reference to the new datatable
+      var table = $('#filterTable').DataTable();
+
+      //Take the category filter drop down and append it to the datatables_filter div. 
+      //You can use this same idea to move the filter anywhere withing the datatable that you want.
+      $("#filterTable_filter.dataTables_filter").append($("#categoryFilter"));
+      
+      //Get the column index for the Category column to be used in the method below ($.fn.dataTable.ext.search.push)
+      //This tells datatables what column to filter on when a user selects a value from the dropdown.
+      //It's important that the text used here (Category) is the same for used in the header of the column to filter
+      var categoryIndex = 0;
+      $("#filterTable th").each(function (i) {
+        if ($($(this)).html() == "Status") {
+          categoryIndex = i; return false;
+        }
+      });
+
+      //Use the built in datatables API to filter the existing rows by the Category column
+      $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+          var selectedItem = $('#categoryFilter').val()
+          var category = data[categoryIndex];
+          if (selectedItem === "" || category.includes(selectedItem)) {
+            return true;
+          }
+          return false;
+        }
+      );
+
+      //Set the change event for the Category Filter dropdown to redraw the datatable each time
+      //a user selects a new filter.
+      $("#categoryFilter").change(function (e) {
+        table.draw();
+      });
+
+      table.draw();
     });
+
 </script>
 
 <script src="<?=base_url()?>/assets/js/app.js"></script>

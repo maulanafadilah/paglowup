@@ -154,6 +154,20 @@
 							'iddiscount' => $iddiscount,
 							'totalpayment' => $totalpayment
 						];
+					}else{
+						$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+							Kode diskon sudah tidak aktif
+						</div>';
+						
+						$data_session = [
+							'notif' => $alert,
+							'idgrouporder' => $idgrouporder,
+							'idprodcat' => $idprodcat,
+							'description' => $description
+						];
+
+						session()->setFlashdata($data_session);
+						return redirect()->to(base_url('umkm/pesanan/add'));
 					}
 				}else{
 					$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
@@ -245,6 +259,21 @@
 			$this->m_pesanan->uploadPaymentProof($paymentproof, $idorder);
 			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
 				BUkti pembayaran berhasil di upload
+			</div>';
+
+			session()->setFlashdata($alert);
+			return redirect()->to(base_url('umkm/pesanan/detail/'.$idorder));
+		}
+
+		public function free_payment($idorder){
+			$this->newUser();
+			$iduser = session()->get('iduser');
+			$dataset = $this->m_pesanan->getOrderById($idorder)[0];
+			$paymentproof = 'free_ticket';
+
+			$this->m_pesanan->uploadPaymentProof($paymentproof, $idorder);
+			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
+				Berhasil Konfirmasi Pesanan
 			</div>';
 
 			session()->setFlashdata($alert);

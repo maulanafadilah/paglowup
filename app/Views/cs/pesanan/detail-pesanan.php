@@ -170,17 +170,22 @@
                                                     <?php if (!is_null($l_detail->paymentproof)){?>
                                                     <br>
                                                     <br>
+                                                    <?php if($l_detail->paymentproof == 'free_ticket'){?>
+                                                    <p>
+                                                        Diskon 100% <br>
+                                                    </p>
+                                                    <?php }else{?>
                                                     <a href="<?=base_url()?>/webdata/uploads/images/umkm/paypr/<?=$l_detail->paymentproof?>" target="_blank">
                                                         Bukti Pembayaran <i class="fa fa-external-link-alt"></i>
                                                     </a>
                                                     <?php }?>
-                                                    <br>
-                                                    <br>
-                                                    <?php if($l_detail->idstatus == 1 && is_null($l_detail->idcs)){?>
+                                                    <?php }if($l_detail->idstatus == 1 && is_null($l_detail->idcs)){?>
                                                     <button type="button" data-bs-toggle="modal" data-bs-target="#verifPayment" class="btn btn-sm btn-success">
                                                         <i class="fa fa-check"></i> Verifikasi Pembayaran
                                                     </button>
                                                     <?php }else{ ?>
+                                                    <br>
+                                                    <br>
                                                     <button type="button" class="btn btn-sm btn-success" disabled>
                                                         <i class="fa fa-check"></i> Telah diverifikasi oleh <?=$l_detail->cs_name?>
                                                     </button>
@@ -247,6 +252,11 @@
                                         </div>
                                         <div class="d-print-none mt-3">
                                             <div class="float-end">
+                                                <?php if ($l_detail->idstatus == 1){?>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#cancelOrd" class="btn btn-danger">
+                                                    Batalkan Pesanan
+                                                </button>
+                                                <?php }?>
                                                 <?php if ($l_detail->idstatus == 2){?>
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#approveAg" class="btn btn-success">
                                                     <i class="fa fa-check"></i> Approve Persetujuan
@@ -263,6 +273,14 @@
                                                 </button>
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#showPreview" class="btn btn-info">
                                                     <i class="fa fa-search"></i> Lihat
+                                                </button>
+                                                <?php }?>
+                                                <?php if ($l_detail->idstatus == 6 && ($l_detail->orderedfile1 || $l_detail->orderedfile2)){?>
+                                                <button type="button" class="btn btn-info" disabled>
+                                                    <i class="fa fa-check"></i> Desain Akhir telah dikirim
+                                                </button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#closeOrd" class="btn btn-info">
+                                                    Tutup Pesanan
                                                 </button>
                                                 <?php }?>
                                             </div>

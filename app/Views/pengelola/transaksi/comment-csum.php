@@ -1,9 +1,18 @@
+<hr>
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+                <h3 class="page-title mb-0">CHAT</h3>
+            </div>
+        </div>
+    </div>
     <div class="d-lg-flex" id="chat">
         <div class="chat-leftsidebar card">
             <div class="p-3 px-4 border-bottom">
                 <div class="d-flex align-items-start ">
                     <div class="flex-grow-1">
-                        <h5 class="font-size-16 mb-1">Histori Chat CS - UMKM</h5>
+                        <h5 class="font-size-16 mb-1">Riwayat Chat CS - UMKM</h5>
                     </div>
 
                 </div>

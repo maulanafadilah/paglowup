@@ -177,13 +177,18 @@
                                                     <?php if (!is_null($l_detail->paymentproof)){?>
                                                     <br>
                                                     <br>
+                                                    <?php if($l_detail->paymentproof == 'free_ticket'){?>
+                                                    <p>
+                                                        Diskon 100% <br>
+                                                    </p>
+                                                    <?php }else{?>
                                                     <a href="<?=base_url()?>/webdata/uploads/images/umkm/paypr/<?=$l_detail->paymentproof?>" target="_blank">
                                                         Bukti Pembayaran <i class="fa fa-external-link-alt"></i>
                                                     </a>
                                                     <?php }?>
+                                                    <?php }if(!is_null($l_detail->idcs)){?>
                                                     <br>
                                                     <br>
-                                                    <?php if(!is_null($l_detail->idcs)){?>
                                                     <span class="badge badge-soft-success font-size-16">
                                                         Diverifikasi oleh CS <?=$l_detail->cs_name?>
                                                     </span>

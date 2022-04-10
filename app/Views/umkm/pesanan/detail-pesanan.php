@@ -165,10 +165,22 @@
                                                     <?php if (!is_null($l_detail->paymentproof)){?>
                                                     <br>
                                                     <br>
+                                                    <?php if($l_detail->paymentproof == 'free_ticket'){?>
+                                                    <p>
+                                                        Diskon 100% <br>
+                                                    </p>
+                                                    <?php }else{?>
                                                     <a href="<?=base_url()?>/webdata/uploads/images/umkm/paypr/<?=$l_detail->paymentproof?>" target="_blank">
                                                         Bukti Pembayaran <i class="fa fa-external-link-alt"></i>
                                                     </a>
-                                                    <?php }if(is_null($l_detail->paymentproof) && $l_detail->idstatus == 1){?>
+                                                    <?php }?>
+                                                    <?php }if($l_detail->totalpayment == 0 && is_null($l_detail->paymentproof)){?>
+                                                    <br>
+                                                    <br>
+                                                    <p>
+                                                        Diskon 100% <br>
+                                                    </p>
+                                                    <?php }elseif(is_null($l_detail->paymentproof) && $l_detail->idstatus == 1){?>
                                                     <br>
                                                     <br>
                                                     <p>
@@ -177,7 +189,6 @@
                                                         <?php $date = date_create($datelate); ?>
                                                         <?=date_format($date, 'd F Y h:i:s A')?>
                                                         (<span id="demo"></span>)
-                                                    </p>
                                                     <?php }?>
                                                 </div>
                                             </div>
@@ -240,14 +251,18 @@
                                         <?php if($l_detail->idstatus == 1 && $l_detail->idstatus < 8 ){?>
                                         <div class="d-print-none mt-3">
                                             <div class="float-end">
-                                                <?php if (is_null($l_detail->paymentproof) && date('Y-m-d h:i:s') < $datelate) {?>
+                                                <?php if ($l_detail->totalpayment != 0 && $l_detail->totalpayment != 0 && is_null($l_detail->paymentproof) && date('Y-m-d h:i:s') < $datelate) {?>
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#cancelOrder" class="btn btn-danger">
                                                     </i> Batalkan Pesanan
                                                 </button>
-                                                <?php }if (is_null($l_detail->paymentproof)){?>
+                                                <?php }if ($l_detail->totalpayment != 0 && is_null($l_detail->paymentproof)){?>
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#uploadPayment" class="btn btn-success">
                                                     <i class="fa fa-upload"></i> Upload Bukti Pembayaran
                                                 </button>
+                                                <?php }elseif($l_detail->totalpayment == 0  && is_null($l_detail->paymentproof)){ ?>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#confirmPayment" class="btn btn-success">
+                                                    <i class="fa fa-check"></i> Selesaikan Pesanan
+                                                </button>   
                                                 <?php }else{ ?>
                                                 <button href="javascript:window.print()" class="btn btn-success waves-effect waves-light me-1" disabled>
                                                     <i class="fa fa-check"></i>
@@ -307,6 +322,7 @@
 </div>
 <!-- END layout-wrapper -->
 
+<?php if ($l_detail->totalpayment != 0 && is_null($l_detail->paymentproof)){?>
 <!-- sample modal content -->
 <div id="uploadPayment" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -356,8 +372,29 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<?php }elseif($l_detail->totalpayment == 0){ ?>
+<!-- sample modal content -->
+<div id="confirmPayment" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Upload Bukti Pembayaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Ingin Konfirmasi Pesanan Ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <a href="<?=base_url()?>/umkm/pesanan/free_payment/<?=$l_detail->idorder?>" class="btn btn-primary">Konfirmasi</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<?php } ?>
+
 <?php if($l_detail->idstatus == 1 && $l_detail->idstatus < 8 ){?>
-<?php if(is_null($l_detail->paymentproof) && date('Y-m-d h:i:s') < $datelate){?>
+<?php if($l_detail->totalpayment != 0 && is_null($l_detail->paymentproof) && date('Y-m-d h:i:s') < $datelate){?>
 <!-- sample modal content -->
 <div id="cancelOrder" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

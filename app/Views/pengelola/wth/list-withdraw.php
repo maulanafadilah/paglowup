@@ -41,7 +41,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item active">Histori Withdraw</li>
+                                    <li class="breadcrumb-item active">Riwayat Withdraw</li>
                                 </ol>
                             </div>
 
@@ -54,7 +54,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">Histori Permintaan Withdraw dari Designer</p>
+                                <p class="card-title-desc">Riwayat Permintaan Withdraw dari Designer</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>

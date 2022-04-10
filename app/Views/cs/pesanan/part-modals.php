@@ -1,4 +1,47 @@
 
+<?php if($l_detail->idstatus == 1){?>
+<!-- sample modal content -->
+<div id="cancelOrd" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Batalkan Pesanan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Batalkan pesanan ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <a href="<?=base_url()?>/cs/pesanan/cancel_order/<?=$l_detail->idorder?>" class="btn btn-danger">Batalkan</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<?php } ?>
+
+<?php if($l_detail->idstatus == 6 && ($l_detail->orderedfile1 || $l_detail->orderedfile2)){?>
+<!-- sample modal content -->
+<div id="closeOrd" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Tutup Pesanan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Ingin Tutup pesanan ini?<br><br>
+                <i class="text-danger">*HARAP KONFIRMASI BAHWA UMKM TIDAK MERESPON TRANSAKSI INI SEBELUM TUTUP PESANAN</i>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Batal</button>
+                <a href="<?=base_url()?>/cs/pesanan/close_order/<?=$l_detail->idorder?>" class="btn btn-success">Konfirmasi Tutup Pesanan</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<?php } ?>
+
 <?php if($l_detail->idstatus == 1 && is_null($l_detail->idcs)){?>
 <!-- sample modal content -->
 <div id="verifPayment" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">

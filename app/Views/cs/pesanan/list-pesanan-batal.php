@@ -64,6 +64,7 @@
                                             <tr>
                                                 <th width="7%">No.</th>
                                                 <th>Pemesan</th>
+                                                <th>Tipe Pesanan</th>
                                                 <th>Tanggal Pemesanan</th>
                                                 <th>Deskripsi</th>
                                                 <th>Status</th>
@@ -78,6 +79,15 @@
                                             <tr>
                                                 <td><?=$c?></td>
                                                 <td><?=$a->umkm_name?></td>
+                                                <td>
+                                                <?php if($a->idgrouporder == 1){?>
+                                                    Desain Logo
+                                                <?php }elseif($a->idgrouporder == 2){?>
+                                                    Desain Kemasan
+                                                <?php }elseif($a->idgrouporder == 3){?>
+                                                    Desain Logo & Kemasan
+                                                <?php }?>
+                                                </td>                                                
                                                 <td><?=$a->orderdate?></td>
                                                 <td>
                                                     <?php $countDesc = count(explode(" ", $a->description));
@@ -130,7 +140,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">Histori Pemesanan yang telah dibatalkan</p>
+                                <p class="card-title-desc">Riwayat Pemesanan yang telah dibatalkan</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
@@ -157,7 +167,7 @@
                                                 <td><?=$b->orderdate?></td>
                                                 <td>
                                                     <?php 
-                                                    $trimmed = explode("</p><p>", $a->description);
+                                                    $trimmed = explode("</p><p>", $b->description);
                                                     $countDesc = count(explode(" ", $trimmed[0]));
                                                     if ($countDesc > 12) {
                                                       $slice = array_slice(explode(" ", $trimmed[0]), 0, 12);

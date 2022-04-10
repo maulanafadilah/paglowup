@@ -337,6 +337,42 @@
 			return redirect()->to(base_url('cs/pesanan/list'));
 		}
 
+		public function close_order($idorder){
+			$this->newUser();
+			
+			$designerrating = 5;
+			$reviewdesigner = 'Closed By CS';
+			$csrating = 5;
+			$reviewcs = 'Closed By CS';
+
+			$dataset = [
+				'designerrating' => $designerrating,
+				'reviewdesigner' => $reviewdesigner,
+				'csrating' => $csrating,
+				'reviewcs' => $reviewcs,
+				'idstatus' => 8
+			];
+
+			$amount = $this->m_pesanan->getOrderById($idorder)[0]->price;
+			$iddesigner = $this->m_pesanan->getOrderById($idorder)[0]->iddesigner;
+
+			$deposit = [
+				'amount' => $amount,
+				'iddesigner' => $iddesigner,
+				'idorder' => $idorder,
+				'dateincome' => date('Y-m-d')
+			];
+
+			$this->m_pesanan->addDepositDesigner($deposit);
+			$this->m_pesanan->sendReviewByUmkm($dataset, $idorder);
+
+			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
+				Pesanan Telah Berhasil Ditutup
+			</div>';
+			session()->setFlashdata('notif', $alert);
+			return redirect()->to(base_url('cs/pesanan/detail/'.$idorder));
+		}
+
 		public function list_ord_cancel(){
 			if ($_POST['rowid']) {
 				$id = $_POST['rowid'];

@@ -62,9 +62,11 @@
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserUmkm">
-                                    Tambah UMKM
-                                </button>
+                                <div style="margin-bottom: 15px">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserUmkm">
+                                        Tambah UMKM
+                                    </button>
+                                </div>
                                 <table class="table dtable table-bordered dt-responsive table-sm nowrap w-100">
                                     <thead>
                                         <tr>
@@ -98,7 +100,7 @@
                                                     <?php if($a->iduser != session()->get('iduser')){?>
                                                     <a href="<?=base_url()?>/pengelola/umkm/detail/<?=$a->iduser?>" class="btn btn-sm btn-outline-info">detail</a> 
                                                     <?php }else{ ?>
-                                                    <a href="<?=base_url()?>/pengelola/profile" class="btn btn-sm btn-outline-info">detail</a> 
+                                                    <a href="<?=base_url()?>/pengelola/profile" class="btn btn-sm btn-outline-info">Detail</a> 
                                                     <?php } ?>
                                                 </div>
                                             </td>

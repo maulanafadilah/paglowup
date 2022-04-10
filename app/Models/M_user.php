@@ -29,10 +29,22 @@
    		return $this->db->query($sql)->getResult();
    	}
 
-   	public function getUser($username){
-      $sql = "SELECT * FROM tb_user WHERE username = '$username'";
+   	public function getAllNewUser(){
+      $sql = "SELECT * FROM tb_user LEFT JOIN tb_designer USING (iduser)
+              LEFT JOIN tb_umkm USING (iduser)
+              LEFT JOIN tb_cs USING (iduser)
+              LEFT JOIN tb_pengelola USING (iduser)
+              WHERE idumkm IS NULL
+              AND idpengelola IS NULL
+              AND iddesigner IS NULL
+              AND idcs IS NULL";
    		return $this->db->query($sql)->getResult();
    	}
+
+    public function getUser($username){
+      $sql = "SELECT * FROM tb_user WHERE username = '$username'";
+      return $this->db->query($sql)->getResult();
+    }
 
     public function getUserById($iduser){  
       $sql = "SELECT * FROM tb_user WHERE iduser = $iduser";

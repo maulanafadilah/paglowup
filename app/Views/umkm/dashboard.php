@@ -47,7 +47,21 @@
                     </div>
                 </div>
                 <!-- end page title -->
-
+                <?php if($total_order == 0){?>
+                <div class="my-5 pt-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="text-center mb-5">
+                                    <h4 class="text-uppercase">Belum ada Transaksi</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <!-- end container -->
+                </div>
+                <?php }else{?>
                 <div class="row">
                     <div class="col-xl-4 col-md-6">
                         <!-- card -->
@@ -196,7 +210,7 @@
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-header align-items-center d-flex">
-                                <h4 class="card-title mb-0 flex-grow-1">Laporan Pendapatan</h4>
+                                <h4 class="card-title mb-0 flex-grow-1">List Transaksi</h4>
                                 <div class="flex-shrink-0">
                                     <select class="form-select form-select-sm mb-0 my-n1">
                                         <option value="Today" selected="">hari Ini</option>
@@ -269,7 +283,7 @@
                     <!-- end col -->
                 </div>
                 <!-- end row -->
-
+                <?php }?>
             </div>
             <!-- container-fluid -->
         </div>

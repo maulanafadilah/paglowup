@@ -58,13 +58,16 @@
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
-                                <a href="<?=base_url()?>/umkm/pesanan/add" type="button" class="btn btn-info">
-                                    Tambah Pemesanan
-                                </a>
+                                <div style="margin-bottom: 15px">
+                                    <a href="<?=base_url()?>/umkm/pesanan/add" type="button" class="btn btn-info">
+                                        Tambah Pemesanan
+                                    </a>
+                                </div>
                                 <table class="table dtable align-middle dt-responsive table-check nowrap" style="border-collapse: collapse; border-spacing: 0 8px; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th width="7%">No.</th>
+                                            <th>Tipe Pesanan</th>
                                             <th>Tanggal Pemesanan</th>
                                             <th>Deskripsi</th>
                                             <th>Status</th>
@@ -76,16 +79,27 @@
                                         <?php foreach ($l_pesanan as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
+                                            <td>
+                                            <?php if($a->idgrouporder == 1){?>
+                                                Desain Logo
+                                            <?php }elseif($a->idgrouporder == 2){?>
+                                                Desain Kemasan
+                                            <?php }elseif($a->idgrouporder == 3){?>
+                                                Desain Logo & Kemasan
+                                            <?php }?>
+                                            </td>
                                             <td><?=$a->orderdate?></td>
                                             <td>
-                                                <?php $countDesc = count(explode(" ", $a->description));
-                                                if ($countDesc > 12) {
-                                                  $slice = array_slice(explode(" ", $a->description), 0, 12);
-                                                  echo implode(" ", $slice)."....";
-                                                } else {
-                                                  echo $a->description;
-                                                }
-                                                ?>
+                                                    <?php 
+                                                    $trimmed = explode("</p><p>", $a->description);
+                                                    $countDesc = count(explode(" ", $trimmed[0]));
+                                                    if ($countDesc > 12) {
+                                                      $slice = array_slice(explode(" ", $trimmed[0]), 0, 12);
+                                                      echo implode(" ", $slice)."....";
+                                                    } else {
+                                                      echo $trimmed[0];
+                                                    }
+                                                    ?>
                                             </td>
                                             <td>
                                                 <span class="badge 

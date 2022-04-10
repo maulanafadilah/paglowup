@@ -47,7 +47,21 @@
                     </div>
                 </div>
                 <!-- end page title -->
-
+<?php if($total_order == 0){?>
+                <div class="my-5 pt-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="text-center mb-5">
+                                    <h4 class="text-uppercase">Belum ada Transaksi</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <!-- end container -->
+                </div>
+<?php }else{?>
                 <div class="row">
                     <div class="col-xl-3 col-md-6">
                         <!-- card -->
@@ -258,6 +272,7 @@
                     <!-- end col -->
                 </div>
                 <!-- end row -->
+<?php }?>
 
             </div>
             <!-- container-fluid -->
@@ -291,6 +306,7 @@
 <script src="<?=base_url()?>/assets/libs/rater-js/index.js"></script>
 
 <!-- Datatable init js -->
+<?php if($total_order != 0){?>
 
 <script type="text/javascript">
 
@@ -467,7 +483,7 @@ $(document).ready(function() {
     });
 });
 </script>
-
+<?php }?>
 </body>
 
 </html>

@@ -23,24 +23,29 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
+                            <a href="<?=base_url()?>/pengelola/user/list" data-key="t-user-grid">
+                                <span data-key="t-authentication">User Baru</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="<?=base_url()?>/pengelola/pengelola/list" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.Pengelola') ?></span>
+                                <span data-key="t-authentication">Pengelola</span>
                             </a>
                         </li>
                         <li>
                             <a href="<?=base_url()?>/pengelola/cs/list" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.Customerservice') ?></span>
+                                <span data-key="t-authentication">Customer Service</span>
                             </a>
                         </li>
         
                         <li>
                             <a href="<?=base_url()?>/pengelola/designer/list" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.Designer') ?></span>
+                                <span data-key="t-authentication">Designer</span>
                             </a>
                         </li>  
                         <li>
                             <a href="<?=base_url()?>/pengelola/umkm/list" data-key="t-user-grid">
-                                <span data-key="t-authentication"><?= lang('Files.Umkm') ?></span>
+                                <span data-key="t-authentication">UMKM</span>
                             </a>
                         </li>   
                     </ul>
@@ -59,7 +64,7 @@
                         </li>
                         <li>                    
                             <a href="<?=base_url()?>/pengelola/withdraw" data-key="t-user-grid">
-                                <span data-key="t-authentication">Histori Withdraw</span>
+                                <span data-key="t-authentication">Riwayat Withdraw</span>
                             </a>
                         </li>
                         <li>
@@ -83,7 +88,7 @@
                         </li>
                         <li>
                             <a href="<?=base_url()?>/pengelola/pesanan2/list" data-key="t-user-grid">
-                                <span data-key="t-authentication">Histori Transaksi Batal</span>
+                                <span data-key="t-authentication">Riwayat Transaksi Batal</span>
                             </a>
                         </li>
                     </ul>

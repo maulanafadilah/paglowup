@@ -63,7 +63,7 @@
                                         <thead>
                                             <tr>
                                                 <th width="7%">No.</th>
-                                                <!-- <th>Pemesan</th> -->
+                                                <th>Tipe Pesanan</th>
                                                 <th>Tanggal Pemesanan</th>
                                                 <!-- <th>Deskripsi</th> -->
                                                 <th>Status</th>
@@ -75,7 +75,15 @@
                                             <?php foreach ($l_pesanan as $a) {?>
                                             <tr>
                                                 <td><?=$c?></td>
-                                                <!-- <td><?=$a->umkm_name?></td> -->
+                                                <td>
+                                                <?php if($a->idgrouporder == 1){?>
+                                                    Desain Logo
+                                                <?php }elseif($a->idgrouporder == 2){?>
+                                                    Desain Kemasan
+                                                <?php }elseif($a->idgrouporder == 3){?>
+                                                    Desain Logo & Kemasan
+                                                <?php }?>
+                                                </td>
                                                 <td><?=$a->orderdate?></td>
                                                 <!-- <td>
                                                     <?php $countDesc = count(explode(" ", $a->description));

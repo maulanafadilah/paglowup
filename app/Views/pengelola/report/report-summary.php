@@ -102,15 +102,15 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-12">
-                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Rating CS</span>
-                                        <h4 class="mb-3">
-                                            <span class="counter-value" data-target="<?=$cs_rate?>">0</span>/5
-                                        </h4>
+                                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Rating Customer Service</span>
+                                        <h4><div id="rating-cs"></div></h4>
                                     </div>
                                 </div>
                                 <div class="text-nowrap">
                                     <!-- <span class="badge bg-soft-success text-success">+ $2.8k</span> -->
-                                    <!-- <span class="ms-1 text-muted font-size-13">Since last week</span> -->
+                                    <span class="ms-1 text-muted font-size-13">
+                                        <span class="counter-value" data-target="<?=$cs_rate?>">0</span>/5
+                                    </span>
                                 </div>
                             </div><!-- end card body -->
                         </div><!-- end card -->
@@ -124,14 +124,14 @@
                                 <div class="row align-items-center">
                                     <div class="col-12">
                                         <span class="text-muted mb-3 lh-1 d-block text-truncate">Rating Designer</span>
-                                        <h4 class="mb-3">
-                                            <span class="counter-value" data-target="<?=$des_rate?>">0</span>/5
-                                        </h4>
+                                        <h4><div id="rating-desain"></div></h4>
                                     </div>
                                 </div>
                                 <div class="text-nowrap">
                                     <!-- <span class="badge bg-soft-success text-success">+2.95%</span> -->
-                                    <!-- <span class="ms-1 text-muted font-size-13">Since last week</span> -->
+                                    <span class="ms-1 text-muted font-size-13">
+                                        <span class="counter-value" data-target="<?=$des_rate?>">0</span>/5
+                                    </span>
                                 </div>
                             </div><!-- end card body -->
                         </div><!-- end card -->
@@ -318,6 +318,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js"></script>
 
+<!-- rater js -->
+<script src="<?=base_url()?>/assets/libs/rater-js/index.js"></script>
+
 <!-- Datatable init js -->
 <script type="text/javascript">
 var minDate, maxDate;
@@ -340,6 +343,29 @@ $.fn.dataTable.ext.search.push(
         return false;
     }
 );
+
+// rating-desain
+var basicRating = raterJs( {
+    starSize:30,
+    readOnly: true, 
+    rating: <?php echo $des_rate?>,
+    element:document.querySelector("#rating-desain"), 
+    rateCallback:function rateCallback(rating, done) {
+        this.setRating(rating); 
+        done(); 
+    }
+});
+// rating-cs
+var basicRating = raterJs( {
+    starSize:30,
+    readOnly: true, 
+    rating: <?php echo $cs_rate?>,
+    element:document.querySelector("#rating-cs"), 
+    rateCallback:function rateCallback(rating, done) {
+        this.setRating(rating); 
+        done(); 
+    }
+});
  
 $(document).ready(function() {
     // Create date inputs

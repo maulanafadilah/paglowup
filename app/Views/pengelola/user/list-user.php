@@ -22,7 +22,7 @@
 <!-- Begin page -->
 <div id="layout-wrapper">
 
-    <?= $this->include('designer/menu') ?>
+    <?= $this->include('pengelola/menu') ?>
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -40,8 +40,8 @@
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/designer/dashboard">PAGlowUP</a></li>
-                                    <li class="breadcrumb-item active">Riwayat Withdraw</li>
+                                    <li class="breadcrumb-item"><a href="<?=base_url()?>/pengelola/dashboard">PAGlowUP</a></li>
+                                    <li class="breadcrumb-item active">List User</li>
                                 </ol>
                             </div>
 
@@ -54,37 +54,50 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <p class="card-title-desc">Riwayat withdraw</p>
+                                <p class="card-title-desc">User yang terdaftar pada PAGlowUP dan belum mengisi Biodata</p>
                             </div>
                             <div class="card-body">
                                 <?=session()->getFlashdata('notif');?>
-                                <table class="table dtable table-bordered table-striped dt-responsive table-sm nowrap w-100">
+                                <table class="table dtable table-bordered dt-responsive table-sm nowrap w-100">
                                     <thead>
                                         <tr>
                                             <th width="7%">No.</th>
+                                            <th>Nama</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
                                             <th>Status</th>
-                                            <th>Tanggal Request</th>
-                                            <th>Besaran</th>
-                                            <th width="10%">Aksi</th>
+                                            <th>Tipe Akun</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $c = 1;?>
-                                        <?php foreach ($l_withdraw as $a) {?>
+                                        <?php foreach ($l_user as $a) {?>
                                         <tr>
                                             <td><?=$c?></td>
-                                            <td><?=$a->status?></td>
-                                            <td><?=$a->timerequest?></td>
-                                            <td>Rp <?=number_format($a->amount, 0, ',', '.')?></td>
+                                            <td><?=$a->name?></td>
+                                            <td><?=$a->username?></td>
+                                            <td><?=$a->email?></td>
                                             <td>
-                                                <div class="d-grid gap-2">
-                                                    <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal" data-id="<?= $a->idwithdraw ?>">
-                                                        Detail
-                                                    </button>
-                                                </div>
+                                            <?php if($a->flag == 1){?>
+                                                Aktif    
+                                            <?php }else{?>
+                                                Tidak Aktif    
+                                            <?php }?>    
+                                            </td>
+                                            <td>
+                                            <?php if ($a->idgroup == 1){
+                                                echo 'Pengelola';
+                                            }elseif ($a->idgroup == 2) {
+                                                echo 'CS';
+                                            }elseif ($a->idgroup == 3) {
+                                                echo 'Designer';
+                                            }elseif ($a->idgroup == 4) {
+                                                echo 'UMKM';
+                                            }
+                                            ?>
                                             </td>
                                         </tr>
-                                        <?php $c++; ?>
+                                        <?php $c = $c+1; ?>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -98,6 +111,7 @@
         </div>
         <!-- End Page-content -->
 
+
         <?= $this->include('partials/footer') ?>
     </div>
     <!-- end main content-->
@@ -106,15 +120,38 @@
 <!-- END layout-wrapper -->
 
 <!-- sample modal content -->
-<div id="myModal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+<div id="addUserDesigner" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="fetched-data"></div>
-        </div>
-    </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Tambah Designer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="konfirAdd" action="<?=base_url()?>/pengelola/designer/add_proc" method="post">
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" name="email" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="pass" class="form-control" required>
+                  </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" form="konfirAdd" class="btn btn-primary">Simpan</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<?= $this->include('designer/right-sidebar') ?>
+<?= $this->include('pengelola/right-sidebar') ?>
 
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts') ?>
@@ -126,22 +163,10 @@
 <!-- Responsive examples -->
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?=base_url()?>/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
 <!-- Datatable init js -->
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.dtable').DataTable();
-        $('#myModal').on('show.bs.modal', function(e) {
-            var rowid = $(e.relatedTarget).data('id');
-            $.ajax({
-                type: 'POST',
-                url: '<?= base_url() ?>/designer/withdraw/list_wth',
-                data: 'rowid=' + rowid,
-                success: function(data) {
-                    $('.fetched-data').html(data); //menampilkan data ke dalam modal
-                }
-            });
-        });
-    });
+    $('.dtable').DataTable();
 </script>
 
 <script src="<?=base_url()?>/assets/js/app.js"></script>
