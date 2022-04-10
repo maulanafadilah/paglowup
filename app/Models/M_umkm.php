@@ -50,6 +50,22 @@
       $builder->update($dataset);
     }
 
+    public function getRatingCsByUmkm($idumkm){
+      $sql = "SELECT ROUND(AVG(tb_order.csrating)) AS rating 
+        FROM tb_umkm JOIN tb_order USING (idumkm)
+        WHERE idumkm = $idumkm";
+
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function getRatingDesignerByUmkm($idumkm){
+      $sql = "SELECT ROUND(AVG(tb_order.designerrating)) AS rating 
+        FROM tb_umkm JOIN tb_order USING (idumkm)
+        WHERE idumkm = $idumkm";
+
+      return $this->db->query($sql)->getResult();
+    }
+
     public function countUmkm(){
       $sql = "SELECT count(*) AS cm FROM tb_umkm";
 

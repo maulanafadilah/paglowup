@@ -83,8 +83,8 @@
 			$whatsapp = $_POST['whatsapp'];
 			$dribbble = $_POST['dribbble'];
 			$bankaccount = $_POST['bankaccount'];
-			$bankname = $_POST['bankname'];
-			$bankaccname = $_POST['bankaccname'];
+			$bankname = strtoupper($_POST['bankname']);
+			$bankaccname = strtoupper($_POST['bankaccname']);
 			$web = $_POST['web'];
 
 			$email = $_POST['email'];
@@ -155,8 +155,8 @@
 			$whatsapp = $_POST['whatsapp'];
 			$dribbble = $_POST['dribbble'];
 			$bankaccount = $_POST['bankaccount'];
-			$bankname = $_POST['bankname'];
-			$bankaccname = $_POST['bankaccname'];
+			$bankname = strtoupper($_POST['bankname']);
+			$bankaccname = strtoupper($_POST['bankaccname']);
 			$web = $_POST['web'];
 
 			$dataset = [
@@ -225,7 +225,7 @@
           'label' => 'Image File',
           'rules' => 'uploaded[designer_pic]'
             . '|is_image[designer_pic]'
-            . '|mime_in[designer_pic,image/jpg,image/jpeg,image/png,image/webp]'
+            . '|mime_in[designer_pic,image/jpg,image/jpeg,image/webp]'
             . '|max_size[designer_pic,4000]',
         ],
       ];
@@ -234,11 +234,13 @@
         $data = $this->validator->getErrors();
 				
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					'.$data.'
+					File format tidak sesuai
 				</div>';
 				session()->setFlashdata('notif', $alert);
-
-				return redirect()->to(base_url('designer/profile'));
+    		
+    		echo "<script>alert('file format tidak sesuai'); window.location.href = '".base_url()."/designer/profile?t=2';</script>";
+    		exit;
+				// return redirect()->to(base_url('designer/profile'));
       }else{
       	$img = $this->request->getFile('designer_pic');
       	$newName = $img->getRandomName();

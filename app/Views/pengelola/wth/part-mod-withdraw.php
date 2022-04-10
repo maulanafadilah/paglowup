@@ -4,7 +4,7 @@
 </div>
 <div class="modal-body">
     <div class="mb-3">
-        <table>
+        <table width="100%">
             <tr>
                 <td>Nama Pemohon</td>
                 <td>:</td>
@@ -35,7 +35,7 @@
                 <td>Bukti transfer</td>
                 <td>:</td>
                 <td>
-                    <img src="<?=base_url()?>/webdata/uploads/images/pengelola/withdrawproof/<?=$with->transferproof?>" style="max-width: 500px">
+                    <img src="<?=base_url()?>/webdata/uploads/images/pengelola/withdrawproof/<?=$with->transferproof?>" style="max-width: 450px">
                 </td>
             </tr>
             <?php }elseif($with->status == 'Cancelled'){?>

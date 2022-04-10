@@ -132,7 +132,7 @@
                                                 <div class="row mb-4">
                                                     <label class="col-sm-3 col-form-label">Nomor Rekening <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="bankaccount" class="form-control" >
+                                                        <input type="text" name="bankaccount" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-4">

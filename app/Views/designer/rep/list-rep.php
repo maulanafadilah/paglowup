@@ -75,15 +75,18 @@
                                                 <td><?=$c?></td>
                                                 <td><?=$a->designerrating?>/5</td>
                                                 <td>
-                                                    <?php $countDesc = count(explode(" ", $a->reviewdesigner));
+                                                    <?php 
+                                                    $trimmed = explode("</p><p>", $a->reviewdesigner);
+                                                    $countDesc = count(explode(" ", $trimmed[0]));
                                                     if ($countDesc > 12) {
-                                                      $slice = array_slice(explode(" ", $a->reviewdesigner), 0, 12);
+                                                      $slice = array_slice(explode(" ", $trimmed[0]), 0, 12);
                                                       echo implode(" ", $slice)."....";
                                                     } else {
-                                                      echo $a->reviewdesigner;
+                                                      echo $trimmed[0];
                                                     }
                                                     ?>
                                                 </td>
+
                                                 <td>
                                                     <div class="d-grid gap-2">
                                                         <a href="<?=base_url()?>/designer/pesanan/detail/<?=$a->idorder?>" class="btn btn-sm btn-outline-info">Detail</a>

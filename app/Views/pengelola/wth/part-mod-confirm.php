@@ -4,7 +4,7 @@
 </div>
 <div class="modal-body">
     <div class="mb-3">
-        <table>
+        <table width="100%">
             <tr>
                 <td>Nama Pemohon</td>
                 <td>:</td>
@@ -19,6 +19,11 @@
                 <td>Besar Withdraw</td>
                 <td>:</td>
                 <td>Rp <?=number_format($with->amount, 0, ',', '.')?></td>
+            </tr>
+            <tr>
+                <td>Saldo Designer</td>
+                <td>:</td>
+                <td>Rp <?=number_format($total_deposit, 0, ',', '.')?></td>
             </tr>
             <tr>
                 <td>Status</td>

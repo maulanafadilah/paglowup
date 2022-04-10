@@ -194,9 +194,44 @@
                                         <?php if($l_detail->idstatus == 8){?>
                                         <hr class="my-4">
                                         <div class="row">
-                                            <div class="col-sm-12">
-                                                <div>
-                                                    <h5 class="font-size-15 mb-3">Rating desain:</h5>
+
+                                            <div class="col-sm-6">
+                                                <div class="">
+                                                    <h5 class="font-size-15">Ringkasan Pesanan</h5>
+                                                </div>
+                                                <div class="p-4 border rounded">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-nowrap align-middle mb-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Item</th>
+                                                                    <th class="text-end" style="width: 120px;">Harga</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <h5 class="font-size-15 mb-1">Kategori: <?=$l_detail->category?></h5>
+                                                                        <p class="font-size-13 text-muted mb-0">Jenis Pesanan: <?=$l_detail->orderdesc?></p>
+                                                                    </td>
+                                                                    <td class="text-end">Rp.<?=number_format($l_detail->price, 0, ',', '.')?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" colspan="1" class="border-0 text-end">Total</th>
+                                                                    <td class="border-0 text-end">
+                                                                        <h4 class="m-0">
+                                                                            Rp <?=number_format($l_detail->price, 0, ',', '.')?>
+                                                                        </h4>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h5 class="font-size-15">Rating desain:</h5>
+                                                <div class="p-4 border rounded">
                                                     <div id="rating-desain"></div><br><br>
                                                     <?php if(!is_null($l_detail->reviewdesigner)){?>
                                                     <div><?=$l_detail->reviewdesigner?></div>
