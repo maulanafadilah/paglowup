@@ -3,6 +3,7 @@
 	
 	use CodeIgniter\Controller;
 	use App\Models\M_user;
+	use App\Models\M_pesanan;
 
 	class register extends BaseController{
 
@@ -11,7 +12,10 @@
 		}
 
 		public function index(){
+			$this->m_pesanan = new M_pesanan();
+			$l_rtesti2 = $this->m_pesanan->getTestimonial();
 			$data = [
+				'l_rtesti2' => $l_rtesti2,
 				'title_meta' => view('partials/title-meta', ['title' => 'Register | PAGlowUP'])
 			];
 			return view('auth-register', $data);

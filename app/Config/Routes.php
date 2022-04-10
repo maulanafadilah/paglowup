@@ -41,11 +41,11 @@ $routes->add('logout', 'Login::logout');
 $routes->get('/', 'Home::index');
 $routes->get('/home', 'Home::index');
 $routes->get('portofolio', 'Home::portofolio');
-$routes->get('portofolio-details', 'Home::portofolio_details');
-$routes->get('service', 'Home::service');
-$routes->get('service-details', 'Home::service_details');
+$routes->get('portofolio/(:num)', 'Home::portofolio_details/$1');
+// $routes->get('service', 'Home::service');
+// $routes->get('service-details', 'Home::service_details');
 $routes->get('contact', 'Home::contact');
-$routes->get('about', 'Home::about');
+// $routes->get('about', 'Home::about');
 
 // -------------------- Pengelola -------------------- //
 

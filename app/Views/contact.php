@@ -62,7 +62,7 @@
 				<div class="container">
 					<div class="row">
 					
-						<div class="col-lg-5 col-md-6 col-xs-12">
+						<div class="col-xl-12">
 							<div class="contact-address">
 								<h2><?=$l_contact1->title?></h2>
 								<p><?=$l_contact2->title?></p>

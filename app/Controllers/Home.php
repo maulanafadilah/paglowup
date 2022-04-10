@@ -130,25 +130,69 @@ class Home extends BaseController
 		// return view('index');
 	}
 
-	// public function portofolio()
-	// {
-	// 	$data = [
-	// 		'title_meta' => view('partials-front/title-meta', ['title' => 'Portofolio']),
-	// 		// 'page_title' => view('partials-front/page-title', ['title' => 'Nazox', 'pagetitle' => 'Dashboard'])
-	// 	];
-	// 	return view('portofolio', $data);
-	// 	// return view('index');
-	// }
+	public function portofolio()
+	{
+		// Count
+		$c_trs = $this->m_pesanan->countTransaction()[0];
+		$c_dsg = $this->m_designer->countDesigner()[0];
+		$c_umk = $this->m_umkm->countUmkm()[0];
 
-	// public function portofolio_details()
-	// {
-	// 	$data = [
-	// 		'title_meta' => view('partials-front/title-meta', ['title' => 'Portofolio Details']),
-	// 		// 'page_title' => view('partials-front/page-title', ['title' => 'Nazox', 'pagetitle' => 'Dashboard'])
-	// 	];
-	// 	return view('portofolio-details', $data);
-	// 	// return view('index');
-	// }
+		// Get Porto
+		$porto = $this->m_pesanan->getPortofolioData();
+
+		$data = [
+			'c_trs' => $c_trs,
+			'c_dsg' => $c_dsg,
+			'c_umkm' => $c_umk,
+
+			'porto' => $porto,
+			
+			'title_meta' => view('partials-front/title-meta', ['title' => 'Portofolio']),
+			// 'page_title' => view('partials-front/page-title', ['title' => 'Nazox', 'pagetitle' => 'Dashboard'])
+		];
+		return view('portofolio', $data);
+		// return view('index');
+	}
+
+	public function portofolio_details($idorder)
+	{
+		
+		// var_dump($this->m_pesanan->getDetailPortofolio($idorder));
+		// die;
+		
+		// Count
+		$c_trs = $this->m_pesanan->countTransaction()[0];
+		$c_dsg = $this->m_designer->countDesigner()[0];
+		$c_umk = $this->m_umkm->countUmkm()[0];
+		
+		// Detail Porto
+		$detail = $this->m_pesanan->getDetailPortofolio($idorder);
+		
+		// foreach ($detail as $item){
+		// 	$idprodcat = $item->idprodcat;
+		// 	$idgrouporder = $item->idgrouporder;
+		// }
+		
+		// if($idorder = 1){
+
+		// }
+
+		// return $idprodcat;
+		// die;
+
+		// if ($detail->)
+
+		$data = [
+			'c_trs' => $c_trs,
+			'c_dsg' => $c_dsg,
+			'c_umkm' => $c_umk,
+			'detail' => $detail,
+			'title_meta' => view('partials-front/title-meta', ['title' => 'Portofolio Details']),
+			// 'page_title' => view('partials-front/page-title', ['title' => 'Nazox', 'pagetitle' => 'Dashboard'])
+		];
+		return view('portofolio-details', $data);
+		// return view('index');
+	}
 
 	// public function service()
 	// {

@@ -30,8 +30,8 @@
                                     </div>
                                     <div class="auth-content my-auto">
                                         <div class="text-center">
-                                            <h5 class="mb-0">Welcome Back !</h5>
-                                            <p class="text-muted mt-2">Sign in to continue to PAGlowUP.</p>
+                                            <h5 class="mb-0">Selamat Datang Kembali !</h5>
+                                            <p class="text-muted mt-2">Masuk untuk Melanjutkan Menuju PaGlowUp.</p>
                                         </div>
                                         <?= session()->getFlashdata('notif_login')?>
                                         <form class="custom-form mt-4 pt-2" action="<?=base_url()?>/login/login_proc" method="post">
@@ -52,13 +52,13 @@
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
+                                                <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Masuk</button>
                                             </div>
                                         </form>
 
                                         <div class="mt-5 text-center">
-                                            <p class="text-muted mb-0">Don't have an account ? <a href="register"
-                                                    class="text-primary fw-semibold"> Signup now </a> </p>
+                                            <p class="text-muted mb-0">Tidak Punya Akun ? <a href="register"
+                                                    class="text-primary fw-semibold"> Daftar </a> </p>
                                         </div>
                                     </div>
                                     <div class="mt-4 mt-md-5 text-center">
