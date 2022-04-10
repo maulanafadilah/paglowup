@@ -72,10 +72,10 @@
 
                                 <ul class="nav nav-tabs-custom card-header-tabs border-top mt-4" id="pills-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link px-3 active" data-bs-toggle="tab" href="#overview" role="tab">Detail Profil</a>
+                                        <a class="nav-link px-3 <?=(isset($_GET['t']))?'':'active'?>" data-bs-toggle="tab" href="#overview" role="tab">Detail Profil</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#portf" role="tab">Portofolio</a>
+                                        <a class="nav-link px-3 <?=(isset($_GET['t']))?($_GET['t'] == 2)?'active':'':''?>" data-bs-toggle="tab" href="#portf" role="tab">Portofolio</a>
                                     </li>
                                 </ul>
                             </div>
@@ -84,7 +84,7 @@
                         <!-- end card -->
 
                         <div class="tab-content">
-                            <div class="tab-pane active" id="overview" role="tabpanel">
+                            <div class="tab-pane <?=(isset($_GET['t']))?'':'active'?>" id="overview" role="tabpanel">
                                 <div class="card">
                                     <div class="card-header">
                                         <h5 class="card-title mb-0">Overview</h5>
@@ -241,12 +241,12 @@
                             </div>
                             <!-- end tab pane -->
 
-                            <div class="tab-pane" id="portf" role="tabpanel">
+                            <div class="tab-pane <?=(isset($_GET['t']))?($_GET['t'] == 2)?'active':'':''?>" id="portf" role="tabpanel">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="mt-4 mt-lg-0">
                                             <h5 class="font-size-14 mb-4">List Portfolio</h5>
-                                            <?php if(!$l_portfolio){?>
+                                            <?php if(!$l_portfolio && !$l_works){?>
                                             <div class="my-5 pt-5">
                                                 <div class="container">
                                                     <div class="row">
@@ -261,19 +261,48 @@
                                                 <!-- end container -->
                                             </div>
                                             <!-- end content -->
-                                            <?php }else{
-                                            foreach ($l_portfolio as $data) {?>
-                                            <div class="col-sm-4 p-3">
-                                                <center class="img-thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#zoomImg" data-id="<?= $data->idportfolio; ?>">
-                                                        <img src="<?= base_url(); ?>/webdata/uploads/images/designer/portfolio/<?= $data->img; ?>" class="img-fluid " style="max-height: 265px;" alt="Responsive image">
-                                                    </a>
-                                                    <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delPortfolio" data-id="<?=$data->idportfolio?>">
-                                                        Hapus Portfolio
-                                                    </a>
-                                                </center>
+                                            <?php }else{?>
+                                            <div class="row">
+                                                <?php foreach ($l_portfolio as $data) {?>
+                                                <div class="col-sm-2 p-3">
+                                                    <center class="img-thumbnail" style="height: 150px">
+                                                        <div class="mb-1">
+                                                            <a data-bs-toggle="modal" data-bs-target="#zoomImg" data-id="<?= $data->idportfolio; ?>">
+                                                                <img src="<?= base_url(); ?>/webdata/uploads/images/designer/portfolio/<?= $data->img; ?>" class="img-fluid" alt="Responsive image">
+                                                            </a>
+                                                        </div>
+                                                        <div class="mb-1">
+                                                            <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delPortfolio" data-id="<?=$data->idportfolio?>">
+                                                                Hapus Portfolio
+                                                            </a>
+                                                        </div>
+                                                    </center>
+                                                </div>
+                                                <?php } ?>
+                                                <?php foreach ($l_works as $b) {
+                                                    if($b->work1 != null){?>
+                                                <div class="col-sm-2 p-3">
+                                                    <center class="img-thumbnail">
+                                                        <div class="mb-1" style="height: 150px">
+                                                            <a href="<?= base_url(); ?>/webdata/uploads/prev_data/<?=$b->work1?>">
+                                                                <img src="<?= base_url(); ?>/webdata/uploads/prev_data/<?=$b->work1?>" target="_blank" class="img-fluid mh-100 d-inline-block" alt="Responsive image">
+                                                            </a>
+                                                        </div>
+                                                    </center>
+                                                </div>
+                                                <?php }if($b->work2 != null){?>
+                                                <div class="col-sm-2 p-3">
+                                                    <center class="img-thumbnail">
+                                                        <div class="mb-1" style="height: 150px">
+                                                            <a href="<?= base_url(); ?>/webdata/uploads/prev_data/<?=$b->work2?>">
+                                                                <img src="<?= base_url(); ?>/webdata/uploads/prev_data/<?=$b->work2?>" target="_blank" class="img-fluid mh-100 d-inline-block" alt="Responsive image">
+                                                            </a>
+                                                        </div>
+                                                    </center>
+                                                </div>
+                                                <?php }}?>
                                             </div>
-                                            <?php }} ?>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                     <!-- end card body -->

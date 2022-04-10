@@ -51,12 +51,14 @@
 			$detilUser = $this->m_cs->getJoinUserCs(session()->get('iduser'))[0];
 			$detail_designer = $this->m_designer->getJoinUserDesigner($iduser)[0];
 			$l_portfolio = $this->m_designer->getPortfolioByIdDesigner($detail_designer->iddesigner);
+			$l_works = $this->m_designer->getWorksByDesigner($detail_designer->iddesigner);
 
 			$data = [
 				'title_meta' => view('partials/title-meta', ['title' => 'Detail Designer']),
 				'detail_designer' => $detail_designer,
 				'detail_user' => $detilUser,
-				'l_portfolio' => $l_portfolio
+				'l_portfolio' => $l_portfolio,
+				'l_works' => $l_works
 			];
 
 			return view('cs/user/detail-designer', $data);

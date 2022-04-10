@@ -94,6 +94,15 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getWorksByDesigner($iddesigner){
+      $sql = "SELECT tb_order.designpreview1 AS work1, tb_order.designpreview2 AS work2 
+                FROM tb_order JOIN tb_designer USING (iddesigner)
+                WHERE tb_order.designpreview1 IS NOT NULL 
+                OR tb_order.designpreview2 IS NOT NULL
+                AND iddesigner = $iddesigner";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function insertPortfolio($dataset){
       $builder = $this->db->table('tb_portfolio');
       $builder->insert($dataset);

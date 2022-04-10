@@ -352,9 +352,14 @@
                                             </td>
                                             <td>
                                                 <div class="d-grid gap-2">
-                                                    <a class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#setDesigner" data-id="<?=$a->iddesigner?>">
-                                                        Pilih
-                                                    </a>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#setDesigner" data-id="<?=$a->iddesigner?>">
+                                                            Pilih
+                                                        </a>
+                                                        <a href="<?=base_url()?>/cs/designer/detail/<?=$a->iduser?>?t=2" class="btn btn-outline-info btn-sm" target="_blank" >
+                                                            Detail Portofolio
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -423,6 +428,7 @@ window.addEventListener("load", onload, false);
 
 <script type="text/javascript">
     $(document).ready(function() {
+        $('.dtable').DataTable();
         $('#setDesigner').on('show.bs.modal', function(e) {
             var rowid = $(e.relatedTarget).data('id');
             $.ajax({
