@@ -128,6 +128,15 @@
 			}
 
 			$description = $_POST['description'];
+			// $trimmed = explode("</p><p>", $a->description);
+   //    $countDesc = count(explode(" ", $trimmed[0]));
+   //    if ($countDesc > 12) {
+   //      $slice = array_slice(explode(" ", $trimmed[0]), 0, 12);
+   //      echo implode(" ", $slice)."....";
+   //    } else {
+   //      echo $trimmed[0];
+   //    }
+
 			$date = date('Y-m-d h:i:s');
 			$idumkm = $this->m_umkm->getJoinUserUmkm($iduser)[0]->idumkm;
 			$price = $this->m_pesanan->getPriceByIdgrouporder($idgrouporder)[0]->price;
@@ -188,8 +197,8 @@
 				$dataset += ['totalpayment' => $price];
 			}
 
-			define('MB', 1048576);
-			if ($_FILES['foto1']['size'] > 4*MB) {
+			define('MB', 1000000);
+			if ($_FILES['foto1']['size'] > 8*MB) {
 				$v_foto = TRUE;
 			}
 			elseif ($_FILES['foto1']['size'] != 0) {
@@ -197,7 +206,7 @@
 				$dataset += ['file1' => $file1];
 			}
 
-			if ($_FILES['foto2']['size'] > 4*MB) {
+			if ($_FILES['foto2']['size'] > 8*MB) {
 				$v_foto = TRUE;
 			}
 			elseif ($_FILES['foto2']['size'] != 0) {
@@ -205,7 +214,7 @@
 				$dataset += ['file2' => $file2];
 			}
 
-			if ($_FILES['foto3']['size'] > 4*MB) {
+			if ($_FILES['foto3']['size'] > 8*MB) {
 				$v_foto = TRUE;
 			}
 			elseif ($_FILES['foto3']['size'] != 0) {
@@ -243,8 +252,8 @@
 
 			$dataset = $this->m_pesanan->getOrderById($idorder)[0];
 
-			define('MB', 1048576);
-			if ($_FILES['paymentproof']['size'] > 4*MB) {
+			define('MB', 1000000);
+			if ($_FILES['paymentproof']['size'] > 8*MB) {
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
 					File terlalu besar
 				</div>';
@@ -326,8 +335,8 @@
 				'commenttime' => $commenttime
 			];
 
-			define('MB', 1048576);
-			if ($_FILES['file1']['size'] > 4*MB) {
+			define('MB', 1000000);
+			if ($_FILES['file1']['size'] > 8*MB) {
 				$v_foto = TRUE;
 			}
 			elseif ($_FILES['file1']['size'] != 0) {
@@ -335,7 +344,7 @@
 				$dataset += ['file1' => $file1];
 			}
 
-			if ($_FILES['file2']['size'] > 4*MB) {
+			if ($_FILES['file2']['size'] > 8*MB) {
 				$v_foto = TRUE;
 			}
 			elseif ($_FILES['file2']['size'] != 0) {
@@ -406,7 +415,7 @@
           'rules' => 'uploaded[foto1]'
             . '|is_image[foto1]'
             . '|mime_in[foto1,image/jpg,image/jpeg,image/webp]'
-            . '|max_size[foto1,4000]',
+            . '|max_size[foto1,8000]',
         ],
       ];
 
@@ -440,7 +449,7 @@
           'rules' => 'uploaded[foto2]'
             . '|is_image[foto2]'
             . '|mime_in[foto2,image/jpg,image/jpeg,image/webp]'
-            . '|max_size[foto2,4000]',
+            . '|max_size[foto2,8000]',
         ],
       ];
 
@@ -474,7 +483,7 @@
           'rules' => 'uploaded[foto3]'
             . '|is_image[foto3]'
             . '|mime_in[foto3,image/jpg,image/jpeg,image/webp]'
-            . '|max_size[foto3,4000]',
+            . '|max_size[foto3,8000]',
         ],
       ];
 
@@ -508,7 +517,7 @@
           'rules' => 'uploaded[file1]'
             . '|is_image[file1]'
             . '|mime_in[file1,image/jpg,image/jpeg,image/webp]'
-            . '|max_size[file1,4000]',
+            . '|max_size[file1,8000]',
         ],
       ];
 
@@ -542,7 +551,7 @@
           'rules' => 'uploaded[file2]'
             . '|is_image[file2]'
             . '|mime_in[file2,image/jpg,image/jpeg,image/webp]'
-            . '|max_size[file2,4000]',
+            . '|max_size[file2,8000]',
         ],
       ];
 
@@ -577,7 +586,7 @@
           'rules' => 'uploaded[paymentproof]'
             . '|is_image[paymentproof]'
             . '|mime_in[paymentproof,image/jpg,image/jpeg,image/webp]'
-            . '|max_size[paymentproof,4000]',
+            . '|max_size[paymentproof,8000]',
         ],
       ];
 
