@@ -273,7 +273,7 @@
 			];
 
 			define('MB', 1048576);
-			if ($_FILES['prev1']['size'] > 262144) {
+			if ($_FILES['prev1']['size'] > 512000) {
 				$v_file = TRUE;
 			}
 			elseif ($_FILES['prev1']['size'] != 0) {
@@ -281,7 +281,7 @@
 				$dataset += ['designpreview1' => $prev1];
 			}
 
-			if ($_FILES['prev2']['size'] > 262144) {
+			if ($_FILES['prev2']['size'] > 512000) {
 				$v_file = TRUE;
 			}
 			elseif ($_FILES['prev2']['size'] != 0) {
@@ -294,7 +294,7 @@
 					File terlalu besar, max file 256kb
 				</div>';
 				$data_session = [
-					'alert' => $alert
+					'notif' => $alert
 				];
 
 				session()->setFlashdata($data_session);

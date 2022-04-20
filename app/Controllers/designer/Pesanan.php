@@ -79,7 +79,7 @@
 			];
 
 			define('MB', 1048576);
-			if ($_FILES['prev1']['size'] > 262144) {
+			if ($_FILES['prev1']['size'] > 512000) {
 				$v_file = TRUE;
 			}
 			elseif ($_FILES['prev1']['size'] != 0) {
@@ -87,7 +87,7 @@
 				$dataset += ['designpreview1' => $prev1];
 			}
 
-			if ($_FILES['prev2']['size'] > 262144) {
+			if ($_FILES['prev2']['size'] > 512000) {
 				$v_file = TRUE;
 			}
 			elseif ($_FILES['prev2']['size'] != 0) {
@@ -97,10 +97,10 @@
 
 			if ($v_file){
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					File terlalu besar, max size 256kb
+					File terlalu besar, max size 512kb
 				</div>';
 				$data_session = [
-					'alert' => $alert
+					'notif' => $alert
 				];
 
 				session()->setFlashdata($data_session);
