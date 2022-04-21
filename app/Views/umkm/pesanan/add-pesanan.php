@@ -119,7 +119,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label">Foto Produk</label>
                                                         <div class="col-sm-12">
-                                                          <input type="file" name="foto1" class="form-control fileupload" accept="image/jpg, image/jpeg" required>
+                                                          <input type="file" name="foto1" class="form-control fileupload" accept="image/jpg, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -127,7 +127,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label">Foto Kemasan</label>
                                                         <div class="col-sm-12">
-                                                          <input type="file" name="foto2" class="form-control fileupload" accept="image/jpg, image/jpeg" required>
+                                                          <input type="file" name="foto2" class="form-control fileupload" accept="image/jpg, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -135,7 +135,7 @@
                                                     <div class="mb-3">
                                                         <label class="form-label">Foto logo saat ini</label>
                                                         <div class="col-sm-12">
-                                                          <input type="file" name="foto3" class="form-control fileupload" accept="image/jpg, image/jpeg" required>
+                                                          <input type="file" name="foto3" class="form-control fileupload" accept="image/jpg, image/jpeg">
                                                         </div>
                                                     </div>
                                                 </div>

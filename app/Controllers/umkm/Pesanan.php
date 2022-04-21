@@ -97,6 +97,7 @@
 		public function create_proc(){
 			$iduser = session()->get('iduser');
 			$v_foto = FALSE;
+			$c_foto = 0; 
 
 			$idgrouporder = $_POST['idgrouporder'];
 			$idprodcat = $_POST['idprodcat'];
@@ -205,6 +206,9 @@
 				$file1 = $this->upload_img1()['name'];
 				$dataset += ['file1' => $file1];
 			}
+			elseif($_FILES['foto1']['size'] == 0){
+				$c_foto += 1;
+			}
 
 			if ($_FILES['foto2']['size'] > 8*MB) {
 				$v_foto = TRUE;
@@ -212,6 +216,9 @@
 			elseif ($_FILES['foto2']['size'] != 0) {
 				$file2 = $this->upload_img2()['name'];
 				$dataset += ['file2' => $file2];
+			}
+			elseif($_FILES['foto2']['size'] == 0){
+				$c_foto += 1;
 			}
 
 			if ($_FILES['foto3']['size'] > 8*MB) {
@@ -221,10 +228,28 @@
 				$file3 = $this->upload_img3()['name'];
 				$dataset += ['file3' => $file3];
 			}
+			elseif($_FILES['foto3']['size'] == 0){
+				$c_foto += 1;
+			}
 
 			if ($v_foto){
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
 					File terlalu besar
+				</div>';
+				$data_session = [
+					'notif' => $alert,
+					'idgrouporder' => $idgrouporder,
+					'idprodcat' => $idprodcat,
+					'description' => $description
+				];
+
+				session()->setFlashdata($data_session);
+				return redirect()->to(base_url('umkm/pesanan/add'));
+			}
+
+			if ($c_foto == 3) {
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+					Harus Menyertakan minimal 1 foto deskripsi desain
 				</div>';
 				$data_session = [
 					'notif' => $alert,
