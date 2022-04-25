@@ -4,6 +4,7 @@
 	use App\Controllers\BaseController;
 	use App\Models\M_cs;
 	use App\Models\M_designer;
+	use App\Models\M_pesanan;
 	use App\Models\M_user;
 	use CodeIgniter\Files\File;
 
@@ -13,6 +14,7 @@
 			$this->m_user = new M_user();
 			$this->m_cs = new M_cs();
 			$this->m_designer = new M_designer();
+			$this->m_pesanan = new M_pesanan();
 			$this->request = \Config\Services::request();
 		}
 
@@ -49,14 +51,20 @@
 		public function detail($iduser){
 			$this->newUser();
 			$detilUser = $this->m_cs->getJoinUserCs(session()->get('iduser'))[0];
+			
 			$detail_designer = $this->m_designer->getJoinUserDesigner($iduser)[0];
+			$l_pesanan = $this->m_pesanan->getOrderByDesigner($detail_designer->iddesigner);
 			$l_portfolio = $this->m_designer->getPortfolioByIdDesigner($detail_designer->iddesigner);
+			$rating = $this->m_designer->getRatingDesignerById($detail_designer->iddesigner)[0]->rating;
+
 			$l_works = $this->m_designer->getWorksByDesigner($detail_designer->iddesigner);
 
 			$data = [
 				'title_meta' => view('partials/title-meta', ['title' => 'Detail Designer']),
 				'detail_designer' => $detail_designer,
 				'detail_user' => $detilUser,
+				'rating' => $rating,
+				'l_pesanan' => $l_pesanan,
 				'l_portfolio' => $l_portfolio,
 				'l_works' => $l_works
 			];

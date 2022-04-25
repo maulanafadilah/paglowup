@@ -27,7 +27,6 @@
 		public function index(){
 			$iduser = session()->get('iduser');
 			$detilUser = $this->m_umkm->getJoinUserUmkm($iduser)[0];
-			$detilUser->umkm_pic = 'image.jpg';
 
 			$data = [
 				'title_meta' => view('partials/title-meta', ['title' => 'Profile']),
@@ -172,8 +171,6 @@
 		}
 
 		public function update_pass($iduser){
-			$this->newUser();
-
 			$iduser2 = session()->get('iduser');
 
 			if ($iduser2 != $iduser) {

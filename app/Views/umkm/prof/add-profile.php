@@ -58,7 +58,7 @@
                                             <div class="flex-grow-1">
                                                 <div>
                                                     <h5 class="font-size-16 mb-1"><?=$detail_user->username?></h5>
-                                                    <p class="text-muted font-size-13">Pengelola</p>
+                                                    <p class="text-muted font-size-13">UMKM</p>
 
                                                     <div class="d-flex flex-wrap align-items-start gap-2 gap-lg-3 text-muted font-size-13">
                                                         <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i>-</div>
