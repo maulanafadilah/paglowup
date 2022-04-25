@@ -30,40 +30,41 @@
                                     </div>
                                     <div class="auth-content my-auto">
                                         <div class="text-center">
-                                            <h5 class="mb-0">Selamat Datang Kembali !</h5>
-                                            <p class="text-muted mt-2">Masuk untuk Melanjutkan Menuju PaGlowUp.</p>
+                                            <h5 class="mb-0">Reset Password</h5>
+                                            <p class="text-muted mt-2">Reset Password</p>
+                                        </div>
+                                        <div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
+                                            Masukkan Email dan Username anda untuk mencocokkan data!
                                         </div>
                                         <?= session()->getFlashdata('notif_login')?>
-                                        <form class="custom-form mt-4 pt-2" action="<?=base_url()?>/login/login_proc" method="post">
+                                        <form class="custom-form mt-4" action="<?=base_url()?>/login/recov_proc" method="POST">
                                             <div class="mb-3">
                                                 <label class="form-label">Username</label>
-                                                <input type="text" class="form-control" name="username" value="<?=session()->getFlashdata('s_username')?>" id="username" placeholder="Enter username">
+                                                <input type="text" class="form-control" value="<?=session()->getFlashdata('s_username')?>" name="username" placeholder="Masukkan username">
                                             </div>
                                             <div class="mb-3">
-                                                <div class="d-flex align-items-start">
-                                                    <div class="flex-grow-1">
-                                                        <label class="form-label">Password</label>
-                                                    </div>
-                                                    <div class="flex-shrink-0">
-                                                        <div class="">
-                                                            <a href="<?=base_url()?>/login/recover" class="text-muted">Lupa password?</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="input-group auth-pass-inputgroup">
-                                                    <input type="password" class="form-control" name="password" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
-                                                    <button class="btn btn-light ms-0" type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
+                                                <label class="form-label">Email</label>
+                                                <input type="text" class="form-control" value="<?=session()->getFlashdata('s_email')?>" name="email" placeholder="Masukkan email">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Password Baru</label>
+                                                <input type="password" class="form-control" name="pass1" pattern=".{8,}" title="min. 8 characters" placeholder="Masukkan password baru" required>
+                                                <div class="invalid-feedback">
+                                                    Minimum 8 Characters
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Masuk</button>
+                                                <label class="form-label">Ulang Password Baru</label>
+                                                <input type="password" class="form-control" name="pass2" placeholder="Masukkan ulang password" required>
+                                            </div>
+                                            <div class="mb-3 mt-4">
+                                                <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Reset</button>
                                             </div>
                                         </form>
 
                                         <div class="mt-5 text-center">
-                                            <p class="text-muted mb-0">Tidak Punya Akun ? <a href="register"
-                                                    class="text-primary fw-semibold"> Daftar </a> </p>
+                                            <p class="text-muted mb-0">Ingat Password nya ?  <a href="<?=base_url()?>/login"
+                                                    class="text-primary fw-semibold"> Sign In </a> </p>
                                         </div>
                                     </div>
                                     <div class="mt-4 mt-md-5 text-center">

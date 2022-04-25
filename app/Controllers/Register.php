@@ -24,22 +24,8 @@
 		public function reg_proc(){
 			$username = $_POST['username'];
 			$email = $_POST['email'];
-			$password = md5($_POST['password']);
-			$idgroup = $_POST['idgroup'];
 
 			$cekUsername = $this->m_user->countUsername($username)[0]->hitung;
-			$cekEmail = $this->m_user->countUserByEmail($email)[0]->hitung;
-
-			if ($idgroup == 0) {
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-						Mohon pilih tipe user terlebih dahulu
-					</div>';
-				session()->setFlashdata('notif_login', $alert);
-				session()->setFlashdata('s_username', $username);
-				session()->setFlashdata('s_email', $email);
-				return redirect()->to(base_url('register'));
-			}
-
 			if ($cekUsername != 0) {
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
 						Username telah terdaftar
@@ -50,9 +36,33 @@
 				return redirect()->to(base_url('register'));
 			}
 
+			$cekEmail = $this->m_user->countUserByEmail($email)[0]->hitung;
 			if ($cekEmail != 0) {
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
 						Email telah terdaftar
+					</div>';
+				session()->setFlashdata('notif_login', $alert);
+				session()->setFlashdata('s_username', $username);
+				session()->setFlashdata('s_email', $email);
+				return redirect()->to(base_url('register'));
+			}
+
+			$idgroup = $_POST['idgroup'];
+			if ($idgroup == 0) {
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+						Mohon pilih tipe user terlebih dahulu
+					</div>';
+				session()->setFlashdata('notif_login', $alert);
+				session()->setFlashdata('s_username', $username);
+				session()->setFlashdata('s_email', $email);
+				return redirect()->to(base_url('register'));
+			}
+			
+			$password = md5($_POST['password']);
+			$pass2 = md5($_POST['pass2']);
+			if ($password != $pass2) {
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+						Konfirmasi password tidak sesuai
 					</div>';
 				session()->setFlashdata('notif_login', $alert);
 				session()->setFlashdata('s_username', $username);

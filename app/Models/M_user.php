@@ -66,6 +66,19 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function recoveryUserEmail($username, $email){
+      $sql = "SELECT count(iduser) AS hitung FROM tb_user WHERE username = '$username' AND email = '$email'";
+      return $this->db->query($sql)->getResult();
+    }
+
+    public function recoveryPassword($pass, $username, $email){
+      $builder = $this->db->table('tb_user');
+      $builder->set('pass', $pass);
+      $builder->where('username', $username);
+      $builder->where('email', $email);
+      $builder->update();
+    }
+
     public function insertUser($data){
       $builder = $this->db->table('tb_user');
       $builder->insert($data);

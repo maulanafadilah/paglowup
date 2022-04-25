@@ -7,9 +7,12 @@
 
 	class login extends BaseController{
 
-		public function index(){
+		function __construct(){
 			$this->m_pesanan = new M_pesanan();
+			$this->m_user = new M_user();
+		}
 
+		public function index(){
 			$l_rtesti2 = $this->m_pesanan->getTestimonial();
 			
 			$data = [
@@ -21,16 +24,13 @@
 		}
 
 		public function login_proc(){
-
-			$m_user = new M_user();
-
 			$username = $_POST['username'];
 			$password = md5($_POST['password']);
 
-			$status = $m_user->countUsername($username)[0]->hitung;
+			$status = $this->m_user->countUsername($username)[0]->hitung;
 
 			if ($status != 0){
-				$user = $m_user->getUser($username)[0];
+				$user = $this->m_user->getUser($username)[0];
 				if ($password == $user->pass) {
 					if($user->flag == 0){
 						$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
@@ -84,6 +84,54 @@
 		public function logout(){
 			session_destroy();
 			return redirect()->to(base_url('login'));
+		}
+
+		public function recover(){
+			$l_rtesti2 = $this->m_pesanan->getTestimonial();
+			
+			$data = [
+				// 'l_rtesti' => $l_rtesti,
+				'l_rtesti2' => $l_rtesti2,
+				'title_meta' => view('partials/title-meta', ['title' => 'Reset Password | PAGlowUP'])
+			];
+			return view('auth-recoverpw', $data);
+		}
+
+		public function recov_proc(){
+			$username = $_POST['username'];
+			$email = $_POST['email'];
+
+			$cek = $this->m_user->recoveryUserEmail($username, $email)[0]->hitung;
+
+			if ($cek == 0) {
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+										Username dan email tidak cocok
+									</div>';
+				session()->setFlashdata('notif_login', $alert);
+				session()->setFlashdata('s_username', $username);
+				session()->setFlashdata('s_email', $email);
+				return redirect()->to(base_url('login/recover'));
+			}
+
+			$pass1 = md5($_POST['pass1']);
+			$pass2 = md5($_POST['pass2']);
+
+			if ($pass1 != $pass2) {
+				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
+										konfirmasi password tidak cocok
+									</div>';
+				session()->setFlashdata('notif_login', $alert);
+				session()->setFlashdata('s_username', $username);
+				session()->setFlashdata('s_email', $email);
+				return redirect()->to(base_url('login/recover'));
+			}
+
+			$this->m_user->recoveryPassword($pass1, $username, $email);
+			$alert = '<div class="alert alert-success text-center mb-4 mt-4 pt-2" role="alert">
+									Password berhasil direset, silahkan untuk login kembali
+								</div>';
+			session()->setFlashdata('notif_login', $alert);
+			return redirect()->to(base_url('login/recover'));
 		}
 	}
 

@@ -51,14 +51,7 @@
                                                     Please Enter Username
                                                 </div>  
                                             </div>
-                    
-                                            <div class="mb-3">
-                                                <label for="userpassword" class="form-label">Password</label>
-                                                <input type="password" class="form-control" name="password" pattern=".{8,}" title="min. 8 characters" id="userpassword" placeholder="Enter password" required>
-                                                <div class="invalid-feedback">
-                                                    Minimum 8 Characters
-                                                </div>       
-                                            </div>
+
                                             <div class="mb-3">
                                                 <label class="form-label">User Type</label>
                                                 <select name="idgroup" class="form-select">
@@ -67,6 +60,20 @@
                                                     <option value="4">UMKM</option>
                                                 </select>
                                             </div>
+                    
+                                            <div class="mb-3">
+                                                <label for="userpassword" class="form-label">Password</label>
+                                                <input type="password" class="form-control" name="password" pattern=".{8,}" title="min. 8 characters" id="userpassword" placeholder="Enter password" required>
+                                                <div class="invalid-feedback">
+                                                    Minimum 8 Characters
+                                                </div>       
+                                            </div>
+                    
+                                            <div class="mb-3">
+                                                <label for="passwconfirm" class="form-label">Ulang Password</label>
+                                                <input type="password" class="form-control" name="pass2" id="passwconfirm" placeholder="Re-enter password" required>
+                                            </div>
+                                            
                                             <div class="mb-3">
                                                 <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Daftar</button>
                                             </div>
