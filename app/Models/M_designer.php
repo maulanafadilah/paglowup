@@ -69,7 +69,7 @@
     }
 
     public function getDesignerById($iddesigner){
-      $sql = "SELECT * FROM tb_designer WHERE iddesigner = $iddesigner";
+      $sql = "SELECT * FROM tb_user JOIN tb_designer USING(iduser) WHERE iddesigner = $iddesigner";
       return $this->db->query($sql)->getResult();
     }
 

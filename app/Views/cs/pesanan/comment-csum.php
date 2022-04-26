@@ -28,7 +28,7 @@
                     <li class="nav-item">
                         <a href="#chat" data-bs-toggle="tab" aria-expanded="true" class="nav-link active">
                             <i class="bx bx-chat font-size-20 d-sm-none"></i>
-                            <span class="d-none d-sm-block">User Dalam Komentar</span>
+                            <span class="d-none d-sm-block">User Dalam Chat</span>
                         </a>
                     </li>
                 </ul>
@@ -38,7 +38,7 @@
                             <div class="pt-3">
                                 <ul class="list-unstyled chat-list">
                                     <li>
-                                        <a href="#">
+                                        <a href="<?=base_url()?>/cs/umkm/rdr_detail/<?=$l_detail->idumkm?>">
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-shrink-0 align-self-center me-3">
                                                     <img src="<?=base_url()?>/webdata/uploads/images/umkm/<?=$l_detail->umkm_pic?>" class="rounded-circle avatar-sm" alt="">
@@ -54,7 +54,7 @@
                                     </li>
                                     <?php if(!is_null($l_detail->idcs)){?>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?=base_url()?>/cs/profile">
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-shrink-0 align-self-center me-3">
                                                     <img src="<?=base_url()?>/webdata/uploads/images/cs/<?=$l_detail->cs_pic?>" class="rounded-circle avatar-sm" alt="">

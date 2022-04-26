@@ -10,10 +10,22 @@
                 <li class="menu-title" data-key="t-menu"><?= lang('Files.Menu') ?></li>
 
                 <li>
-                    <a href="<?=base_url()?>/cs/designer/list">
+                    <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="users"></i>
-                        <span data-key="t-pages">Designer</span>
+                        <span data-key="t-authentication"><?= lang('Files.User') ?></span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="<?=base_url()?>/cs/designer/list" data-key="t-user-grid">
+                                <span data-key="t-authentication">Designer</span>
+                            </a>
+                        </li>  
+                        <li>
+                            <a href="<?=base_url()?>/cs/umkm/list" data-key="t-user-grid">
+                                <span data-key="t-authentication">UMKM</span>
+                            </a>
+                        </li>   
+                    </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">

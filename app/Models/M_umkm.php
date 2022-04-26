@@ -39,6 +39,11 @@
       return $this->db->query($sql)->getResult();
     }
 
+    public function getUmkmByIdUmkm($idumkm){
+      $sql = "SELECT * FROM tb_user JOIN tb_umkm USING(iduser) WHERE idumkm = $idumkm";
+      return $this->db->query($sql)->getResult();
+    }
+
     public function insertUmkm($data){
       $builder = $this->db->table('tb_umkm');
       $builder->insert($data);
