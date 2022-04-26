@@ -23,7 +23,7 @@
                             <div class="pt-3">
                                 <ul class="list-unstyled chat-list">
                                     <li>
-                                        <a href="#">
+                                        <a href="<?=base_url()?>/pengelola/designer/rdr_detail/<?=$l_detail->iddesigner?>">
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-shrink-0 align-self-center me-3">
                                                     <img src="<?=base_url()?>/webdata/uploads/images/designer/<?=$l_detail->designer_pic?>" class="rounded-circle avatar-sm" alt="">
@@ -39,7 +39,7 @@
                                     </li>
                                     <?php if(!is_null($l_detail->idcs)){?>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?=base_url()?>/pengelola/cs/rdr_detail/<?=$l_detail->idcs?>">
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-shrink-0 align-self-center me-3">
                                                     <img src="<?=base_url()?>/webdata/uploads/images/cs/<?=$l_detail->cs_pic?>" class="rounded-circle avatar-sm" alt="">

@@ -45,6 +45,11 @@
 			return view('pengelola/user/list-designer', $data);
 		}
 
+		public function rdr_detail($iddesigner){
+			$iduser = $this->m_designer->getDesignerById($iddesigner)[0]->iduser;
+			return redirect()->to(base_url('pengelola/designer/detail/'.$iduser));
+		}
+
 		public function detail($iduser){
 			$this->newUser();
 			$detilUser = $this->m_pengelola->getJoinUserPengelola(session()->get('iduser'))[0];

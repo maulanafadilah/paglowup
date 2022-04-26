@@ -43,6 +43,11 @@
 			return view('pengelola/user/list-umkm', $data);
 		}
 
+		public function rdr_detail($idumkm){
+			$iduser = $this->m_umkm->getUmkmByIdUmkm($idumkm)[0]->iduser;
+			return redirect()->to(base_url('pengelola/umkm/detail/'.$iduser));
+		}
+
 		public function detail($iduser){
 			$this->newUser();
 			$detilUser = $this->m_pengelola->getJoinUserPengelola(session()->get('iduser'))[0];

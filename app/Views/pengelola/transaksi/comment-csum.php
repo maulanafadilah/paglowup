@@ -1,12 +1,4 @@
 <hr>
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box d-flex align-items-center justify-content-between">
-                <h3 class="page-title mb-0">CHAT</h3>
-            </div>
-        </div>
-    </div>
     <div class="d-lg-flex" id="chat">
         <div class="chat-leftsidebar card">
             <div class="p-3 px-4 border-bottom">
@@ -33,7 +25,7 @@
                             <div class="pt-3">
                                 <ul class="list-unstyled chat-list">
                                     <li>
-                                        <a href="#">
+                                        <a href="<?=base_url()?>/pengelola/umkm/rdr_detail/<?=$l_detail->idumkm?>">
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-shrink-0 align-self-center me-3">
                                                     <img src="<?=base_url()?>/webdata/uploads/images/umkm/<?=$l_detail->umkm_pic?>" class="rounded-circle avatar-sm" alt="">
@@ -49,7 +41,7 @@
                                     </li>
                                     <?php if(!is_null($l_detail->idcs)){?>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?=base_url()?>/pengelola/cs/rdr_detail/<?=$l_detail->idcs?>">
                                             <div class="d-flex align-items-start">
                                                 <div class="flex-shrink-0 align-self-center me-3">
                                                     <img src="<?=base_url()?>/webdata/uploads/images/cs/<?=$l_detail->cs_pic?>" class="rounded-circle avatar-sm" alt="">

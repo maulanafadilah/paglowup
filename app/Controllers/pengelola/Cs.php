@@ -45,6 +45,11 @@
 			return view('pengelola/user/list-cs', $data);
 		}
 
+		public function rdr_detail($idcs){
+			$iduser = $this->m_cs->getCsById($idcs)[0]->iduser;
+			return redirect()->to(base_url('pengelola/cs/detail/'.$iduser));
+		}
+
 		public function detail($iduser){
 			$this->newUser();
 			$detilUser = $this->m_pengelola->getJoinUserPengelola(session()->get('iduser'))[0];
