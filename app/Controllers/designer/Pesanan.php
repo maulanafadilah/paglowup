@@ -78,8 +78,8 @@
 				'idstatus' => 6
 			];
 
-			define('MB', 1048576);
-			if ($_FILES['prev1']['size'] > 512000) {
+			define('MB', 1000000);
+			if ($_FILES['prev1']['size'] > 20*MB) {
 				$v_file = TRUE;
 			}
 			elseif ($_FILES['prev1']['size'] != 0) {
@@ -87,7 +87,7 @@
 				$dataset += ['designpreview1' => $prev1];
 			}
 
-			if ($_FILES['prev2']['size'] > 512000) {
+			if ($_FILES['prev2']['size'] > 20*MB) {
 				$v_file = TRUE;
 			}
 			elseif ($_FILES['prev2']['size'] != 0) {
@@ -113,7 +113,7 @@
 				File preview telah dikirim ke UMKM
 			</div>';
 
-			session()->setFlashdata($alert);
+			session()->setFlashdata('notif', $alert);
 			return redirect()->to(base_url('designer/pesanan/detail/'.$idorder));
 		}
 
@@ -127,7 +127,7 @@
 				'idstatus' => 6
 			];
 
-			define('MB', 1048576);
+			define('MB', 1000000);
 			if ($_FILES['orderedfile1']['size'] > 20*MB) {
 				$v_file = TRUE;
 			}
@@ -162,7 +162,7 @@
 				File HD telah dikirim ke UMKM
 			</div>';
 
-			session()->setFlashdata($alert);
+			session()->setFlashdata('notif', $alert);
 			return redirect()->to(base_url('designer/pesanan/detail/'.$idorder));
 		}
 
@@ -199,8 +199,8 @@
 				'idorder' => $idorder
 			];
 
-			define('MB', 1048576);
-			if ($_FILES['file1']['size'] > 4*MB) {
+			define('MB', 1000000);
+			if ($_FILES['file1']['size'] > 20*MB) {
 				$v_foto = TRUE;
 			}
 			elseif ($_FILES['file1']['size'] != 0) {
@@ -208,7 +208,7 @@
 				$dataset += ['file1' => $file1];
 			}
 
-			if ($_FILES['file2']['size'] > 4*MB) {
+			if ($_FILES['file2']['size'] > 20*MB) {
 				$v_foto = TRUE;
 			}
 			elseif ($_FILES['file2']['size'] != 0) {
@@ -247,205 +247,81 @@
 		}
 
     public function upload_file1($dataset){
-      $validationRule = [
-        'file1' => [
-          'label' => 'Image File',
-          'rules' => 'uploaded[file1]'
-            . '|is_image[file1]'
-            . '|mime_in[file1,image/jpg,image/jpeg,image/png,image/webp]'
-            . '|max_size[file1,4000]',
-        ],
-      ];
+    	$img = $this->request->getFile('file1');
+    	$newName = 'file1_'.'_'.$dataset['iddesigner'].$img->getRandomName();
 
-      if (! $this->validate($validationRule)) {
-        $data = $this->validator->getErrors();
-				
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					'.$data.'
-				</div>';
-				session()->setFlashdata('notif', $alert);
+    	$img->move(ROOTPATH.'public/webdata/uploads/comment/', $newName);
+    	$data = [
+    		'name' => $img->getName(),
+    		'type' => $img->getClientMimeType()
+    	];
 
-				return redirect()->to(base_url('umkm/pesanan/add'));
-      }else{
-      	$img = $this->request->getFile('file1');
-      	$newName = 'file1_'.'_'.$dataset['iddesigner'].$img->getRandomName();
-
-      	$img->move(ROOTPATH.'public/webdata/uploads/comment/', $newName);
-      	$data = [
-      		'name' => $img->getName(),
-      		'type' => $img->getClientMimeType()
-      	];
-
-      	return $data;
-      }
+    	return $data;
     }
 
     public function upload_file2($dataset){
-      $validationRule = [
-        'file2' => [
-          'label' => 'Image File',
-          'rules' => 'uploaded[file2]'
-            . '|is_image[file2]'
-            . '|mime_in[file2,image/jpg,image/jpeg,image/png,image/webp]'
-            . '|max_size[file2,4000]',
-        ],
-      ];
+    	$img = $this->request->getFile('file2');
+    	$newName = 'file2_'.'_'.$dataset['iddesigner'].$img->getRandomName();
 
-      if (! $this->validate($validationRule)) {
-        $data = $this->validator->getErrors();
-				
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					'.$data.'
-				</div>';
-				session()->setFlashdata('notif', $alert);
+    	$img->move(ROOTPATH.'public/webdata/uploads/comment/', $newName);
+    	$data = [
+    		'name' => $img->getName(),
+    		'type' => $img->getClientMimeType()
+    	];
 
-				return redirect()->to(base_url('umkm/pesanan/add'));
-      }else{
-      	$img = $this->request->getFile('file2');
-      	$newName = 'file2_'.'_'.$dataset['iddesigner'].$img->getRandomName();
-
-      	$img->move(ROOTPATH.'public/webdata/uploads/comment/', $newName);
-      	$data = [
-      		'name' => $img->getName(),
-      		'type' => $img->getClientMimeType()
-      	];
-
-      	return $data;
-      }
+    	return $data;
     }
 
     public function upload_prev1(){
-      $validationRule = [
-        'prev1' => [
-          'label' => 'Image File',
-          'rules' => 'uploaded[prev1]'
-            . '|is_image[prev1]'
-            . '|mime_in[prev1,image/jpg,image/jpeg,image/png,image/webp]'
-            . '|max_size[prev1,4000]',
-        ],
-      ];
+    	$img = $this->request->getFile('prev1');
+    	$newName = 'prev1_'.$img->getRandomName();
 
-      if (! $this->validate($validationRule)) {
-        $data = $this->validator->getErrors();
-				
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					Format file salah
-				</div>';
-				session()->setFlashdata('notif', $alert);
+    	$img->move(ROOTPATH.'public/webdata/uploads/prev_data/', $newName);
+    	$data = [
+    		'name' => $img->getName(),
+    		'type' => $img->getClientMimeType()
+    	];
 
-				return redirect()->to(base_url('designer/pesanan/list'));
-      }else{
-      	$img = $this->request->getFile('prev1');
-      	$newName = 'prev1_'.$img->getRandomName();
-
-      	$img->move(ROOTPATH.'public/webdata/uploads/prev_data/', $newName);
-      	$data = [
-      		'name' => $img->getName(),
-      		'type' => $img->getClientMimeType()
-      	];
-
-      	return $data;
-      }
+    	return $data;
     }
 
     public function upload_prev2(){
-      $validationRule = [
-        'prev2' => [
-          'label' => 'Image File',
-          'rules' => 'uploaded[prev2]'
-            . '|is_image[prev2]'
-            . '|mime_in[prev2,image/jpg,image/jpeg,image/png,image/webp]'
-            . '|max_size[prev2,4000]',
-        ],
-      ];
+    	$img = $this->request->getFile('prev2');
+    	$newName = 'prev2_'.$img->getRandomName();
 
-      if (! $this->validate($validationRule)) {
-        $data = $this->validator->getErrors();
-				
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					Format file salah
-				</div>';
-				session()->setFlashdata('notif', $alert);
+    	$img->move(ROOTPATH.'public/webdata/uploads/prev_data/', $newName);
+    	$data = [
+    		'name' => $img->getName(),
+    		'type' => $img->getClientMimeType()
+    	];
 
-				return redirect()->to(base_url('designer/pesanan/list'));
-      }else{
-      	$img = $this->request->getFile('prev2');
-      	$newName = 'file2_'.$img->getRandomName();
-
-      	$img->move(ROOTPATH.'public/webdata/uploads/prev_data/', $newName);
-      	$data = [
-      		'name' => $img->getName(),
-      		'type' => $img->getClientMimeType()
-      	];
-
-      	return $data;
-      }
+    	return $data;
     }
 
     public function upload_orderedfile1(){
-      $validationRule = [
-        'orderedfile1' => [
-          'label' => 'Image File',
-          'rules' => 'uploaded[orderedfile1]'
-            . '|mime_in[orderedfile1,image/jpg,image/jpeg,image/png,image/webp,application/vnd.rar,application/zip]'
-            . '|max_size[orderedfile1,4000]',
-        ],
-      ];
+    	$img = $this->request->getFile('orderedfile1');
+    	$newName = 'orderedfile1_'.$img->getRandomName();
 
-      if (! $this->validate($validationRule)) {
-        $data = $this->validator->getErrors();
-				
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					'.$data.'
-				</div>';
-				session()->setFlashdata('notif', $alert);
+    	$img->move(ROOTPATH.'public/webdata/uploads/works/', $newName);
+    	$data = [
+    		'name' => $img->getName(),
+    		'type' => $img->getClientMimeType()
+    	];
 
-				return redirect()->to(base_url('umkm/pesanan/add'));
-      }else{
-      	$img = $this->request->getFile('orderedfile1');
-      	$newName = 'orderedfile1_'.$img->getRandomName();
-
-      	$img->move(ROOTPATH.'public/webdata/uploads/works/', $newName);
-      	$data = [
-      		'name' => $img->getName(),
-      		'type' => $img->getClientMimeType()
-      	];
-
-      	return $data;
-      }
+    	return $data;
     }
 
     public function upload_orderedfile2(){
-      $validationRule = [
-        'orderedfile2' => [
-          'label' => 'Image File',
-          'rules' => 'uploaded[orderedfile2]'
-            . '|mime_in[orderedfile2,image/jpg,image/jpeg,image/png,image/webp,application/vnd.rar,application/zip]'
-            . '|max_size[orderedfile2,4000]',
-        ],
-      ];
+    	$img = $this->request->getFile('orderedfile2');
+    	$newName = 'orderedfile2_'.$img->getRandomName();
 
-      if (! $this->validate($validationRule)) {
-        $data = $this->validator->getErrors();
-				
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					'.$data.'
-				</div>';
-				session()->setFlashdata('notif', $alert);
+    	$img->move(ROOTPATH.'public/webdata/uploads/works/', $newName);
+    	$data = [
+    		'name' => $img->getName(),
+    		'type' => $img->getClientMimeType()
+    	];
 
-				return redirect()->to(base_url('umkm/pesanan/add'));
-      }else{
-      	$img = $this->request->getFile('orderedfile2');
-      	$newName = 'orderedfile2_'.$img->getRandomName();
-
-      	$img->move(ROOTPATH.'public/webdata/uploads/works/', $newName);
-      	$data = [
-      		'name' => $img->getName(),
-      		'type' => $img->getClientMimeType()
-      	];
-
-      	return $data;
-      }
+    	return $data;
     }
 	}
 ?>

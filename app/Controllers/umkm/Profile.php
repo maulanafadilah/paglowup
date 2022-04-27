@@ -58,7 +58,7 @@
 				return redirect()->to(base_url('umkm/dashboard'));
 			}
 
-			define('MB', 1048576);
+			define('MB', 1000000);
 			if ($_FILES['umkm_pic']['size'] > 4*MB) { // JIKA FILE DI UPLOAD OLEH USER
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
 					File terlalu besar
@@ -130,7 +130,7 @@
 				return redirect()->to(base_url('umkm/dashboard'));
 			}
 
-			define('MB', 1048576);
+			define('MB', 1000000);
 			if ($_FILES['umkm_pic']['size'] > 4*MB) { // JIKA FILE DI UPLOAD OLEH USER
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
 					File terlalu besar
@@ -210,37 +210,16 @@
 		}
 
     public function upload_img(){
-      $validationRule = [
-        'umkm_pic' => [
-          'label' => 'Image File',
-          'rules' => 'uploaded[umkm_pic]'
-            . '|is_image[umkm_pic]'
-            . '|mime_in[umkm_pic,image/jpg,image/jpeg,image/png,image/webp]'
-            . '|max_size[umkm_pic,4000]',
-        ],
-      ];
+    	$img = $this->request->getFile('umkm_pic');
+    	$newName = $img->getRandomName();
 
-      if (! $this->validate($validationRule)) {
-        $data = $this->validator->getErrors();
-				
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					'.$data.'
-				</div>';
-				session()->setFlashdata('notif', $alert);
+    	$img->move(ROOTPATH.'public/webdata/uploads/images/umkm/', $newName);
+    	$data = [
+    		'name' => $img->getName(),
+    		'type' => $img->getClientMimeType()
+    	];
 
-				return redirect()->to(base_url('umkm/profile'));
-      }else{
-      	$img = $this->request->getFile('umkm_pic');
-      	$newName = $img->getRandomName();
-
-      	$img->move(ROOTPATH.'public/webdata/uploads/images/umkm/', $newName);
-      	$data = [
-      		'name' => $img->getName(),
-      		'type' => $img->getClientMimeType()
-      	];
-
-      	return $data;
-      }
+    	return $data;
     }
 	}
 ?>

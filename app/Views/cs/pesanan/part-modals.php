@@ -200,13 +200,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                Maks. ukuran unggah 20mb<br>
                 <form id="upPrevAcc" action="<?=base_url()?>/cs/pesanan/send_prev_umkm/<?=$l_detail->idorder?>" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 1 (max size 512kb)</label>
+                        <label class="col-sm-3 col-form-label">Attachment 1</label>
                         <input type="file" name="prev1" class="form-control" accept=" image/jpg, image/jpeg" required>
                     </div>
                     <div class="mb-3">
-                        <label class="col-sm-3 col-form-label">Attachment 2 (max size 512kb)</label>
+                        <label class="col-sm-3 col-form-label">Attachment 2</label>
                         <input type="file" name="prev2" class="form-control" accept=" image/jpg, image/jpeg" required>
                     </div>
                 </form>

@@ -92,7 +92,7 @@
 			$this->newUser();
 
             
-			define('MB', 1048576);
+			define('MB', 1000000);
 
             // image1
 			if ($_FILES['img1']['size'] > 4*MB) { // JIKA FILE DI UPLOAD OLEH USER

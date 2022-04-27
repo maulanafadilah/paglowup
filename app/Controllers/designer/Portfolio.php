@@ -47,8 +47,8 @@
 		public function add_proc(){
 			$this->newUser();
 
-			define('MB', 1048576);
-			if ($_FILES['foto']['size'] > 4*MB) { // JIKA FILE DI UPLOAD OLEH USER
+			define('MB', 1000000);
+			if ($_FILES['foto']['size'] > 10*MB) { // JIKA FILE DI UPLOAD OLEH USER
 				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
 					File terlalu besar
 				</div>';
@@ -111,38 +111,17 @@
 			return redirect()->to(base_url('designer/portfolio/list'));
 		}
 
-    public function upload_img(){
-      $validationRule = [
-        'foto' => [
-          'label' => 'Image File',
-          'rules' => 'uploaded[foto]'
-            . '|is_image[foto]'
-            . '|mime_in[foto,image/jpg,image/jpeg,image/webp]'
-            . '|max_size[foto,4000]',
-        ],
-      ];
+  public function upload_img(){
+    	$img = $this->request->getFile('foto');
+    	$newName = $img->getRandomName();
 
-      if (! $this->validate($validationRule)) {
-        $data = $this->validator->getErrors();
-				
-				$alert = '<div class="alert alert-danger text-center mb-4 mt-4 pt-2" role="alert">
-					File Format Salah
-				</div>';
-				session()->setFlashdata('notif', $alert);
+    	$img->move(ROOTPATH.'public/webdata/uploads/images/designer/portfolio/', $newName);
+    	$data = [
+    		'name' => $img->getName(),
+    		'type' => $img->getClientMimeType()
+    	];
 
-				return redirect()->to(base_url('designer/portfolio/list'));
-      }else{
-      	$img = $this->request->getFile('foto');
-      	$newName = $img->getRandomName();
-
-      	$img->move(ROOTPATH.'public/webdata/uploads/images/designer/portfolio/', $newName);
-      	$data = [
-      		'name' => $img->getName(),
-      		'type' => $img->getClientMimeType()
-      	];
-
-      	return $data;
-      }
+    	return $data;
     }
 
 		public function list_img(){
